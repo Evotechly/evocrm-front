@@ -1,6 +1,7 @@
 {
   "name": "@evotechly/evocrm-front",
   "private": true,
+  "packageManager": "pnpm@11.25.0",
   "version": "0.1.0",
   "type": "module",
   "scripts": {
