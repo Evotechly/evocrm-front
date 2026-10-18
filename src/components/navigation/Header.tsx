@@ -1,18 +1,103 @@
-import { Bell, CaretDown, Command, MagnifyingGlass, Plus, Sparkle } from '@phosphor-icons/react';
-import { useState } from 'react';
+import { Bell, CaretDown, Command, MagnifyingGlass, Plus, Moon, Sun } from '@phosphor-icons/react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
+import { useTheme } from '@/app/providers/ThemeProvider';
+import { useCrm } from '@/app/providers/CrmProvider';
 import { Avatar, Button } from '@/components/ui';
-
-export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
+import { Popover, Tooltip } from '@/components/ui/Overlays';
+export function GlobalCreateMenu() {
   const { navigate } = useNavigation();
-  const [createOpen, setCreateOpen] = useState(false);
-  const [userOpen, setUserOpen] = useState(false);
-  return <header className="app-header">
-    <button className="command-trigger" onClick={onOpenCommand}><MagnifyingGlass size={18} /><span>Rechercher dans EvoCRM...</span><kbd><Command size={12} /> K</kbd></button>
-    <div className="header-actions">
-      <div className="menu-wrap"><Button variant="primary" onClick={() => setCreateOpen((open) => !open)}><Plus size={17} weight="bold" /> Créer <CaretDown size={14} /></Button>{createOpen ? <div className="popover create-popover"><button onClick={() => navigate('/crm/contacts?create=1')}>Nouveau contact</button><button onClick={() => navigate('/crm/deals?create=1')}>Nouveau deal</button><button onClick={() => navigate('/crm/quotes?create=1')}>Nouveau devis</button></div> : null}</div>
-      <button className="icon-button notification-button" aria-label="Notifications"><Bell size={19} /><span className="notification-dot" /></button>
-      <div className="menu-wrap"><button className="profile-trigger" onClick={() => setUserOpen((open) => !open)}><Avatar initials="MB" tone="ink" /><span><strong>Mohamed</strong><small>Owner</small></span><CaretDown size={14} /></button>{userOpen ? <div className="popover user-popover"><div className="popover-intro"><Sparkle size={15} /><span>Evotechly workspace</span></div><button onClick={() => navigate('/settings')}>Paramètres</button><button>Se déconnecter</button></div> : null}</div>
-    </div>
-  </header>;
+  return (
+    <Popover
+      closeOnAction
+      label="Créer un enregistrement"
+      trigger={
+        <Button variant="primary">
+          <Plus size={17} /> Créer <CaretDown size={14} />
+        </Button>
+      }
+    >
+      <div className="menu-list">
+        {[
+          ['contact', 'contacts'],
+          ['deal', 'deals'],
+          ['devis', 'quotes'],
+        ].map(([label, path]) => (
+          <Button key={path} variant="ghost" onClick={() => navigate(`/crm/${path}?create=1`)}>
+            Nouveau {label}
+          </Button>
+        ))}
+      </div>
+    </Popover>
+  );
 }
+export function UserMenu() {
+  const { notify } = useCrm();
+  return (
+    <Popover
+      label="Compte utilisateur"
+      trigger={
+        <button className="profile-trigger" aria-label="Compte de Mohamed">
+          <Avatar initials="MB" tone="ink" />
+          <span>
+            <strong>Mohamed</strong>
+            <small>Owner · Démonstration</small>
+          </span>
+          <CaretDown size={14} />
+        </button>
+      }
+    >
+      <div className="menu-list">
+        <strong>Mohamed · Evotechly</strong>
+        <p className="muted">Session locale, sans compte connecté.</p>
+        <Button
+          onClick={() => notify('Session de démonstration : aucune connexion serveur active.')}
+        >
+          Informations de session
+        </Button>
+      </div>
+    </Popover>
+  );
+}
+export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
+  const { theme, toggleTheme } = useTheme();
+  return (
+    <header className="app-header">
+      <button
+        className="command-trigger"
+        onClick={onOpenCommand}
+        aria-label="Rechercher dans EvoCRM"
+      >
+        <MagnifyingGlass size={18} />
+        <span>Rechercher dans EvoCRM…</span>
+        <kbd>
+          <Command size={12} /> K
+        </kbd>
+      </button>
+      <div className="header-actions">
+        <GlobalCreateMenu />
+        <Tooltip text={theme === 'light' ? 'Mode sombre' : 'Mode clair'}>
+          <button
+            className="icon-button"
+            aria-label={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
+            onClick={toggleTheme}
+          >
+            {theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+          </button>
+        </Tooltip>
+        <Popover
+          label="Notifications"
+          trigger={
+            <button className="icon-button notification-button" aria-label="Notifications">
+              <Bell size={19} />
+            </button>
+          }
+        >
+          <strong>Vous êtes à jour</strong>
+          <p className="muted">Aucune nouvelle notification dans cette démonstration.</p>
+        </Popover>
+        <UserMenu />
+      </div>
+    </header>
+  );
+}
+export { Header as AppHeader };

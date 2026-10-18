@@ -30,5 +30,12 @@ jobs:
         with: { node-version: 22, cache: pnpm }
       - run: pnpm install --frozen-lockfile --ignore-scripts
       - run: pnpm exec playwright install --with-deps chromium
-      - run: pnpm run dev -- --host 127.0.0.1 > /tmp/evocrm-vite.log 2>&1 &
-      - run: pnpm run test:e2e
+      - run: pnpm exec playwright test --workers=2
+      - uses: actions/upload-artifact@v4
+        if: always()
+        with:
+          name: f2-browser-evidence
+          path: |
+            docs/certification/screenshots
+            test-results
+          retention-days: 14

@@ -1,0 +1,188 @@
+[
+  {
+    "package": "@fontsource/geist-mono",
+    "version": "5.2.6",
+    "license": "OFL-1.1",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@fontsource/geist-sans",
+    "version": "5.2.5",
+    "license": "OFL-1.1",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@phosphor-icons/react",
+    "version": "2.1.10",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@radix-ui/react-dialog",
+    "version": "1.1.15",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@radix-ui/react-popover",
+    "version": "1.1.15",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@radix-ui/react-tooltip",
+    "version": "1.2.8",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@tailwindcss/vite",
+    "version": "4.3.3",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@vitejs/plugin-react",
+    "version": "5.2.0",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "cmdk",
+    "version": "1.1.1",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "react",
+    "version": "19.3.1",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "react-dom",
+    "version": "19.3.1",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "react-router-dom",
+    "version": "7.18.4",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "tailwindcss",
+    "version": "4.3.3",
+    "license": "MIT",
+    "scope": "dependencies"
+  },
+  {
+    "package": "@axe-core/playwright",
+    "version": "4.10.2",
+    "license": "MPL-2.0",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@eslint/js",
+    "version": "9.39.5",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@playwright/test",
+    "version": "1.64.1",
+    "license": "Apache-2.0",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@testing-library/jest-dom",
+    "version": "6.9.1",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@testing-library/react",
+    "version": "16.3.3",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@testing-library/user-event",
+    "version": "14.6.8",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@types/react",
+    "version": "19.3.0",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@types/react-dom",
+    "version": "19.3.0",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@typescript-eslint/eslint-plugin",
+    "version": "8.71.2",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "@typescript-eslint/parser",
+    "version": "8.71.2",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "eslint",
+    "version": "9.39.5",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "eslint-plugin-react-hooks",
+    "version": "6.1.1",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "eslint-plugin-react-refresh",
+    "version": "0.4.26",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "jsdom",
+    "version": "27.4.0",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "prettier",
+    "version": "3.9.10",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "typescript",
+    "version": "5.9.3",
+    "license": "Apache-2.0",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "vite",
+    "version": "8.3.4",
+    "license": "MIT",
+    "scope": "devDependencies"
+  },
+  {
+    "package": "vitest",
+    "version": "5.0.2",
+    "license": "MIT",
+    "scope": "devDependencies"
+  }
+]

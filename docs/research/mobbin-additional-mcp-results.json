@@ -1,0 +1,80 @@
+[
+  {
+    "area": "analytics",
+    "query": "Linear analytics dashboard with metric charts and date filters",
+    "screens": [
+      {
+        "id": "d1d26f7d-e1e5-490f-ab4f-c96dd12854c1",
+        "image_url": "https://mobbin.com/api/mcp/short/KzsuAKAp",
+        "mobbin_url": "https://mobbin.com/screens/d1d26f7d-e1e5-490f-ab4f-c96dd12854c1",
+        "app_name": "Linear",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "area": "settings",
+    "query": "Notion workspace settings with members and permissions",
+    "screens": [
+      {
+        "id": "09019fa8-b8ea-47f0-9441-5ed4e558dadc",
+        "image_url": "https://mobbin.com/api/mcp/short/jXLmOcIH",
+        "mobbin_url": "https://mobbin.com/screens/09019fa8-b8ea-47f0-9441-5ed4e558dadc",
+        "app_name": "Notion",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "area": "command",
+    "query": "Linear command menu with keyboard shortcuts",
+    "screens": [
+      {
+        "id": "1e783aca-8b8e-4ae5-994d-284a8ddae491",
+        "image_url": "https://mobbin.com/api/mcp/short/7f4IXlke",
+        "mobbin_url": "https://mobbin.com/screens/1e783aca-8b8e-4ae5-994d-284a8ddae491",
+        "app_name": "Linear",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "area": "record",
+    "query": "Attio person record with company relationships and activity",
+    "screens": [
+      {
+        "id": "1bdfc233-e1f6-4cd6-82e3-2baf285d29c9",
+        "image_url": "https://mobbin.com/api/mcp/short/ttmKsBC6",
+        "mobbin_url": "https://mobbin.com/screens/1bdfc233-e1f6-4cd6-82e3-2baf285d29c9",
+        "app_name": "Attio",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "area": "onboarding",
+    "query": "Notion workspace onboarding setup",
+    "screens": [
+      {
+        "id": "2d5a61ef-ab49-49e3-8299-7f683c03fa17",
+        "image_url": "https://mobbin.com/api/mcp/short/5LU3bIMs",
+        "mobbin_url": "https://mobbin.com/screens/2d5a61ef-ab49-49e3-8299-7f683c03fa17",
+        "app_name": "Notion",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "area": "authentication",
+    "query": "Linear sign in screen",
+    "screens": [
+      {
+        "id": "3997d60f-bea7-4068-af79-3942a664072e",
+        "image_url": "https://mobbin.com/api/mcp/short/Bf5PN0kx",
+        "mobbin_url": "https://mobbin.com/screens/3997d60f-bea7-4068-af79-3942a664072e",
+        "app_name": "Linear",
+        "platform": "web"
+      }
+    ]
+  }
+]

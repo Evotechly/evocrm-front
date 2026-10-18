@@ -1,0 +1,74 @@
+[
+  {
+    "screen": "dashboard",
+    "query": "HubSpot sales dashboard with pipeline revenue and tasks",
+    "screens": [
+      {
+        "id": "87dcd39f-a9aa-461e-9fb6-5aec87d0e017",
+        "image_url": "https://mobbin.com/api/mcp/short/SIUEVMtl",
+        "mobbin_url": "https://mobbin.com/screens/87dcd39f-a9aa-461e-9fb6-5aec87d0e017",
+        "app_name": "HubSpot",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "screen": "contacts",
+    "query": "Attio contact list with filters and record detail panel",
+    "screens": [
+      {
+        "id": "f6e04e27-1d0f-415e-b1fe-dbfb817de932",
+        "image_url": "https://mobbin.com/api/mcp/short/ObCvmTvG",
+        "mobbin_url": "https://mobbin.com/screens/f6e04e27-1d0f-415e-b1fe-dbfb817de932",
+        "app_name": "Attio",
+        "platform": "web"
+      },
+      {
+        "id": "6cd21f0d-de53-486e-b379-39c50d81bb21",
+        "image_url": "https://mobbin.com/api/mcp/short/xTQMykVB",
+        "mobbin_url": "https://mobbin.com/screens/6cd21f0d-de53-486e-b379-39c50d81bb21",
+        "app_name": "Attio",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "screen": "deals",
+    "query": "Attio sales pipeline kanban with deal cards",
+    "screens": [
+      {
+        "id": "e275641a-a3e8-440a-b53e-983bb9cec7c7",
+        "image_url": "https://mobbin.com/api/mcp/short/bBfH2fFw",
+        "mobbin_url": "https://mobbin.com/screens/e275641a-a3e8-440a-b53e-983bb9cec7c7",
+        "app_name": "Attio",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "screen": "inbox",
+    "query": "Intercom inbox conversation with customer context panel",
+    "screens": [
+      {
+        "id": "d4d6efaf-d387-4211-9bdf-1c207d1f2714",
+        "image_url": "https://mobbin.com/api/mcp/short/l832RSy4",
+        "mobbin_url": "https://mobbin.com/screens/d4d6efaf-d387-4211-9bdf-1c207d1f2714",
+        "app_name": "Intercom",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "screen": "quotes",
+    "query": "CRM quote detail with line items and totals",
+    "screens": [
+      {
+        "id": "5a31c4b3-96a4-4067-90a8-579ef8b9660a",
+        "image_url": "https://mobbin.com/api/mcp/short/ODZnWAqc",
+        "mobbin_url": "https://mobbin.com/screens/5a31c4b3-96a4-4067-90a8-579ef8b9660a",
+        "app_name": "Jobber",
+        "platform": "web"
+      }
+    ]
+  }
+]

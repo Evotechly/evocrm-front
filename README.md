@@ -5,8 +5,8 @@ Standalone React 19 + TypeScript frontend foundation for EvoCRM 2.0. The reposit
 ## Development
 
 ```bash
-npm install
-npm run dev
+pnpm install --frozen-lockfile
+pnpm run dev
 ```
 
 Open [http://localhost:5173](http://localhost:5173).
@@ -31,3 +31,14 @@ Aurora tokens are synchronized from Evotechly Brandbook `main` at the documented
 ## Integration strategy
 
 Standalone development provides a `RouterNavigationAdapter` and mock repositories. Production will provide an Inertia navigation adapter and page-prop-backed repositories at the application boundary. Components do not import Inertia, Laravel globals, or production endpoints.
+
+## Aurora Next F2
+
+Five interactive mock screens share a session-data provider, capability gates, semantic light/dark tokens, accessible overlays and typed CRM components. Edits reset on reload; no backend persistence or external message sending is simulated as real.
+
+- Interactive development gallery: `/dev/components`.
+- Development states: `?state=empty|loading|error|denied`; create: `?create=1` on Contacts, Deals and Quotes.
+- [Component contracts](docs/design-system/components.md), [source map](docs/design-system/component-source-map.md), [baseline audit](docs/certification/f2-baseline-audit.md).
+- [Visual certification](docs/certification/f2-visual-report.md) and [F2 report](docs/certification/f2-report.md).
+
+Use Node 22.12+ and pnpm 11.25.0. The production build excludes the gallery/state preview controls. The provided Figma reference is a concept direction; approved five-screen parity remains pending.

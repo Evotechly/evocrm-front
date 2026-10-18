@@ -15,3 +15,7 @@
 | 10 | responsive, accessibility, visual tests, integration readiness | all prior waves | Playwright + a11y + integration certification | planned |
 
 Each wave must add screen IDs, dependencies, component requirements, mock contracts, interactions, acceptance criteria, automated tests, and a completion update. The source Screen registry is the exhaustive backlog; the table above is the dependency-level release plan.
+
+## F2 update — 2026-10-18
+
+Aurora Next library and five interactive mock screens implemented and locally tested. F2 remains **PENDING** approved visual sign-off; no pixel-perfect parity or backend integration certification is claimed. See [delivery report](certification/f2-report.md) and [visual evidence](certification/f2-visual-report.md). F3 should begin with approved layouts and real Inertia DTO/capability mapping, then Companies and richer records.

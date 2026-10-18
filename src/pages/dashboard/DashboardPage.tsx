@@ -1,14 +1,237 @@
-import { ArrowUpRight, CheckCircle, Handshake, Plus, UsersThree } from '@phosphor-icons/react';
+import { useState } from 'react';
+import { ArrowUpRight, Handshake, UsersThree, CheckCircle } from '@phosphor-icons/react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
-import { MetricSparkline } from '@/components/data-display/MetricSparkline';
-import { StatCard, Button, Panel, Avatar } from '@/components/ui';
+import { useCrm } from '@/app/providers/CrmProvider';
+import { StatCard, Panel, Button } from '@/components/ui';
+import { Select, Checkbox } from '@/components/forms/Fields';
+import { ScreenState, NoResults, usePreviewState } from '@/components/ui/ScreenState';
+import { StatusBadge } from '@/components/ui/StatusBadge';
 import { formatDzd } from '@/lib/format';
-
+export { StatCard as KPICard } from '@/components/data-display/StatCard';
 export function DashboardPage() {
   const { navigate } = useNavigation();
-  return <section className="page-stack" data-screen-id="SCR-HOME-001"><div className="page-heading"><div><div className="eyebrow">DIMANCHE 18 OCTOBRE 2026</div><h1>Bonjour Mohamed <span className="wave">✦</span></h1><p className="muted">Voici ce qui se passe dans votre workspace aujourd’hui.</p></div><Button variant="primary" onClick={() => navigate('/crm/contacts?create=1')}><Plus size={17} /> Ajouter un contact</Button></div><div className="stat-grid"><StatCard label="Contacts actifs" value="1 248" change="+12,4 % ce mois" icon={<UsersThree size={20} />} /><StatCard label="Pipeline ouvert" value={formatDzd(4820000)} change="+8,2 % ce mois" icon={<Handshake size={20} />} tone="indigo" /><StatCard label="Tâches à venir" value="18" change="4 pour aujourd’hui" icon={<CheckCircle size={20} />} tone="teal" /><StatCard label="Taux de conversion" value="24,8 %" change="+3,1 % ce mois" icon={<ArrowUpRight size={20} />} tone="purple" /></div><div className="dashboard-grid"><Panel title="Activité commerciale" action={<button className="text-button">30 derniers jours <span>⌄</span></button>}><div className="chart-summary"><div><span>Revenus générés</span><strong>{formatDzd(2840000)}</strong><small className="positive">↗ 18,6 % vs période précédente</small></div><MetricSparkline values={[24, 29, 25, 35, 31, 42, 39, 48, 43, 55, 52, 64]} /></div><div className="chart-bars">{[42, 55, 38, 68, 58, 73, 62, 82, 67, 88, 79, 96].map((height, index) => <span key={index} style={{ height: `${height}%` }} />)}</div><div className="chart-axis"><span>19 sept.</span><span>26 sept.</span><span>03 oct.</span><span>10 oct.</span><span>Aujourd’hui</span></div></Panel><Panel title="Mes tâches" action={<button className="text-button">Voir tout <ArrowUpRight size={14} /></button>}><div className="task-list"><Task label="Relancer Sarah Benali" detail="Atlas Logistics · Aujourd’hui, 11:00" checked /><Task label="Envoyer la proposition" detail="Kasbah Studio · Aujourd’hui, 14:30" /><Task label="Préparer la démo" detail="Numidia Tech · Demain, 09:00" /></div></Panel></div><Panel title="Deals à suivre" action={<button className="text-button" onClick={() => navigate('/crm/deals')}>Ouvrir le pipeline <ArrowUpRight size={14} /></button>}><div className="deal-preview"><div className="deal-preview-title"><span>Deal</span><span>Entreprise</span><span>Montant</span><span>Étape</span></div>{[['Déploiement CRM', 'Atlas Logistics', formatDzd(820000), 'Proposition'], ['Automatisation ventes', 'Kasbah Studio', formatDzd(1250000), 'Négociation'], ['Portail client', 'Numidia Tech', formatDzd(460000), 'Qualification']].map(([deal, company, amount, stage]) => <div className="deal-preview-row" key={deal}><strong>{deal}</strong><span>{company}</span><span className="money">{amount}</span><span className="stage-dot"><i />{stage}</span></div>)}</div></Panel></section>;
-}
-
-function Task({ label, detail, checked = false }: { label: string; detail: string; checked?: boolean }) {
-  return <div className="task-row"><span className={`task-check ${checked ? 'checked' : ''}`}>{checked ? '✓' : ''}</span><span><strong>{label}</strong><small>{detail}</small></span><Avatar initials="MB" tone="ink" /></div>;
+  const { contacts, deals, quotes } = useCrm();
+  const state = usePreviewState();
+  const [range, setRange] = useState('all'),
+    [done, setDone] = useState<string[]>([]);
+  const data = state === 'empty' ? [] : deals;
+  const filtered =
+    range === 'today'
+      ? data.filter((d) => ['Aujourd’hui', 'À l’instant'].includes(d.updatedAt))
+      : range === 'week'
+        ? data.filter((d) => !d.updatedAt.includes('10 oct.'))
+        : data;
+  const open = filtered.filter((d) => !['Gagné', 'Perdu'].includes(d.stage));
+  const won = filtered.filter((d) => d.stage === 'Gagné');
+  const lost = filtered.filter((d) => d.stage === 'Perdu');
+  const pending = state === 'empty' ? [] : quotes.filter((q) => q.status === 'Envoyé');
+  const tasks = open.map((d) => ({
+    id: d.id,
+    title: `Faire le point · ${d.name}`,
+    company: d.company,
+  }));
+  const total = open.reduce((s, d) => s + d.value, 0);
+  return (
+    <ScreenState permission="crm.view">
+      <section className="page-stack" data-screen-id="SCR-HOME-001">
+        <div className="page-heading">
+          <div>
+            <div className="eyebrow">VOTRE ESPACE / VUE D’ENSEMBLE</div>
+            <h1>
+              Bonjour Mohamed <span className="wave">✦</span>
+            </h1>
+            <p className="muted">Les relations qui avancent. Les actions qui comptent.</p>
+          </div>
+          <Select
+            label="Période des deals"
+            value={range}
+            onChange={(e) => setRange(e.target.value)}
+          >
+            <option value="all">Toutes les données</option>
+            <option value="week">7 derniers jours · démo</option>
+            <option value="today">Aujourd’hui</option>
+          </Select>
+        </div>
+        <div className="context-banner">
+          <span className="workspace-dot" /> Workspace Evotechly{' '}
+          <span className="muted">· Données de démonstration, sans historique de revenus</span>
+        </div>
+        <div className="stat-grid">
+          <StatCard
+            label="Contacts actifs"
+            value={String(
+              state === 'empty' ? 0 : contacts.filter((c) => c.status === 'Actif').length,
+            )}
+            change="Dans votre workspace"
+            icon={<UsersThree size={20} />}
+          />
+          <StatCard
+            label="Pipeline ouvert"
+            value={formatDzd(total)}
+            change={`${open.length} opportunités sur la période`}
+            icon={<Handshake size={20} />}
+            tone="indigo"
+          />
+          <StatCard
+            label="Actions à préparer"
+            value={String(tasks.filter((t) => !done.includes(t.id)).length)}
+            change="Suggestions liées aux deals"
+            icon={<CheckCircle size={20} />}
+            tone="teal"
+          />
+          <StatCard
+            label="Deals gagnés"
+            value={String(won.length)}
+            change={`${lost.length} perdu(s) · ${filtered.length} au total`}
+            icon={<ArrowUpRight size={20} />}
+            tone="purple"
+          />
+        </div>
+        {!data.length ? (
+          <NoResults
+            title="Votre activité apparaîtra ici"
+            detail="Commencez par ajouter une opportunité."
+            action={<Button onClick={() => navigate('/crm/deals?create=1')}>Créer un deal</Button>}
+          />
+        ) : (
+          <>
+            <div className="dashboard-grid">
+              <Panel
+                title="Répartition du pipeline ouvert"
+                action={<span className="muted">{open.length} deals</span>}
+              >
+                <div className="chart-summary">
+                  <div>
+                    <span>Valeur des opportunités</span>
+                    <strong>{formatDzd(total)}</strong>
+                    <small className="muted">Répartition des opportunités affichées</small>
+                  </div>
+                </div>
+                <div
+                  className="sales-chart"
+                  role="img"
+                  aria-label={`Pipeline ouvert : ${formatDzd(total)}`}
+                >
+                  {['Qualification', 'Proposition', 'Négociation'].map((stage) => {
+                    const amount = open
+                      .filter((d) => d.stage === stage)
+                      .reduce((s, d) => s + d.value, 0);
+                    return (
+                      <div className="sales-bar-row" key={stage}>
+                        <span>{stage}</span>
+                        <div>
+                          <i style={{ width: `${total ? (amount / total) * 100 : 0}%` }} />
+                        </div>
+                        <strong>{formatDzd(amount)}</strong>
+                      </div>
+                    );
+                  })}
+                </div>
+                <div className="performance-strip">
+                  <div>
+                    <span>Gagné</span>
+                    <strong className="positive">
+                      {formatDzd(won.reduce((s, d) => s + d.value, 0))}
+                    </strong>
+                  </div>
+                  <div>
+                    <span>Perdu</span>
+                    <strong>{formatDzd(lost.reduce((s, d) => s + d.value, 0))}</strong>
+                  </div>
+                  <div>
+                    <span>Taux de gain des deals clôturés</span>
+                    <strong>
+                      {won.length + lost.length
+                        ? `${Math.round((won.length / (won.length + lost.length)) * 100)} %`
+                        : 'Indisponible'}
+                    </strong>
+                  </div>
+                </div>
+              </Panel>
+              <Panel title="Prochaines actions" action={<span className="muted">À planifier</span>}>
+                <div className="task-list">
+                  {tasks.length ? (
+                    tasks.map((t) => (
+                      <div key={t.id} className="task-row">
+                        <Checkbox
+                          label={t.title}
+                          checked={done.includes(t.id)}
+                          onChange={() =>
+                            setDone((ds) =>
+                              ds.includes(t.id) ? ds.filter((v) => v !== t.id) : [...ds, t.id],
+                            )
+                          }
+                        />
+                        <small className="muted">{t.company}</small>
+                      </div>
+                    ))
+                  ) : (
+                    <NoResults
+                      title="Aucune action sur cette période"
+                      detail="Vos opportunités ouvertes apparaîtront ici."
+                    />
+                  )}
+                </div>
+                <p className="panel-note">Suggestions locales : aucune échéance n’est inventée.</p>
+              </Panel>
+            </div>
+            <div className="dashboard-grid">
+              <Panel
+                title="Opportunités prioritaires"
+                action={
+                  <Button variant="ghost" onClick={() => navigate('/crm/deals/board')}>
+                    Voir le pipeline ↗
+                  </Button>
+                }
+              >
+                <div className="ranked-deals">
+                  {[...open]
+                    .sort((a, b) => b.value - a.value)
+                    .map((d, i) => (
+                      <div className="ranked-row" key={d.id}>
+                        <span className="rank">0{i + 1}</span>
+                        <div>
+                          <strong>{d.name}</strong>
+                          <small className="cell-meta">{d.company}</small>
+                        </div>
+                        <strong className="money">{formatDzd(d.value)}</strong>
+                        <StatusBadge status={d.stage} />
+                      </div>
+                    ))}
+                </div>
+              </Panel>
+              <Panel
+                title="Devis en attente"
+                action={
+                  <Button variant="ghost" onClick={() => navigate('/crm/quotes')}>
+                    Voir les devis ↗
+                  </Button>
+                }
+              >
+                {pending.length ? (
+                  <div className="detail-stack panel-padding">
+                    {pending.map((q) => (
+                      <div className="quote-preview" key={q.id}>
+                        <div>
+                          <strong>{q.number}</strong>
+                          <p className="muted">{q.customer}</p>
+                        </div>
+                        <strong className="money">{formatDzd(q.amount)}</strong>
+                        <StatusBadge status={q.status} />
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <NoResults
+                    title="Aucun devis en attente"
+                    detail="Toutes vos propositions sont à jour."
+                  />
+                )}
+              </Panel>
+            </div>
+          </>
+        )}
+      </section>
+    </ScreenState>
+  );
 }
