@@ -16,6 +16,12 @@ export function QuoteLineItem({
   onRemove: () => void;
   disabled?: boolean;
 }) {
+  let total: number | undefined;
+  try {
+    total = lineTotal(item);
+  } catch {
+    /* Invalid input remains editable. */
+  }
   return (
     <fieldset className="quote-line">
       <legend>Ligne {index + 1}</legend>
@@ -51,7 +57,13 @@ export function QuoteLineItem({
         />
       </div>
       <div className="inline spread">
-        <strong className="money">{formatDzd(lineTotal(item))}</strong>
+        {total === undefined ? (
+          <span className="field-error" role="alert">
+            Vérifiez la quantité et le prix : montant invalide.
+          </span>
+        ) : (
+          <strong className="money">{formatDzd(total)}</strong>
+        )}
         <Button
           variant="ghost"
           disabled={disabled}
@@ -65,10 +77,22 @@ export function QuoteLineItem({
   );
 }
 export function QuoteSummary({ items }: { items: LineItem[] }) {
+  let total: number | undefined;
+  try {
+    total = quoteTotal(items);
+  } catch {
+    /* Preserve the editor on invalid amounts. */
+  }
   return (
     <div className="quote-summary">
       <span>Total du devis</span>
-      <strong>{formatDzd(quoteTotal(items))}</strong>
+      {total === undefined ? (
+        <span role="alert" className="field-error">
+          Total indisponible : corrigez les montants.
+        </span>
+      ) : (
+        <strong>{formatDzd(total)}</strong>
+      )}
       <small>Montants en dinars algériens · sans taxe ni remise.</small>
     </div>
   );

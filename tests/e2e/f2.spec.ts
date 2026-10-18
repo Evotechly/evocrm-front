@@ -57,6 +57,8 @@ test('quote lines calculate and persist local preview', async ({ page }) => {
   await page.goto('/crm/quotes?create=1');
   await page.getByLabel('Description 1', { exact: true }).fill('Conseil F2');
   await page.getByLabel('Quantité 1', { exact: true }).fill('3');
+  await page.getByLabel('Prix unitaire 1 (DA)', { exact: true }).fill('-1');
+  await expect(page.getByRole('alert')).toHaveCount(2);
   await page.getByLabel('Prix unitaire 1 (DA)', { exact: true }).fill('125.50');
   await expect(page.getByText('376,50 DA', { exact: true }).first()).toBeVisible();
   await page.getByRole('button', { name: 'Enregistrer le devis' }).click();
@@ -157,6 +159,7 @@ test('all five screens separate empty, loading, error and denied states', async 
     }
 });
 test('overlays have accessible focus and no axe violations in both themes', async ({ page }) => {
+  await page.setViewportSize({ width: 1440, height: 1000 });
   for (const theme of ['light', 'dark']) {
     await page.goto('/crm/contacts');
     await page.evaluate((t) => {

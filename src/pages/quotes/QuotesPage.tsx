@@ -241,6 +241,13 @@ function QuoteForm({
           setError('Le deal doit appartenir à l’entreprise du contact.');
           return;
         }
+        let amount: number;
+        try {
+          amount = quoteTotal(items);
+        } catch {
+          setError('Montants invalides ou total trop élevé.');
+          return;
+        }
         onSave({
           id: quote?.id ?? crypto.randomUUID(),
           number: number.trim(),
@@ -258,7 +265,7 @@ function QuoteForm({
             : '—',
           status: quote?.status ?? ('Brouillon' as Quote['status']),
           items,
-          amount: quoteTotal(items),
+          amount,
         });
       }}
     >

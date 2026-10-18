@@ -13,5 +13,11 @@ export function lineTotal(item: Pick<LineItem, 'quantity' | 'unitPrice'>): numbe
   return cents / 100;
 }
 export function quoteTotal(items: Pick<LineItem, 'quantity' | 'unitPrice'>[]) {
-  return items.reduce((sum, item) => sum + Math.round(lineTotal(item) * 100), 0) / 100;
+  return (
+    items.reduce((sum, item) => {
+      const cents = sum + Math.round(lineTotal(item) * 100);
+      if (!Number.isSafeInteger(cents)) throw new RangeError('Total trop élevé');
+      return cents;
+    }, 0) / 100
+  );
 }

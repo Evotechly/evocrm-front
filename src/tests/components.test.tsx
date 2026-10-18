@@ -98,3 +98,17 @@ describe('Reusable DataTable', () => {
     expect(screen.queryByText('Gamma')).not.toBeInTheDocument();
   });
 });
+
+describe('Quote editor error states', () => {
+  it('keeps invalid amounts editable without crashing', () => {
+    const item = { id: 'invalid', description: 'Conseil', quantity: -1, unitPrice: 100 };
+    render(
+      <>
+        <QuoteLineItem item={item} index={0} onChange={() => {}} onRemove={() => {}} />
+        <QuoteSummary items={[item]} />
+      </>,
+    );
+    expect(screen.getAllByRole('alert')).toHaveLength(2);
+    expect(screen.getByLabelText('Quantité 1')).toBeInTheDocument();
+  });
+});

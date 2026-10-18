@@ -14,6 +14,11 @@ describe('Quote calculations in centimes', () => {
     ).toBe(25);
     expect(lineTotal({ quantity: 1.5, unitPrice: 10.01 })).toBe(15.02);
   });
+  it('rejects aggregate overflow across otherwise valid lines', () => {
+    expect(() =>
+      quoteTotal(Array.from({ length: 100 }, () => ({ quantity: 1, unitPrice: 1e12 }))),
+    ).toThrow(RangeError);
+  });
   it('handles empty and zero-price quotes', () => {
     expect(quoteTotal([])).toBe(0);
     expect(lineTotal({ quantity: 2, unitPrice: 0 })).toBe(0);
