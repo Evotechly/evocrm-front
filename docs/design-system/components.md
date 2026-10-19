@@ -23,7 +23,7 @@ Every exported component has TypeScript props. All application data edits are pr
 | Toast                   | message, onClose                                                      | Polite atomic live region; explicit dismiss, no forced timeout                                    |
 | AppSidebar              | advanced, onToggleAdvanced                                            | Exclusive aria-current; responsive drawer; collapse hides desktop nav with labeled restore button |
 | WorkspaceSwitcher       | single demo workspace                                                 | Popover explains availability; no fictitious workspace switch                                     |
-| AppHeader               | onOpenCommand                                                         | GlobalCreateMenu routes open actual forms; theme, notifications and session menu respond          |
+| AppHeader               | onOpenCommand, pathname?                                                         | GlobalCreateMenu routes open actual forms; theme, notifications and session menu respond          |
 | CommandPalette          | onClose                                                               | cmdk filtering, arrows, Enter, empty result; Ctrl/Cmd+K in layout; Escape closes                  |
 | DataTable               | headers, children                                                     | Semantic table/th scope, local horizontal overflow; compatibility API preserved                   |
 | FilterBar / SearchInput | children / value, onChange, label                                     | Controlled search, browser clear; toolbar wraps                                                   |
@@ -33,7 +33,7 @@ Every exported component has TypeScript props. All application data edits are pr
 | StatusBadge             | status                                                                | Text + dot, success/warning/info/danger/neutral; never color only                                 |
 | Avatar                  | initials, tone                                                        | orange/indigo/teal/purple/blue/ink supported styles; semantic foreground pairs                    |
 | ActivityTimeline        | title/detail/time items                                               | Ordered semantic activity, only actual fixture/session data                                       |
-| KPICard / StatCard      | label,value,change,icon,tone                                          | Derived values; no invented percentage deltas                                                     |
+| KPICard / StatCard      | label,value,change,icon,tone,monetary?                                          | Derived values; no invented percentage deltas                                                     |
 | DealCard                | deal,onOpen,onMove,disabled                                           | Native HTML drag + labeled stage select keyboard alternative; disabled write capability           |
 | KanbanBoard             | deals,onMove,onOpen,onCreate,disabled                                 | Region/columns, counts, amounts and weighted totals; empty column; drop highlight                 |
 | ContactCard             | contact,onOpen                                                        | Name button opens context; company secondary                                                      |
@@ -51,3 +51,11 @@ Loading, error, empty and denied are screen/resource states, not meaningless var
 Foundation entities do not model production phone/owner/city fields, configurable pipelines, property gates, saved views, imports or monetary backend centime payloads. The F2 provider is an explicit local seam, not an implementation of production persistence. Current permissions include `desk.manage` for replying/assignment, distinct from CRM edit. Backend must enforce authorization independently. See certification report for remaining acceptance gaps.
 
 The DataTable also exposes a typed `DataColumn<T>[]`/`data` API alongside the preserved headers/children API. It supports sortable headers with aria-sort, query predicates, row filters, controlled column visibility, row selection, client pagination, loading/error/empty states and retry. The gallery exercises that API. Contacts keeps externally coordinated filters/selection for its mobile cards and detail URL state; all variants use shared field/control primitives.
+
+## Aurora correction additions
+
+`ObjectViews` accepts `value`, typed `ObjectView[]` (`value`, `label`, `count`), `onChange`, and optional `caption`. Native buttons expose `aria-pressed`, remain keyboard accessible, and drive the same filter state as the select. Contacts and Quotes derive counts from actual local records, including empty previews.
+
+`StatCard`/`KPICard` adds optional `monetary` for Geist Mono/tabular rendering. Callers use the shared `formatDzd`; count KPIs keep Sans. The development gallery demonstrates the monetary variant. Complete absolute dates use `formatDateDisplay` at the display boundary. Native date editors keep ISO values and browser locale behavior.
+
+Filter selects keep at least 205px in wider toolbars and reflow to full rows on phones so selected scopes remain readable. Demonstration UI uses dedicated semantic pink pairs in both themes.

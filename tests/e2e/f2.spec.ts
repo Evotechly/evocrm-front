@@ -35,7 +35,7 @@ test('deal keyboard move, drag, creation and totals survive view changes', async
   await expect(page.getByRole('region', { name: 'Gagné', exact: true })).toContainText(
     'Déploiement CRM',
   );
-  await expect(page.getByText('1 100 000 DA', { exact: true }).first()).toBeVisible();
+  await expect(page.getByText('1 100 000,00 DA', { exact: true }).first()).toBeVisible();
   await page.getByRole('button', { name: 'Nouveau deal', exact: true }).click();
   await page.getByLabel('Nom du deal').fill('Projet F2');
   await page.getByLabel('Montant (DA)', { exact: true }).fill('1000');
@@ -56,6 +56,7 @@ test('inbox sends only a simulated reply to selected thread', async ({ page }) =
 test('quote lines calculate and persist local preview', async ({ page }) => {
   await page.goto('/crm/quotes?create=1');
   await page.getByLabel('Description 1', { exact: true }).fill('Conseil F2');
+  await page.getByLabel('Date d’expiration', { exact: true }).fill('2026-11-05');
   await page.getByLabel('Quantité 1', { exact: true }).fill('3');
   await page.getByLabel('Prix unitaire 1 (DA)', { exact: true }).fill('-1');
   await expect(page.getByRole('alert')).toHaveCount(2);
@@ -65,6 +66,7 @@ test('quote lines calculate and persist local preview', async ({ page }) => {
   await page.getByRole('button', { name: 'DEV-2026-015', exact: true }).click();
   await expect(page.getByRole('dialog')).toContainText('Conseil F2');
   await expect(page.getByRole('dialog')).toContainText('376,50 DA');
+  await expect(page.getByRole('dialog')).toContainText('05/11/2026');
 });
 test('command shortcut supports arrows, Escape and focus restoration', async ({ page }) => {
   await page.goto('/dashboard');
@@ -98,10 +100,10 @@ const routes = [
 ];
 for (const width of [1440, 768, 390])
   for (const theme of ['light', 'dark'])
-    test(`visual and axe ${width} ${theme}`, async ({ page }) => {
-      await page.setViewportSize({ width, height: 1000 });
-      await page.addInitScript((t) => localStorage.setItem('evocrm-theme', t), theme);
-      for (const [name, route] of routes) {
+    for (const [name, route] of routes)
+      test(`visual and axe ${name} ${width} ${theme}`, async ({ page }) => {
+        await page.setViewportSize({ width, height: 1000 });
+        await page.addInitScript((t) => localStorage.setItem('evocrm-theme', t), theme);
         await page.goto(route);
         await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
         await expect(page.locator('h1')).toBeVisible();
@@ -114,12 +116,18 @@ for (const width of [1440, 768, 390])
           .withTags(['wcag2a', 'wcag2aa', 'wcag21aa'])
           .analyze();
         expect(results.violations, `${name} ${width} ${theme}`).toEqual([]);
+        // Recheck the rendered document after axe, then let fonts and paint settle.
+        await expect(page.locator('h1')).toBeVisible();
+        await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+        await page.evaluate(async () => {
+          await document.fonts.ready;
+          await new Promise<void>((resolve) => window.requestAnimationFrame(() => resolve()));
+        });
         await page.screenshot({
-          path: `docs/certification/screenshots/${name}-${width}-${theme}.png`,
+          path: `docs/certification/aurora-correction/screenshots/${name}-${width}-${theme}.png`,
           fullPage: true,
         });
-      }
-    });
+      });
 test('mobile navigation, theme and drawer focus', async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto('/dashboard');
@@ -144,10 +152,11 @@ test('component gallery is interactive', async ({ page }) => {
   await page.keyboard.press('Escape');
 });
 
-test('all five screens separate empty, loading, error and denied states', async ({ page }) => {
-  for (const [, route] of routes)
+for (const [name, route] of routes)
+  test(`${name} separates empty, loading, error and denied states`, async ({ page }) => {
     for (const state of ['empty', 'loading', 'error', 'denied']) {
       await page.goto(`${route}?state=${state}`);
+      await expect(page.locator('h1')).toBeVisible();
       await expect(page.getByRole('table')).toHaveCount(0);
       await expect(page.getByRole('button', { name: 'Déploiement CRM', exact: true })).toHaveCount(
         0,
@@ -157,15 +166,14 @@ test('all five screens separate empty, loading, error and denied states', async 
       if (state === 'loading')
         await expect(page.getByRole('status')).toHaveAttribute('aria-busy', 'true');
     }
-});
-test('overlays have accessible focus and no axe violations in both themes', async ({ page }) => {
-  await page.setViewportSize({ width: 1440, height: 1000 });
-  for (const theme of ['light', 'dark']) {
-    await page.goto('/crm/contacts');
-    await page.evaluate((t) => {
-      localStorage.setItem('evocrm-theme', t);
-    }, theme);
-    await page.reload();
+  });
+for (const theme of ['light', 'dark'])
+  test(`overlays have accessible focus and no axe violations ${theme}`, async ({ page }) => {
+    await page.setViewportSize({ width: 1440, height: 1000 });
+    await page.addInitScript((t) => localStorage.setItem('evocrm-theme', t), theme);
+    await page.goto('/crm/contacts', { waitUntil: 'domcontentloaded' });
+    await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+    await expect(page.locator('h1')).toBeVisible();
     const primary = page.getByRole('button', { name: 'Nouveau contact', exact: true });
     await primary.click();
     const dialog = page.getByRole('dialog');
@@ -179,7 +187,7 @@ test('overlays have accessible focus and no axe violations in both themes', asyn
       .analyze();
     expect(result.violations).toEqual([]);
     await page.screenshot({
-      path: `docs/certification/screenshots/contact-drawer-1440-${theme}.png`,
+      path: `docs/certification/aurora-correction/screenshots/contact-drawer-1440-${theme}.png`,
       fullPage: true,
     });
     await page.keyboard.press('Escape');
@@ -188,13 +196,38 @@ test('overlays have accessible focus and no axe violations in both themes', asyn
     await page.getByRole('button', { name: 'Nouveau devis', exact: true }).click();
     await expect(page.getByRole('dialog', { name: 'Nouveau devis' })).toBeVisible();
     await page.keyboard.press('Escape');
-  }
-});
+  });
 test('quote preview produces a print document', async ({ page }) => {
   await page.goto('/crm/quotes');
   await page.getByRole('button', { name: 'DEV-2026-014', exact: true }).click();
   await page.emulateMedia({ media: 'print' });
   await expect(page.getByText('EvoCRM · Evotechly', { exact: true })).toBeVisible();
   await expect(page.getByRole('button', { name: 'Imprimer le devis' })).not.toBeVisible();
-  await page.screenshot({ path: 'docs/certification/screenshots/quote-print.png', fullPage: true });
+  await page.screenshot({
+    path: 'docs/certification/aurora-correction/screenshots/quote-print.png',
+    fullPage: true,
+  });
+});
+
+// Quick views must update the existing filter state, not merely look selected.
+test('object quick views filter actual contacts and quotes', async ({ page }) => {
+  await page.goto('/crm/contacts');
+  const views = page.getByRole('group', { name: 'Vues rapides' });
+  await views.getByRole('button', { name: /Prospects/ }).click();
+  await expect(page.getByLabel('Statut', { exact: true })).toHaveValue('Prospect');
+  await expect(views.getByRole('button', { name: /Prospects/ })).toHaveAttribute(
+    'aria-pressed',
+    'true',
+  );
+  await expect(page.getByRole('button', { name: 'Karim Touati', exact: true })).toHaveCount(0);
+  await expect(page.getByRole('button', { name: 'Yacine Haddad', exact: true })).toBeVisible();
+  await views.getByRole('button', { name: /Tous les contacts/ }).click();
+  await expect(page.getByRole('button', { name: 'Karim Touati', exact: true })).toBeVisible();
+  await page.goto('/crm/quotes');
+  await page
+    .getByRole('group', { name: 'Vues rapides' })
+    .getByRole('button', { name: /Brouillons/ })
+    .click();
+  await expect(page.getByLabel('Statut du devis', { exact: true })).toHaveValue('Brouillon');
+  await expect(page.getByRole('button', { name: 'DEV-2026-014', exact: true })).toHaveCount(0);
 });

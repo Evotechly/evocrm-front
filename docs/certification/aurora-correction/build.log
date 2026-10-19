@@ -1,0 +1,21 @@
+$ tsc -b && vite build
+vite v8.3.4 building client environment for production...
+transforming...
+✓ 4675 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                           0.45 kB │ gzip:   0.30 kB
+dist/assets/geist-mono-latin-400-normal-LC9RFr9I.woff2   14.71 kB
+dist/assets/geist-mono-latin-400-normal-CoULgQGM.woff    19.16 kB
+dist/assets/geist-sans-latin-400-normal-gapTbOY8.woff2   33.40 kB
+dist/assets/geist-sans-latin-500-normal-uokXdC-Q.woff2   34.71 kB
+dist/assets/geist-sans-latin-600-normal-DFOURf8L.woff2   35.29 kB
+dist/assets/geist-sans-latin-700-normal-BmN9tIp5.woff2   35.48 kB
+dist/assets/geist-sans-latin-400-normal-BOaIZNA2.woff    38.91 kB
+dist/assets/geist-sans-latin-500-normal-CN2lyvyL.woff    40.52 kB
+dist/assets/geist-sans-latin-600-normal-CA1yjETN.woff    41.20 kB
+dist/assets/geist-sans-latin-700-normal-CjScfYeH.woff    41.39 kB
+dist/assets/index-J7U4Mew0.css                           46.17 kB │ gzip:   9.89 kB
+dist/assets/index-DqkhkFwz.js                           484.35 kB │ gzip: 146.72 kB │ map: 2,223.20 kB
+
+✓ built in 10.13s

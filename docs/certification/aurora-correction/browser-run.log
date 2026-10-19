@@ -1,0 +1,155 @@
+[WebServer] (node:2775) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+
+
+Running 44 tests using 2 workers
+
+(node:2818) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[1/44] [chromium] › tests/e2e/f2.spec.ts:4:1 › contact creation, search, editing, filters and column visibility
+(node:2819) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[2/44] [chromium] › tests/e2e/smoke.spec.ts:3:1 › navigates the simple-mode primary destinations
+[3/44] [chromium] › tests/e2e/f2.spec.ts:25:1 › deal keyboard move, drag, creation and totals survive view changes
+[4/44] [chromium] › tests/e2e/smoke.spec.ts:14:1 › opens command palette and toggles theme
+[5/44] [chromium] › tests/e2e/f2.spec.ts:46:1 › inbox sends only a simulated reply to selected thread
+[6/44] [chromium] › tests/e2e/f2.spec.ts:56:1 › quote lines calculate and persist local preview
+[7/44] [chromium] › tests/e2e/f2.spec.ts:69:1 › command shortcut supports arrows, Escape and focus restoration
+[8/44] [chromium] › tests/e2e/f2.spec.ts:82:1 › permission, empty, error and loading states do not reveal records
+[9/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 1440 light
+[10/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe contacts 1440 light
+[11/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe deals 1440 light
+[12/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe inbox 1440 light
+[13/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe quotes 1440 light
+[14/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 1440 dark
+[15/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe contacts 1440 dark
+[16/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe deals 1440 dark
+[17/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe inbox 1440 dark
+[18/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe quotes 1440 dark
+[19/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 768 light
+  1) [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 768 light ──────────────────
+
+    Error: expect(locator).toHaveAttribute(expected) failed
+
+    Locator:  locator('html')
+    Expected: "light"
+    Received: ""
+    Timeout:  5000ms
+
+    Call log:
+      - Expect "toHaveAttribute" locator('html') with timeout 5000ms
+      - waiting for locator('html')
+        - waiting for "http://127.0.0.1:5173/dashboard" navigation to finish...
+        - navigated to "http://127.0.0.1:5173/dashboard"
+        4 × locator resolved to <html lang="fr">…</html>
+          - unexpected value "null"
+
+
+      104 |         await page.addInitScript((t) => localStorage.setItem('evocrm-theme', t), theme);
+      105 |         await page.goto(route);
+    > 106 |         await expect(page.locator('html')).toHaveAttribute('data-theme', theme);
+          |                                            ^
+      107 |         await expect(page.locator('h1')).toBeVisible();
+      108 |         await expect
+      109 |           .poll(() =>
+        at /workspace/evocrm-front/tests/e2e/f2.spec.ts:106:44
+
+    Error Context: test-results/f2-visual-and-axe-dashboard-768-light-chromium/error-context.md
+
+
+(node:3668) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[20/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe contacts 768 light
+[21/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe deals 768 light
+[22/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe inbox 768 light
+[23/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe quotes 768 light
+[24/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 768 dark
+[25/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe contacts 768 dark
+[26/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe deals 768 dark
+[27/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe inbox 768 dark
+[28/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe quotes 768 dark
+[29/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 390 light
+[30/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe contacts 390 light
+[31/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe deals 390 light
+[32/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe inbox 390 light
+[33/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe quotes 390 light
+[34/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 390 dark
+[35/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe contacts 390 dark
+[36/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe deals 390 dark
+[37/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe inbox 390 dark
+[38/44] [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe quotes 390 dark
+[39/44] [chromium] › tests/e2e/f2.spec.ts:122:1 › mobile navigation, theme and drawer focus
+[40/44] [chromium] › tests/e2e/f2.spec.ts:138:1 › component gallery is interactive
+[41/44] [chromium] › tests/e2e/f2.spec.ts:146:1 › all five screens separate empty, loading, error and denied states
+  2) [chromium] › tests/e2e/f2.spec.ts:146:1 › all five screens separate empty, loading, error and denied states 
+
+    Test timeout of 90000ms exceeded.
+
+    Error: expect(locator).toHaveCount(expected) failed
+
+    Locator: getByRole('button', { name: 'Déploiement CRM', exact: true })
+    Expected: 0
+    Error: Test timeout of 90000ms exceeded.
+
+    Call log:
+      - Expect "toHaveCount" getByRole('button', { name: 'Déploiement CRM', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Déploiement CRM', exact: true })
+      - Test timeout of 90000ms exceeded.
+
+
+      149 |       await page.goto(`${route}?state=${state}`);
+      150 |       await expect(page.getByRole('table')).toHaveCount(0);
+    > 151 |       await expect(page.getByRole('button', { name: 'Déploiement CRM', exact: true })).toHaveCount(
+          |                                                                                        ^
+      152 |         0,
+      153 |       );
+      154 |       if (state === 'denied')
+        at /workspace/evocrm-front/tests/e2e/f2.spec.ts:151:88
+
+    Error Context: test-results/f2-all-five-screens-separa-bbe37-ing-error-and-denied-states-chromium/error-context.md
+
+
+(node:4400) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+
+
+[42/44] [chromium] › tests/e2e/f2.spec.ts:160:1 › overlays have accessible focus and no axe violations in both themes
+[43/44] [chromium] › tests/e2e/f2.spec.ts:192:1 › quote preview produces a print document
+[44/44] [chromium] › tests/e2e/f2.spec.ts:205:1 › object quick views filter actual contacts and quotes
+  3) [chromium] › tests/e2e/f2.spec.ts:205:1 › object quick views filter actual contacts and quotes 
+
+    Error: expect(locator).toBeVisible() failed
+
+    Locator: getByRole('button', { name: 'Sarah Benali', exact: true })
+    Expected: visible
+    Timeout: 5000ms
+    Error: element(s) not found
+
+    Call log:
+      - Expect "toBeVisible" getByRole('button', { name: 'Sarah Benali', exact: true }) with timeout 5000ms
+      - waiting for getByRole('button', { name: 'Sarah Benali', exact: true })
+
+
+      214 |   await expect(page.getByRole('button', { name: 'Karim Touati', exact: true })).toHaveCount(0);
+      215 |   await expect(page.getByRole('button', { name: 'Yacine Haddad', exact: true })).toBeVisible();
+    > 216 |   await views.getByRole('button', { name: /Tous les contacts/ }).click();
+          |                                                                          ^
+      217 |   await expect(page.getByRole('button', { name: 'Karim Touati', exact: true })).toBeVisible();
+      218 |   await page.goto('/crm/quotes');
+      219 |   await page
+        at /workspace/evocrm-front/tests/e2e/f2.spec.ts:216:81
+
+    Error Context: test-results/f2-object-quick-views-filter-actual-contacts-and-quotes-chromium/error-context.md
+
+
+  3 failed
+    [chromium] › tests/e2e/f2.spec.ts:102:7 › visual and axe dashboard 768 light ───────────────────
+    [chromium] › tests/e2e/f2.spec.ts:146:1 › all five screens separate empty, loading, error and denied states 
+    [chromium] › tests/e2e/f2.spec.ts:205:1 › object quick views filter actual contacts and quotes ─
+  41 passed (16.5m)

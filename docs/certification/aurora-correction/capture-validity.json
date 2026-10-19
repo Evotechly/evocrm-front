@@ -1,0 +1,245 @@
+{
+  "status": "PASS",
+  "captures": [
+    {
+      "file": "dashboard-1440-light.png",
+      "size": [
+        1440,
+        1256
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "dashboard-1440-dark.png",
+      "size": [
+        1440,
+        1256
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "dashboard-768-light.png",
+      "size": [
+        768,
+        1901
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "dashboard-768-dark.png",
+      "size": [
+        768,
+        1901
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "dashboard-390-light.png",
+      "size": [
+        390,
+        2332
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "dashboard-390-dark.png",
+      "size": [
+        390,
+        2332
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "contacts-1440-light.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "contacts-1440-dark.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "contacts-768-light.png",
+      "size": [
+        768,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "contacts-768-dark.png",
+      "size": [
+        768,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "contacts-390-light.png",
+      "size": [
+        390,
+        1249
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "contacts-390-dark.png",
+      "size": [
+        390,
+        1249
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "deals-1440-light.png",
+      "size": [
+        1440,
+        1067
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "deals-1440-dark.png",
+      "size": [
+        1440,
+        1067
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "deals-768-light.png",
+      "size": [
+        768,
+        1138
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "deals-768-dark.png",
+      "size": [
+        768,
+        1138
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "deals-390-light.png",
+      "size": [
+        390,
+        1375
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "deals-390-dark.png",
+      "size": [
+        390,
+        1375
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "inbox-1440-light.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "inbox-1440-dark.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "inbox-768-light.png",
+      "size": [
+        768,
+        1257
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "inbox-768-dark.png",
+      "size": [
+        768,
+        1257
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "inbox-390-light.png",
+      "size": [
+        390,
+        1416
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "inbox-390-dark.png",
+      "size": [
+        390,
+        1416
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "quotes-1440-light.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "quotes-1440-dark.png",
+      "size": [
+        1440,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "quotes-768-light.png",
+      "size": [
+        768,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "quotes-768-dark.png",
+      "size": [
+        768,
+        1000
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "quotes-390-light.png",
+      "size": [
+        390,
+        1078
+      ],
+      "valid_nonuniform_pixels": true
+    },
+    {
+      "file": "quotes-390-dark.png",
+      "size": [
+        390,
+        1078
+      ],
+      "valid_nonuniform_pixels": true
+    }
+  ]
+}

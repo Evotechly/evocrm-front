@@ -1,3 +1,4 @@
+import { formatDateDisplay } from '@/lib/format';
 import type { Contact } from '@/contracts/entities';
 import { Avatar, Button } from '@/components/ui';
 import { StatusBadge } from '@/components/ui/StatusBadge';
@@ -31,7 +32,7 @@ export function ContactDetailPanel({ contact, onEdit }: { contact: Contact; onEd
         <dt>Entreprise</dt>
         <dd>{contact.company || 'Non associée'}</dd>
         <dt>Dernière activité</dt>
-        <dd>{contact.lastActivity}</dd>
+        <dd>{formatDateDisplay(contact.lastActivity)}</dd>
       </dl>
       {onEdit && <Button onClick={onEdit}>Modifier le contact</Button>}
       <h3>Historique d’activité</h3>
@@ -40,7 +41,7 @@ export function ContactDetailPanel({ contact, onEdit }: { contact: Contact; onEd
           {
             title: 'Activité du contact',
             detail: `${contact.name} · ${contact.company || 'Sans entreprise'}`,
-            time: contact.lastActivity,
+            time: formatDateDisplay(contact.lastActivity),
           },
         ]}
       />

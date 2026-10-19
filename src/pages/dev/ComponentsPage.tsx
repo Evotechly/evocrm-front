@@ -1,3 +1,4 @@
+import { formatDzd } from '@/lib/format';
 import { useState } from 'react';
 import { Button, Avatar, Panel, EmptyState, StatCard } from '@/components/ui';
 import { Dialog, Drawer, Popover, Tooltip, Toast } from '@/components/ui/Overlays';
@@ -40,7 +41,6 @@ export function ComponentsPage() {
   return (
     <section className="page-stack">
       <div>
-        <div className="eyebrow">AURORA NEXT / ATELIER</div>
         <h1>Composants interactifs</h1>
         <p className="muted">
           Contrats et variantes : docs/design-system/components.md. Route exclue en production.
@@ -157,7 +157,8 @@ export function ComponentsPage() {
             <ContactCard contact={contacts[0]} onOpen={() => setOverlay('contact')} />
             <StatCard
               label="Pipeline"
-              value="820 000 DA"
+              value={formatDzd(820000)}
+              monetary
               change="Fixture de démonstration"
               icon={<span>↗</span>}
             />

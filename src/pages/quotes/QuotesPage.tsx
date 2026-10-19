@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { ObjectViews } from '@/components/navigation/ObjectViews';
 import { Plus } from '@phosphor-icons/react';
 import { useCrm, type QuoteRecord, type LineItem } from '@/app/providers/CrmProvider';
 import { Button, Panel } from '@/components/ui';
@@ -9,7 +10,7 @@ import { StatusBadge } from '@/components/ui/StatusBadge';
 import { Input, Select, DatePicker } from '@/components/forms/Fields';
 import { FilterBar, SearchInput } from '@/components/data-display/Controls';
 import { QuoteLineItem, QuoteSummary } from '@/components/crm/Quotes';
-import { formatDzd } from '@/lib/format';
+import { formatDzd, formatDateDisplay } from '@/lib/format';
 import { quoteTotal } from '@/lib/quotes';
 import type { Quote } from '@/contracts/entities';
 export function QuotesPage() {
@@ -38,7 +39,6 @@ export function QuotesPage() {
       <section className="page-stack" data-screen-id="SCR-QUOTE-001">
         <div className="page-heading">
           <div>
-            <div className="eyebrow">PROPOSITIONS / CRM</div>
             <h1>Devis</h1>
             <p className="muted">Des propositions claires pour faire avancer vos projets.</p>
           </div>
@@ -54,7 +54,7 @@ export function QuotesPage() {
         <div className="stat-grid quote-stats">
           <div className="mini-stat">
             <span>Valeur affichée</span>
-            <strong>{formatDzd(rows.reduce((s, q) => s + q.amount, 0))}</strong>
+            <strong className="money">{formatDzd(rows.reduce((s, q) => s + q.amount, 0))}</strong>
             <small>{rows.length} devis</small>
           </div>
           <div className="mini-stat">
@@ -69,6 +69,29 @@ export function QuotesPage() {
           </div>
         </div>
         <Panel>
+          <ObjectViews
+            value={status}
+            onChange={setStatus}
+            options={[
+              { value: '', label: 'Tous les devis', count: state === 'empty' ? 0 : quotes.length },
+              {
+                value: 'Brouillon',
+                label: 'Brouillons',
+                count:
+                  state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Brouillon').length,
+              },
+              {
+                value: 'Envoyé',
+                label: 'En attente',
+                count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Envoyé').length,
+              },
+              {
+                value: 'Accepté',
+                label: 'Acceptés',
+                count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Accepté').length,
+              },
+            ]}
+          />
           <FilterBar>
             <SearchInput label="Rechercher un devis" value={query} onChange={setQuery} />
             <Select
@@ -110,7 +133,7 @@ export function QuotesPage() {
                       <td>
                         <StatusBadge status={q.status} />
                       </td>
-                      <td>{q.expiresAt}</td>
+                      <td>{formatDateDisplay(q.expiresAt)}</td>
                       <td>
                         <Button disabled={!can('crm.edit')} onClick={() => setEditing(q)}>
                           Modifier
@@ -169,7 +192,7 @@ export function QuotesPage() {
                   <br />
                   Deal : {deals.find((d) => d.id === preview.dealId)?.name ?? 'Non associé'}
                   <br />
-                  Expiration : {preview.expiresAt}
+                  Expiration : {formatDateDisplay(preview.expiresAt)}
                 </p>
                 <table>
                   <thead>
@@ -185,8 +208,8 @@ export function QuotesPage() {
                       <tr key={i.id}>
                         <td>{i.description}</td>
                         <td>{i.quantity}</td>
-                        <td>{formatDzd(i.unitPrice)}</td>
-                        <td>{formatDzd(quoteTotal([i]))}</td>
+                        <td className="money">{formatDzd(i.unitPrice)}</td>
+                        <td className="money">{formatDzd(quoteTotal([i]))}</td>
                       </tr>
                     ))}
                   </tbody>
@@ -255,14 +278,7 @@ function QuoteForm({
           contactId,
           dealId,
           expiration,
-          expiresAt: expiration
-            ? new Intl.DateTimeFormat('fr-DZ', {
-                day: 'numeric',
-                month: 'short',
-                year: 'numeric',
-                timeZone: 'UTC',
-              }).format(new Date(`${expiration}T12:00:00Z`))
-            : '—',
+          expiresAt: expiration ? formatDateDisplay(expiration) : '—',
           status: quote?.status ?? ('Brouillon' as Quote['status']),
           items,
           amount,

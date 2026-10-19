@@ -1,3 +1,5 @@
+> Historical evidence: the user rejected this visual design on 19 October 2026. Earlier PASS labels do not constitute visual approval. See the [Aurora correction and fresh evidence](aurora-correction/report.md).
+
 # EvoCRM 2.0 — F2 delivery report
 
 **Overall: PENDING.** The five-screen frontend implementation and executed local checks pass. Approved Aurora Next five-screen visual sign-off remains unresolved; do not mark F2 complete. No merge, deployment, production backend change or Brandbook write occurred.

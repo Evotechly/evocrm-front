@@ -1,0 +1,203 @@
+{
+  "status": "PASS",
+  "cases": 49,
+  "execution": "Successful case coverage across the final full run (47 PASS, one two-theme group timeout) and two independent single-theme reruns (2 PASS). Not one clean local49-test run. Original failure retained. No app source changed between these runs.",
+  "results": {
+    "contact creation, search, editing, filters and column visibility": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "deal keyboard move, drag, creation and totals survive view changes": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "inbox sends only a simulated reply to selected thread": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "quote lines calculate and persist local preview": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "command shortcut supports arrows, Escape and focus restoration": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "permission, empty, error and loading states do not reveal records": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe dashboard 1440 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe contacts 1440 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe deals 1440 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe inbox 1440 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe quotes 1440 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe dashboard 1440 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe contacts 1440 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe deals 1440 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe inbox 1440 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe quotes 1440 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe dashboard 768 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe contacts 768 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe deals 768 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe inbox 768 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe quotes 768 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe dashboard 768 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe contacts 768 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe deals 768 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe inbox 768 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe quotes 768 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe dashboard 390 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe contacts 390 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe deals 390 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe inbox 390 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe quotes 390 light": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe dashboard 390 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe contacts 390 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe deals 390 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe inbox 390 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "visual and axe quotes 390 dark": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "mobile navigation, theme and drawer focus": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "component gallery is interactive": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "dashboard separates empty, loading, error and denied states": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "contacts separates empty, loading, error and denied states": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "deals separates empty, loading, error and denied states": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "inbox separates empty, loading, error and denied states": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "quotes separates empty, loading, error and denied states": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "quote preview produces a print document": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "object quick views filter actual contacts and quotes": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "navigates the simple-mode primary destinations": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "opens command palette and toggles theme": {
+      "status": "PASS",
+      "evidence": "browser-isolated-results.json"
+    },
+    "overlays have accessible focus and no axe violations light": {
+      "status": "PASS",
+      "evidence": "browser-overlay-results.json"
+    },
+    "overlays have accessible focus and no axe violations dark": {
+      "status": "PASS",
+      "evidence": "browser-overlay-results.json"
+    }
+  }
+}

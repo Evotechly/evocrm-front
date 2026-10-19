@@ -26,3 +26,9 @@ All local implementations are in `src/components`, with state owned by screens o
 | Typography                                                    | src/main.tsx                                            | Self-hosted Fontsource Geist Sans/Mono, OFL                                                         | All                              |
 
 Shoogle discovery did not provide verifiable free source for every candidate. No unverified wrapper was adopted. Source and package versions for adopted upstream primitives are pinned in package.json and lockfile.
+
+## Aurora correction (19 October 2026)
+
+`ObjectViews` is an original typed EvoCRM component, informed by Mobbin's HubSpot contact/deal view-toolbar patterns; no proprietary source copied. It drives the existing Contacts/Quotes filter state and actual fixture-backed counts. Dashboard's SVG stage composition is original data geometry derived from the same open-deal values as its readable bars. Shared navigation, table, board, inbox, form and overlay treatments now use canonical Aurora semantic roles. No runtime dependency was added. Impeccable 4.6.0 is development-only, Apache-2.0; source/license and research are documented in [Aurora research](../research/aurora-correction.md).
+
+Post-review refinements: `StatCard`/`KPICard` exposes typed `monetary?: boolean` to render the existing formatted value in Geist Mono with tabular figures. The development gallery demonstrates this variant using the shared formatter. `formatDzd` always preserves two decimal places; `formatDateDisplay` formats absolute ISO and legacy fixture dates at the presentation boundary and preserves unknown/relative labels. Native date editor values and approved fixture data remain intact. Select scopes reflow rather than clip. The demonstration banner uses dedicated accessible light/dark roles derived from Brandbook state-demo #DB2777.

@@ -37,7 +37,6 @@ export function InboxPage() {
       <section className="page-stack inbox-page" data-screen-id="SCR-INBOX-001">
         <div className="page-heading">
           <div>
-            <div className="eyebrow">CONVERSATIONS / DESK</div>
             <h1>Inbox</h1>
             <p className="muted">Le bon contexte. La bonne réponse.</p>
           </div>
@@ -148,7 +147,7 @@ export function InboxPage() {
                 <button className="linked-record" onClick={() => navigate('/crm/deals')}>
                   <strong>{linked.name}</strong>
                   <span>
-                    {formatDzd(linked.value)} · {linked.stage}
+                    <span className="money">{formatDzd(linked.value)}</span> · {linked.stage}
                   </span>
                 </button>
               ) : (

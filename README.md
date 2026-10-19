@@ -34,6 +34,8 @@ Standalone development provides a `RouterNavigationAdapter` and mock repositorie
 
 ## Aurora Next F2
 
+The first visual treatment was rejected. The current [Aurora correction](docs/certification/aurora-correction/report.md) restores Brandbook identity with Impeccable and real Mobbin HubSpot/Salesforce research. User visual approval remains pending.
+
 Five interactive mock screens share a session-data provider, capability gates, semantic light/dark tokens, accessible overlays and typed CRM components. Edits reset on reload; no backend persistence or external message sending is simulated as real.
 
 - Interactive development gallery: `/dev/components`.

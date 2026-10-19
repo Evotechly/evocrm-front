@@ -91,7 +91,7 @@ export function QuoteSummary({ items }: { items: LineItem[] }) {
           Total indisponible : corrigez les montants.
         </span>
       ) : (
-        <strong>{formatDzd(total)}</strong>
+        <strong className="money">{formatDzd(total)}</strong>
       )}
       <small>Montants en dinars algériens · sans taxe ni remise.</small>
     </div>

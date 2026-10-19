@@ -1,6 +1,6 @@
-import { Outlet } from 'react-router-dom';
+import { Outlet, useLocation } from 'react-router-dom';
 import { useEffect, useState } from 'react';
-import { List, SidebarSimple } from '@phosphor-icons/react';
+import { List, SidebarSimple, Flask } from '@phosphor-icons/react';
 import { CommandPalette } from '@/components/navigation/CommandPalette';
 import { Header } from '@/components/navigation/Header';
 import { Sidebar } from '@/components/navigation/Sidebar';
@@ -36,6 +36,7 @@ export function MobileNavigation({
   );
 }
 export function AppLayout() {
+  const { pathname } = useLocation();
   const [advanced, setAdvanced] = useState(false),
     [commandOpen, setCommandOpen] = useState(false),
     [mobile, setMobile] = useState(false),
@@ -75,7 +76,12 @@ export function AppLayout() {
           >
             <List size={22} />
           </button>
-          <Header onOpenCommand={() => setCommandOpen(true)} />
+          <Header pathname={pathname} onOpenCommand={() => setCommandOpen(true)} />
+        </div>
+        <div className="demo-banner">
+          <Flask size={14} aria-hidden="true" />
+          <strong>Démonstration</strong>
+          <span>Les données restent dans cette session. Aucun envoi externe.</span>
         </div>
         <div className="content-area" id="main-content" tabIndex={-1}>
           <Outlet />

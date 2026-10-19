@@ -36,6 +36,6 @@ jobs:
         with:
           name: f2-browser-evidence
           path: |
-            docs/certification/screenshots
+            docs/certification
             test-results
           retention-days: 14

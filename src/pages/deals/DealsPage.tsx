@@ -64,7 +64,6 @@ export function DealsPage({ board = false }: { board?: boolean }) {
       <section className="page-stack" data-screen-id={board ? 'SCR-DEAL-002' : 'SCR-DEAL-001'}>
         <div className="page-heading">
           <div>
-            <div className="eyebrow">OPPORTUNITÉS / CRM</div>
             <h1>{board ? 'Pipeline' : 'Deals'}</h1>
             <p className="muted">De la première rencontre à la prochaine réussite.</p>
           </div>
@@ -80,7 +79,7 @@ export function DealsPage({ board = false }: { board?: boolean }) {
         <div className="forecast-strip">
           <div>
             <span>Pipeline ouvert</span>
-            <strong>
+            <strong className="money">
               {formatDzd(
                 rows
                   .filter((d) => !['Gagné', 'Perdu'].includes(d.stage))
@@ -90,7 +89,7 @@ export function DealsPage({ board = false }: { board?: boolean }) {
           </div>
           <div>
             <span>Prévision pondérée ouverte</span>
-            <strong>
+            <strong className="money">
               {formatDzd(
                 rows
                   .filter((d) => !['Gagné', 'Perdu'].includes(d.stage))
@@ -225,7 +224,7 @@ export function DealsPage({ board = false }: { board?: boolean }) {
             description="Lecture seule"
           >
             <p>{editing.company}</p>
-            <strong>{formatDzd(editing.value)}</strong>
+            <strong className="money">{formatDzd(editing.value)}</strong>
             <StatusBadge status={editing.stage} />
           </Drawer>
         )}

@@ -1,0 +1,7 @@
+{
+  "failed_run": "browser-isolated-results.json",
+  "failure": "Two-theme overlay group exceeded its 90000ms budget; no contrast or focus assertion reported false before the budget expired.",
+  "observed_navigation_durations_ms": { "first_goto": 46978, "first_reload": 16280, "second_goto": 10953 },
+  "correction": "Independent light/dark cases; set initial theme before navigation, eliminate redundant reloads, wait for DOM content and assert theme and visible heading. Preserve all ten focus containment checks, axe rules, Escape/focus return and create-menu checks for each theme.",
+  "rerun": "browser-overlay-results.json"
+}

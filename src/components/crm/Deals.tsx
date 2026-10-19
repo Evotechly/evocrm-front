@@ -113,7 +113,9 @@ export function KanbanBoard({
             </Button>
             <footer className="column-footer">
               Pondéré :{' '}
-              {formatDzd(rows.reduce((sum, d) => sum + (d.value * d.probability) / 100, 0))}
+              <span className="money">
+                {formatDzd(rows.reduce((sum, d) => sum + (d.value * d.probability) / 100, 0))}
+              </span>
             </footer>
           </section>
         );

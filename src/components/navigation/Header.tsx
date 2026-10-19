@@ -40,7 +40,7 @@ export function UserMenu() {
           <Avatar initials="MB" tone="ink" />
           <span>
             <strong>Mohamed</strong>
-            <small>Owner · Démonstration</small>
+            <small>Propriétaire · Démo</small>
           </span>
           <CaretDown size={14} />
         </button>
@@ -58,10 +58,30 @@ export function UserMenu() {
     </Popover>
   );
 }
-export function Header({ onOpenCommand }: { onOpenCommand: () => void }) {
+export function Header({
+  onOpenCommand,
+  pathname = '/dashboard',
+}: {
+  onOpenCommand: () => void;
+  pathname?: string;
+}) {
   const { theme, toggleTheme } = useTheme();
+  const destination = pathname.includes('contacts')
+    ? 'Contacts'
+    : pathname.includes('deals')
+      ? 'Opportunités'
+      : pathname.includes('quotes')
+        ? 'Devis'
+        : pathname.includes('inbox')
+          ? 'Conversations'
+          : 'Vue d’ensemble';
   return (
     <header className="app-header">
+      <div className="header-context">
+        <strong>Espace commercial</strong>
+        <span>/</span>
+        {destination}
+      </div>
       <button
         className="command-trigger"
         onClick={onOpenCommand}

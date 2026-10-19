@@ -8,3 +8,9 @@ test-results
 !.env.example
 .DS_Store
 *.local
+
+# Impeccable's downloaded platform engine and temporary review tooling
+.agents/skills/impeccable/scripts/bin/
+.impeccable/questions/
+.impeccable/review/
+.impeccable/.cache/

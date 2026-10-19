@@ -1,5 +1,7 @@
+import { formatDateDisplay } from '@/lib/format';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
+import { ObjectViews } from '@/components/navigation/ObjectViews';
 import { Plus } from '@phosphor-icons/react';
 import { Button, Panel } from '@/components/ui';
 import { Drawer, Popover } from '@/components/ui/Overlays';
@@ -66,7 +68,6 @@ export function ContactsPage() {
       <section className="page-stack" data-screen-id="SCR-CONTACT-001">
         <div className="page-heading">
           <div>
-            <div className="eyebrow">VOTRE RÉSEAU / CRM</div>
             <h1>
               Contacts <span className="heading-count">{records.length}</span>
             </h1>
@@ -82,6 +83,27 @@ export function ContactsPage() {
           </Button>
         </div>
         <Panel>
+          <ObjectViews
+            value={status}
+            onChange={(value) => {
+              setStatus(value);
+              setPage(1);
+            }}
+            options={[
+              { value: '', label: 'Tous les contacts', count: records.length },
+              {
+                value: 'Actif',
+                label: 'Contacts actifs',
+                count: records.filter((c) => c.status === 'Actif').length,
+              },
+              {
+                value: 'Prospect',
+                label: 'Prospects',
+                count: records.filter((c) => c.status === 'Prospect').length,
+              },
+            ]}
+            caption="Relations du workspace"
+          />
           <FilterBar>
             <SearchInput
               label="Rechercher un contact"
@@ -171,7 +193,7 @@ export function ContactsPage() {
                     <div className="inline spread">
                       {columns.includes('status') && <StatusBadge status={c.status} />}
                       {columns.includes('activity') && (
-                        <small className="muted">{c.lastActivity}</small>
+                        <small className="muted">{formatDateDisplay(c.lastActivity)}</small>
                       )}
                     </div>
                   </article>
@@ -230,7 +252,9 @@ export function ContactsPage() {
                             <StatusBadge status={c.status} />
                           </td>
                         )}
-                        {columns.includes('activity') && <td>{c.lastActivity}</td>}
+                        {columns.includes('activity') && (
+                          <td>{formatDateDisplay(c.lastActivity)}</td>
+                        )}
                       </tr>
                     ))}
                   </tbody>

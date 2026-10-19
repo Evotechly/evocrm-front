@@ -1,3 +1,5 @@
+> Historical evidence: the user rejected this visual design on 19 October 2026. Earlier PASS labels do not constitute visual approval. See the [Aurora correction and fresh evidence](aurora-correction/report.md).
+
 # F2 visual certification — 2026-10-18
 
 Overall approved-design parity: **PENDING**. Browser evidence is real, not a claim of pixel-perfect equivalence.

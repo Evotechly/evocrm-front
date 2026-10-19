@@ -1,5 +1,13 @@
 import { useState } from 'react';
-import { ArrowUpRight, Handshake, UsersThree, CheckCircle } from '@phosphor-icons/react';
+import {
+  ArrowUpRight,
+  Handshake,
+  UsersThree,
+  CheckCircle,
+  Sun,
+  Plus,
+  ArrowRight,
+} from '@phosphor-icons/react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useCrm } from '@/app/providers/CrmProvider';
 import { StatCard, Panel, Button } from '@/components/ui';
@@ -36,9 +44,8 @@ export function DashboardPage() {
       <section className="page-stack" data-screen-id="SCR-HOME-001">
         <div className="page-heading">
           <div>
-            <div className="eyebrow">VOTRE ESPACE / VUE D’ENSEMBLE</div>
             <h1>
-              Bonjour Mohamed <span className="wave">✦</span>
+              Bonjour Mohamed <Sun size={24} className="wave" aria-hidden="true" />
             </h1>
             <p className="muted">Les relations qui avancent. Les actions qui comptent.</p>
           </div>
@@ -52,9 +59,16 @@ export function DashboardPage() {
             <option value="today">Aujourd’hui</option>
           </Select>
         </div>
-        <div className="context-banner">
-          <span className="workspace-dot" /> Workspace Evotechly{' '}
-          <span className="muted">· Données de démonstration, sans historique de revenus</span>
+        <div className="dashboard-topline">
+          <p className="dashboard-subtitle">Vue commerciale · Evotechly</p>
+          <div className="dashboard-shortcuts">
+            <Button onClick={() => navigate('/crm/contacts?create=1')}>
+              <Plus size={14} /> Ajouter un contact
+            </Button>
+            <Button onClick={() => navigate('/crm/deals/board')}>
+              Ouvrir le pipeline <ArrowRight size={14} />
+            </Button>
+          </div>
         </div>
         <div className="stat-grid">
           <StatCard
@@ -68,6 +82,7 @@ export function DashboardPage() {
           <StatCard
             label="Pipeline ouvert"
             value={formatDzd(total)}
+            monetary
             change={`${open.length} opportunités sur la période`}
             icon={<Handshake size={20} />}
             tone="indigo"
@@ -100,43 +115,82 @@ export function DashboardPage() {
                 title="Répartition du pipeline ouvert"
                 action={<span className="muted">{open.length} deals</span>}
               >
-                <div className="chart-summary">
-                  <div>
-                    <span>Valeur des opportunités</span>
-                    <strong>{formatDzd(total)}</strong>
-                    <small className="muted">Répartition des opportunités affichées</small>
+                <div className="pipeline-analysis">
+                  <div
+                    className="pipeline-donut"
+                    role="img"
+                    aria-label={`Répartition de ${open.length} opportunités ouvertes`}
+                  >
+                    <svg viewBox="0 0 180 180" aria-hidden="true">
+                      <circle className="donut-track" cx="90" cy="90" r="70" />
+                      {['Qualification', 'Proposition', 'Négociation'].map((stage, index, all) => {
+                        const value = open
+                          .filter((d) => d.stage === stage)
+                          .reduce((sum, d) => sum + d.value, 0);
+                        const before = open
+                          .filter((d) => all.slice(0, index).includes(d.stage))
+                          .reduce((sum, d) => sum + d.value, 0);
+                        return (
+                          <circle
+                            key={stage}
+                            cx="90"
+                            cy="90"
+                            r="70"
+                            pathLength="100"
+                            strokeDasharray={`${total ? (value / total) * 100 : 0} 100`}
+                            strokeDashoffset={total ? (-before / total) * 100 : 0}
+                          />
+                        );
+                      })}
+                    </svg>
+                    <div className="donut-center">
+                      <strong>{open.length}</strong>
+                      <span>deals ouverts</span>
+                    </div>
                   </div>
-                </div>
-                <div
-                  className="sales-chart"
-                  role="img"
-                  aria-label={`Pipeline ouvert : ${formatDzd(total)}`}
-                >
-                  {['Qualification', 'Proposition', 'Négociation'].map((stage) => {
-                    const amount = open
-                      .filter((d) => d.stage === stage)
-                      .reduce((s, d) => s + d.value, 0);
-                    return (
-                      <div className="sales-bar-row" key={stage}>
-                        <span>{stage}</span>
-                        <div>
-                          <i style={{ width: `${total ? (amount / total) * 100 : 0}%` }} />
-                        </div>
-                        <strong>{formatDzd(amount)}</strong>
+                  <div>
+                    {' '}
+                    <div className="chart-summary">
+                      <div>
+                        <span>Valeur des opportunités</span>
+                        <strong className="money">{formatDzd(total)}</strong>
+                        <small className="muted">Répartition des opportunités affichées</small>
                       </div>
-                    );
-                  })}
+                    </div>
+                    <div
+                      className="sales-chart"
+                      role="img"
+                      aria-label={`Pipeline ouvert : ${formatDzd(total)}`}
+                    >
+                      {['Qualification', 'Proposition', 'Négociation'].map((stage) => {
+                        const amount = open
+                          .filter((d) => d.stage === stage)
+                          .reduce((s, d) => s + d.value, 0);
+                        return (
+                          <div className="sales-bar-row" key={stage}>
+                            <span>{stage}</span>
+                            <div>
+                              <i style={{ width: `${total ? (amount / total) * 100 : 0}%` }} />
+                            </div>
+                            <strong className="money">{formatDzd(amount)}</strong>
+                          </div>
+                        );
+                      })}
+                    </div>
+                  </div>
                 </div>
                 <div className="performance-strip">
                   <div>
                     <span>Gagné</span>
-                    <strong className="positive">
+                    <strong className="positive money">
                       {formatDzd(won.reduce((s, d) => s + d.value, 0))}
                     </strong>
                   </div>
                   <div>
                     <span>Perdu</span>
-                    <strong>{formatDzd(lost.reduce((s, d) => s + d.value, 0))}</strong>
+                    <strong className="money">
+                      {formatDzd(lost.reduce((s, d) => s + d.value, 0))}
+                    </strong>
                   </div>
                   <div>
                     <span>Taux de gain des deals clôturés</span>
@@ -189,7 +243,7 @@ export function DashboardPage() {
                     .sort((a, b) => b.value - a.value)
                     .map((d, i) => (
                       <div className="ranked-row" key={d.id}>
-                        <span className="rank">0{i + 1}</span>
+                        <span className="rank">{i + 1}</span>
                         <div>
                           <strong>{d.name}</strong>
                           <small className="cell-meta">{d.company}</small>

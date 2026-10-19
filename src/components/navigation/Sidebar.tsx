@@ -53,11 +53,11 @@ export function Sidebar({
         <span className="brand-mark">E</span>
         <span>
           <strong>EvoCRM</strong>
-          <small>Aurora workspace</small>
+          <small>EVOTECHLY</small>
         </span>
       </div>
       <WorkspaceSwitcher />
-      <div className="nav-label">ESPACE DE TRAVAIL</div>
+      <div className="nav-label">Espace commercial</div>
       <nav aria-label="Navigation principale">
         {items.map(({ label, path, icon: Icon }) => (
           <button
@@ -113,7 +113,7 @@ export function WorkspaceSwitcher() {
           <span className="workspace-dot" />
           <span>
             <strong>Evotechly</strong>
-            <small>Workspace principal</small>
+            <small>Espace principal</small>
           </span>
           <span>⌄</span>
         </button>

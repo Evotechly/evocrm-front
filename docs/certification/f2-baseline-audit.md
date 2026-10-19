@@ -40,3 +40,11 @@ Production Screen contracts are richer than foundation entities (six configurabl
 ## Dependency scan follow-up
 
 The full audit during certification discovered **P0 development-toolchain risk**: two critical tinypool advisories, plus two moderate Vitest/mocker advisories. Updated Vitest from resolved 3.2.7 to pinned 5.0.2, which removes the vulnerable worker dependency. The subsequent `pnpm audit --json` reports zero advisories across 396 dependencies. Jest DOM was pinned to 6.9.1 to avoid the incorrectly released/deprecated 6.10.0. ESLint 9.39.5 reports an upstream support deprecation; it remains functional and has no advisory in the executed audit. React 19, TypeScript 5.9, Vite 8 and Tailwind 4 remain intact.
+
+## 19 October 2026 — user-rejected visual direction
+
+P1: The first F2 visual treatment was rejected by the user because Aurora identity was not applied clearly enough. Prior functional/axe PASS results did not establish visual acceptance. Reopened visual certification and replaced the legacy visual layer with canonical teal/voltage/cool-surface roles. Real Mobbin MCP research covered HubSpot and Salesforce; installed and applied Impeccable 4.6.0. See [correction evidence and remaining acceptance](aurora-correction/report.md). User visual approval and approved five-screen Figma comparison remain PENDING.
+
+Post-correction independent review identified four P1 consistency defects: incomplete monetary Mono coverage, clipped selected filter scopes, noncanonical absolute date/whole-money display, and use of action color for the demonstration state. The fix batch addresses these at shared presentation boundaries and leaves fixtures/contracts unchanged. Verification and the final independent disposition are recorded in the correction report.
+
+P1 development isolation: Tailwind auto-discovery and Vite watching included newly installed tool bundles and generated QA/research artifacts. Restricted Tailwind to application source and ignored tool/evidence paths in the dev watcher. This keeps non-application content out of utility generation and separates evidence writes from live UI updates. Failure traces are retained for remaining diagnostics. The isolated browser rerun determines PASS/FAIL.
