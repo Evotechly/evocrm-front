@@ -2,7 +2,7 @@
 
 19 October 2026 · Branch `feature/aurora-next-foundation` · [PR #1](https://github.com/Evotechly/evocrm-front/pull/1), kept open in draft. The exact pushed commit is reported in the handback and PR head.
 
-**F2: PENDING user visual approval and approved five-screen Figma comparison.** The previous visual treatment was explicitly rejected. Historical reports are labeled accordingly; functional PASS results never constitute design approval.
+**F2: PENDING user visual approval and approved five-screen Figma comparison; remote CI BLOCKED by GitHub account billing.** The previous visual treatment was explicitly rejected. Historical reports are labeled accordingly; functional PASS results never constitute design approval.
 
 ## Architecture and component changes
 
@@ -62,7 +62,7 @@ Approved Figma parity: **PENDING**. Existing Figma evidence does not establish f
 | Overlay focus, Escape/return and axe | PASS — independent light/dark cases |
 | Impeccable finish review | ship — four scored fixes resolved; user approval remains PENDING |
 | Source-derived DESIGN.md and sidecar | PASS — ten component examples |
-| Updated remote CI | PENDING at report creation; observed post-push result is reported in handback; [live PR checks](https://github.com/Evotechly/evocrm-front/pull/1/checks) |
+| Updated remote CI | BLOCKED — GitHub account billing; jobs did not start, no steps executed. [Exact annotations/run links](ci-blocker.json), [live PR checks](https://github.com/Evotechly/evocrm-front/pull/1/checks) |
 | Manual screen-reader certification | NOT RUN |
 
 The final full local run executed48 cases:47 PASS and one90-second combined-theme overlay timeout. Its retained trace showed navigation/reloads consumed most of the budget. Replaced that group with two independent cases, setting the theme before a single navigation; both executed PASS. All original focus/axe/create-menu checks remain. Thus49 current cases are covered; this is **not a claim of one clean local49-case run**. [Per-case successful coverage](successful-coverage.json), [full final run](browser-isolated-results.json), [overlay reruns](browser-overlay-results.json), [trace summary](overlay-trace-summary.json), [quality summary](quality-results.json), [lint log](lint.log).
@@ -76,3 +76,7 @@ The fresh reviewer first required recapture, then identified four material fixes
 Known limits: visual approval and approved Figma comparisons remain PENDING; manual screen-reader checks are NOT RUN; native date-calendar chrome follows browser locale. The five-screen frontend remains a fixture-backed demonstration with no backend persistence or real sending. No production EvoCrm or Brandbook files changed; no merge or deployment occurred.
 
 Recommended next wave: review this Aurora proposal, establish the five approved Figma targets and close comparison/manual accessibility gaps, then extend remaining CRM modules using the documented components and eventual Inertia integration boundary.
+
+## Remote CI blocker
+
+The source revision `971cef5e3460e068c01d2b21a902431748848375` was pushed successfully. Both push/PR validation jobs stopped before any steps executed. GitHub reported: “The job was not started because recent account payments have failed or your spending limit needs to be increased. Please check the 'Billing & plans' section in your settings”. Smoke jobs were skipped. This is BLOCKED, not PASS; no code failure was executed or established by these jobs. Billing configuration was not changed. Resolve account payments/spending eligibility before rerunning the workflow. This report-only follow-up does not change the tested application source.
