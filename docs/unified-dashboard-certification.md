@@ -43,6 +43,7 @@ Selected candidates documented for future use:
 - `@data-table-filters/data-table-sheet`
 - `@cult-ui/halo-toast`
 - Recharts-based chart components
+- Radix Popover + `react-day-picker`
 
 Dependencies added: none.
 
@@ -67,11 +68,11 @@ The layout uses fluid grid columns, a horizontal overflow container for the dens
 
 ## Provenance
 
-The actual checkout at `/home/mohamed/evocrm-front` was verified clean on `feature/aurora-next-foundation` at `0a9d86d` before changes were applied. The final commit SHA is recorded by Git after the commit is created and pushed.
+The actual checkout at `/home/mohamed/evocrm-front` was verified clean on `feature/aurora-next-foundation` at `0a9d86d` before changes were applied. The dashboard work is now pushed as the follow-up commit on that branch.
 
 ## Production blockers
 
-This is a frontend preview certification, not a production deployment certification. Before release, the owning repository environment must provide valid Git metadata and certify the requested branch/SHA, then run the backend integration, persistence, authenticated permission, full responsive screenshot matrix, and production performance checks. No deployment or merge was attempted.
+This is a frontend preview certification, not a production deployment certification. Before release, run the backend integration, persistence, authenticated permission, full responsive screenshot matrix, and production performance checks. No deployment or merge was attempted.
 
 ## Changed files
 
@@ -79,6 +80,8 @@ This is a frontend preview certification, not a production deployment certificat
 - `src/pages/dashboard/UnifiedDashboardLayout.tsx` (renamed from `HubSpotLayout.tsx`)
 - `src/styles/index.css`
 - `src/styles/tokens.css`
+- `src/components/navigation/Sidebar.tsx`
+- `public/evotechly.svg`
 - `src/tests/setup.ts`
 - `src/pages/dashboard/UnifiedDashboardLayout.test.tsx`
 - `tests/e2e/dashboard.spec.ts`

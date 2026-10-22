@@ -97,7 +97,7 @@ This keeps the current preview lightweight and avoids adding packages until a re
 
 ## Suggested implementation order
 
-1. Keep the new dashboard switch as the visual comparison surface.
+1. Keep the unified dashboard as the single product surface; use Salesforce and HubSpot only as research references.
 2. Refactor Contacts into the shared data-workspace pattern: saved views, filter chips, bulk toolbar, column visibility, and row detail sheet.
 3. Refactor Deals into the shared table/board pattern: stage totals, drag-and-drop, list/board URL state, and quick-create.
 4. Add a reusable activity feed and record timeline for Contacts, Deals, Inbox, and Quotes.
