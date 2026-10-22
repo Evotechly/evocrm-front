@@ -50,7 +50,7 @@ export function Sidebar({
   return (
     <aside className="sidebar">
       <div className="brand-lockup">
-        <span className="brand-mark">E</span>
+        <img className="brand-logo" src="/evotechly.svg" alt="Evotechly" />
         <span>
           <strong>EvoCRM</strong>
           <small>EVOTECHLY</small>

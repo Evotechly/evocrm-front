@@ -9,7 +9,7 @@ export default defineConfig({
   use: { baseURL, trace: 'retain-on-failure' },
   webServer:
     baseURL === 'http://127.0.0.1:5173'
-      ? { command: 'npm run dev -- --host 127.0.0.1', url: baseURL, reuseExistingServer: true }
+      ? { command: 'pnpm dev -- --host 127.0.0.1', url: baseURL, reuseExistingServer: true }
       : undefined,
   projects: [{ name: 'chromium', use: { ...devices['Desktop Chrome'] } }],
 });
