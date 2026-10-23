@@ -2,7 +2,7 @@ import { formatDateDisplay } from '@/lib/format';
 import type { Contact } from '@/contracts/entities';
 import { Avatar, Button } from '@/components/ui';
 import { StatusBadge } from '@/components/ui/StatusBadge';
-import { ActivityTimeline } from '@/components/data-display/Controls';
+import { RecordActivityTimeline } from '@/components/workspace/Workspace';
 export function ContactCard({ contact, onOpen }: { contact: Contact; onOpen: () => void }) {
   return (
     <div className="person-cell">
@@ -35,8 +35,7 @@ export function ContactDetailPanel({ contact, onEdit }: { contact: Contact; onEd
         <dd>{formatDateDisplay(contact.lastActivity)}</dd>
       </dl>
       {onEdit && <Button onClick={onEdit}>Modifier le contact</Button>}
-      <h3>Historique d’activité</h3>
-      <ActivityTimeline
+      <RecordActivityTimeline
         items={[
           {
             title: 'Activité du contact',

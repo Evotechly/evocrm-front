@@ -9,6 +9,11 @@ import { ConversationList, MessageThread, MessageComposer } from '@/components/c
 import { ContactDetailPanel } from '@/components/crm/Contacts';
 import { Popover } from '@/components/ui/Overlays';
 import { formatDzd } from '@/lib/format';
+import {
+  RecordActivityTimeline,
+  WorkspaceHeader,
+  WorkspaceToolbar,
+} from '@/components/workspace/Workspace';
 export function InboxPage() {
   const { threads, setThreads, contacts, deals, notify, can } = useCrm();
   const { navigate } = useNavigation();
@@ -35,36 +40,37 @@ export function InboxPage() {
   return (
     <ScreenState permission="desk.view">
       <section className="page-stack inbox-page" data-screen-id="SCR-INBOX-001">
-        <div className="page-heading">
-          <div>
-            <h1>Inbox</h1>
-            <p className="muted">Le bon contexte. La bonne réponse.</p>
-          </div>
-          <span className="demo-pill">Envoi simulé uniquement</span>
-        </div>
+        <WorkspaceHeader
+          title="Inbox"
+          description="Le bon contexte. La bonne réponse."
+          count={rows.length}
+          actions={<span className="demo-pill">Envoi simulé uniquement</span>}
+        />
         <div className="inbox-workspace">
           <div className={`inbox-list panel ${!showList ? 'mobile-hidden' : ''}`}>
             <div className="inbox-list-header">
               <strong>Conversations</strong>
               <span className="muted">{rows.length}</span>
             </div>
-            <div className="inbox-filters">
-              <SearchInput label="Rechercher une conversation" value={query} onChange={setQuery} />
-              <ViewSwitcher
-                value={queue}
-                onChange={setQueue}
-                options={[
-                  { value: 'all', label: 'Toutes' },
-                  { value: 'mine', label: 'Les miennes' },
-                  { value: 'unread', label: 'Non lues' },
-                ]}
-              />
-              <Select label="Canal" value={channel} onChange={(e) => setChannel(e.target.value)}>
-                <option value="">Tous les canaux</option>
-                <option>Email</option>
-                <option>WhatsApp</option>
-              </Select>
-            </div>
+            <WorkspaceToolbar label="Filtres des conversations">
+              <div className="inbox-filters">
+                <SearchInput label="Rechercher une conversation" value={query} onChange={setQuery} />
+                <ViewSwitcher
+                  value={queue}
+                  onChange={setQueue}
+                  options={[
+                    { value: 'all', label: 'Toutes' },
+                    { value: 'mine', label: 'Les miennes' },
+                    { value: 'unread', label: 'Non lues' },
+                  ]}
+                />
+                <Select label="Canal" value={channel} onChange={(e) => setChannel(e.target.value)}>
+                  <option value="">Tous les canaux</option>
+                  <option>Email</option>
+                  <option>WhatsApp</option>
+                </Select>
+              </div>
+            </WorkspaceToolbar>
             <ConversationList
               threads={rows}
               activeId={active?.id ?? null}
@@ -159,6 +165,15 @@ export function InboxPage() {
                 disabled={!can('desk.manage')}
                 placeholder="Ex. Confirmer le calendrier"
                 onChange={(e) => update({ nextAction: e.target.value })}
+              />
+              <RecordActivityTimeline
+                items={[
+                  {
+                    title: 'Conversation active',
+                    detail: `${active.contact} · ${active.channel}`,
+                    time: active.time,
+                  },
+                ]}
               />
               <p className="muted">Note locale, sans rappel automatique.</p>
             </aside>

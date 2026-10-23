@@ -13,6 +13,11 @@ import { QuoteLineItem, QuoteSummary } from '@/components/crm/Quotes';
 import { formatDzd, formatDateDisplay } from '@/lib/format';
 import { quoteTotal } from '@/lib/quotes';
 import type { Quote } from '@/contracts/entities';
+import {
+  RecordActivityTimeline,
+  WorkspaceHeader,
+  WorkspaceToolbar,
+} from '@/components/workspace/Workspace';
 export function QuotesPage() {
   const { quotes, setQuotes, contacts, deals, notify, can } = useCrm();
   const state = usePreviewState();
@@ -37,20 +42,21 @@ export function QuotesPage() {
   return (
     <ScreenState permission="quotes.view">
       <section className="page-stack" data-screen-id="SCR-QUOTE-001">
-        <div className="page-heading">
-          <div>
-            <h1>Devis</h1>
-            <p className="muted">Des propositions claires pour faire avancer vos projets.</p>
-          </div>
-          <Button
-            data-page-primary
-            variant="primary"
-            disabled={!can('crm.edit')}
-            onClick={() => setCreating(true)}
-          >
-            <Plus size={17} /> Nouveau devis
-          </Button>
-        </div>
+        <WorkspaceHeader
+          title="Devis"
+          description="Des propositions claires pour faire avancer vos projets."
+          count={rows.length}
+          actions={
+            <Button
+              data-page-primary
+              variant="primary"
+              disabled={!can('crm.edit')}
+              onClick={() => setCreating(true)}
+            >
+              <Plus size={17} /> Nouveau devis
+            </Button>
+          }
+        />
         <div className="stat-grid quote-stats">
           <div className="mini-stat">
             <span>Valeur affichée</span>
@@ -69,42 +75,44 @@ export function QuotesPage() {
           </div>
         </div>
         <Panel>
-          <ObjectViews
-            value={status}
-            onChange={setStatus}
-            options={[
-              { value: '', label: 'Tous les devis', count: state === 'empty' ? 0 : quotes.length },
-              {
-                value: 'Brouillon',
-                label: 'Brouillons',
-                count:
-                  state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Brouillon').length,
-              },
-              {
-                value: 'Envoyé',
-                label: 'En attente',
-                count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Envoyé').length,
-              },
-              {
-                value: 'Accepté',
-                label: 'Acceptés',
-                count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Accepté').length,
-              },
-            ]}
-          />
-          <FilterBar>
-            <SearchInput label="Rechercher un devis" value={query} onChange={setQuery} />
-            <Select
-              label="Statut du devis"
+          <WorkspaceToolbar label="Filtres et vues des devis">
+            <ObjectViews
               value={status}
-              onChange={(e) => setStatus(e.target.value)}
-            >
-              <option value="">Tous les statuts</option>
-              {['Brouillon', 'Envoyé', 'Accepté'].map((s) => (
-                <option key={s}>{s}</option>
-              ))}
-            </Select>
-          </FilterBar>
+              onChange={setStatus}
+              options={[
+                { value: '', label: 'Tous les devis', count: state === 'empty' ? 0 : quotes.length },
+                {
+                  value: 'Brouillon',
+                  label: 'Brouillons',
+                  count:
+                    state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Brouillon').length,
+                },
+                {
+                  value: 'Envoyé',
+                  label: 'En attente',
+                  count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Envoyé').length,
+                },
+                {
+                  value: 'Accepté',
+                  label: 'Acceptés',
+                  count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Accepté').length,
+                },
+              ]}
+            />
+            <FilterBar>
+              <SearchInput label="Rechercher un devis" value={query} onChange={setQuery} />
+              <Select
+                label="Statut du devis"
+                value={status}
+                onChange={(e) => setStatus(e.target.value)}
+              >
+                <option value="">Tous les statuts</option>
+                {['Brouillon', 'Envoyé', 'Accepté'].map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </Select>
+            </FilterBar>
+          </WorkspaceToolbar>
           {rows.length ? (
             <div className="table-wrap">
               <table>
@@ -215,6 +223,10 @@ export function QuotesPage() {
                   </tbody>
                 </table>
                 <QuoteSummary items={preview.items} />
+                <RecordActivityTimeline
+                  items={[]}
+                  empty="Aucun événement horodaté n’est fourni pour ce devis."
+                />
               </>
             )}
           </div>

@@ -451,6 +451,28 @@ textarea {
   margin: 0;
   font-size: 13px;
 }
+.workspace-header-actions {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+.workspace-toolbar {
+  display: grid;
+  gap: 0;
+}
+.record-activity {
+  display: grid;
+  gap: 12px;
+  margin-top: 20px;
+  padding-top: 18px;
+  border-top: 1px solid var(--color-border);
+}
+.record-activity h3 {
+  margin: 0;
+  font-size: 13px;
+}
 .heading-count {
   font-size: 12px;
   color: var(--color-muted);
@@ -2524,8 +2546,15 @@ tbody tr:hover td {
     font-size: 26px;
   }
   .page-heading > .button,
-  .page-heading > .field {
+  .page-heading > .field,
+  .workspace-header-actions {
     width: 100%;
+  }
+  .workspace-header-actions {
+    justify-content: stretch;
+  }
+  .workspace-header-actions > .button {
+    flex: 1;
   }
   .page-stack {
     gap: 18px;
