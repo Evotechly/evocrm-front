@@ -248,7 +248,7 @@ describe('accessibility', () => {
         <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Here' }]} />
         <Badge tone="success">Won</Badge>
         <Avatar initials="AL" alt="Ada Lovelace" />
-        <Pagination page={1} pageCount={3} />
+        <Pagination page={1} pageCount={3} onPageChange={() => undefined} />
         <EmptyState title="Empty" description="Nothing yet." />
         <Skeleton variant="text" />
         <Alert tone="information" title="Hint" description="Use filters." />
