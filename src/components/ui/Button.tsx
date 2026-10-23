@@ -12,6 +12,12 @@ const variantMap = {
   danger: 'destructive',
 } as const;
 
-export function Button({ variant = 'secondary', ...props }: ButtonProps) {
-  return <UiButton variant={variantMap[variant]} {...props} />;
+export function Button({ variant = 'secondary', className = '', ...props }: ButtonProps) {
+  return (
+    <UiButton
+      variant={variantMap[variant]}
+      className={`button button-${variant} ${className}`}
+      {...props}
+    />
+  );
 }

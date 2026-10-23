@@ -45,6 +45,12 @@
 }
 
 [data-theme='dark'] {
+  /* Product fills stay #D9500F; text/soft roles must meet AA on dark surfaces. */
+  --color-brand: var(--color-crm-300);
+  --color-brand-deep: var(--color-crm-200);
+  --color-brand-soft: var(--color-crm-950);
+  --color-voltage-soft: var(--color-crm-950);
+  --color-canvas-soft: var(--surfaceSunken);
   --color-indigo: var(--textMuted);
   --color-indigo-soft: var(--surfaceSunken);
   --color-teal: var(--text);
@@ -52,12 +58,12 @@
   --color-purple: var(--textMuted);
   --color-purple-soft: var(--surfaceSunken);
   --color-orange-text: var(--color-crm-300);
-  --color-orange-soft: var(--brand-selection);
+  --color-orange-soft: var(--color-crm-950);
   --color-demo: var(--color-info-300);
   --color-demo-soft: var(--infoBg);
   --color-demo-source: var(--info);
   --color-avatar-orange: var(--color-crm-200);
-  --color-avatar-orange-bg: var(--brand-selection);
+  --color-avatar-orange-bg: var(--color-crm-950);
   --color-avatar-indigo: var(--textMuted);
   --color-avatar-indigo-bg: var(--surfaceSunken);
   --color-avatar-teal: var(--text);

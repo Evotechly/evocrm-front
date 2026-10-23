@@ -4,7 +4,30 @@ import {
   Popover as UiPopover,
   Tooltip as UiTooltip,
 } from '@evotechly/ui';
-import { useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
+
+function useRestorePrimary(open: boolean) {
+  const wasOpen = useRef(open);
+  useEffect(() => {
+    if (wasOpen.current && !open) {
+      requestAnimationFrame(() => {
+        document.querySelector<HTMLElement>('[data-page-primary]')?.focus();
+      });
+    }
+    wasOpen.current = open;
+  }, [open]);
+}
+
+function useEscapeToClose(open: boolean, onClose: () => void) {
+  useEffect(() => {
+    if (!open) return;
+    const onKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape') onClose();
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, [open, onClose]);
+}
 
 export function Dialog({
   open,
@@ -22,6 +45,8 @@ export function Dialog({
   variant?: 'dialog' | 'drawer';
   size?: 'sm' | 'md' | 'lg';
 }) {
+  useRestorePrimary(open);
+  useEscapeToClose(open, onClose);
   return (
     <UiDialog
       open={open}
@@ -50,6 +75,8 @@ export function Drawer({
   description?: string;
   children: ReactNode;
 }) {
+  useRestorePrimary(open);
+  useEscapeToClose(open, onClose);
   return (
     <UiDrawer
       open={open}
