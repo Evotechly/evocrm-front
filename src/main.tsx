@@ -3,6 +3,8 @@ import '@fontsource/geist-sans/latin-500.css';
 import '@fontsource/geist-sans/latin-600.css';
 import '@fontsource/geist-sans/latin-700.css';
 import '@fontsource/geist-mono/latin-400.css';
+import '@evotechly/brand/tokens.css';
+import '@evotechly/ui/styles.css';
 import { StrictMode } from 'react';
 import { createRoot } from 'react-dom/client';
 import { App } from './app/App';

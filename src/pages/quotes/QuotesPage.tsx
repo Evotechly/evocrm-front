@@ -184,6 +184,7 @@ export function QuotesPage() {
           onClose={() => setPreview(null)}
           title={preview?.number ?? 'Aperçu du devis'}
           description="Aperçu local · aucun envoi ou paiement"
+          size="lg"
         >
           <div className="print-quote">
             {preview && (

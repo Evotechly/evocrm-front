@@ -1,38 +1,30 @@
-import {
-  createContext,
-  useContext,
-  useEffect,
-  useMemo,
-  useState,
-  type PropsWithChildren,
-} from 'react';
+import { type PropsWithChildren } from 'react';
+import { EvotechlyUIProvider, useTheme as useBrandTheme } from '@evotechly/ui';
 import type { Theme } from '@/contracts/pages';
 
-type ThemeContextValue = { theme: Theme; toggleTheme: () => void };
-const ThemeContext = createContext<ThemeContextValue | null>(null);
+function readInitialMode(): Theme {
+  if (typeof window === 'undefined') return 'light';
+  try {
+    const stored = window.localStorage.getItem('evotechly-ui-theme');
+    if (stored) {
+      const parsed = JSON.parse(stored) as { mode?: string };
+      if (parsed.mode === 'dark' || parsed.mode === 'light') return parsed.mode;
+    }
+  } catch {
+    /* ignore */
+  }
+  return window.localStorage.getItem('evocrm-theme') === 'dark' ? 'dark' : 'light';
+}
 
 export function ThemeProvider({ children }: PropsWithChildren) {
-  const [theme, setTheme] = useState<Theme>(() =>
-    typeof window !== 'undefined' && window.localStorage.getItem('evocrm-theme') === 'dark'
-      ? 'dark'
-      : 'light',
+  return (
+    <EvotechlyUIProvider defaultProduct="crm" defaultMode={readInitialMode()}>
+      {children}
+    </EvotechlyUIProvider>
   );
-  useEffect(() => {
-    document.documentElement.dataset.theme = theme;
-    localStorage.setItem('evocrm-theme', theme);
-  }, [theme]);
-  const value = useMemo(
-    () => ({
-      theme,
-      toggleTheme: () => setTheme((current) => (current === 'light' ? 'dark' : 'light')),
-    }),
-    [theme],
-  );
-  return <ThemeContext.Provider value={value}>{children}</ThemeContext.Provider>;
 }
 
 export function useTheme() {
-  const value = useContext(ThemeContext);
-  if (!value) throw new Error('useTheme must be used inside ThemeProvider');
-  return value;
+  const { mode, toggleMode } = useBrandTheme();
+  return { theme: mode as Theme, toggleTheme: toggleMode };
 }

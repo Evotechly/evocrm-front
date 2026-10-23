@@ -1,15 +1,18 @@
-import * as D from '@radix-ui/react-dialog';
-import * as P from '@radix-ui/react-popover';
-import * as T from '@radix-ui/react-tooltip';
-import { useRef, useState, type ReactNode } from 'react';
-import { X } from '@phosphor-icons/react';
+import {
+  Dialog as UiDialog,
+  Drawer as UiDrawer,
+  Popover as UiPopover,
+  Tooltip as UiTooltip,
+} from '@evotechly/ui';
+import { useState, type ReactNode } from 'react';
+
 export function Dialog({
   open,
   onClose,
   title,
   children,
   description = 'Modifications locales à cette session.',
-  variant = 'dialog',
+  size,
 }: {
   open: boolean;
   onClose: () => void;
@@ -17,47 +20,51 @@ export function Dialog({
   description?: string;
   children: ReactNode;
   variant?: 'dialog' | 'drawer';
+  size?: 'sm' | 'md' | 'lg';
 }) {
-  const opener = useRef<HTMLElement | null>(null);
   return (
-    <D.Root
+    <UiDialog
       open={open}
       onOpenChange={(value) => {
         if (!value) onClose();
       }}
+      title={title}
+      description={description}
+      size={size}
     >
-      <D.Portal>
-        <D.Overlay className="modal-backdrop" />
-        <D.Content
-          className={`modal-content ${variant}`}
-          onOpenAutoFocus={() => {
-            opener.current = document.activeElement as HTMLElement | null;
-          }}
-          onCloseAutoFocus={(e) => {
-            e.preventDefault();
-            if (opener.current?.isConnected && opener.current !== document.body)
-              opener.current.focus();
-            else document.querySelector<HTMLElement>('[data-page-primary]')?.focus();
-          }}
-        >
-          <div className="modal-heading">
-            <div>
-              <D.Title>{title}</D.Title>
-              <D.Description>{description}</D.Description>
-            </div>
-            <D.Close className="icon-button" aria-label="Fermer">
-              <X size={20} />
-            </D.Close>
-          </div>
-          <div className="modal-body">{children}</div>
-        </D.Content>
-      </D.Portal>
-    </D.Root>
+      {children}
+    </UiDialog>
   );
 }
-export function Drawer(props: Omit<Parameters<typeof Dialog>[0], 'variant'>) {
-  return <Dialog {...props} variant="drawer" />;
+
+export function Drawer({
+  open,
+  onClose,
+  title,
+  children,
+  description = 'Modifications locales à cette session.',
+}: {
+  open: boolean;
+  onClose: () => void;
+  title: string;
+  description?: string;
+  children: ReactNode;
+}) {
+  return (
+    <UiDrawer
+      open={open}
+      onOpenChange={(value) => {
+        if (!value) onClose();
+      }}
+      title={title}
+      description={description}
+      side="right"
+    >
+      {children}
+    </UiDrawer>
+  );
 }
+
 export function Popover({
   trigger,
   children,
@@ -71,50 +78,24 @@ export function Popover({
 }) {
   const [open, setOpen] = useState(false);
   return (
-    <P.Root open={open} onOpenChange={setOpen}>
-      <P.Trigger asChild>{trigger}</P.Trigger>
-      <P.Portal>
-        <P.Content
-          className="popover-content"
-          align="end"
-          sideOffset={8}
-          aria-label={label}
-          onClick={(e) => {
-            if (closeOnAction && (e.target as HTMLElement).closest('button')) setOpen(false);
-          }}
-        >
-          {children}
-          <P.Close className="sr-only">Fermer {label}</P.Close>
-        </P.Content>
-      </P.Portal>
-    </P.Root>
+    <UiPopover
+      trigger={trigger}
+      open={open}
+      onOpenChange={setOpen}
+      align="end"
+    >
+      <div
+        aria-label={label}
+        onClick={(e) => {
+          if (closeOnAction && (e.target as HTMLElement).closest('button')) setOpen(false);
+        }}
+      >
+        {children}
+      </div>
+    </UiPopover>
   );
 }
+
 export function Tooltip({ children, text }: { children: ReactNode; text: string }) {
-  return (
-    <T.Provider delayDuration={300}>
-      <T.Root>
-        <T.Trigger asChild>{children}</T.Trigger>
-        <T.Portal>
-          <T.Content className="tooltip" sideOffset={6}>
-            {text}
-          </T.Content>
-        </T.Portal>
-      </T.Root>
-    </T.Provider>
-  );
-}
-export function Toast({ message, onClose }: { message: string; onClose: () => void }) {
-  return (
-    <div className="toast-region" aria-live="polite" aria-atomic="true">
-      {message && (
-        <div className="toast">
-          <span>{message}</span>
-          <button className="icon-button" onClick={onClose} aria-label="Fermer la notification">
-            <X size={16} />
-          </button>
-        </div>
-      )}
-    </div>
-  );
+  return <UiTooltip content={text}>{children}</UiTooltip>;
 }

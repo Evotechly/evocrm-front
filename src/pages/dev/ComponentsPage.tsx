@@ -1,7 +1,8 @@
 import { formatDzd } from '@/lib/format';
 import { useState } from 'react';
 import { Button, Avatar, Panel, EmptyState, StatCard } from '@/components/ui';
-import { Dialog, Drawer, Popover, Tooltip, Toast } from '@/components/ui/Overlays';
+import { toast } from '@evotechly/ui';
+import { Dialog, Drawer, Popover, Tooltip } from '@/components/ui/Overlays';
 import { Input, Select, Checkbox, DatePicker } from '@/components/forms/Fields';
 import {
   SearchInput,
@@ -29,7 +30,6 @@ export function ComponentsPage() {
     [sort, setSort] = useState('name'),
     [view, setView] = useState('list'),
     [checked, setChecked] = useState(false),
-    [notice, setNotice] = useState(''),
     [item, setItem] = useState<LineItem>({
       id: 'gallery',
       description: 'Prestation',
@@ -51,7 +51,7 @@ export function ComponentsPage() {
           <div className="gallery-example">
             <div className="inline">
               {(['primary', 'secondary', 'ghost', 'soft', 'danger'] as const).map((v) => (
-                <Button key={v} variant={v} onClick={() => setNotice(`Variante ${v} activée`)}>
+                <Button key={v} variant={v} onClick={() => toast.information(`Variante ${v} activée`)}>
                   {v}
                 </Button>
               ))}
@@ -60,7 +60,7 @@ export function ComponentsPage() {
               <Button loading>Chargement</Button>
               <Button disabled>Désactivé</Button>
               <Tooltip text="Créer une relation">
-                <Button onClick={() => setNotice('Info-bulle testée')}>Info-bulle</Button>
+                <Button onClick={() => toast.information('Info-bulle testée')}>Info-bulle</Button>
               </Tooltip>
             </div>
             <div className="inline">
@@ -193,7 +193,7 @@ export function ComponentsPage() {
           <ConversationList
             threads={threads}
             activeId={threads[0].id}
-            onSelect={() => setNotice('Conversation sélectionnée')}
+            onSelect={() => toast.information('Conversation sélectionnée')}
           />
           <MessageThread messages={messages} contact={threads[0].contact} />
           <MessageComposer
@@ -209,7 +209,7 @@ export function ComponentsPage() {
       <EmptyState
         title="Aucun résultat"
         detail="Exemple de l’état vide"
-        action={<Button onClick={() => setNotice('Action de création')}>Créer</Button>}
+        action={<Button onClick={() => toast.information('Action de création')}>Créer</Button>}
       />
       <Dialog
         open={overlay === 'dialog'}
@@ -220,7 +220,7 @@ export function ComponentsPage() {
         <Button
           onClick={() => {
             setOverlay('');
-            setNotice('Action confirmée');
+            toast.information('Action confirmée');
           }}
         >
           Confirmer
@@ -233,11 +233,10 @@ export function ComponentsPage() {
       >
         <ContactDetailPanel
           contact={contacts[0]}
-          onEdit={() => setNotice('Édition disponible dans Contacts')}
+          onEdit={() => toast.information('Édition disponible dans Contacts')}
         />
       </Drawer>
       {overlay === 'command' && <CommandPalette onClose={() => setOverlay('')} />}
-      <Toast message={notice} onClose={() => setNotice('')} />
     </section>
   );
 }

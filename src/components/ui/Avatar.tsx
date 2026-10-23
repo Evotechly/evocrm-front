@@ -1,7 +1,5 @@
-export function Avatar({ initials, tone = 'orange' }: { initials: string; tone?: string }) {
-  return (
-    <span className={`avatar avatar-${tone}`} aria-label={`Avatar ${initials}`}>
-      {initials}
-    </span>
-  );
+import { Avatar as UiAvatar } from '@evotechly/ui';
+
+export function Avatar({ initials }: { initials: string; tone?: string }) {
+  return <UiAvatar initials={initials} alt={`Avatar ${initials}`} />;
 }

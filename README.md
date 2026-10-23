@@ -4,14 +4,31 @@ Standalone React 19 + TypeScript frontend foundation for EvoCRM 2.0. The reposit
 
 ## Development
 
+`@evotechly/ui` and `@evotechly/brand` are private packages on GitHub Packages (`https://npm.pkg.github.com`). Local installs and Vercel builds need **`NODE_AUTH_TOKEN`**: a GitHub classic personal access token with `read:packages`. The project `.npmrc` reads that env var and never stores a token.
+
 ```bash
+export NODE_AUTH_TOKEN=ghp_your_classic_token_with_read_packages
 pnpm install --frozen-lockfile
 pnpm run dev
 ```
 
+If the lockfile was generated without registry auth, regenerate it after setting the token:
+
+```bash
+export NODE_AUTH_TOKEN=ghp_your_classic_token_with_read_packages
+# pnpm 11 does not expand ${NODE_AUTH_TOKEN} from the project .npmrc (it ignores
+# committed registry credentials). npm and Vercel do expand it. For local pnpm:
+pnpm config set "//npm.pkg.github.com/:_authToken" "$NODE_AUTH_TOKEN"
+pnpm install
+```
+
+This PR could not regenerate `pnpm-lock.yaml` against GitHub Packages (no `read:packages` token in this environment). After you set `NODE_AUTH_TOKEN`, run `pnpm install` and commit the updated lockfile so `pnpm install --frozen-lockfile` matches `@evotechly/ui@0.1.0` and `@evotechly/brand@^2.0.0`.
+
+On Vercel, add `NODE_AUTH_TOKEN` as a project environment variable (same classic token, `read:packages`) so installs can reach `https://npm.pkg.github.com`. Vercel’s npm client expands `${NODE_AUTH_TOKEN}` from `.npmrc`.
+
 Open [http://localhost:5173](http://localhost:5173).
 
-Quality commands: `npm run typecheck`, `npm run lint`, `npm run test`, `npm run build`, and `npm run test:e2e`.
+Quality commands: `pnpm run typecheck`, `pnpm run lint`, `pnpm run test`, `pnpm run build`, and `pnpm run test:e2e`.
 
 ## Architecture
 
@@ -26,7 +43,14 @@ The initial shell follows the documented `simple_mode=true` navigation: Accueil,
 
 ## Design system
 
-Aurora tokens are synchronized from Evotechly Brandbook `main` at the documented source snapshot recorded in `docs/design-system/aurora.md`. The first foundation uses semantic CSS variables; component code does not hardcode Brandbook colors.
+The app consumes published **Design System 2.0** packages:
+
+- `@evotechly/ui@0.1.0` — React primitives (`import { Button } from '@evotechly/ui'`, `import '@evotechly/ui/styles.css'`)
+- `@evotechly/brand@^2.0.0` — tokens (`@evotechly/brand/tokens.css`, Tailwind `@evotechly/brand/theme.css`)
+
+Set `<html data-product="crm" data-theme="light">`. EvoCRM palette from DS 2.0: paper `#EAEAEA`, ink `#0D1B24`, orange `#D9500F`. Do not use retired hexes (`#EC6025`, `#111111`, `#000000`, `#2E3A45`, and the rest of Brandbook `RETIRED.md`).
+
+Shared primitives (buttons, inputs, checkboxes, dialogs, drawers, popovers, tooltips, toasts, badges, avatars, empty states) come from `@evotechly/ui`. CRM-specific composites, native selects/date fields, and the typed DataTable stay local because their APIs are not a straight swap. Details are in the adoption PR.
 
 ## Integration strategy
 
