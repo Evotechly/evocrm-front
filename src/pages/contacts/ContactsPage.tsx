@@ -17,6 +17,7 @@ import { ContactCard, ContactDetailPanel } from '@/components/crm/Contacts';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { useCrm } from '@/app/providers/CrmProvider';
 import type { Contact, ContactStatus } from '@/contracts/entities';
+import { BulkActionBar, WorkspaceHeader, WorkspaceToolbar } from '@/components/workspace/Workspace';
 export function ContactsPage() {
   const { contacts, setContacts, notify, can } = useCrm();
   const state = usePreviewState();
@@ -66,114 +67,110 @@ export function ContactsPage() {
   return (
     <ScreenState permission="crm.view">
       <section className="page-stack" data-screen-id="SCR-CONTACT-001">
-        <div className="page-heading">
-          <div>
-            <h1>
-              Contacts <span className="heading-count">{records.length}</span>
-            </h1>
-            <p className="muted">Chaque relation commence par une conversation.</p>
-          </div>
-          <Button
-            data-page-primary
-            variant="primary"
-            disabled={!can('crm.edit')}
-            onClick={() => setCreating(true)}
-          >
-            <Plus size={17} /> Nouveau contact
-          </Button>
-        </div>
+        <WorkspaceHeader
+          title="Contacts"
+          description="Chaque relation commence par une conversation."
+          count={records.length}
+          actions={
+            <Button
+              data-page-primary
+              variant="primary"
+              disabled={!can('crm.edit')}
+              onClick={() => setCreating(true)}
+            >
+              <Plus size={17} /> Nouveau contact
+            </Button>
+          }
+        />
         <Panel>
-          <ObjectViews
-            value={status}
-            onChange={(value) => {
-              setStatus(value);
-              setPage(1);
-            }}
-            options={[
-              { value: '', label: 'Tous les contacts', count: records.length },
-              {
-                value: 'Actif',
-                label: 'Contacts actifs',
-                count: records.filter((c) => c.status === 'Actif').length,
-              },
-              {
-                value: 'Prospect',
-                label: 'Prospects',
-                count: records.filter((c) => c.status === 'Prospect').length,
-              },
-            ]}
-            caption="Relations du workspace"
-          />
-          <FilterBar>
-            <SearchInput
-              label="Rechercher un contact"
-              value={query}
-              onChange={(v) => {
-                setQuery(v);
-                setPage(1);
-              }}
-            />
-            <Select
-              label="Statut"
+          <WorkspaceToolbar label="Filtres et vues des contacts">
+            <ObjectViews
               value={status}
-              onChange={(e) => {
-                setStatus(e.target.value);
+              onChange={(value) => {
+                setStatus(value);
                 setPage(1);
               }}
-            >
-              <option value="">Tous les statuts</option>
-              {['Actif', 'Prospect', 'Inactif'].map((v) => (
-                <option key={v}>{v}</option>
-              ))}
-            </Select>
-            <Select
-              label="Entreprise"
-              value={company}
-              onChange={(e) => {
-                setCompany(e.target.value);
-                setPage(1);
-              }}
-            >
-              <option value="">Toutes les entreprises</option>
-              {[...new Set(contacts.map((c) => c.company))].filter(Boolean).map((c) => (
-                <option key={c}>{c}</option>
-              ))}
-            </Select>
-            <SortControl
-              value={sort}
-              onChange={setSort}
               options={[
-                { value: 'name', label: 'Nom A–Z' },
-                { value: 'name-desc', label: 'Nom Z–A' },
-                { value: 'company', label: 'Entreprise' },
+                { value: '', label: 'Tous les contacts', count: records.length },
+                {
+                  value: 'Actif',
+                  label: 'Contacts actifs',
+                  count: records.filter((c) => c.status === 'Actif').length,
+                },
+                {
+                  value: 'Prospect',
+                  label: 'Prospects',
+                  count: records.filter((c) => c.status === 'Prospect').length,
+                },
               ]}
+              caption="Relations du workspace"
             />
-            <Popover label="Colonnes visibles" trigger={<Button>Colonnes</Button>}>
-              <div className="detail-stack">
-                {[
-                  ['company', 'Entreprise'],
-                  ['email', 'Email'],
-                  ['status', 'Statut'],
-                  ['activity', 'Activité'],
-                ].map(([id, label]) => (
-                  <Checkbox
-                    key={id}
-                    label={label}
-                    checked={columns.includes(id)}
-                    onChange={() =>
-                      setColumns((c) => (c.includes(id) ? c.filter((v) => v !== id) : [...c, id]))
-                    }
-                  />
+            <FilterBar>
+              <SearchInput
+                label="Rechercher un contact"
+                value={query}
+                onChange={(v) => {
+                  setQuery(v);
+                  setPage(1);
+                }}
+              />
+              <Select
+                label="Statut"
+                value={status}
+                onChange={(e) => {
+                  setStatus(e.target.value);
+                  setPage(1);
+                }}
+              >
+                <option value="">Tous les statuts</option>
+                {['Actif', 'Prospect', 'Inactif'].map((v) => (
+                  <option key={v}>{v}</option>
                 ))}
-              </div>
-            </Popover>
-          </FilterBar>
-          {selected.length > 0 && (
-            <div className="selection-bar" role="status">
-              {selected.length} sélectionné(s)
-              <Button onClick={() => setSelected([])}>Désélectionner</Button>
-            </div>
-          )}
+              </Select>
+              <Select
+                label="Entreprise"
+                value={company}
+                onChange={(e) => {
+                  setCompany(e.target.value);
+                  setPage(1);
+                }}
+              >
+                <option value="">Toutes les entreprises</option>
+                {[...new Set(contacts.map((c) => c.company))].filter(Boolean).map((c) => (
+                  <option key={c}>{c}</option>
+                ))}
+              </Select>
+              <SortControl
+                value={sort}
+                onChange={setSort}
+                options={[
+                  { value: 'name', label: 'Nom A–Z' },
+                  { value: 'name-desc', label: 'Nom Z–A' },
+                  { value: 'company', label: 'Entreprise' },
+                ]}
+              />
+              <Popover label="Colonnes visibles" trigger={<Button>Colonnes</Button>}>
+                <div className="detail-stack">
+                  {[
+                    ['company', 'Entreprise'],
+                    ['email', 'Email'],
+                    ['status', 'Statut'],
+                    ['activity', 'Activité'],
+                  ].map(([id, label]) => (
+                    <Checkbox
+                      key={id}
+                      label={label}
+                      checked={columns.includes(id)}
+                      onChange={() =>
+                        setColumns((c) => (c.includes(id) ? c.filter((v) => v !== id) : [...c, id]))
+                      }
+                    />
+                  ))}
+                </div>
+              </Popover>
+            </FilterBar>
+            <BulkActionBar selectedCount={selected.length} onClear={() => setSelected([])} />
+          </WorkspaceToolbar>
           {rows.length ? (
             <>
               <div className="contact-mobile-cards">

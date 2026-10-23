@@ -25,6 +25,19 @@ test.describe('unified EvoCRM dashboard', () => {
     await expect(page.getByRole('heading', { name: 'Bonjour Mohamed' })).toBeVisible();
   });
 
+  test('keeps the workspace within the viewport at the Phase 2 width matrix', async ({ page }) => {
+    for (const width of [1440, 1280, 1024, 768, 390, 320]) {
+      await page.setViewportSize({ width, height: width < 768 ? 844 : 900 });
+      await page.goto('/dashboard');
+
+      const overflow = await page.evaluate(
+        () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+      );
+      expect(overflow, `horizontal overflow at ${width}px`).toBe(false);
+      await expect(page.getByRole('heading', { name: 'Bonjour Mohamed' })).toBeVisible();
+    }
+  });
+
   test('has no automated WCAG violations on the populated dashboard', async ({ page }) => {
     await page.goto('/dashboard');
     const results = await new AxeBuilder({ page }).analyze();

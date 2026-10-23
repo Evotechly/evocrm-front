@@ -17,6 +17,11 @@ import { KanbanBoard, stages, probabilities } from '@/components/crm/Deals';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import type { Deal } from '@/contracts/entities';
 import { formatDzd } from '@/lib/format';
+import {
+  RecordActivityTimeline,
+  WorkspaceHeader,
+  WorkspaceToolbar,
+} from '@/components/workspace/Workspace';
 export function DealsPage({ board = false }: { board?: boolean }) {
   const { navigate } = useNavigation();
   const { deals, setDeals, contacts, notify, can } = useCrm();
@@ -62,20 +67,21 @@ export function DealsPage({ board = false }: { board?: boolean }) {
   return (
     <ScreenState permission="crm.view">
       <section className="page-stack" data-screen-id={board ? 'SCR-DEAL-002' : 'SCR-DEAL-001'}>
-        <div className="page-heading">
-          <div>
-            <h1>{board ? 'Pipeline' : 'Deals'}</h1>
-            <p className="muted">De la première rencontre à la prochaine réussite.</p>
-          </div>
-          <Button
-            data-page-primary
-            variant="primary"
-            disabled={!can('crm.edit')}
-            onClick={() => create()}
-          >
-            <Plus size={17} /> Nouveau deal
-          </Button>
-        </div>
+        <WorkspaceHeader
+          title={board ? 'Pipeline' : 'Deals'}
+          description="De la première rencontre à la prochaine réussite."
+          count={rows.length}
+          actions={
+            <Button
+              data-page-primary
+              variant="primary"
+              disabled={!can('crm.edit')}
+              onClick={() => create()}
+            >
+              <Plus size={17} /> Nouveau deal
+            </Button>
+          }
+        />
         <div className="forecast-strip">
           <div>
             <span>Pipeline ouvert</span>
@@ -118,29 +124,31 @@ export function DealsPage({ board = false }: { board?: boolean }) {
           <span className="muted">Glissez une carte ou utilisez son sélecteur d’étape.</span>
         </div>
         <Panel>
-          <FilterBar>
-            <SearchInput label="Rechercher un deal" value={query} onChange={setQuery} />
-            <Select label="Responsable" value={owner} onChange={(e) => setOwner(e.target.value)}>
-              <option value="">Tous les responsables</option>
-              {[...new Set(deals.map((d) => d.owner))].map((o) => (
-                <option key={o}>{o}</option>
-              ))}
-            </Select>
-            <Select label="Étape" value={stage} onChange={(e) => setStage(e.target.value)}>
-              <option value="">Toutes les étapes</option>
-              {stages.map((s) => (
-                <option key={s}>{s}</option>
-              ))}
-            </Select>
-            <SortControl
-              value={sort}
-              onChange={setSort}
-              options={[
-                { value: 'name', label: 'Nom A–Z' },
-                { value: 'value', label: 'Montant décroissant' },
-              ]}
-            />
-          </FilterBar>
+          <WorkspaceToolbar label="Filtres des deals">
+            <FilterBar>
+              <SearchInput label="Rechercher un deal" value={query} onChange={setQuery} />
+              <Select label="Responsable" value={owner} onChange={(e) => setOwner(e.target.value)}>
+                <option value="">Tous les responsables</option>
+                {[...new Set(deals.map((d) => d.owner))].map((o) => (
+                  <option key={o}>{o}</option>
+                ))}
+              </Select>
+              <Select label="Étape" value={stage} onChange={(e) => setStage(e.target.value)}>
+                <option value="">Toutes les étapes</option>
+                {stages.map((s) => (
+                  <option key={s}>{s}</option>
+                ))}
+              </Select>
+              <SortControl
+                value={sort}
+                onChange={setSort}
+                options={[
+                  { value: 'name', label: 'Nom A–Z' },
+                  { value: 'value', label: 'Montant décroissant' },
+                ]}
+              />
+            </FilterBar>
+          </WorkspaceToolbar>
         </Panel>
         {!rows.length ? (
           <NoResults
@@ -300,6 +308,17 @@ function DealForm({
           <option key={o}>{o}</option>
         ))}
       </Select>
+      {deal && (
+        <RecordActivityTimeline
+          items={[
+            {
+              title: 'Deal mis à jour',
+              detail: `${deal.name} · ${deal.stage}`,
+              time: deal.updatedAt,
+            },
+          ]}
+        />
+      )}
       <Button type="submit" variant="primary">
         Enregistrer le deal
       </Button>
