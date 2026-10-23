@@ -61,7 +61,7 @@ for (const slug of slugs) {
       await expect(page.getByRole('button', { name: 'Day' })).toHaveAttribute('data-active', 'true');
     }
     if (slug === 'select') {
-      await page.getByRole('combobox').click();
+      await page.getByRole('combobox', { name: 'Stage' }).click();
       await expect(page.getByRole('option', { name: 'New' })).toBeVisible();
     }
     if (slug === 'combobox') {
