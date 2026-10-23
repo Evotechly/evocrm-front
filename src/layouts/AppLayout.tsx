@@ -12,11 +12,13 @@ export function MobileNavigation({
   onClose,
   advanced,
   onToggleAdvanced,
+  onOpenCommand,
 }: {
   open: boolean;
   onClose: () => void;
   advanced: boolean;
   onToggleAdvanced: () => void;
+  onOpenCommand: () => void;
 }) {
   return (
     <Drawer
@@ -30,7 +32,11 @@ export function MobileNavigation({
           if ((e.target as HTMLElement).closest('[aria-current],nav button')) onClose();
         }}
       >
-        <Sidebar advanced={advanced} onToggleAdvanced={onToggleAdvanced} />
+        <Sidebar
+          advanced={advanced}
+          onToggleAdvanced={onToggleAdvanced}
+          onOpenCommand={onOpenCommand}
+        />
       </div>
     </Drawer>
   );
@@ -58,7 +64,11 @@ export function AppLayout() {
         Aller au contenu
       </a>
       <div className="desktop-sidebar">
-        <Sidebar advanced={advanced} onToggleAdvanced={() => setAdvanced((v) => !v)} />
+        <Sidebar
+          advanced={advanced}
+          onToggleAdvanced={() => setAdvanced((v) => !v)}
+          onOpenCommand={() => setCommandOpen(true)}
+        />
       </div>
       <main className="main-area">
         <div className="shell-top">
@@ -93,6 +103,7 @@ export function AppLayout() {
         onClose={() => setMobile(false)}
         advanced={advanced}
         onToggleAdvanced={() => setAdvanced((v) => !v)}
+        onOpenCommand={() => setCommandOpen(true)}
       />
       {commandOpen && <CommandPalette onClose={() => setCommandOpen(false)} />}
       <Toast message={notice} onClose={() => notify('')} />

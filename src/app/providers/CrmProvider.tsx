@@ -26,6 +26,18 @@ export interface ThreadRecord extends InboxThread {
   assignee: string;
   nextAction: string;
 }
+export interface SessionUser {
+  displayName: string;
+  initials: string;
+  role: string;
+  workspace: string;
+}
+export const defaultUser: SessionUser = {
+  displayName: 'Mohamed',
+  initials: 'MB',
+  role: 'Propriétaire · Démo',
+  workspace: 'Evotechly',
+};
 export interface SessionData {
   contacts: Contact[];
   deals: Deal[];
@@ -74,7 +86,7 @@ const defaultPermissions: Permission[] = [
   'quotes.view',
   'settings.manage',
 ];
-function useSession(data: SessionData, permissions: Permission[]) {
+function useSession(data: SessionData, permissions: Permission[], user: SessionUser) {
   const [contacts, setContacts] = useState(data.contacts);
   const [deals, setDeals] = useState(data.deals);
   const [quotes, setQuotes] = useState(data.quotes);
@@ -91,6 +103,7 @@ function useSession(data: SessionData, permissions: Permission[]) {
     setThreads,
     notice,
     notify: setNotice,
+    user,
     can: (p: Permission) => permissions.includes(p),
   };
 }
@@ -100,8 +113,9 @@ export function CrmProvider({
   children,
   data = initialData,
   permissions = defaultPermissions,
-}: PropsWithChildren<{ data?: SessionData; permissions?: Permission[] }>) {
-  const value = useSession(data, permissions);
+  user = defaultUser,
+}: PropsWithChildren<{ data?: SessionData; permissions?: Permission[]; user?: SessionUser }>) {
+  const value = useSession(data, permissions, user);
   return <Context.Provider value={value}>{children}</Context.Provider>;
 }
 export function useCrm() {

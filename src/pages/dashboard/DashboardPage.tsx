@@ -1,5 +1,5 @@
 import { useState } from 'react';
-import { ArrowRight, Plus, Sun } from '@phosphor-icons/react';
+import { ArrowRight, Sun } from '@phosphor-icons/react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useCrm } from '@/app/providers/CrmProvider';
 import { Button } from '@/components/ui';
@@ -11,7 +11,7 @@ export { StatCard as KPICard } from '@/components/data-display/StatCard';
 
 export function DashboardPage() {
   const { navigate } = useNavigation();
-  const { deals, quotes } = useCrm();
+  const { deals, quotes, threads, user } = useCrm();
   const state = usePreviewState();
   const [range, setRange] = useState('all');
   const [done, setDone] = useState<string[]>([]);
@@ -38,25 +38,23 @@ export function DashboardPage() {
   return (
     <ScreenState permission="crm.view">
       <section className="page-stack" data-screen-id="SCR-HOME-001">
-        <div className="page-heading">
+        <div className="dashboard-command-header">
           <div>
             <h1>
-              Bonjour Mohamed <Sun size={24} className="wave" aria-hidden="true" />
+              Bonjour {user.displayName} <Sun size={24} className="wave" aria-hidden="true" />
             </h1>
             <p className="muted">Voici ce qui mérite votre attention aujourd’hui.</p>
           </div>
-          <Select label="Période des deals" value={range} onChange={(e) => setRange(e.target.value)}>
-            <option value="all">Toutes les données</option>
-            <option value="week">7 derniers jours · démo</option>
-            <option value="today">Aujourd’hui</option>
-          </Select>
-        </div>
-        <div className="dashboard-topline">
-          <p className="dashboard-subtitle">Centre de commande · Evotechly</p>
-          <div className="dashboard-shortcuts">
-            <Button onClick={() => navigate('/crm/contacts?create=1')}>
-              <Plus size={14} /> Ajouter un contact
-            </Button>
+          <div className="dashboard-command-actions">
+            <Select
+              label="Période des deals"
+              value={range}
+              onChange={(e) => setRange(e.target.value)}
+            >
+              <option value="all">Toutes les données</option>
+              <option value="week">7 derniers jours · démo</option>
+              <option value="today">Aujourd’hui</option>
+            </Select>
             <Button onClick={() => navigate('/crm/deals/board')}>
               Ouvrir le pipeline <ArrowRight size={14} />
             </Button>
@@ -71,6 +69,7 @@ export function DashboardPage() {
           total={total}
           conversionRate={conversionRate}
           wonTotal={won.reduce((sum, deal) => sum + deal.value, 0)}
+          priorityConversations={threads.filter((thread) => thread.unread).length}
           onToggleTask={(id) =>
             setDone((items) =>
               items.includes(id) ? items.filter((value) => value !== id) : [...items, id],

@@ -1,0 +1,83 @@
+# Fluid Functionalism
+
+> Animated React components for shadcn/ui, in Radix and Base UI flavors, sharing one motion system: three spring speeds, a hover highlight that glides to the item nearest the cursor, and labels that change weight without layout shift.
+
+Every page below is Markdown with the install command, a usage example, and the full props reference. Add `.md` to any docs URL to get this version of it.
+
+## Install
+
+Install one component with the shadcn CLI. The bare URL installs the Radix flavor; put `base/` before the name for Base UI. Components without a Base UI flavor have one URL that works in both kinds of project. Dependencies, shared libs, and hooks resolve on their own.
+
+```bash
+npx shadcn@latest add https://www.fluidfunctionalism.com/r/button.json --overwrite
+npx shadcn@latest add https://www.fluidfunctionalism.com/r/base/button.json --overwrite
+```
+
+Or register the namespace once, then install by name:
+
+```bash
+npx shadcn@latest registry add @fluid
+npx shadcn@latest add @fluid/button --overwrite
+npx shadcn@latest add @fluid/base/button --overwrite
+```
+
+Or start a new Next.js app with every component installed and every system wired (Base UI flavor; use `radix.json` for Radix):
+
+```bash
+npx shadcn@latest create -n my-app -t next https://www.fluidfunctionalism.com/r/starter/default.json
+```
+
+- --overwrite replaces same-named stock shadcn files (button.tsx, dialog.tsx, ...) with this library's versions. Without it the CLI prompts per existing file and exits in a non-interactive shell before any component is written.
+- Needs a shadcn-style project: Tailwind v4, the `@/` alias, and the Inter variable font loaded for the weight animations. Load Inter with its `opsz` axis as well as `wght` (with next/font: `Inter({ subsets: ["latin"], axes: ["opsz"] })`), so labels change weight without changing width.
+- Icons render through named slots with Lucide defaults, so `lucide-react` is the only icon dependency. Wrap the app in `IconProvider` from `@/lib/icon-context` and pass `icons={{ "chevron-right": MyIcon }}` to swap any slot.
+- Registry index: https://www.fluidfunctionalism.com/r/registry.json
+- Changelog: every change, month by month, with an install URL per entry and migration steps for breaking changes: https://www.fluidfunctionalism.com/changelog.md
+- For a whole project, the agent skill carries the craft behind every component: `npx skills add mickadesign/fluid-functionalism` (https://www.fluidfunctionalism.com/docs/skill.md)
+
+## System
+
+- [Fluid Hover](https://www.fluidfunctionalism.com/docs/fluid-hover.md): Hover that never blinks and always follows your cursor to the nearest item.
+- [Motion](https://www.fluidfunctionalism.com/docs/motion.md): Spring tokens, faster exits, fluid hover, and reflow-free weight animation: the motion rules shared by every component.
+- [Reveal](https://www.fluidfunctionalism.com/docs/reveal.md): 1 class reveals a whole page, on load and on scroll.
+- [Scrollbars](https://www.fluidfunctionalism.com/docs/scrollbars.md): A scrollbar that stays out of the way but never disappears, over shadcn's scroll-fade baseline: restyled to the shape system, native scroll on touch.
+- [Sizes](https://www.fluidfunctionalism.com/docs/sizes.md): A two-step size ladder (a 36px default and a 28px compact) shared by buttons, inputs, selects, tabs, and rows.
+- [Skill](https://www.fluidfunctionalism.com/docs/skill.md): Gives your coding agent the components and the craft behind them, then puts both to work on your project.
+- [Surfaces](https://www.fluidfunctionalism.com/docs/surfaces.md): Eight-level surface and shadow ladder for elevation in light and dark mode.
+- [Typography](https://www.fluidfunctionalism.com/docs/typography.md): Bold rules that create consistency across the whole component library.
+
+## Components
+
+- [Accordion](https://www.fluidfunctionalism.com/docs/accordion.md): Collapsible sections with animated expand/collapse and fluid hover in grouped mode.
+- [AskUserQuestions](https://www.fluidfunctionalism.com/docs/ask-user-questions.md): Stepped question flow with single/multi-select, optional 'other' input, and skip.
+- [Badge](https://www.fluidfunctionalism.com/docs/badge.md): Compact label with solid and dot variants, Tailwind color palette, and the two-step size ladder.
+- [Banner](https://www.fluidfunctionalism.com/docs/banner.md): Status message in 5 statuses and 2 contrasts: a status icon, a title, up to 3 actions, and a dismiss that collapses its height. Inline, or fixed full-bleed at the top of the page.
+- [Button](https://www.fluidfunctionalism.com/docs/button.md): Versatile button with variants, sizes, loading state, and icon support.
+- [Card](https://www.fluidfunctionalism.com/docs/card.md): shadcn's compositional card, dressed in Fluid Functionalism: stacked, inline, and grid layouts, borderless dividers, and 2-D fluid hover.
+- [CarouselDots](https://www.fluidfunctionalism.com/docs/carousel-dots.md): Dots for a carousel, static or on autoplay: fluid-hover click areas, and a current pill that fills over each slide.
+- [ChatMessage](https://www.fluidfunctionalism.com/docs/chat-message.md): Chat transcript bubble with baked-in motion, user/assistant alignment, and file attachments.
+- [CheckboxGroup](https://www.fluidfunctionalism.com/docs/checkbox-group.md): Checkbox group with merged backgrounds for contiguous selections.
+- [ColorPicker](https://www.fluidfunctionalism.com/docs/color-picker.md): Color picker with HEX/RGB/HSL/OKLCH formats, alpha, swatches, and popover trigger.
+- [Combobox](https://www.fluidfunctionalism.com/docs/combobox.md): Type-to-filter field with keyboard highlight, fluid hover, and a spring-animated list: items are data, rows are yours.
+- [CommandMenu](https://www.fluidfunctionalism.com/docs/command-menu.md): Type to filter a list of actions, arrow through them, press Enter to run: rows with shortcut caps, groups, suggestions, and a dialog shell on a global shortcut.
+- [Dialog](https://www.fluidfunctionalism.com/docs/dialog.md): Modal dialog with smooth enter/exit animations and overlay: three widths, the largest a canvas for a sidebar.
+- [Dropdown](https://www.fluidfunctionalism.com/docs/dropdown.md): Menu-style dropdown with fluid hover, animated backgrounds, and an optional search field inside the popup.
+- [InputCopy](https://www.fluidfunctionalism.com/docs/input-copy.md): Read-only input with copy-to-clipboard button and animated feedback.
+- [InputGroup](https://www.fluidfunctionalism.com/docs/input-group.md): Input field group with fluid hover and validation.
+- [InputMessage](https://www.fluidfunctionalism.com/docs/input-message.md): Chat-style message composer with auto-resizing textarea and configurable action slots.
+- [RadioGroup](https://www.fluidfunctionalism.com/docs/radio-group.md): Radio button group with fluid hover and animated selection.
+- [Select](https://www.fluidfunctionalism.com/docs/select.md): Animated select menu with bordered/borderless variants and optional icons.
+- [Sidebar](https://www.fluidfunctionalism.com/docs/sidebar.md): Refined, composable sidebar with offcanvas collapse, a drag-resize rail, and a mobile drawer.
+- [Slider](https://www.fluidfunctionalism.com/docs/slider.md): One slider, two ladder steps: the default pip/scrubber design and the compact design with range mode and value display.
+- [Switch](https://www.fluidfunctionalism.com/docs/switch.md): Toggle switch with animated thumb and label.
+- [Table](https://www.fluidfunctionalism.com/docs/table.md): Data table with row hover effects and semantic markup.
+- [Tabs](https://www.fluidfunctionalism.com/docs/tabs.md): Segmented control with sliding indicator and fluid hover.
+- [TabsSubtle](https://www.fluidfunctionalism.com/docs/tabs-subtle.md): Tab navigation with smooth pill animations.
+- [ThinkingIndicator](https://www.fluidfunctionalism.com/docs/thinking-indicator.md): Animated status indicator with morphing SVG and cycling text.
+- [ThinkingSteps](https://www.fluidfunctionalism.com/docs/thinking-steps.md): Chain-of-thought display with sequential animation and collapsible steps.
+- [Tooltip](https://www.fluidfunctionalism.com/docs/tooltip.md): Floating tooltip with spring-based animations and configurable placement.
+
+## Optional
+
+- [Every page in one file](https://www.fluidfunctionalism.com/llms-full.txt): this index followed by every page above
+- [Compare with shadcn/ui](https://www.fluidfunctionalism.com/compare): each component next to the shadcn original
+- [Source on GitHub](https://github.com/mickadesign/fluid-functionalism)

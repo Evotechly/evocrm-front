@@ -12,7 +12,8 @@ test.describe('unified EvoCRM dashboard', () => {
     await expect(page).toHaveURL(/\/inbox$/);
 
     await page.goto('/dashboard');
-    await page.getByRole('button', { name: 'Créer un deal' }).click();
+    await page.getByRole('button', { name: /Créer/ }).click();
+    await page.getByRole('button', { name: 'Nouveau deal' }).click();
     await expect(page).toHaveURL(/\/crm\/deals\?create=1$/);
   });
 
@@ -20,7 +21,9 @@ test.describe('unified EvoCRM dashboard', () => {
     await page.setViewportSize({ width: 390, height: 844 });
     await page.goto('/dashboard');
 
-    const overflow = await page.evaluate(() => document.documentElement.scrollWidth > document.documentElement.clientWidth);
+    const overflow = await page.evaluate(
+      () => document.documentElement.scrollWidth > document.documentElement.clientWidth,
+    );
     expect(overflow).toBe(false);
     await expect(page.getByRole('heading', { name: 'Bonjour Mohamed' })).toBeVisible();
   });
