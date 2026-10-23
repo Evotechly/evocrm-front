@@ -1,14 +1,14 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ObjectViews } from '@/components/navigation/ObjectViews';
+import { ObjectViews } from '@evotechly/ui';
 import { Plus } from '@phosphor-icons/react';
 import { useCrm, type QuoteRecord, type LineItem } from '@/app/providers/CrmProvider';
-import { Button, Panel } from '@/components/ui';
-import { Drawer, Dialog } from '@/components/ui/Overlays';
-import { ScreenState, usePreviewState, NoResults } from '@/components/ui/ScreenState';
-import { StatusBadge } from '@/components/ui/StatusBadge';
-import { Input, Select, DatePicker } from '@/components/forms/Fields';
-import { FilterBar, SearchInput } from '@/components/data-display/Controls';
+import { Button, Panel } from '@evotechly/ui';
+import { Drawer, Dialog } from '@evotechly/ui';
+import { ScreenState, usePreviewState, NoResults } from '@/app/ScreenState';
+import { StatusBadge } from '@evotechly/ui';
+import { Input, Select, DatePicker } from '@evotechly/ui';
+import { FilterBar, SearchInput } from '@evotechly/ui';
 import { QuoteLineItem, QuoteSummary } from '@/components/crm/Quotes';
 import { formatDzd, formatDateDisplay } from '@/lib/format';
 import { quoteTotal } from '@/lib/quotes';
@@ -17,7 +17,7 @@ import {
   RecordActivityTimeline,
   WorkspaceHeader,
   WorkspaceToolbar,
-} from '@/components/workspace/Workspace';
+} from '@evotechly/ui';
 export function QuotesPage() {
   const { quotes, setQuotes, contacts, deals, notify, can } = useCrm();
   const state = usePreviewState();

@@ -1,6 +1,6 @@
 import type { LineItem } from '@/app/providers/CrmProvider';
-import { Input } from '@/components/forms/Fields';
-import { Button } from '@/components/ui';
+import { Input } from '@evotechly/ui';
+import { Button } from '@evotechly/ui';
 import { formatDzd } from '@/lib/format';
 import { lineTotal, quoteTotal } from '@/lib/quotes';
 export function QuoteLineItem({

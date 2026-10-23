@@ -2,12 +2,12 @@ import { useState } from 'react';
 import { ArrowRight, Plus, Sun } from '@phosphor-icons/react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useCrm } from '@/app/providers/CrmProvider';
-import { Button } from '@/components/ui';
-import { Select } from '@/components/forms/Fields';
-import { ScreenState, usePreviewState } from '@/components/ui/ScreenState';
+import { Button } from '@evotechly/ui';
+import { Select } from '@evotechly/ui';
+import { ScreenState, usePreviewState } from '@/app/ScreenState';
 import { UnifiedDashboardLayout } from './UnifiedDashboardLayout';
 
-export { StatCard as KPICard } from '@/components/data-display/StatCard';
+export { KpiCard as KPICard } from '@evotechly/ui';
 
 export function DashboardPage() {
   const { navigate } = useNavigation();
@@ -54,10 +54,10 @@ export function DashboardPage() {
         <div className="dashboard-topline">
           <p className="dashboard-subtitle">Centre de commande · Evotechly</p>
           <div className="dashboard-shortcuts">
-            <Button onClick={() => navigate('/crm/contacts?create=1')}>
+            <Button variant="secondary" onClick={() => navigate('/crm/contacts?create=1')}>
               <Plus size={14} /> Ajouter un contact
             </Button>
-            <Button onClick={() => navigate('/crm/deals/board')}>
+            <Button variant="secondary" onClick={() => navigate('/crm/deals/board')}>
               Ouvrir le pipeline <ArrowRight size={14} />
             </Button>
           </div>

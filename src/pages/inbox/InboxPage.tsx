@@ -1,19 +1,19 @@
 import { useState } from 'react';
 import { useCrm } from '@/app/providers/CrmProvider';
 import { useNavigation } from '@/app/providers/NavigationProvider';
-import { Button } from '@/components/ui';
-import { ScreenState, usePreviewState, NoResults } from '@/components/ui/ScreenState';
-import { Select, Input } from '@/components/forms/Fields';
-import { SearchInput, ViewSwitcher } from '@/components/data-display/Controls';
+import { Button } from '@evotechly/ui';
+import { ScreenState, usePreviewState, NoResults } from '@/app/ScreenState';
+import { Select, Input } from '@evotechly/ui';
+import { SearchInput, ViewSwitcher } from '@evotechly/ui';
 import { ConversationList, MessageThread, MessageComposer } from '@/components/crm/Inbox';
 import { ContactDetailPanel } from '@/components/crm/Contacts';
-import { Popover } from '@/components/ui/Overlays';
+import { Popover } from '@evotechly/ui';
 import { formatDzd } from '@/lib/format';
 import {
   RecordActivityTimeline,
   WorkspaceHeader,
   WorkspaceToolbar,
-} from '@/components/workspace/Workspace';
+} from '@evotechly/ui';
 export function InboxPage() {
   const { threads, setThreads, contacts, deals, notify, can } = useCrm();
   const { navigate } = useNavigation();

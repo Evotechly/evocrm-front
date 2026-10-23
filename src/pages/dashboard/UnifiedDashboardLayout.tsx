@@ -8,8 +8,8 @@ import {
   TrendUp,
 } from '@phosphor-icons/react';
 import type { Deal, Quote } from '@/contracts/entities';
-import { Button, Panel } from '@/components/ui';
-import { StatusBadge } from '@/components/ui/StatusBadge';
+import { Button, Panel } from '@evotechly/ui';
+import { StatusBadge } from '@evotechly/ui';
 import { formatDzd } from '@/lib/format';
 
 type Task = { id: string; title: string; company: string };
@@ -46,7 +46,7 @@ export function UnifiedDashboardLayout({
     <div className="unified-dashboard-layout" data-layout="unified-evocrm">
       <div className="workspace-hero">
         <div>
-          <div className="eyebrow">EVOCRM / DAILY COMMAND CENTER</div>
+          <div className="eyebrow">EvoCRM · Centre de commande</div>
           <h2>Une journée commerciale qui avance.</h2>
           <p className="muted">
             Les prochaines actions, les conversations et le pipeline réunis dans un seul espace.

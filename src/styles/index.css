@@ -141,10 +141,10 @@ textarea {
   min-height: 100dvh;
 }
 .desktop-sidebar {
-  flex: 0 0 232px;
+  flex: 0 0 212px;
 }
 .sidebar {
-  width: 232px;
+  width: 212px;
   min-height: 100dvh;
   height: 100dvh;
   position: sticky;
@@ -681,8 +681,9 @@ textarea {
   font-weight: 500;
 }
 .segmented button.selected {
-  background: var(--color-voltage-soft);
-  color: var(--color-indigo);
+  background: var(--color-teal-soft);
+  color: var(--color-teal);
+  font-weight: 600;
 }
 .object-views {
   display: flex;
@@ -901,9 +902,10 @@ tbody tr:hover td {
   color: var(--color-avatar-blue);
   background: var(--color-avatar-blue-bg);
 }
-.avatar-ink {
-  color: var(--color-on-action);
-  background: var(--color-action);
+.avatar-ink,
+.avatar-orange {
+  color: var(--color-ink);
+  background: var(--color-paper);
 }
 .badge {
   display: inline-flex;
@@ -2900,4 +2902,67 @@ input[type='number'] {
   display: inline;
   font-size: inherit;
   color: inherit;
+}
+
+/* Aurora 0.3.0 — 212px dark rail + light workspace */
+.ev-app-shell .brand-lockup {
+  padding: 0 4px 16px;
+}
+.ev-app-shell .brand-lockup strong {
+  color: var(--color-rail-fg);
+}
+.ev-app-shell .brand-lockup small {
+  color: var(--color-rail-muted);
+}
+.ev-app-shell .mode-toggle {
+  width: 100%;
+  border-color: color-mix(in srgb, #ffffff 14%, transparent);
+  color: var(--color-rail-fg);
+  background: color-mix(in srgb, #ffffff 6%, transparent);
+}
+.ev-app-shell .mode-toggle small {
+  color: var(--color-rail-muted);
+}
+.ev-app-shell .theme-button {
+  color: var(--color-rail-fg) !important;
+  justify-content: flex-start;
+  width: 100%;
+}
+.ev-avatar,
+.avatar,
+.avatar-ink,
+.avatar-orange,
+.owner-avatar,
+.ev-owner {
+  color: var(--color-ink) !important;
+  background: var(--color-paper) !important;
+}
+.ev-segmented button.selected,
+.ev-object-views button.selected,
+.ev-tabs-trigger[data-state='active'],
+.segmented button.selected,
+.object-views button[aria-pressed='true'] {
+  background: var(--color-teal-soft);
+  color: var(--color-teal);
+  border-color: var(--color-teal);
+  font-weight: 600;
+}
+.menu-list {
+  display: grid;
+  gap: 8px;
+  min-width: 220px;
+}
+.ev-team-options {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+.ev-team-options small {
+  display: block;
+}
+.form-stack {
+  display: grid;
+  gap: 14px;
 }

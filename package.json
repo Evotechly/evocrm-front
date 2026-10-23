@@ -15,8 +15,8 @@
     "test:e2e": "playwright test"
   },
   "dependencies": {
-    "@evotechly/brand": "^2.0.0",
-    "@evotechly/ui": "0.1.0",
+    "@evotechly/brand": "workspace:*",
+    "@evotechly/ui": "workspace:*",
     "@fontsource/geist-mono": "5.2.6",
     "@fontsource/geist-sans": "5.2.5",
     "@phosphor-icons/react": "^2.1.7",

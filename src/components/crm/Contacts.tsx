@@ -1,12 +1,12 @@
 import { formatDateDisplay } from '@/lib/format';
 import type { Contact } from '@/contracts/entities';
-import { Avatar, Button } from '@/components/ui';
-import { StatusBadge } from '@/components/ui/StatusBadge';
-import { RecordActivityTimeline } from '@/components/workspace/Workspace';
+import { Avatar, Button } from '@evotechly/ui';
+import { StatusBadge } from '@evotechly/ui';
+import { RecordActivityTimeline } from '@evotechly/ui';
 export function ContactCard({ contact, onOpen }: { contact: Contact; onOpen: () => void }) {
   return (
     <div className="person-cell">
-      <Avatar initials={contact.initials} tone={contact.color} />
+      <Avatar initials={contact.initials} />
       <span>
         <button className="record-link" onClick={onOpen}>
           {contact.name}
@@ -20,7 +20,7 @@ export function ContactDetailPanel({ contact, onEdit }: { contact: Contact; onEd
   return (
     <div className="detail-stack">
       <div className="record-hero">
-        <Avatar initials={contact.initials} tone={contact.color} />
+        <Avatar initials={contact.initials} />
         <h3>{contact.name}</h3>
         <StatusBadge status={contact.status} />
       </div>

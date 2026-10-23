@@ -1,6 +1,6 @@
 import { useState } from 'react';
-import { Avatar, Button } from '@/components/ui';
-import { NoResults } from '@/components/ui/ScreenState';
+import { Avatar, Button } from '@evotechly/ui';
+import { NoResults } from '@/app/ScreenState';
 import type { ThreadRecord, Message } from '@/app/providers/CrmProvider';
 export function ConversationList({
   threads,
@@ -26,7 +26,6 @@ export function ConversationList({
                 .split(' ')
                 .map((w) => w[0])
                 .join('')}
-              tone="teal"
             />
             <span>
               <strong>{t.contact}</strong>

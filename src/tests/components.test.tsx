@@ -4,7 +4,7 @@ import userEvent from '@testing-library/user-event';
 import { MemoryRouter } from 'react-router-dom';
 import { CrmProvider } from '@/app/providers/CrmProvider';
 import { ContactsPage } from '@/pages/contacts/ContactsPage';
-import { Button } from '@/components/ui/Button';
+import { Button } from '@evotechly/ui';
 import { QuoteLineItem, QuoteSummary } from '@/components/crm/Quotes';
 import { useState } from 'react';
 afterEach(cleanup);
@@ -62,7 +62,7 @@ describe('Aurora interaction contracts', () => {
 
 describe('Reusable DataTable', () => {
   it('sorts, paginates, filters and selects real records', async () => {
-    const { DataTable } = await import('@/components/data-display/DataTable');
+    const { DataTable } = await import('@evotechly/ui');
     const data = [
       { id: 'b', name: 'Beta' },
       { id: 'a', name: 'Alpha' },

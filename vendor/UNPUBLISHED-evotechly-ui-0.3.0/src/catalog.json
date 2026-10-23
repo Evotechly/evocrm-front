@@ -1,0 +1,19 @@
+{
+  "package": "@evotechly/ui",
+  "version": "0.3.0",
+  "note": "Unpublished snapshot. Official 113-component Brandbook catalog was not cloneable from this workspace. This file lists the shipped surface plus reserved 0.3.0 names.",
+  "components": [
+    "Alert", "Avatar", "AvatarGroup", "Badge", "Breadcrumbs", "Button", "ButtonGroup",
+    "Calendar", "CalendarDatePicker", "Card", "Checkbox", "CheckboxGroup", "Combobox",
+    "CommandMenu", "DataTable", "DatePicker", "Dialog", "Drawer", "DropdownMenu",
+    "EmptyState", "IconButton", "Input", "KanbanBoard", "KanbanCard", "KpiCard",
+    "Label", "MenuSelect", "NativeSelect", "NoResults", "NotificationCenter",
+    "ObjectViews", "Pagination", "Panel", "Popover", "ProfileMenu", "Progress",
+    "RadioGroup", "RecordActivityTimeline", "RecordTable", "SearchInput", "Select",
+    "Separator", "Sidebar", "Skeleton", "SortControl", "Spinner", "StageRing",
+    "StatusBadge", "Switch", "Table", "TablePagination", "Tabs", "TeamSwitcher",
+    "Textarea", "ToastViewport", "Tooltip", "Topbar", "ViewSwitcher", "WorkspaceHeader",
+    "WorkspaceToolbar", "BulkActionBar", "ActivityTimeline", "AuthCard", "BarChart",
+    "FilterBar"
+  ]
+}

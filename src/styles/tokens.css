@@ -1,77 +1,11 @@
 /**
- * App aliases on Design System 2.0 tokens.
- * Source of truth: @evotechly/brand@2.0.0 (imported via @evotechly/ui/styles.css).
- * No retired hex. Activate with <html data-product="crm" data-theme="light">.
+ * App-level aliases on top of @evotechly/ui CRM tokens.
+ * Source of truth: vendor/UNPUBLISHED-evotechly-ui-0.3.0/src/styles/tokens.css
+ * Activate with <html data-product="crm" data-theme="light|dark">.
+ * Do not override teal selection or avatar ink — those must stay visible in dark mode.
  */
 :root,
-[data-product],
-[data-theme] {
-  /* CRM paper #EAEAEA / ink #0D1B24 / orange #D9500F via brand tokens. */
-  --color-canvas-soft: var(--brand-paper);
-
-  --color-orange: var(--color-crm-600);
-  --color-orange-text: var(--brand-text);
-  --color-orange-soft: var(--brand-selection);
-  --color-teal: var(--color-suite-600);
-  --color-teal-soft: var(--color-suite-50);
-  --color-indigo: var(--textMuted);
-  --color-indigo-soft: var(--surfaceSunken);
-  --color-purple: var(--color-suite-accent-700);
-  --color-purple-soft: var(--color-suite-accent-50);
-
-  --color-avatar-orange: var(--brand-text);
-  --color-avatar-orange-bg: var(--brand-selection);
-  --color-avatar-indigo: var(--textMuted);
-  --color-avatar-indigo-bg: var(--surfaceSunken);
-  --color-avatar-teal: var(--color-suite-700);
-  --color-avatar-teal-bg: var(--color-suite-50);
-  --color-avatar-purple: var(--color-suite-accent-700);
-  --color-avatar-purple-bg: var(--color-suite-accent-50);
-  --color-avatar-blue: var(--color-info-700);
-  --color-avatar-blue-bg: var(--infoBg);
-
-  --color-demo: var(--color-info-700);
-  --color-demo-soft: var(--infoBg);
-  --color-demo-source: var(--info);
-
-  --color-chart: var(--brand-action);
-  --color-chart-track: var(--surfaceSunken);
-  --color-chart-second: var(--brand-ink);
-  --color-chart-third: var(--textMuted);
-
-  --text-title: var(--text-2xl);
-  --weight-bold: 600;
-  --motion-normal: var(--motion-base);
-}
-
-[data-theme='dark'] {
-  /* Product fills stay #D9500F; text/soft roles must meet AA on dark surfaces. */
-  --color-brand: var(--color-crm-300);
-  --color-brand-deep: var(--color-crm-200);
-  --color-brand-soft: var(--color-crm-950);
-  --color-voltage-soft: var(--color-crm-950);
-  --color-canvas-soft: var(--surfaceSunken);
-  --color-indigo: var(--textMuted);
-  --color-indigo-soft: var(--surfaceSunken);
-  --color-teal: var(--text);
-  --color-teal-soft: var(--surfaceSunken);
-  --color-purple: var(--textMuted);
-  --color-purple-soft: var(--surfaceSunken);
-  --color-orange-text: var(--color-crm-300);
-  --color-orange-soft: var(--color-crm-950);
-  --color-demo: var(--color-info-300);
-  --color-demo-soft: var(--infoBg);
-  --color-demo-source: var(--info);
-  --color-avatar-orange: var(--color-crm-200);
-  --color-avatar-orange-bg: var(--color-crm-950);
-  --color-avatar-indigo: var(--textMuted);
-  --color-avatar-indigo-bg: var(--surfaceSunken);
-  --color-avatar-teal: var(--text);
-  --color-avatar-teal-bg: var(--surfaceSunken);
-  --color-avatar-purple: var(--color-suite-accent-200);
-  --color-avatar-purple-bg: var(--surfaceSunken);
-  --color-avatar-blue: var(--color-info-200);
-  --color-avatar-blue-bg: var(--infoBg);
-  --color-chart-second: var(--text);
-  --color-chart-third: var(--textMuted);
+[data-product='crm'] {
+  --color-avatar-ink: var(--color-ink);
+  --color-avatar-ink-bg: var(--color-paper);
 }

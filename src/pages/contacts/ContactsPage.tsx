@@ -1,23 +1,23 @@
 import { formatDateDisplay } from '@/lib/format';
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ObjectViews } from '@/components/navigation/ObjectViews';
+import { ObjectViews } from '@evotechly/ui';
 import { Plus } from '@phosphor-icons/react';
-import { Button, Panel } from '@/components/ui';
-import { Drawer, Popover } from '@/components/ui/Overlays';
-import { ScreenState, NoResults, usePreviewState } from '@/components/ui/ScreenState';
-import { Input, Select, Checkbox } from '@/components/forms/Fields';
+import { Button, Panel } from '@evotechly/ui';
+import { Drawer, Popover } from '@evotechly/ui';
+import { ScreenState, NoResults, usePreviewState } from '@/app/ScreenState';
+import { Input, Select, Checkbox } from '@evotechly/ui';
 import {
   FilterBar,
   SearchInput,
-  Pagination,
+  TablePagination as Pagination,
   SortControl,
-} from '@/components/data-display/Controls';
+} from '@evotechly/ui';
 import { ContactCard, ContactDetailPanel } from '@/components/crm/Contacts';
-import { StatusBadge } from '@/components/ui/StatusBadge';
+import { StatusBadge } from '@evotechly/ui';
 import { useCrm } from '@/app/providers/CrmProvider';
 import type { Contact, ContactStatus } from '@/contracts/entities';
-import { BulkActionBar, WorkspaceHeader, WorkspaceToolbar } from '@/components/workspace/Workspace';
+import { BulkActionBar, WorkspaceHeader, WorkspaceToolbar } from '@evotechly/ui';
 export function ContactsPage() {
   const { contacts, setContacts, notify, can } = useCrm();
   const state = usePreviewState();

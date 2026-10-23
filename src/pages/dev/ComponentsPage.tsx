@@ -1,27 +1,37 @@
 import { formatDzd } from '@/lib/format';
 import { useState } from 'react';
-import { Button, Avatar, Panel, EmptyState, StatCard } from '@/components/ui';
-import { toast } from '@evotechly/ui';
-import { Dialog, Drawer, Popover, Tooltip } from '@/components/ui/Overlays';
-import { Input, Select, Checkbox, DatePicker } from '@/components/forms/Fields';
 import {
-  SearchInput,
-  FilterBar,
-  Pagination,
-  SortControl,
-  ViewSwitcher,
   ActivityTimeline,
-} from '@/components/data-display/Controls';
-import { DataTable } from '@/components/data-display/DataTable';
-import { StatusBadge } from '@/components/ui/StatusBadge';
+  Avatar,
+  Button,
+  Checkbox,
+  CommandMenu,
+  DataTable,
+  DatePicker,
+  Dialog,
+  Drawer,
+  EmptyState,
+  FilterBar,
+  Input,
+  KpiCard,
+  Panel,
+  Popover,
+  SearchInput,
+  Select,
+  SortControl,
+  StatusBadge,
+  TablePagination,
+  TeamSwitcher,
+  Tooltip,
+  ViewSwitcher,
+  toast,
+} from '@evotechly/ui';
 import { ContactCard, ContactDetailPanel } from '@/components/crm/Contacts';
 import { KanbanBoard } from '@/components/crm/Deals';
 import { ConversationList, MessageThread, MessageComposer } from '@/components/crm/Inbox';
 import { QuoteLineItem, QuoteSummary } from '@/components/crm/Quotes';
-import { CommandPalette } from '@/components/navigation/CommandPalette';
-import { WorkspaceSwitcher } from '@/components/navigation/Sidebar';
-import { GlobalCreateMenu, UserMenu } from '@/components/navigation/Header';
 import { useCrm, type LineItem } from '@/app/providers/CrmProvider';
+
 export function ComponentsPage() {
   const { contacts, deals, threads } = useCrm();
   const [overlay, setOverlay] = useState(''),
@@ -42,17 +52,15 @@ export function ComponentsPage() {
     <section className="page-stack">
       <div>
         <h1>Composants interactifs</h1>
-        <p className="muted">
-          Contrats et variantes : docs/design-system/components.md. Route exclue en production.
-        </p>
+        <p className="ev-muted">Galerie EvoUI 0.3.0 — hors production.</p>
       </div>
       <div className="gallery-grid">
         <Panel title="Actions et feedback">
           <div className="gallery-example">
             <div className="inline">
-              {(['primary', 'secondary', 'ghost', 'soft', 'danger'] as const).map((v) => (
-                <Button key={v} variant={v} onClick={() => toast.information(`Variante ${v} activée`)}>
-                  {v}
+              {(['primary', 'secondary', 'ghost', 'soft', 'danger'] as const).map((variant) => (
+                <Button key={variant} variant={variant} onClick={() => toast.information(`Variante ${variant} activée`)}>
+                  {variant}
                 </Button>
               ))}
             </div>
@@ -64,12 +72,10 @@ export function ComponentsPage() {
               </Tooltip>
             </div>
             <div className="inline">
-              {['Actif', 'Prospect', 'Inactif', 'Envoyé', 'Accepté', 'Perdu'].map((s) => (
-                <StatusBadge key={s} status={s} />
+              {['Actif', 'Prospect', 'Inactif', 'Envoyé', 'Accepté', 'Perdu'].map((status) => (
+                <StatusBadge key={status} status={status} />
               ))}
-              {['orange', 'indigo', 'teal', 'purple', 'blue', 'ink'].map((t) => (
-                <Avatar key={t} initials="EV" tone={t} />
-              ))}
+              <Avatar initials="EV" />
             </div>
           </div>
         </Panel>
@@ -82,20 +88,14 @@ export function ComponentsPage() {
               <option>Option A</option>
               <option>Option B</option>
             </Select>
-            <Checkbox
-              label="Recevoir les mises à jour"
-              checked={checked}
-              onChange={() => setChecked((v) => !v)}
-            />
+            <Checkbox label="Recevoir les mises à jour" checked={checked} onChange={() => setChecked((value) => !value)} />
             <DatePicker label="Échéance" />
           </div>
         </Panel>
         <Panel title="Navigation et overlays">
           <div className="gallery-example">
-            <WorkspaceSwitcher />
+            <TeamSwitcher name="Clinique El Djazair" detail="Espace principal" />
             <div className="inline">
-              <GlobalCreateMenu />
-              <UserMenu />
               <Button onClick={() => setOverlay('command')}>Commandes</Button>
               <Button onClick={() => setOverlay('dialog')}>Dialogue</Button>
               <Button onClick={() => setOverlay('drawer')}>Tiroir</Button>
@@ -129,49 +129,34 @@ export function ComponentsPage() {
             <DataTable
               data={contacts}
               caption="Contacts de démonstration"
-              rowKey={(c) => c.id}
+              rowKey={(contact) => contact.id}
               query={query}
-              matchesQuery={(c, q) => c.name.toLowerCase().includes(q.toLowerCase())}
+              matchesQuery={(contact, value) => contact.name.toLowerCase().includes(value.toLowerCase())}
               pageSize={2}
               selectable
               columns={[
-                { key: 'name', label: 'Nom', render: (c) => c.name, sortValue: (c) => c.name },
+                { key: 'name', label: 'Nom', render: (contact) => contact.name, sortValue: (contact) => contact.name },
                 {
                   key: 'company',
                   label: 'Entreprise',
-                  render: (c) => c.company,
-                  sortValue: (c) => c.company,
+                  render: (contact) => contact.company,
+                  sortValue: (contact) => contact.company,
                 },
               ]}
             />
-            <Pagination page={page} total={contacts.length} pageSize={2} onChange={setPage} />
-            <ActivityTimeline
-              items={[
-                { title: 'Contact créé', detail: 'Exemple de timeline', time: 'À l’instant' },
-              ]}
-            />
+            <TablePagination page={page} total={contacts.length} pageSize={2} onChange={setPage} />
+            <ActivityTimeline items={[{ title: 'Contact créé', detail: 'Exemple de timeline', time: 'À l’instant' }]} />
           </div>
         </Panel>
         <Panel title="Relations">
           <div className="gallery-example">
             <ContactCard contact={contacts[0]} onOpen={() => setOverlay('contact')} />
-            <StatCard
-              label="Pipeline"
-              value={formatDzd(820000)}
-              monetary
-              change="Fixture de démonstration"
-              icon={<span>↗</span>}
-            />
+            <KpiCard label="Pipeline" value={formatDzd(820000)} monetary hint="Fixture de démonstration" />
           </div>
         </Panel>
         <Panel title="Devis">
           <div className="gallery-example">
-            <QuoteLineItem
-              item={item}
-              index={0}
-              onChange={setItem}
-              onRemove={() => setItem({ ...item, quantity: 0 })}
-            />
+            <QuoteLineItem item={item} index={0} onChange={setItem} onRemove={() => setItem({ ...item, quantity: 0 })} />
             <QuoteSummary items={[item]} />
           </div>
         </Panel>
@@ -181,9 +166,7 @@ export function ComponentsPage() {
           <KanbanBoard
             deals={stageDeals}
             onOpen={() => setOverlay('drawer')}
-            onMove={(id, stage) =>
-              setDeals((ds) => ds.map((d) => (d.id === id ? { ...d, stage } : d)))
-            }
+            onMove={(id, stage) => setDeals((rows) => rows.map((deal) => (deal.id === id ? { ...deal, stage } : deal)))}
             onCreate={() => setOverlay('drawer')}
           />
         </div>
@@ -198,10 +181,7 @@ export function ComponentsPage() {
           <MessageThread messages={messages} contact={threads[0].contact} />
           <MessageComposer
             onSend={(body) =>
-              setMessages((ms) => [
-                ...ms,
-                { id: crypto.randomUUID(), body, direction: 'sent', time: 'À l’instant' },
-              ])
+              setMessages((rows) => [...rows, { id: crypto.randomUUID(), body, direction: 'sent', time: 'À l’instant' }])
             }
           />
         </div>
@@ -211,11 +191,7 @@ export function ComponentsPage() {
         detail="Exemple de l’état vide"
         action={<Button onClick={() => toast.information('Action de création')}>Créer</Button>}
       />
-      <Dialog
-        open={overlay === 'dialog'}
-        onClose={() => setOverlay('')}
-        title="Confirmer une action"
-      >
+      <Dialog open={overlay === 'dialog'} onClose={() => setOverlay('')} title="Confirmer une action">
         <Input label="Note" />
         <Button
           onClick={() => {
@@ -236,7 +212,12 @@ export function ComponentsPage() {
           onEdit={() => toast.information('Édition disponible dans Contacts')}
         />
       </Drawer>
-      {overlay === 'command' && <CommandPalette onClose={() => setOverlay('')} />}
+      <CommandMenu
+        open={overlay === 'command'}
+        onOpenChange={(open) => !open && setOverlay('')}
+        title="Palette de commandes"
+        items={[{ id: 'home', label: 'Accueil', onSelect: () => setOverlay('') }]}
+      />
     </section>
   );
 }

@@ -3,25 +3,25 @@ import { useSearchParams } from 'react-router-dom';
 import { Plus } from '@phosphor-icons/react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useCrm } from '@/app/providers/CrmProvider';
-import { Button, Panel } from '@/components/ui';
-import { Drawer } from '@/components/ui/Overlays';
-import { ScreenState, NoResults, usePreviewState } from '@/components/ui/ScreenState';
-import { Input, Select } from '@/components/forms/Fields';
+import { Button, Panel } from '@evotechly/ui';
+import { Drawer } from '@evotechly/ui';
+import { ScreenState, NoResults, usePreviewState } from '@/app/ScreenState';
+import { Input, Select } from '@evotechly/ui';
 import {
   SearchInput,
   FilterBar,
   ViewSwitcher,
   SortControl,
-} from '@/components/data-display/Controls';
+} from '@evotechly/ui';
 import { KanbanBoard, stages, probabilities } from '@/components/crm/Deals';
-import { StatusBadge } from '@/components/ui/StatusBadge';
+import { StatusBadge } from '@evotechly/ui';
 import type { Deal } from '@/contracts/entities';
 import { formatDzd } from '@/lib/format';
 import {
   RecordActivityTimeline,
   WorkspaceHeader,
   WorkspaceToolbar,
-} from '@/components/workspace/Workspace';
+} from '@evotechly/ui';
 export function DealsPage({ board = false }: { board?: boolean }) {
   const { navigate } = useNavigation();
   const { deals, setDeals, contacts, notify, can } = useCrm();
