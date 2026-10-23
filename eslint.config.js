@@ -5,7 +5,7 @@ import reactHooks from 'eslint-plugin-react-hooks';
 import reactRefresh from 'eslint-plugin-react-refresh';
 
 export default [
-  { ignores: ['dist', 'coverage', 'playwright-report', '.agents/**', '.impeccable/**'] },
+  { ignores: ['dist', '**/dist/**', 'coverage', 'playwright-report', '.agents/**', '.impeccable/**', 'docs/ui-collection/**'] },
   eslint.configs.recommended,
   {
     files: ['**/*.{ts,tsx}'],
@@ -20,6 +20,13 @@ export default [
         HTMLElement: 'readonly',
         HTMLInputElement: 'readonly',
         HTMLSelectElement: 'readonly',
+        HTMLTextAreaElement: 'readonly',
+        HTMLDivElement: 'readonly',
+        HTMLFormElement: 'readonly',
+        ResizeObserver: 'readonly',
+        Node: 'readonly',
+        Element: 'readonly',
+        React: 'readonly',
         URLSearchParams: 'readonly',
         crypto: 'readonly',
         KeyboardEvent: 'readonly',
@@ -38,4 +45,18 @@ export default [
     },
   },
   { files: ['**/*.config.ts'], languageOptions: { globals: { process: 'readonly' } } },
+  {
+    files: ['**/*.{test,spec}.{ts,tsx}', '**/tests/**/*.{ts,tsx}', '**/e2e/**/*.{ts,tsx}'],
+    languageOptions: {
+      globals: {
+        describe: 'readonly',
+        it: 'readonly',
+        expect: 'readonly',
+        vi: 'readonly',
+        beforeEach: 'readonly',
+        afterEach: 'readonly',
+        test: 'readonly',
+      },
+    },
+  },
 ];

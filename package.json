@@ -12,7 +12,10 @@
     "format": "prettier --write .",
     "test": "vitest run",
     "test:watch": "vitest",
-    "test:e2e": "playwright test"
+    "test:e2e": "playwright test",
+    "ui:build": "pnpm --filter @evotechly/brand build && pnpm --filter @evotechly/ui build",
+    "ui:test": "pnpm --filter @evotechly/ui test",
+    "ui:showcase": "pnpm --filter @evotechly/ui-showcase dev"
   },
   "dependencies": {
     "@fontsource/geist-mono": "5.2.6",

@@ -1,0 +1,31 @@
+{
+  "name": "@evotechly/ui-showcase",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite --host 0.0.0.0 --port 5174 --strictPort",
+    "build": "tsc --noEmit && vite build",
+    "preview": "vite preview --host 0.0.0.0 --port 5174",
+    "test:e2e": "playwright test"
+  },
+  "dependencies": {
+    "@evotechly/brand": "workspace:*",
+    "@evotechly/ui": "workspace:*",
+    "@fontsource/geist-mono": "5.2.6",
+    "@fontsource/geist-sans": "5.2.5",
+    "@phosphor-icons/react": "^2.1.7",
+    "react": "^19.1.1",
+    "react-dom": "^19.1.1",
+    "react-router-dom": "^7.9.4"
+  },
+  "devDependencies": {
+    "@types/react": "^19.1.13",
+    "@types/react-dom": "^19.1.9",
+    "@vitejs/plugin-react": "^5.0.4",
+    "typescript": "~5.9.3",
+    "@axe-core/playwright": "4.10.2",
+    "@playwright/test": "^1.55.1",
+    "vite": "^8.0.0"
+  }
+}

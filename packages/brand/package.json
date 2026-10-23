@@ -1,0 +1,25 @@
+{
+  "name": "@evotechly/brand",
+  "version": "2.0.0",
+  "description": "Evotechly Brandbook 2.0 tokens. Local workspace package until the official registry publish is available.",
+  "license": "UNLICENSED",
+  "type": "module",
+  "sideEffects": ["**/*.css"],
+  "exports": {
+    ".": {
+      "types": "./dist/index.d.ts",
+      "import": "./dist/index.js"
+    },
+    "./tokens.css": "./src/tokens.css",
+    "./package.json": "./package.json"
+  },
+  "files": ["dist", "src/tokens.css"],
+  "scripts": {
+    "build": "tsup src/index.ts --format esm --dts --clean",
+    "typecheck": "tsc --noEmit"
+  },
+  "devDependencies": {
+    "tsup": "^8.5.0",
+    "typescript": "~5.9.3"
+  }
+}

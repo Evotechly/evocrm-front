@@ -1,0 +1,27 @@
+name: Evotechly UI
+
+on:
+  push:
+    branches: [main, 'feature/**']
+  pull_request:
+    branches: [main]
+
+jobs:
+  ui:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: pnpm/action-setup@v4
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: pnpm
+      - run: pnpm install --frozen-lockfile --ignore-scripts
+      - run: pnpm --filter @evotechly/brand build
+      - run: pnpm --filter @evotechly/ui typecheck
+      - run: pnpm --filter @evotechly/ui test
+      - run: pnpm --filter @evotechly/ui build
+      - run: pnpm --filter @evotechly/ui-showcase build
+      - run: pnpm --filter @evotechly/ui-consumer-example build
+      - run: pnpm exec playwright install --with-deps chromium
+      - run: pnpm --filter @evotechly/ui-showcase test:e2e

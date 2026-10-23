@@ -1,0 +1,11 @@
+@evotechly/ui includes adapted MIT source from:
+
+- Fluid Functionalism, Copyright (c) 2026 Micka Touillaud
+  https://github.com/mickadesign/fluid-functionalism
+  License: docs/ui-collection/LICENSES/fluid-functionalism-MIT.txt
+
+- shadcn/ui, Copyright (c) 2023 shadcn
+  https://ui.shadcn.com
+  License: docs/ui-collection/LICENSES/shadcn-ui-MIT.txt
+
+AGPL-licensed coss UI source was not incorporated.
