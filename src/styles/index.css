@@ -2727,6 +2727,7 @@ tbody tr:hover td {
   }
 }
 
+
 /* Compact global app rail, matching the HubSpot/Salesforce navigation pattern. */
 .desktop-sidebar {
   flex: 0 0 72px;
@@ -3100,5 +3101,287 @@ input[type='number'] {
   }
   .guided-action-card {
     min-height: 64px;
+  }
+}
+
+/* Plain-inspired workspace shell: a labeled, quiet navigation column and dense work surfaces. */
+.desktop-sidebar {
+  flex: 0 0 248px;
+}
+.desktop-sidebar > .sidebar,
+.modal-content.drawer .sidebar {
+  width: 248px;
+  min-height: 100dvh;
+  height: 100dvh;
+  align-items: stretch;
+  gap: 0;
+  padding: 18px 12px 14px;
+  border-right: 1px solid var(--color-border);
+  background: var(--color-surface);
+  color: var(--color-ink);
+}
+.modal-content.drawer .sidebar {
+  min-height: auto;
+  height: auto;
+  width: min(100%, 320px);
+}
+.sidebar-brand {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 2px 8px 18px;
+}
+.sidebar-brand img {
+  width: 34px;
+  height: 34px;
+  object-fit: contain;
+}
+.sidebar-brand strong,
+.sidebar-brand small {
+  display: block;
+}
+.sidebar-brand strong {
+  color: var(--color-brand);
+  font-size: 18px;
+  letter-spacing: -0.04em;
+  line-height: 1.05;
+}
+.sidebar-brand small {
+  margin-top: 4px;
+  color: var(--color-muted);
+  font-size: 9px;
+  letter-spacing: 0.14em;
+}
+.desktop-sidebar .workspace-switcher,
+.modal-content.drawer .workspace-switcher {
+  width: 100%;
+  min-height: 52px;
+  justify-content: flex-start;
+  padding: 10px 11px;
+  border: 1px solid var(--color-border);
+  border-radius: 9px;
+  background: var(--color-surface-raised);
+}
+.desktop-sidebar .workspace-switcher > span:not(.workspace-dot),
+.modal-content.drawer .workspace-switcher > span:not(.workspace-dot) {
+  display: block;
+}
+.desktop-sidebar .workspace-switcher > span:nth-child(2),
+.modal-content.drawer .workspace-switcher > span:nth-child(2) {
+  flex: 1;
+}
+.sidebar-search {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  min-height: 36px;
+  margin: 14px 0 8px;
+  padding: 8px 10px;
+  border: 1px solid var(--color-border);
+  border-radius: 8px;
+  background: var(--color-surface);
+  color: var(--color-muted);
+  text-align: left;
+  font-size: 12px;
+}
+.sidebar-search:hover {
+  border-color: var(--color-border-strong);
+  background: var(--color-surface-raised);
+}
+.sidebar-search span {
+  flex: 1;
+}
+.sidebar-search kbd {
+  padding: 2px 5px;
+  border: 1px solid var(--color-border);
+  border-radius: 4px;
+  color: var(--color-muted);
+  font: 10px var(--font-mono);
+}
+.sidebar-navigation {
+  display: grid;
+  align-content: start;
+  gap: 20px;
+  overflow-y: auto;
+  padding: 8px 0;
+}
+.sidebar-group {
+  display: grid;
+  gap: 6px;
+}
+.sidebar-group-label {
+  padding: 0 10px;
+  color: var(--color-muted);
+  font-size: 10px;
+  font-weight: 600;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+}
+.sidebar-group-items {
+  display: grid;
+  gap: 2px;
+}
+.sidebar-item,
+.sidebar-footer-item {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 36px;
+  padding: 8px 10px;
+  border: 0;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--color-muted-strong);
+  text-align: left;
+  font-size: 12px;
+  transition:
+    background var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard);
+}
+.sidebar-item:hover,
+.sidebar-footer-item:hover {
+  background: var(--color-canvas-soft);
+  color: var(--color-ink);
+}
+.sidebar-item.active {
+  background: var(--color-brand-soft);
+  color: var(--color-brand);
+  font-weight: 600;
+}
+.sidebar-item.active::before {
+  position: absolute;
+  left: 0;
+  width: 3px;
+  height: 18px;
+  border-radius: 0 3px 3px 0;
+  background: var(--color-brand);
+  content: '';
+}
+.sidebar-item > span:nth-child(2),
+.sidebar-footer-item > span {
+  flex: 1;
+}
+.sidebar-count {
+  display: grid;
+  place-items: center;
+  min-width: 18px;
+  height: 18px;
+  padding: 0 5px;
+  border-radius: 999px;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-size: 10px;
+  font-weight: 700;
+}
+.sidebar-footer {
+  display: grid;
+  gap: 2px;
+  margin-top: auto;
+  padding-top: 12px;
+  border-top: 1px solid var(--color-border);
+}
+.sidebar-footer-item {
+  min-height: 34px;
+}
+.sidebar-profile {
+  display: flex;
+  align-items: center;
+  gap: 9px;
+  width: 100%;
+  margin-top: 8px;
+  padding: 9px 8px 2px;
+  border: 0;
+  border-top: 1px solid var(--color-border);
+  background: transparent;
+  color: var(--color-ink);
+  text-align: left;
+}
+.sidebar-profile > span:first-child {
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  flex: 0 0 28px;
+  border-radius: 8px;
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-size: 10px;
+  font-weight: 700;
+}
+.sidebar-profile strong,
+.sidebar-profile small {
+  display: block;
+}
+.sidebar-profile strong {
+  font-size: 11px;
+}
+.sidebar-profile small {
+  margin-top: 2px;
+  color: var(--color-muted);
+  font-size: 10px;
+}
+.shell-top {
+  height: 58px;
+  padding: 0 24px;
+}
+.content-area {
+  max-width: 1680px;
+  padding: 24px 32px 40px;
+}
+.page-stack {
+  gap: 18px;
+}
+.page-heading h1 {
+  font-size: 24px;
+  letter-spacing: -0.035em;
+}
+.page-heading p {
+  font-size: 12px;
+}
+.panel {
+  border-radius: 10px;
+  box-shadow: none;
+}
+.panel-header {
+  min-height: 54px;
+  padding: 13px 16px;
+}
+.panel-header h2 {
+  font-size: 13px;
+}
+.table-wrap th {
+  background: var(--color-surface-raised);
+  color: var(--color-muted);
+  font-size: 10px;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+}
+.table-wrap td {
+  font-size: 12px;
+}
+.app-header {
+  gap: 18px;
+}
+.command-trigger {
+  width: min(300px, 34vw);
+  background: var(--color-surface-raised);
+}
+@media (max-width: 900px) {
+  .modal-content.drawer .sidebar {
+    width: min(100%, 320px);
+  }
+  .content-area {
+    padding: 22px 24px 32px;
+  }
+}
+@media (max-width: 600px) {
+  .content-area {
+    padding: 18px 14px 28px;
+  }
+  .shell-top {
+    padding: 0 10px;
   }
 }

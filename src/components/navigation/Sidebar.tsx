@@ -5,6 +5,7 @@ import {
   GearSix,
   Handshake,
   House,
+  MagnifyingGlass,
   Moon,
   PaperPlaneTilt,
   Quotes,
@@ -39,70 +40,88 @@ const advancedNav: NavItem[] = [
 export function Sidebar({
   advanced,
   onToggleAdvanced,
+  onOpenCommand,
 }: {
   advanced: boolean;
   onToggleAdvanced: () => void;
+  onOpenCommand?: () => void;
 }) {
   const { pathname } = useLocation();
   const { navigate } = useNavigation();
   const { theme, toggleTheme } = useTheme();
   const { user } = useCrm();
-  const items = advanced ? [...simpleNav, ...advancedNav] : simpleNav;
+  const groups = [
+    {
+      label: 'Workspace',
+      items: simpleNav.filter(({ label }) => ['Accueil', 'Inbox'].includes(label)),
+    },
+    {
+      label: 'CRM',
+      items: simpleNav.filter(({ label }) => ['Contacts', 'Deals', 'Devis'].includes(label)),
+    },
+    ...(advanced ? [{ label: 'Analyse', items: advancedNav }] : []),
+  ];
   return (
     <aside className="sidebar" aria-label="Navigation EvoCRM">
-      <div className="rail-brand" title="EvoCRM">
-        <img src="/evotechly.svg" alt="EvoCRM" />
+      <div className="sidebar-brand" title="EvoCRM">
+        <img src="/evotechly.svg" alt="" aria-hidden="true" />
+        <span>
+          <strong>EvoCRM</strong>
+          <small>EVOTECHLY</small>
+        </span>
       </div>
       <WorkspaceSwitcher />
-      <nav className="rail-nav" aria-label="Navigation principale">
-        {items.map(({ label, path, icon: Icon }) => {
-          const active = path === '/dashboard' ? pathname === path : pathname.startsWith(path);
-          return (
-            <button
-              key={path}
-              aria-current={active ? 'page' : undefined}
-              aria-label={label}
-              title={label}
-              className={`rail-item ${active ? 'active' : ''}`}
-              onClick={() => navigate(path)}
-            >
-              <Icon size={19} weight={active ? 'fill' : 'regular'} />
-              {label === 'Inbox' && <span className="rail-count">3</span>}
-            </button>
-          );
-        })}
+      {onOpenCommand && (
+        <button className="sidebar-search" onClick={onOpenCommand}>
+          <MagnifyingGlass size={16} />
+          <span>Rechercher</span>
+          <kbd>⌘ K</kbd>
+        </button>
+      )}
+      <nav className="sidebar-navigation" aria-label="Navigation principale">
+        {groups.map((group) => (
+          <div className="sidebar-group" key={group.label}>
+            <span className="sidebar-group-label">{group.label}</span>
+            <div className="sidebar-group-items">
+              {group.items.map(({ label, path, icon: Icon }) => {
+                const active =
+                  path === '/dashboard' ? pathname === path : pathname.startsWith(path);
+                return (
+                  <button
+                    key={path}
+                    aria-current={active ? 'page' : undefined}
+                    className={`sidebar-item ${active ? 'active' : ''}`}
+                    onClick={() => navigate(path)}
+                  >
+                    <Icon size={17} weight={active ? 'fill' : 'regular'} />
+                    <span>{label}</span>
+                    {label === 'Inbox' && <span className="sidebar-count">3</span>}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+        ))}
       </nav>
-      <div className="rail-footer">
-        <button
-          className={`rail-item ${advanced ? 'active' : ''}`}
-          aria-label={advanced ? 'Mode simple' : 'Mode avancé'}
-          title={advanced ? 'Mode simple' : 'Mode avancé'}
-          onClick={onToggleAdvanced}
-        >
-          <SquaresFour size={19} />
+      <div className="sidebar-footer">
+        <button className="sidebar-footer-item" onClick={() => navigate('/settings')}>
+          <GearSix size={17} />
+          <span>Paramètres</span>
         </button>
-        <button
-          className="rail-item"
-          aria-label="Paramètres"
-          title="Paramètres"
-          onClick={() => navigate('/settings')}
-        >
-          <GearSix size={19} />
+        <button className="sidebar-footer-item" onClick={onToggleAdvanced}>
+          <SquaresFour size={17} />
+          <span>{advanced ? 'Vue essentielle' : 'Mode avancé'}</span>
         </button>
-        <button
-          className="rail-item"
-          aria-label={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
-          title={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
-          onClick={toggleTheme}
-        >
-          {theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+        <button className="sidebar-footer-item" onClick={toggleTheme}>
+          {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
+          <span>{theme === 'light' ? 'Mode sombre' : 'Mode clair'}</span>
         </button>
-        <button
-          className="rail-profile"
-          aria-label={`Profil ${user.displayName}`}
-          title={`${user.displayName} · ${user.role}`}
-        >
-          {user.initials}
+        <button className="sidebar-profile" aria-label={`Profil ${user.displayName}`}>
+          <span>{user.initials}</span>
+          <span>
+            <strong>{user.displayName}</strong>
+            <small>{user.role}</small>
+          </span>
         </button>
       </div>
     </aside>
