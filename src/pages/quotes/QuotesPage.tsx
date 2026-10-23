@@ -1,23 +1,27 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ObjectViews } from '@evotechly/ui';
 import { Plus } from '@phosphor-icons/react';
+import { EvoButton, EvoDialog, EvoInput, EvoSheet } from '@evotechly/ui';
 import { useCrm, type QuoteRecord, type LineItem } from '@/app/providers/CrmProvider';
-import { Button, Panel } from '@evotechly/ui';
-import { Drawer, Dialog } from '@evotechly/ui';
 import { ScreenState, usePreviewState, NoResults } from '@/app/ScreenState';
-import { StatusBadge } from '@evotechly/ui';
-import { Input, Select, DatePicker } from '@evotechly/ui';
-import { FilterBar, SearchInput } from '@evotechly/ui';
 import { QuoteLineItem, QuoteSummary } from '@/components/crm/Quotes';
+import {
+  DateField,
+  FieldError,
+  FieldSelect,
+  FilterBar,
+  ObjectViews,
+  Panel,
+  RecordActivityTimeline,
+  SearchField,
+  StatusBadge,
+  WorkspaceHeader,
+  WorkspaceToolbar,
+} from '@/components/crm/ui';
 import { formatDzd, formatDateDisplay } from '@/lib/format';
 import { quoteTotal } from '@/lib/quotes';
 import type { Quote } from '@/contracts/entities';
-import {
-  RecordActivityTimeline,
-  WorkspaceHeader,
-  WorkspaceToolbar,
-} from '@evotechly/ui';
+
 export function QuotesPage() {
   const { quotes, setQuotes, contacts, deals, notify, can } = useCrm();
   const state = usePreviewState();
@@ -28,16 +32,16 @@ export function QuotesPage() {
     [creating, setCreating] = useState(false),
     [preview, setPreview] = useState<QuoteRecord | null>(null);
   const rows = (state === 'empty' ? [] : quotes).filter(
-    (q) =>
-      `${q.number} ${q.customer}`.toLowerCase().includes(query.toLowerCase()) &&
-      (!status || q.status === status),
+    (quote) =>
+      `${quote.number} ${quote.customer}`.toLowerCase().includes(query.toLowerCase()) &&
+      (!status || quote.status === status),
   );
   const close = () => {
     setEditing(null);
     setCreating(false);
-    const n = new URLSearchParams(params);
-    n.delete('create');
-    setParams(n, { replace: true });
+    const next = new URLSearchParams(params);
+    next.delete('create');
+    setParams(next, { replace: true });
   };
   return (
     <ScreenState permission="quotes.view">
@@ -47,30 +51,25 @@ export function QuotesPage() {
           description="Des propositions claires pour faire avancer vos projets."
           count={rows.length}
           actions={
-            <Button
-              data-page-primary
-              variant="primary"
-              disabled={!can('crm.edit')}
-              onClick={() => setCreating(true)}
-            >
+            <EvoButton data-page-primary variant="primary" disabled={!can('crm.edit')} onClick={() => setCreating(true)}>
               <Plus size={17} /> Nouveau devis
-            </Button>
+            </EvoButton>
           }
         />
         <div className="stat-grid quote-stats">
           <div className="mini-stat">
             <span>Valeur affichée</span>
-            <strong className="money">{formatDzd(rows.reduce((s, q) => s + q.amount, 0))}</strong>
+            <strong className="money">{formatDzd(rows.reduce((sum, quote) => sum + quote.amount, 0))}</strong>
             <small>{rows.length} devis</small>
           </div>
           <div className="mini-stat">
             <span>En attente</span>
-            <strong>{rows.filter((q) => q.status === 'Envoyé').length}</strong>
+            <strong>{rows.filter((quote) => quote.status === 'Envoyé').length}</strong>
             <small>Propositions en attente de réponse</small>
           </div>
           <div className="mini-stat">
             <span>Acceptés</span>
-            <strong>{rows.filter((q) => q.status === 'Accepté').length}</strong>
+            <strong>{rows.filter((quote) => quote.status === 'Accepté').length}</strong>
             <small>Sans fonctionnalité de paiement</small>
           </div>
         </div>
@@ -84,33 +83,28 @@ export function QuotesPage() {
                 {
                   value: 'Brouillon',
                   label: 'Brouillons',
-                  count:
-                    state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Brouillon').length,
+                  count: state === 'empty' ? 0 : quotes.filter((quote) => quote.status === 'Brouillon').length,
                 },
                 {
                   value: 'Envoyé',
                   label: 'En attente',
-                  count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Envoyé').length,
+                  count: state === 'empty' ? 0 : quotes.filter((quote) => quote.status === 'Envoyé').length,
                 },
                 {
                   value: 'Accepté',
                   label: 'Acceptés',
-                  count: state === 'empty' ? 0 : quotes.filter((q) => q.status === 'Accepté').length,
+                  count: state === 'empty' ? 0 : quotes.filter((quote) => quote.status === 'Accepté').length,
                 },
               ]}
             />
             <FilterBar>
-              <SearchInput label="Rechercher un devis" value={query} onChange={setQuery} />
-              <Select
-                label="Statut du devis"
-                value={status}
-                onChange={(e) => setStatus(e.target.value)}
-              >
+              <SearchField label="Rechercher un devis" value={query} onChange={setQuery} />
+              <FieldSelect label="Statut du devis" value={status} onChange={(event) => setStatus(event.target.value)}>
                 <option value="">Tous les statuts</option>
-                {['Brouillon', 'Envoyé', 'Accepté'].map((s) => (
-                  <option key={s}>{s}</option>
+                {['Brouillon', 'Envoyé', 'Accepté'].map((value) => (
+                  <option key={value}>{value}</option>
                 ))}
-              </Select>
+              </FieldSelect>
             </FilterBar>
           </WorkspaceToolbar>
           {rows.length ? (
@@ -119,33 +113,31 @@ export function QuotesPage() {
                 <caption className="sr-only">Devis du workspace</caption>
                 <thead>
                   <tr>
-                    {['Référence', 'Client', 'Montant', 'Statut', 'Expiration', 'Actions'].map(
-                      (h) => (
-                        <th scope="col" key={h}>
-                          {h}
-                        </th>
-                      ),
-                    )}
+                    {['Référence', 'Client', 'Montant', 'Statut', 'Expiration', 'Actions'].map((heading) => (
+                      <th scope="col" key={heading}>
+                        {heading}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {rows.map((q) => (
-                    <tr key={q.id}>
+                  {rows.map((quote) => (
+                    <tr key={quote.id}>
                       <td>
-                        <button className="record-link" onClick={() => setPreview(q)}>
-                          {q.number}
+                        <button className="record-link" onClick={() => setPreview(quote)}>
+                          {quote.number}
                         </button>
                       </td>
-                      <td>{q.customer}</td>
-                      <td className="money">{formatDzd(q.amount)}</td>
+                      <td>{quote.customer}</td>
+                      <td className="money">{formatDzd(quote.amount)}</td>
                       <td>
-                        <StatusBadge status={q.status} />
+                        <StatusBadge status={quote.status} />
                       </td>
-                      <td>{formatDateDisplay(q.expiresAt)}</td>
+                      <td>{formatDateDisplay(quote.expiresAt)}</td>
                       <td>
-                        <Button disabled={!can('crm.edit')} onClick={() => setEditing(q)}>
+                        <EvoButton disabled={!can('crm.edit')} onClick={() => setEditing(quote)}>
                           Modifier
-                        </Button>
+                        </EvoButton>
                       </td>
                     </tr>
                   ))}
@@ -157,37 +149,36 @@ export function QuotesPage() {
               title="Aucun devis à afficher"
               detail="Créez une proposition ou modifiez vos filtres."
               action={
-                <Button disabled={!can('crm.edit')} onClick={() => setCreating(true)}>
+                <EvoButton disabled={!can('crm.edit')} onClick={() => setCreating(true)}>
                   Créer un devis
-                </Button>
+                </EvoButton>
               }
             />
           )}
         </Panel>
-        <Drawer
+        <EvoSheet
           open={can('crm.edit') && (creating || params.get('create') === '1' || !!editing)}
-          onClose={close}
+          onOpenChange={(next) => !next && close()}
           title={editing ? `Modifier ${editing.number}` : 'Nouveau devis'}
         >
           <QuoteForm
             key={editing?.id ?? 'new'}
             quote={editing}
-            onSave={(q) => {
-              setQuotes((qs) => (editing ? qs.map((v) => (v.id === q.id ? q : v)) : [...qs, q]));
+            onSave={(quote) => {
+              setQuotes((current) => (editing ? current.map((row) => (row.id === quote.id ? quote : row)) : [...current, quote]));
               close();
               notify('Devis enregistré dans cette session.');
             }}
           />
-        </Drawer>
-        <Dialog
+        </EvoSheet>
+        <EvoDialog
           open={!!preview}
-          onClose={() => setPreview(null)}
+          onOpenChange={(next) => !next && setPreview(null)}
           title={preview?.number ?? 'Aperçu du devis'}
           description="Aperçu local · aucun envoi ou paiement"
-          size="lg"
         >
           <div className="print-quote">
-            {preview && (
+            {preview ? (
               <>
                 <div className="print-heading">
                   <strong>EvoCRM · Evotechly</strong>
@@ -196,10 +187,9 @@ export function QuotesPage() {
                 <h2>{preview.number}</h2>
                 <p>{preview.customer}</p>
                 <p className="muted">
-                  Contact :{' '}
-                  {contacts.find((c) => c.id === preview.contactId)?.name ?? 'Non associé'}
+                  Contact : {contacts.find((contact) => contact.id === preview.contactId)?.name ?? 'Non associé'}
                   <br />
-                  Deal : {deals.find((d) => d.id === preview.dealId)?.name ?? 'Non associé'}
+                  Deal : {deals.find((deal) => deal.id === preview.dealId)?.name ?? 'Non associé'}
                   <br />
                   Expiration : {formatDateDisplay(preview.expiresAt)}
                 </p>
@@ -213,43 +203,41 @@ export function QuotesPage() {
                     </tr>
                   </thead>
                   <tbody>
-                    {preview.items.map((i) => (
-                      <tr key={i.id}>
-                        <td>{i.description}</td>
-                        <td>{i.quantity}</td>
-                        <td className="money">{formatDzd(i.unitPrice)}</td>
-                        <td className="money">{formatDzd(quoteTotal([i]))}</td>
+                    {preview.items.map((item) => (
+                      <tr key={item.id}>
+                        <td>{item.description}</td>
+                        <td>{item.quantity}</td>
+                        <td className="money">{formatDzd(item.unitPrice)}</td>
+                        <td className="money">{formatDzd(quoteTotal([item]))}</td>
                       </tr>
                     ))}
                   </tbody>
                 </table>
                 <QuoteSummary items={preview.items} />
-                <RecordActivityTimeline
-                  items={[]}
-                  empty="Aucun événement horodaté n’est fourni pour ce devis."
-                />
+                <RecordActivityTimeline items={[]} empty="Aucun événement horodaté n’est fourni pour ce devis." />
               </>
-            )}
+            ) : null}
           </div>
-          <Button className="no-print" onClick={() => window.print()}>
+          <EvoButton className="no-print" onClick={() => window.print()}>
             Imprimer le devis
-          </Button>
-        </Dialog>
+          </EvoButton>
+        </EvoDialog>
       </section>
     </ScreenState>
   );
 }
+
 function QuoteForm({
   quote,
   onSave,
 }: {
   quote: QuoteRecord | null;
-  onSave: (q: QuoteRecord) => void;
+  onSave: (quote: QuoteRecord) => void;
 }) {
   const { contacts, deals, quotes } = useCrm();
   const [number, setNumber] = useState(
       quote?.number ??
-        `DEV-2026-${String(Math.max(14, ...quotes.map((q) => Number(q.number.split('-').at(-1)) || 0)) + 1).padStart(3, '0')}`,
+        `DEV-2026-${String(Math.max(14, ...quotes.map((row) => Number(row.number.split('-').at(-1)) || 0)) + 1).padStart(3, '0')}`,
     ),
     [contactId, setContact] = useState(quote?.contactId ?? contacts[0]?.id ?? ''),
     [dealId, setDeal] = useState(quote?.dealId ?? ''),
@@ -258,21 +246,21 @@ function QuoteForm({
       quote?.items ?? [{ id: crypto.randomUUID(), description: '', quantity: 1, unitPrice: 0 }],
     ),
     [error, setError] = useState('');
-  const customer = contacts.find((c) => c.id === contactId)?.company ?? quote?.customer ?? '';
+  const customer = contacts.find((contact) => contact.id === contactId)?.company ?? quote?.customer ?? '';
   return (
     <form
       className="form-stack"
-      onSubmit={(e) => {
-        e.preventDefault();
-        if (!number.trim() || !items.length || items.some((i) => !i.description.trim())) {
+      onSubmit={(event) => {
+        event.preventDefault();
+        if (!number.trim() || !items.length || items.some((item) => !item.description.trim())) {
           setError('Renseignez une référence et au moins une ligne complète.');
           return;
         }
-        if (quotes.some((q) => q.number === number && q.id !== quote?.id)) {
+        if (quotes.some((row) => row.number === number && row.id !== quote?.id)) {
           setError('Cette référence existe déjà.');
           return;
         }
-        const linked = deals.find((d) => d.id === dealId);
+        const linked = deals.find((deal) => deal.id === dealId);
         if (linked && linked.company !== customer) {
           setError('Le deal doit appartenir à l’entreprise du contact.');
           return;
@@ -298,70 +286,59 @@ function QuoteForm({
         });
       }}
     >
-      <Input
-        label="Référence"
-        required
-        value={number}
-        onChange={(e) => setNumber(e.target.value)}
-        error={error}
-      />
-      <Select
+      <EvoInput label="Référence" required value={number} onChange={(event) => setNumber(event.target.value)} />
+      <FieldError>{error}</FieldError>
+      <FieldSelect
         label="Contact associé"
         required
         value={contactId}
-        onChange={(e) => {
-          setContact(e.target.value);
+        onChange={(event) => {
+          setContact(event.target.value);
           setDeal('');
         }}
       >
         <option value="">Choisir un contact</option>
-        {contacts.map((c) => (
-          <option key={c.id} value={c.id}>
-            {c.name} · {c.company}
+        {contacts.map((contact) => (
+          <option key={contact.id} value={contact.id}>
+            {contact.name} · {contact.company}
           </option>
         ))}
-      </Select>
-      <Select label="Deal associé" value={dealId} onChange={(e) => setDeal(e.target.value)}>
+      </FieldSelect>
+      <FieldSelect label="Deal associé" value={dealId} onChange={(event) => setDeal(event.target.value)}>
         <option value="">Sans deal</option>
         {deals
-          .filter((d) => d.company === customer)
-          .map((d) => (
-            <option key={d.id} value={d.id}>
-              {d.name}
+          .filter((deal) => deal.company === customer)
+          .map((deal) => (
+            <option key={deal.id} value={deal.id}>
+              {deal.name}
             </option>
           ))}
-      </Select>
-      <DatePicker
-        label="Date d’expiration"
-        value={expiration}
-        onChange={(e) => setExpiration(e.target.value)}
-      />
-      <p className="muted">
-        Statut : {quote?.status ?? 'Brouillon'} · conservé · aucun envoi externe.
-      </p>
+      </FieldSelect>
+      <DateField label="Date d’expiration" value={expiration} onChange={(event) => setExpiration(event.target.value)} />
+      <p className="muted">Statut : {quote?.status ?? 'Brouillon'} · conservé · aucun envoi externe.</p>
       {items.map((item, index) => (
         <QuoteLineItem
           key={item.id}
           item={item}
           index={index}
-          onChange={(next) => setItems((is) => is.map((i) => (i.id === next.id ? next : i)))}
-          onRemove={() => setItems((is) => is.filter((i) => i.id !== item.id))}
+          onChange={(next) => setItems((current) => current.map((row) => (row.id === next.id ? next : row)))}
+          onRemove={() => setItems((current) => current.filter((row) => row.id !== item.id))}
         />
       ))}
-      <Button
+      <EvoButton
         onClick={() =>
-          setItems((is) => [
-            ...is,
+          setItems((current) => [
+            ...current,
             { id: crypto.randomUUID(), description: '', quantity: 1, unitPrice: 0 },
           ])
         }
       >
         + Ajouter une ligne
-      </Button>
+      </EvoButton>
       <QuoteSummary items={items} />
-      <Button type="submit" variant="primary">
+      <EvoButton type="submit" variant="primary">
         Enregistrer le devis
-      </Button>
+      </EvoButton>
     </form>
   );
 }

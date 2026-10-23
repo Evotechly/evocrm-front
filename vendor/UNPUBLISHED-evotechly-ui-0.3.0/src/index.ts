@@ -1,94 +1,118 @@
-export { BRAND_VERSION, LAYOUT, PRODUCT_THEMES, applyBrandTheme } from './brand';
-export type { ColorMode, ProductTheme } from './brand';
+export { cn } from "./lib/cn";
+export { useTheme, useProduct, type BrandTheme } from "./lib/use-theme";
+export { useIsMobile } from "./lib/use-mobile";
+export type { EvoSize, EvoVariant, EvoTone, EvoCommonProps } from "./lib/types";
 
-export { cn } from './utils/cn';
-export { spring, exitFallbackMs } from './motion/springs';
-export { usePrefersReducedMotion } from './hooks/use-reduced-motion';
-export { ThemeProvider, useTheme } from './providers/theme-provider';
-export { EvotechlyUIProvider } from './providers/evotechly-provider';
-
-export { Button } from './components/button';
-export type { ButtonProps, ButtonSize, ButtonVariant } from './components/button';
-export { IconButton } from './components/icon-button';
-export type { IconButtonProps } from './components/icon-button';
-export { ButtonGroup } from './components/button-group';
-export { Input } from './components/input';
-export type { InputProps } from './components/input';
-export { Textarea } from './components/textarea';
-export type { TextareaProps } from './components/textarea';
-export { Select } from './components/select';
-export type { SelectOption } from './components/select';
-export { Combobox } from './components/combobox';
-export type { ComboboxOption } from './components/combobox';
-export { Checkbox, CheckboxGroup } from './components/checkbox';
-export { RadioGroup } from './components/radio-group';
-export type { RadioOption } from './components/radio-group';
-export { Switch } from './components/switch';
-export { Calendar } from './components/calendar';
-export { DatePicker as CalendarDatePicker, parseDateValue } from './components/date-picker';
-export { DatePicker } from './components/crm';
-export { Sidebar } from './components/sidebar';
-export type { SidebarItem } from './components/sidebar';
-export { Topbar } from './components/topbar';
-export { Tabs } from './components/tabs';
-export type { TabItem } from './components/tabs';
-export { CommandMenu } from './components/command-menu';
-export type { CommandItem } from './components/command-menu';
-export { Breadcrumbs } from './components/breadcrumbs';
-export type { BreadcrumbItem } from './components/breadcrumbs';
-export { DataTable as Table } from './components/data-table';
-export { DataTable, RecordTable } from './components/crm';
-export { Badge } from './components/badge';
-export type { BadgeTone } from './components/badge';
-export { Avatar, AvatarGroup } from './components/avatar';
-export { Pagination } from './components/pagination';
-export { EmptyState } from './components/empty-state';
-export { Skeleton } from './components/skeleton';
-export { Dialog } from './components/dialog';
-export { Drawer } from './components/drawer';
-export {
-  DropdownMenu,
-  DropdownMenuCheckboxItem,
-  DropdownMenuItem,
-  DropdownMenuRadioGroup,
-  DropdownMenuRadioItem,
-  DropdownMenuSeparator,
-  DropdownMenuSub,
-} from './components/dropdown-menu';
-export { Tooltip, TooltipProvider } from './components/tooltip';
-export { Popover } from './components/popover';
-export { ToastViewport, toast, toastMessage } from './components/toast';
-export { Alert } from './components/alert';
-export type { AlertTone } from './components/alert';
-export { Progress } from './components/progress';
-export { Spinner } from './components/spinner';
-export {
-  StatusBadge,
-  SearchInput,
-  FilterBar,
-  SortControl,
-  ViewSwitcher,
-  ObjectViews,
-  WorkspaceHeader,
-  WorkspaceToolbar,
-  BulkActionBar,
-  ActivityTimeline,
-  RecordActivityTimeline,
-  Card,
-  Panel,
-  KpiCard,
-  BarChart,
-  StageRing,
-  TeamSwitcher,
-  ProfileMenu,
-  NotificationCenter,
-  AuthCard,
-  Separator,
-  Label,
-  NoResults,
-  TablePagination,
-} from './components/crm';
-export type { DataColumn, RecordTableProps } from './components/crm';
-export { KanbanBoard, KanbanCard } from './components/kanban';
-export type { KanbanCardModel } from './components/kanban';
-export { NativeSelect, MenuSelect } from './components/select';
+export * from "./components/foundations/button";
+export * from "./components/foundations/badge";
+export * from "./components/foundations/avatar";
+export * from "./components/foundations/avatar-group";
+export * from "./components/foundations/separator";
+export * from "./components/foundations/skeleton";
+export * from "./components/foundations/kbd";
+export * from "./components/foundations/spinner";
+export * from "./components/foundations/typography";
+export * from "./components/foundations/icon-button";
+export * from "./components/layout/sidebar";
+export * from "./components/layout/app-shell";
+export * from "./components/layout/resizable";
+export * from "./components/layout/scroll-area";
+export * from "./components/layout/card";
+export * from "./components/layout/page-header";
+export * from "./components/layout/tabs";
+export * from "./components/layout/accordion";
+export * from "./components/layout/collapsible";
+export * from "./components/navigation/breadcrumb";
+export * from "./components/navigation/command";
+export * from "./components/navigation/navigation-menu";
+export * from "./components/navigation/menubar";
+export * from "./components/navigation/pagination";
+export * from "./components/navigation/stepper";
+export * from "./components/forms/input";
+export * from "./components/forms/textarea";
+export * from "./components/forms/select";
+export * from "./components/forms/combobox";
+export * from "./components/forms/multi-select";
+export * from "./components/forms/tags-input";
+export * from "./components/forms/checkbox";
+export * from "./components/forms/radio-group";
+export * from "./components/forms/switch";
+export * from "./components/forms/slider";
+export * from "./components/forms/date-picker";
+export * from "./components/forms/date-range-picker";
+export * from "./components/forms/time-picker";
+export * from "./components/forms/number-input";
+export * from "./components/forms/currency-input";
+export * from "./components/forms/phone-input";
+export * from "./components/forms/file-upload";
+export * from "./components/forms/form";
+export * from "./components/forms/input-otp";
+export * from "./components/forms/rich-text";
+export * from "./components/forms/mention-input";
+export * from "./components/forms/color-picker";
+export * from "./components/forms/rating";
+export * from "./components/forms/toggle-group";
+export * from "./components/data-display/tooltip";
+export * from "./components/data-display/hover-card";
+export * from "./components/data-display/progress";
+export * from "./components/data-display/timeline";
+export * from "./components/data-display/tree-view";
+export * from "./components/data-display/status";
+export * from "./components/data-display/copy-button";
+export * from "./components/data-display/relative-time";
+export * from "./components/data-display/description-list";
+export * from "./components/data-display/image";
+export * from "./components/tables/data-table";
+export * from "./components/tables/table";
+export * from "./components/tables/data-table-filters";
+export * from "./components/tables/column-visibility";
+export * from "./components/tables/virtualized-list";
+export * from "./components/tables/data-grid";
+export * from "./components/tables/inline-edit";
+export * from "./components/charts/area-chart";
+export * from "./components/charts/bar-chart";
+export * from "./components/charts/line-chart";
+export * from "./components/charts/pie-chart";
+export * from "./components/charts/funnel-chart";
+export * from "./components/charts/radial-chart";
+export * from "./components/charts/kpi-card";
+export * from "./components/charts/sparkline";
+export * from "./components/charts/heatmap";
+export * from "./components/feedback/alert";
+export * from "./components/feedback/toast";
+export * from "./components/feedback/banner";
+export * from "./components/feedback/notification-center";
+export * from "./components/feedback/error-page";
+export * from "./components/overlays/dialog";
+export * from "./components/overlays/alert-dialog";
+export * from "./components/overlays/sheet";
+export * from "./components/overlays/popover";
+export * from "./components/overlays/dropdown-menu";
+export * from "./components/overlays/context-menu";
+export * from "./components/crm/kanban";
+export * from "./components/crm/sortable-list";
+export * from "./components/crm/calendar";
+export * from "./components/crm/event-calendar";
+export * from "./components/crm/gantt";
+export * from "./components/crm/activity-feed";
+export * from "./components/crm/chat";
+export * from "./components/crm/conversation";
+export * from "./components/crm/prompt-input";
+export * from "./components/crm/email-composer";
+export * from "./components/crm/contact-card";
+export * from "./components/crm/workflow-builder";
+export * from "./components/crm/comments";
+export * from "./components/crm/pricing-table";
+export * from "./components/crm/invoice";
+export * from "./components/auth/sign-in";
+export * from "./components/auth/sign-up";
+export * from "./components/auth/forgot-password";
+export * from "./components/auth/two-factor";
+export * from "./components/auth/account-button";
+export * from "./components/auth/settings-page";
+export * from "./components/auth/org-switcher";
+export * from "./components/auth/api-keys";
+export * from "./components/empty/empty-state";
+export * from "./components/empty/onboarding";
+export * from "./components/empty/announcement";
+export * from "./components/empty/feature-tour";

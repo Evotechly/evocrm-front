@@ -44,9 +44,9 @@ The initial shell follows the documented `simple_mode=true` navigation: Accueil,
 
 ## Design system
 
-The app consumes **EvoUI 0.3.0** (vendored, unpublished) and Brand 2.0 tokens:
+The app consumes **EvoUI 0.3.0** (vendored Brandbook PR #13 `packages/ui`, unpublished) and Brand 2.0 tokens:
 
-- `@evotechly/ui@0.3.0` — workspace snapshot (`import { Button, Sidebar, DataTable } from '@evotechly/ui'`, `import '@evotechly/ui/styles.css'`)
+- `@evotechly/ui@0.3.0` — workspace snapshot of the official 113-component library (`import { EvoButton, EvoInput } from '@evotechly/ui'`, `import '@evotechly/ui/styles.css'`, catalog in `@evotechly/ui/catalog.json`). CRM-only blocks live in `src/components/crm` as compositions of those primitives.
 - `@evotechly/brand@2.0.0` — workspace snapshot (`@evotechly/brand/tokens.css`, `@evotechly/brand/theme.css`)
 
 Set `<html data-product="crm" data-theme="light">`. Aurora CRM shell: 212px dark sidebar + light workspace, paper `#EAEAEA`, ink `#0D1B24`, orange `#D9500F` for primary actions only, teal for selection. Do not use retired hexes (`#EC6025`, `#111111`, `#000000`, `#2E3A45`, and the rest of Brandbook `RETIRED.md`).

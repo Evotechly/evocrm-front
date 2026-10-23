@@ -1,23 +1,27 @@
 import { formatDateDisplay } from '@/lib/format';
 import { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { ObjectViews } from '@evotechly/ui';
 import { Plus } from '@phosphor-icons/react';
-import { Button, Panel } from '@evotechly/ui';
-import { Drawer, Popover } from '@evotechly/ui';
+import { EvoButton, EvoCheckbox, EvoInput, EvoPopover, EvoSheet } from '@evotechly/ui';
 import { ScreenState, NoResults, usePreviewState } from '@/app/ScreenState';
-import { Input, Select, Checkbox } from '@evotechly/ui';
-import {
-  FilterBar,
-  SearchInput,
-  TablePagination as Pagination,
-  SortControl,
-} from '@evotechly/ui';
 import { ContactCard, ContactDetailPanel } from '@/components/crm/Contacts';
-import { StatusBadge } from '@evotechly/ui';
+import {
+  BulkActionBar,
+  FieldError,
+  FieldSelect,
+  FilterBar,
+  ObjectViews,
+  Panel,
+  SearchField,
+  SortControl,
+  StatusBadge,
+  TablePagination,
+  WorkspaceHeader,
+  WorkspaceToolbar,
+} from '@/components/crm/ui';
 import { useCrm } from '@/app/providers/CrmProvider';
 import type { Contact, ContactStatus } from '@/contracts/entities';
-import { BulkActionBar, WorkspaceHeader, WorkspaceToolbar } from '@evotechly/ui';
+
 export function ContactsPage() {
   const { contacts, setContacts, notify, can } = useCrm();
   const state = usePreviewState();
@@ -36,12 +40,12 @@ export function ContactsPage() {
   const records = state === 'empty' ? [] : contacts;
   const visible = records
     .filter(
-      (c) =>
-        `${c.name} ${c.email} ${c.company}`
+      (contact) =>
+        `${contact.name} ${contact.email} ${contact.company}`
           .toLocaleLowerCase('fr')
           .includes(query.toLocaleLowerCase('fr')) &&
-        (!status || c.status === status) &&
-        (!company || c.company === company),
+        (!status || contact.status === status) &&
+        (!company || contact.company === company),
     )
     .sort((a, b) =>
       sort === 'name-desc'
@@ -52,7 +56,7 @@ export function ContactsPage() {
     );
   const currentPage = Math.min(page, Math.max(1, Math.ceil(visible.length / 3)));
   const rows = visible.slice((currentPage - 1) * 3, currentPage * 3);
-  const active = contacts.find((c) => c.id === detail);
+  const active = contacts.find((contact) => contact.id === detail);
   const open = can('crm.edit') && (creating || params.get('create') === '1' || !!editing);
   const close = () => {
     setCreating(false);
@@ -65,7 +69,7 @@ export function ContactsPage() {
     requestAnimationFrame(() => primaryRef.current?.focus());
   };
   const toggle = (id: string) =>
-    setSelected((s) => (s.includes(id) ? s.filter((v) => v !== id) : [...s, id]));
+    setSelected((current) => (current.includes(id) ? current.filter((value) => value !== id) : [...current, id]));
   return (
     <ScreenState permission="crm.view">
       <section className="page-stack" data-screen-id="SCR-CONTACT-001">
@@ -74,15 +78,17 @@ export function ContactsPage() {
           description="Chaque relation commence par une conversation."
           count={records.length}
           actions={
-            <Button
-              ref={primaryRef}
-              data-page-primary
-              variant="primary"
-              disabled={!can('crm.edit')}
-              onClick={() => setCreating(true)}
-            >
-              <Plus size={17} /> Nouveau contact
-            </Button>
+            <EvoButton asChild variant="primary">
+              <button
+                ref={primaryRef}
+                data-page-primary
+                type="button"
+                disabled={!can('crm.edit')}
+                onClick={() => setCreating(true)}
+              >
+                <Plus size={17} /> Nouveau contact
+              </button>
+            </EvoButton>
           }
         />
         <Panel>
@@ -98,51 +104,51 @@ export function ContactsPage() {
                 {
                   value: 'Actif',
                   label: 'Contacts actifs',
-                  count: records.filter((c) => c.status === 'Actif').length,
+                  count: records.filter((contact) => contact.status === 'Actif').length,
                 },
                 {
                   value: 'Prospect',
                   label: 'Prospects',
-                  count: records.filter((c) => c.status === 'Prospect').length,
+                  count: records.filter((contact) => contact.status === 'Prospect').length,
                 },
               ]}
               caption="Relations du workspace"
             />
             <FilterBar>
-              <SearchInput
+              <SearchField
                 label="Rechercher un contact"
                 value={query}
-                onChange={(v) => {
-                  setQuery(v);
+                onChange={(value) => {
+                  setQuery(value);
                   setPage(1);
                 }}
               />
-              <Select
+              <FieldSelect
                 label="Statut"
                 value={status}
-                onChange={(e) => {
-                  setStatus(e.target.value);
+                onChange={(event) => {
+                  setStatus(event.target.value);
                   setPage(1);
                 }}
               >
                 <option value="">Tous les statuts</option>
-                {['Actif', 'Prospect', 'Inactif'].map((v) => (
-                  <option key={v}>{v}</option>
+                {['Actif', 'Prospect', 'Inactif'].map((value) => (
+                  <option key={value}>{value}</option>
                 ))}
-              </Select>
-              <Select
+              </FieldSelect>
+              <FieldSelect
                 label="Entreprise"
                 value={company}
-                onChange={(e) => {
-                  setCompany(e.target.value);
+                onChange={(event) => {
+                  setCompany(event.target.value);
                   setPage(1);
                 }}
               >
                 <option value="">Toutes les entreprises</option>
-                {[...new Set(contacts.map((c) => c.company))].filter(Boolean).map((c) => (
-                  <option key={c}>{c}</option>
+                {[...new Set(contacts.map((contact) => contact.company))].filter(Boolean).map((value) => (
+                  <option key={value}>{value}</option>
                 ))}
-              </Select>
+              </FieldSelect>
               <SortControl
                 value={sort}
                 onChange={setSort}
@@ -152,49 +158,55 @@ export function ContactsPage() {
                   { value: 'company', label: 'Entreprise' },
                 ]}
               />
-              <Popover label="Colonnes visibles" trigger={<Button variant="secondary">Colonnes</Button>}>
-                <div className="detail-stack">
-                  {[
-                    ['company', 'Entreprise'],
-                    ['email', 'Email'],
-                    ['status', 'Statut'],
-                    ['activity', 'Activité'],
-                  ].map(([id, label]) => (
-                    <Checkbox
-                      key={id}
-                      label={label}
-                      checked={columns.includes(id)}
-                      onChange={() =>
-                        setColumns((c) => (c.includes(id) ? c.filter((v) => v !== id) : [...c, id]))
-                      }
-                    />
-                  ))}
-                </div>
-              </Popover>
+              <EvoPopover
+                content={
+                  <div className="detail-stack">
+                    {[
+                      ['company', 'Entreprise'],
+                      ['email', 'Email'],
+                      ['status', 'Statut'],
+                      ['activity', 'Activité'],
+                    ].map(([id, label]) => (
+                      <EvoCheckbox
+                        key={id}
+                        label={label}
+                        checked={columns.includes(id)}
+                        onCheckedChange={() =>
+                          setColumns((current) =>
+                            current.includes(id) ? current.filter((value) => value !== id) : [...current, id],
+                          )
+                        }
+                      />
+                    ))}
+                  </div>
+                }
+              >
+                <EvoButton variant="secondary">Colonnes</EvoButton>
+              </EvoPopover>
             </FilterBar>
             <BulkActionBar selectedCount={selected.length} onClear={() => setSelected([])} />
           </WorkspaceToolbar>
           {rows.length ? (
             <>
               <div className="contact-mobile-cards">
-                {rows.map((c) => (
-                  <article className="contact-mobile-card" key={c.id}>
+                {rows.map((contact) => (
+                  <article className="contact-mobile-card" key={contact.id}>
                     <div className="inline spread">
-                      <ContactCard contact={c} onOpen={() => setDetail(c.id)} />
-                      {can('crm.bulk') && (
-                        <Checkbox
-                          label={`Sélectionner ${c.name}`}
-                          checked={selected.includes(c.id)}
-                          onChange={() => toggle(c.id)}
+                      <ContactCard contact={contact} onOpen={() => setDetail(contact.id)} />
+                      {can('crm.bulk') ? (
+                        <EvoCheckbox
+                          label={`Sélectionner ${contact.name}`}
+                          checked={selected.includes(contact.id)}
+                          onCheckedChange={() => toggle(contact.id)}
                         />
-                      )}
+                      ) : null}
                     </div>
-                    {columns.includes('email') && <a href={`mailto:${c.email}`}>{c.email}</a>}
+                    {columns.includes('email') ? <a href={`mailto:${contact.email}`}>{contact.email}</a> : null}
                     <div className="inline spread">
-                      {columns.includes('status') && <StatusBadge status={c.status} />}
-                      {columns.includes('activity') && (
-                        <small className="muted">{formatDateDisplay(c.lastActivity)}</small>
-                      )}
+                      {columns.includes('status') ? <StatusBadge status={contact.status} /> : null}
+                      {columns.includes('activity') ? (
+                        <small className="muted">{formatDateDisplay(contact.lastActivity)}</small>
+                      ) : null}
                     </div>
                   </article>
                 ))}
@@ -204,57 +216,55 @@ export function ContactsPage() {
                   <caption className="sr-only">Contacts du workspace</caption>
                   <thead>
                     <tr>
-                      {can('crm.bulk') && (
+                      {can('crm.bulk') ? (
                         <th scope="col">
-                          <Checkbox
+                          <EvoCheckbox
                             label="Sélectionner la page"
-                            checked={rows.every((c) => selected.includes(c.id))}
-                            onChange={() =>
-                              setSelected((s) =>
-                                rows.every((c) => s.includes(c.id))
-                                  ? s.filter((id) => !rows.some((c) => c.id === id))
-                                  : [...new Set([...s, ...rows.map((c) => c.id)])],
+                            checked={rows.every((contact) => selected.includes(contact.id))}
+                            onCheckedChange={() =>
+                              setSelected((current) =>
+                                rows.every((contact) => current.includes(contact.id))
+                                  ? current.filter((id) => !rows.some((contact) => contact.id === id))
+                                  : [...new Set([...current, ...rows.map((contact) => contact.id)])],
                               )
                             }
                           />
                         </th>
-                      )}
+                      ) : null}
                       <th scope="col">Contact</th>
-                      {columns.includes('company') && <th scope="col">Entreprise</th>}
-                      {columns.includes('email') && <th scope="col">Email</th>}
-                      {columns.includes('status') && <th scope="col">Statut</th>}
-                      {columns.includes('activity') && <th scope="col">Activité</th>}
+                      {columns.includes('company') ? <th scope="col">Entreprise</th> : null}
+                      {columns.includes('email') ? <th scope="col">Email</th> : null}
+                      {columns.includes('status') ? <th scope="col">Statut</th> : null}
+                      {columns.includes('activity') ? <th scope="col">Activité</th> : null}
                     </tr>
                   </thead>
                   <tbody>
-                    {rows.map((c) => (
-                      <tr key={c.id}>
-                        {can('crm.bulk') && (
+                    {rows.map((contact) => (
+                      <tr key={contact.id}>
+                        {can('crm.bulk') ? (
                           <td>
-                            <Checkbox
-                              label={`Sélectionner ${c.name}`}
-                              checked={selected.includes(c.id)}
-                              onChange={() => toggle(c.id)}
+                            <EvoCheckbox
+                              label={`Sélectionner ${contact.name}`}
+                              checked={selected.includes(contact.id)}
+                              onCheckedChange={() => toggle(contact.id)}
                             />
                           </td>
-                        )}
+                        ) : null}
                         <td>
-                          <ContactCard contact={c} onOpen={() => setDetail(c.id)} />
+                          <ContactCard contact={contact} onOpen={() => setDetail(contact.id)} />
                         </td>
-                        {columns.includes('company') && <td>{c.company || '—'}</td>}
-                        {columns.includes('email') && (
+                        {columns.includes('company') ? <td>{contact.company || '—'}</td> : null}
+                        {columns.includes('email') ? (
                           <td>
-                            <a href={`mailto:${c.email}`}>{c.email}</a>
+                            <a href={`mailto:${contact.email}`}>{contact.email}</a>
                           </td>
-                        )}
-                        {columns.includes('status') && (
+                        ) : null}
+                        {columns.includes('status') ? (
                           <td>
-                            <StatusBadge status={c.status} />
+                            <StatusBadge status={contact.status} />
                           </td>
-                        )}
-                        {columns.includes('activity') && (
-                          <td>{formatDateDisplay(c.lastActivity)}</td>
-                        )}
+                        ) : null}
+                        {columns.includes('activity') ? <td>{formatDateDisplay(contact.lastActivity)}</td> : null}
                       </tr>
                     ))}
                   </tbody>
@@ -275,7 +285,7 @@ export function ContactsPage() {
               }
               action={
                 query || status || company ? (
-                  <Button
+                  <EvoButton
                     onClick={() => {
                       setQuery('');
                       setStatus('');
@@ -283,24 +293,25 @@ export function ContactsPage() {
                     }}
                   >
                     Réinitialiser les filtres
-                  </Button>
+                  </EvoButton>
                 ) : (
-                  <Button disabled={!can('crm.edit')} onClick={() => setCreating(true)}>
+                  <EvoButton disabled={!can('crm.edit')} onClick={() => setCreating(true)}>
                     Créer un contact
-                  </Button>
+                  </EvoButton>
                 )
               }
             />
           )}
-          <Pagination page={currentPage} total={visible.length} pageSize={3} onChange={setPage} />
+          <TablePagination page={currentPage} total={visible.length} pageSize={3} onChange={setPage} />
         </Panel>
-        <Drawer
+        <EvoSheet
           open={!!active && !editing}
-          onClose={() => setDetail(null)}
+          onOpenChange={(next) => {
+            if (!next) setDetail(null);
+          }}
           title={active?.name ?? 'Contact'}
-          description="Relation et activité dans le workspace"
         >
-          {active && (
+          {active ? (
             <ContactDetailPanel
               contact={active}
               onEdit={
@@ -312,20 +323,16 @@ export function ContactsPage() {
                   : undefined
               }
             />
-          )}
-        </Drawer>
-        <Drawer
-          open={open}
-          onClose={close}
-          title={editing ? 'Modifier le contact' : 'Nouveau contact'}
-        >
+          ) : null}
+        </EvoSheet>
+        <EvoSheet open={open} onOpenChange={(next) => !next && close()} title={editing ? 'Modifier le contact' : 'Nouveau contact'}>
           <ContactForm
             key={editing?.id ?? 'new'}
             contact={editing}
-            companies={[...new Set(contacts.map((c) => c.company))]}
-            onSave={(c) => {
+            companies={[...new Set(contacts.map((contact) => contact.company))]}
+            onSave={(contact) => {
               setContacts((prev) =>
-                editing ? prev.map((v) => (v.id === c.id ? c : v)) : [...prev, c],
+                editing ? prev.map((value) => (value.id === contact.id ? contact : value)) : [...prev, contact],
               );
               setQuery('');
               setStatus('');
@@ -340,11 +347,12 @@ export function ContactsPage() {
             }}
             existing={contacts}
           />
-        </Drawer>
+        </EvoSheet>
       </section>
     </ScreenState>
   );
 }
+
 function ContactForm({
   contact,
   companies,
@@ -354,7 +362,7 @@ function ContactForm({
   contact: Contact | null;
   companies: string[];
   existing: Contact[];
-  onSave: (c: Contact) => void;
+  onSave: (contact: Contact) => void;
 }) {
   const [name, setName] = useState(contact?.name ?? ''),
     [email, setEmail] = useState(contact?.email ?? ''),
@@ -364,11 +372,11 @@ function ContactForm({
   return (
     <form
       className="form-stack"
-      onSubmit={(e) => {
-        e.preventDefault();
+      onSubmit={(event) => {
+        event.preventDefault();
         if (
           existing.some(
-            (c) => c.email.toLowerCase() === email.trim().toLowerCase() && c.id !== contact?.id,
+            (row) => row.email.toLowerCase() === email.trim().toLowerCase() && row.id !== contact?.id,
           )
         ) {
           setError('Cette adresse email existe déjà.');
@@ -387,7 +395,7 @@ function ContactForm({
           initials: name
             .trim()
             .split(/\s+/)
-            .map((v) => v[0])
+            .map((value) => value[0])
             .slice(0, 2)
             .join('')
             .toUpperCase(),
@@ -396,41 +404,37 @@ function ContactForm({
         });
       }}
     >
-      <Input label="Nom complet" required value={name} onChange={(e) => setName(e.target.value)} />
-      <Input
+      <EvoInput label="Nom complet" required value={name} onChange={(event) => setName(event.target.value)} />
+      <EvoInput
         label="Email"
         required
         type="email"
         value={email}
-        error={error}
-        onChange={(e) => {
-          setEmail(e.target.value);
+        onChange={(event) => {
+          setEmail(event.target.value);
           setError('');
         }}
       />
-      <Select
-        label="Entreprise associée"
-        value={company}
-        onChange={(e) => setCompany(e.target.value)}
-      >
+      <FieldError>{error}</FieldError>
+      <FieldSelect label="Entreprise associée" value={company} onChange={(event) => setCompany(event.target.value)}>
         <option value="">Sans entreprise</option>
-        {companies.map((c) => (
-          <option key={c}>{c}</option>
+        {companies.map((value) => (
+          <option key={value}>{value}</option>
         ))}
-      </Select>
-      <Select
+      </FieldSelect>
+      <FieldSelect
         label="Statut du contact"
         value={status}
-        onChange={(e) => setStatus(e.target.value as ContactStatus)}
+        onChange={(event) => setStatus(event.target.value as ContactStatus)}
       >
-        {['Prospect', 'Actif', 'Inactif'].map((s) => (
-          <option key={s}>{s}</option>
+        {['Prospect', 'Actif', 'Inactif'].map((value) => (
+          <option key={value}>{value}</option>
         ))}
-      </Select>
+      </FieldSelect>
       <p className="muted">Les changements restent en mémoire jusqu’au rechargement.</p>
-      <Button type="submit" variant="primary">
+      <EvoButton type="submit" variant="primary">
         Enregistrer le contact
-      </Button>
+      </EvoButton>
     </form>
   );
 }

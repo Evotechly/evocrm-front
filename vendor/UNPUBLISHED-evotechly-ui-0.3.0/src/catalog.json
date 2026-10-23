@@ -1,19 +1,1963 @@
 {
-  "package": "@evotechly/ui",
   "version": "0.3.0",
-  "note": "Unpublished snapshot. Official 113-component Brandbook catalog was not cloneable from this workspace. This file lists the shipped surface plus reserved 0.3.0 names.",
+  "count": 113,
   "components": [
-    "Alert", "Avatar", "AvatarGroup", "Badge", "Breadcrumbs", "Button", "ButtonGroup",
-    "Calendar", "CalendarDatePicker", "Card", "Checkbox", "CheckboxGroup", "Combobox",
-    "CommandMenu", "DataTable", "DatePicker", "Dialog", "Drawer", "DropdownMenu",
-    "EmptyState", "IconButton", "Input", "KanbanBoard", "KanbanCard", "KpiCard",
-    "Label", "MenuSelect", "NativeSelect", "NoResults", "NotificationCenter",
-    "ObjectViews", "Pagination", "Panel", "Popover", "ProfileMenu", "Progress",
-    "RadioGroup", "RecordActivityTimeline", "RecordTable", "SearchInput", "Select",
-    "Separator", "Sidebar", "Skeleton", "SortControl", "Spinner", "StageRing",
-    "StatusBadge", "Switch", "Table", "TablePagination", "Tabs", "TeamSwitcher",
-    "Textarea", "ToastViewport", "Tooltip", "Topbar", "ViewSwitcher", "WorkspaceHeader",
-    "WorkspaceToolbar", "BulkActionBar", "ActivityTimeline", "AuthCard", "BarChart",
-    "FilterBar"
+    {
+      "slug": "button",
+      "name": "EvoButton",
+      "title": "Button",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/button",
+      "source": "@smoothui/button-copy",
+      "license": "MIT",
+      "registryUrl": "https://smoothui.dev/r/button-copy.json",
+      "inHouse": false,
+      "aliases": [
+        "Button",
+        "buttonVariants"
+      ],
+      "docs": "./docs/components/button.md"
+    },
+    {
+      "slug": "badge",
+      "name": "EvoBadge",
+      "title": "Badge",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/badge",
+      "source": "@smoothui/badge",
+      "license": "MIT",
+      "registryUrl": "https://smoothui.dev/r/badge.json",
+      "inHouse": false,
+      "aliases": [
+        "Badge"
+      ],
+      "docs": "./docs/components/badge.md"
+    },
+    {
+      "slug": "avatar",
+      "name": "EvoAvatar",
+      "title": "Avatar",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/avatar",
+      "source": "@smoothui/avatar",
+      "license": "MIT",
+      "registryUrl": "https://smoothui.dev/r/avatar.json",
+      "inHouse": false,
+      "aliases": [
+        "Avatar",
+        "EvoAvatarImage",
+        "EvoAvatarFallback"
+      ],
+      "docs": "./docs/components/avatar.md"
+    },
+    {
+      "slug": "avatar-group",
+      "name": "EvoAvatarGroup",
+      "title": "Avatar group",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/avatar-group",
+      "source": "@smoothui/animated-avatar-group",
+      "license": "MIT",
+      "registryUrl": "https://smoothui.dev/r/animated-avatar-group.json",
+      "inHouse": false,
+      "aliases": [
+        "AvatarGroup"
+      ],
+      "docs": "./docs/components/avatar-group.md"
+    },
+    {
+      "slug": "separator",
+      "name": "EvoSeparator",
+      "title": "Separator",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/separator",
+      "source": "@intentui/separator",
+      "license": "MIT",
+      "registryUrl": "https://intentui.com/r/separator",
+      "inHouse": false,
+      "aliases": [
+        "Separator"
+      ],
+      "docs": "./docs/components/separator.md"
+    },
+    {
+      "slug": "skeleton",
+      "name": "EvoSkeleton",
+      "title": "Skeleton",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/skeleton",
+      "source": "@smoothui/skeleton",
+      "license": "MIT",
+      "registryUrl": "https://smoothui.dev/r/skeleton.json",
+      "inHouse": false,
+      "aliases": [
+        "Skeleton"
+      ],
+      "docs": "./docs/components/skeleton.md"
+    },
+    {
+      "slug": "kbd",
+      "name": "EvoKbd",
+      "title": "Kbd",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/kbd",
+      "source": "@spectrumui/kbd-key",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/kbd-key.json",
+      "inHouse": false,
+      "aliases": [
+        "Kbd"
+      ],
+      "docs": "./docs/components/kbd.md"
+    },
+    {
+      "slug": "spinner",
+      "name": "EvoSpinner",
+      "title": "Spinner",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/spinner",
+      "source": "@spectrumui/spinner-size",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/spinner-size.json",
+      "inHouse": false,
+      "aliases": [
+        "Spinner"
+      ],
+      "docs": "./docs/components/spinner.md"
+    },
+    {
+      "slug": "typography",
+      "name": "EvoTypography",
+      "title": "Typography",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/typography",
+      "source": "@kibo-ui/typography",
+      "license": "MIT",
+      "registryUrl": "https://www.kibo-ui.com/r/typography.json",
+      "inHouse": false,
+      "aliases": [
+        "Typography",
+        "EvoHeading",
+        "EvoText"
+      ],
+      "docs": "./docs/components/typography.md"
+    },
+    {
+      "slug": "icon-button",
+      "name": "EvoIconButton",
+      "title": "Icon button",
+      "category": "Foundations",
+      "categorySlug": "foundations",
+      "import": "@evotechly/ui",
+      "path": "./components/foundations/icon-button",
+      "source": "@assistant-ui/tooltip-icon-button",
+      "license": "MIT",
+      "registryUrl": "https://r.assistant-ui.com/tooltip-icon-button.json",
+      "inHouse": false,
+      "aliases": [
+        "IconButton"
+      ],
+      "docs": "./docs/components/icon-button.md"
+    },
+    {
+      "slug": "sidebar",
+      "name": "EvoSidebar",
+      "title": "Sidebar",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/sidebar",
+      "source": "@spectrumui/sidebar-navbar",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/sidebar-navbar.json",
+      "inHouse": false,
+      "aliases": [
+        "Sidebar"
+      ],
+      "docs": "./docs/components/sidebar.md"
+    },
+    {
+      "slug": "app-shell",
+      "name": "EvoAppShell",
+      "title": "App shell",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/app-shell",
+      "source": "@spectrumui/bento-grid",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/bento-grid.json",
+      "inHouse": false,
+      "aliases": [
+        "AppShell"
+      ],
+      "docs": "./docs/components/app-shell.md"
+    },
+    {
+      "slug": "resizable",
+      "name": "EvoResizable",
+      "title": "Resizable panels",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/resizable",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "Resizable",
+        "EvoResizablePanel",
+        "EvoResizableHandle"
+      ],
+      "docs": "./docs/components/resizable.md"
+    },
+    {
+      "slug": "scroll-area",
+      "name": "EvoScrollArea",
+      "title": "Scroll area",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/scroll-area",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "ScrollArea"
+      ],
+      "docs": "./docs/components/scroll-area.md"
+    },
+    {
+      "slug": "card",
+      "name": "EvoCard",
+      "title": "Card",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/card",
+      "source": "@spectrumui/animated-card",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/animated-card.json",
+      "inHouse": false,
+      "aliases": [
+        "Card",
+        "EvoCardTitle",
+        "EvoCardDescription",
+        "EvoCardHeader",
+        "EvoCardContent",
+        "EvoCardFooter"
+      ],
+      "docs": "./docs/components/card.md"
+    },
+    {
+      "slug": "page-header",
+      "name": "EvoPageHeader",
+      "title": "Page header",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/page-header",
+      "source": "@spectrumui/heading-with-anchor",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/heading-with-anchor.json",
+      "inHouse": false,
+      "aliases": [
+        "PageHeader"
+      ],
+      "docs": "./docs/components/page-header.md"
+    },
+    {
+      "slug": "tabs",
+      "name": "EvoTabs",
+      "title": "Tabs",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/tabs",
+      "source": "@spectrumui/tab-navbar",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/tab-navbar.json",
+      "inHouse": false,
+      "aliases": [
+        "Tabs",
+        "EvoTabsList",
+        "EvoTabsTrigger",
+        "EvoTabsContent"
+      ],
+      "docs": "./docs/components/tabs.md"
+    },
+    {
+      "slug": "accordion",
+      "name": "EvoAccordion",
+      "title": "Accordion",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/accordion",
+      "source": "@spectrumui/accordion",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/accordion.json",
+      "inHouse": false,
+      "aliases": [
+        "Accordion",
+        "EvoAccordionItem",
+        "EvoAccordionTrigger",
+        "EvoAccordionContent"
+      ],
+      "docs": "./docs/components/accordion.md"
+    },
+    {
+      "slug": "collapsible",
+      "name": "EvoCollapsible",
+      "title": "Collapsible",
+      "category": "Layout & shell",
+      "categorySlug": "layout",
+      "import": "@evotechly/ui",
+      "path": "./components/layout/collapsible",
+      "source": "@spectrumui/accordion-ghost",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/accordion-ghost.json",
+      "inHouse": false,
+      "aliases": [
+        "Collapsible"
+      ],
+      "docs": "./docs/components/collapsible.md"
+    },
+    {
+      "slug": "breadcrumb",
+      "name": "EvoBreadcrumb",
+      "title": "Breadcrumb",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "import": "@evotechly/ui",
+      "path": "./components/navigation/breadcrumb",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "Breadcrumb"
+      ],
+      "docs": "./docs/components/breadcrumb.md"
+    },
+    {
+      "slug": "command",
+      "name": "EvoCommand",
+      "title": "Command palette",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "import": "@evotechly/ui",
+      "path": "./components/navigation/command",
+      "source": "@spectrumui/command-palette",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/command-palette.json",
+      "inHouse": false,
+      "aliases": [
+        "Command",
+        "EvoCommandInput",
+        "EvoCommandList",
+        "EvoCommandItem",
+        "EvoCommandPalette"
+      ],
+      "docs": "./docs/components/command.md"
+    },
+    {
+      "slug": "navigation-menu",
+      "name": "EvoNavigationMenu",
+      "title": "Navigation menu",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "import": "@evotechly/ui",
+      "path": "./components/navigation/navigation-menu",
+      "source": "@spectrumui/tab-navbar",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/tab-navbar.json",
+      "inHouse": false,
+      "aliases": [
+        "NavigationMenu"
+      ],
+      "docs": "./docs/components/navigation-menu.md"
+    },
+    {
+      "slug": "menubar",
+      "name": "EvoMenubar",
+      "title": "Menubar",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "import": "@evotechly/ui",
+      "path": "./components/navigation/menubar",
+      "source": "@spectrumui/expandable-action-bar",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/expandable-action-bar.json",
+      "inHouse": false,
+      "aliases": [
+        "Menubar"
+      ],
+      "docs": "./docs/components/menubar.md"
+    },
+    {
+      "slug": "pagination",
+      "name": "EvoPagination",
+      "title": "Pagination",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "import": "@evotechly/ui",
+      "path": "./components/navigation/pagination",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "Pagination"
+      ],
+      "docs": "./docs/components/pagination.md"
+    },
+    {
+      "slug": "stepper",
+      "name": "EvoStepper",
+      "title": "Stepper",
+      "category": "Navigation",
+      "categorySlug": "navigation",
+      "import": "@evotechly/ui",
+      "path": "./components/navigation/stepper",
+      "source": "@spectrumui/agent-steps",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/agent-steps.json",
+      "inHouse": false,
+      "aliases": [
+        "Stepper"
+      ],
+      "docs": "./docs/components/stepper.md"
+    },
+    {
+      "slug": "input",
+      "name": "EvoInput",
+      "title": "Input",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/input",
+      "source": "@spectrumui/floating-label-input",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/floating-label-input.json",
+      "inHouse": false,
+      "aliases": [
+        "Input"
+      ],
+      "docs": "./docs/components/input.md"
+    },
+    {
+      "slug": "textarea",
+      "name": "EvoTextarea",
+      "title": "Textarea",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/textarea",
+      "source": "@spectrumui/autosize-textarea-form",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/autosize-textarea-form.json",
+      "inHouse": false,
+      "aliases": [
+        "Textarea"
+      ],
+      "docs": "./docs/components/textarea.md"
+    },
+    {
+      "slug": "select",
+      "name": "EvoSelect",
+      "title": "Select",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/select",
+      "source": "@spectrumui/model-selector",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/model-selector.json",
+      "inHouse": false,
+      "aliases": [
+        "Select"
+      ],
+      "docs": "./docs/components/select.md"
+    },
+    {
+      "slug": "combobox",
+      "name": "EvoCombobox",
+      "title": "Combobox",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/combobox",
+      "source": "@spectrumui/multiple-selector-with-async-search",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/multiple-selector-with-async-search.json",
+      "inHouse": false,
+      "aliases": [
+        "Combobox"
+      ],
+      "docs": "./docs/components/combobox.md"
+    },
+    {
+      "slug": "multi-select",
+      "name": "EvoMultiSelect",
+      "title": "Multi select",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/multi-select",
+      "source": "@spectrumui/multiple-selector-controlled",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/multiple-selector-controlled.json",
+      "inHouse": false,
+      "aliases": [
+        "MultiSelect"
+      ],
+      "docs": "./docs/components/multi-select.md"
+    },
+    {
+      "slug": "tags-input",
+      "name": "EvoTagsInput",
+      "title": "Tags input",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/tags-input",
+      "source": "@spectrumui/multiple-selector-creatable",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/multiple-selector-creatable.json",
+      "inHouse": false,
+      "aliases": [
+        "TagsInput"
+      ],
+      "docs": "./docs/components/tags-input.md"
+    },
+    {
+      "slug": "checkbox",
+      "name": "EvoCheckbox",
+      "title": "Checkbox",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/checkbox",
+      "source": "@spectrumui/task-checkbox",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/task-checkbox.json",
+      "inHouse": false,
+      "aliases": [
+        "Checkbox"
+      ],
+      "docs": "./docs/components/checkbox.md"
+    },
+    {
+      "slug": "radio-group",
+      "name": "EvoRadioGroup",
+      "title": "Radio group",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/radio-group",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "RadioGroup",
+        "Radio"
+      ],
+      "docs": "./docs/components/radio-group.md"
+    },
+    {
+      "slug": "switch",
+      "name": "EvoSwitch",
+      "title": "Switch",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/switch",
+      "source": "@spectrumui/animated-switch",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/animated-switch.json",
+      "inHouse": false,
+      "aliases": [
+        "Switch"
+      ],
+      "docs": "./docs/components/switch.md"
+    },
+    {
+      "slug": "slider",
+      "name": "EvoSlider",
+      "title": "Slider",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/slider",
+      "source": "@spectrumui/dual-range-slider-single",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/dual-range-slider-single.json",
+      "inHouse": false,
+      "aliases": [
+        "Slider"
+      ],
+      "docs": "./docs/components/slider.md"
+    },
+    {
+      "slug": "date-picker",
+      "name": "EvoDatePicker",
+      "title": "Date picker",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/date-picker",
+      "source": "@spectrumui/datetime-picker-form",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/datetime-picker-form.json",
+      "inHouse": false,
+      "aliases": [
+        "DatePicker"
+      ],
+      "docs": "./docs/components/date-picker.md"
+    },
+    {
+      "slug": "date-range-picker",
+      "name": "EvoDateRangePicker",
+      "title": "Date range picker",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/date-range-picker",
+      "source": "@spectrumui/datetime-picker-year-range",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/datetime-picker-year-range.json",
+      "inHouse": false,
+      "aliases": [
+        "DateRangePicker"
+      ],
+      "docs": "./docs/components/date-range-picker.md"
+    },
+    {
+      "slug": "time-picker",
+      "name": "EvoTimePicker",
+      "title": "Time picker",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/time-picker",
+      "source": "@spectrumui/datetime-picker-and-time-input",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/datetime-picker-and-time-input.json",
+      "inHouse": false,
+      "aliases": [
+        "TimePicker"
+      ],
+      "docs": "./docs/components/time-picker.md"
+    },
+    {
+      "slug": "number-input",
+      "name": "EvoNumberInput",
+      "title": "Number input",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/number-input",
+      "source": "@spectrumui/quantity-stepper",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/quantity-stepper.json",
+      "inHouse": false,
+      "aliases": [
+        "NumberInput"
+      ],
+      "docs": "./docs/components/number-input.md"
+    },
+    {
+      "slug": "currency-input",
+      "name": "EvoCurrencyInput",
+      "title": "Currency input",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/currency-input",
+      "source": "@spectrumui/transfer-funds-card",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/transfer-funds-card.json",
+      "inHouse": false,
+      "aliases": [
+        "CurrencyInput"
+      ],
+      "docs": "./docs/components/currency-input.md"
+    },
+    {
+      "slug": "phone-input",
+      "name": "EvoPhoneInput",
+      "title": "Phone input",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/phone-input",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "PhoneInput"
+      ],
+      "docs": "./docs/components/phone-input.md"
+    },
+    {
+      "slug": "file-upload",
+      "name": "EvoFileUpload",
+      "title": "File upload",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/file-upload",
+      "source": "@spectrumui/upload-empty",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/upload-empty.json",
+      "inHouse": false,
+      "aliases": [
+        "FileUpload"
+      ],
+      "docs": "./docs/components/file-upload.md"
+    },
+    {
+      "slug": "form",
+      "name": "EvoForm",
+      "title": "Form",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/form",
+      "source": "@spectrumui/multiple-selector-with-form",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/multiple-selector-with-form.json",
+      "inHouse": false,
+      "aliases": [
+        "Form",
+        "EvoFormField",
+        "EvoFormLabel",
+        "EvoFormMessage"
+      ],
+      "docs": "./docs/components/form.md"
+    },
+    {
+      "slug": "input-otp",
+      "name": "EvoInputOtp",
+      "title": "Input OTP",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/input-otp",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "InputOtp",
+        "EvoInputOTP"
+      ],
+      "docs": "./docs/components/input-otp.md"
+    },
+    {
+      "slug": "rich-text",
+      "name": "EvoRichText",
+      "title": "Rich text editor",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/rich-text",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "RichText"
+      ],
+      "docs": "./docs/components/rich-text.md"
+    },
+    {
+      "slug": "mention-input",
+      "name": "EvoMentionInput",
+      "title": "Mention input",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/mention-input",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "MentionInput"
+      ],
+      "docs": "./docs/components/mention-input.md"
+    },
+    {
+      "slug": "color-picker",
+      "name": "EvoColorPicker",
+      "title": "Color picker",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/color-picker",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "ColorPicker"
+      ],
+      "docs": "./docs/components/color-picker.md"
+    },
+    {
+      "slug": "rating",
+      "name": "EvoRating",
+      "title": "Rating",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/rating",
+      "source": "@spectrumui/star-rating",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/star-rating.json",
+      "inHouse": false,
+      "aliases": [
+        "Rating"
+      ],
+      "docs": "./docs/components/rating.md"
+    },
+    {
+      "slug": "toggle-group",
+      "name": "EvoToggleGroup",
+      "title": "Toggle group",
+      "category": "Forms & inputs",
+      "categorySlug": "forms",
+      "import": "@evotechly/ui",
+      "path": "./components/forms/toggle-group",
+      "source": "@spectrumui/morph-button",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/morph-button.json",
+      "inHouse": false,
+      "aliases": [
+        "ToggleGroup"
+      ],
+      "docs": "./docs/components/toggle-group.md"
+    },
+    {
+      "slug": "tooltip",
+      "name": "EvoTooltip",
+      "title": "Tooltip",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/tooltip",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "Tooltip"
+      ],
+      "docs": "./docs/components/tooltip.md"
+    },
+    {
+      "slug": "hover-card",
+      "name": "EvoHoverCard",
+      "title": "Hover card",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/hover-card",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "HoverCard"
+      ],
+      "docs": "./docs/components/hover-card.md"
+    },
+    {
+      "slug": "progress",
+      "name": "EvoProgress",
+      "title": "Progress",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/progress",
+      "source": "@spectrumui/progress-with-value",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/progress-with-value.json",
+      "inHouse": false,
+      "aliases": [
+        "Progress"
+      ],
+      "docs": "./docs/components/progress.md"
+    },
+    {
+      "slug": "timeline",
+      "name": "EvoTimeline",
+      "title": "Timeline",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/timeline",
+      "source": "@spectrumui/recent-activity",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/recent-activity.json",
+      "inHouse": false,
+      "aliases": [
+        "Timeline"
+      ],
+      "docs": "./docs/components/timeline.md"
+    },
+    {
+      "slug": "tree-view",
+      "name": "EvoTreeView",
+      "title": "Tree view",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/tree-view",
+      "source": "@spectrumui/tree-nav",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/tree-nav.json",
+      "inHouse": false,
+      "aliases": [
+        "TreeView"
+      ],
+      "docs": "./docs/components/tree-view.md"
+    },
+    {
+      "slug": "status",
+      "name": "EvoStatus",
+      "title": "Status",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/status",
+      "source": "@spectrumui/status-badge",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/status-badge.json",
+      "inHouse": false,
+      "aliases": [
+        "Status"
+      ],
+      "docs": "./docs/components/status.md"
+    },
+    {
+      "slug": "copy-button",
+      "name": "EvoCopyButton",
+      "title": "Copy button",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/copy-button",
+      "source": "@spectrumui/share-button",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/share-button.json",
+      "inHouse": false,
+      "aliases": [
+        "CopyButton"
+      ],
+      "docs": "./docs/components/copy-button.md"
+    },
+    {
+      "slug": "relative-time",
+      "name": "EvoRelativeTime",
+      "title": "Relative time",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/relative-time",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "RelativeTime"
+      ],
+      "docs": "./docs/components/relative-time.md"
+    },
+    {
+      "slug": "description-list",
+      "name": "EvoDescriptionList",
+      "title": "Description list",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/description-list",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "DescriptionList"
+      ],
+      "docs": "./docs/components/description-list.md"
+    },
+    {
+      "slug": "image",
+      "name": "EvoImage",
+      "title": "Image",
+      "category": "Data display",
+      "categorySlug": "data-display",
+      "import": "@evotechly/ui",
+      "path": "./components/data-display/image",
+      "source": "@spectrumui/image-preview",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/image-preview.json",
+      "inHouse": false,
+      "aliases": [
+        "Image"
+      ],
+      "docs": "./docs/components/image.md"
+    },
+    {
+      "slug": "data-table",
+      "name": "EvoDataTable",
+      "title": "Data table",
+      "category": "Tables",
+      "categorySlug": "tables",
+      "import": "@evotechly/ui",
+      "path": "./components/tables/data-table",
+      "source": "@spectrumui/data-table",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/data-table.json",
+      "inHouse": false,
+      "aliases": [
+        "DataTable"
+      ],
+      "docs": "./docs/components/data-table.md"
+    },
+    {
+      "slug": "table",
+      "name": "EvoTable",
+      "title": "Table",
+      "category": "Tables",
+      "categorySlug": "tables",
+      "import": "@evotechly/ui",
+      "path": "./components/tables/table",
+      "source": "@spectrumui/payments-table",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/payments-table.json",
+      "inHouse": false,
+      "aliases": [
+        "Table",
+        "EvoTableHeader",
+        "EvoTableBody",
+        "EvoTableRow",
+        "EvoTableHead",
+        "EvoTableCell"
+      ],
+      "docs": "./docs/components/table.md"
+    },
+    {
+      "slug": "data-table-filters",
+      "name": "EvoDataTableFilters",
+      "title": "Data table filters",
+      "category": "Tables",
+      "categorySlug": "tables",
+      "import": "@evotechly/ui",
+      "path": "./components/tables/data-table-filters",
+      "source": "@spectrumui/filter-empty",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/filter-empty.json",
+      "inHouse": false,
+      "aliases": [
+        "DataTableFilters"
+      ],
+      "docs": "./docs/components/data-table-filters.md"
+    },
+    {
+      "slug": "column-visibility",
+      "name": "EvoColumnVisibility",
+      "title": "Column visibility",
+      "category": "Tables",
+      "categorySlug": "tables",
+      "import": "@evotechly/ui",
+      "path": "./components/tables/column-visibility",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "ColumnVisibility"
+      ],
+      "docs": "./docs/components/column-visibility.md"
+    },
+    {
+      "slug": "virtualized-list",
+      "name": "EvoVirtualizedList",
+      "title": "Virtualized list",
+      "category": "Tables",
+      "categorySlug": "tables",
+      "import": "@evotechly/ui",
+      "path": "./components/tables/virtualized-list",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "VirtualizedList"
+      ],
+      "docs": "./docs/components/virtualized-list.md"
+    },
+    {
+      "slug": "data-grid",
+      "name": "EvoDataGrid",
+      "title": "Data grid",
+      "category": "Tables",
+      "categorySlug": "tables",
+      "import": "@evotechly/ui",
+      "path": "./components/tables/data-grid",
+      "source": "@spectrumui/feature-flags-table",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/feature-flags-table.json",
+      "inHouse": false,
+      "aliases": [
+        "DataGrid"
+      ],
+      "docs": "./docs/components/data-grid.md"
+    },
+    {
+      "slug": "inline-edit",
+      "name": "EvoInlineEdit",
+      "title": "Inline edit",
+      "category": "Tables",
+      "categorySlug": "tables",
+      "import": "@evotechly/ui",
+      "path": "./components/tables/inline-edit",
+      "source": "@spectrumui/inline-edit",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/inline-edit.json",
+      "inHouse": false,
+      "aliases": [
+        "InlineEdit"
+      ],
+      "docs": "./docs/components/inline-edit.md"
+    },
+    {
+      "slug": "area-chart",
+      "name": "EvoAreaChart",
+      "title": "Area chart",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/area-chart",
+      "source": "@spectrumui/area-chart",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/area-chart.json",
+      "inHouse": false,
+      "aliases": [
+        "AreaChart"
+      ],
+      "docs": "./docs/components/area-chart.md"
+    },
+    {
+      "slug": "bar-chart",
+      "name": "EvoBarChart",
+      "title": "Bar chart",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/bar-chart",
+      "source": "@spectrumui/bar-chart",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/bar-chart.json",
+      "inHouse": false,
+      "aliases": [
+        "BarChart"
+      ],
+      "docs": "./docs/components/bar-chart.md"
+    },
+    {
+      "slug": "line-chart",
+      "name": "EvoLineChart",
+      "title": "Line chart",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/line-chart",
+      "source": "@spectrumui/line-chart",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/line-chart.json",
+      "inHouse": false,
+      "aliases": [
+        "LineChart"
+      ],
+      "docs": "./docs/components/line-chart.md"
+    },
+    {
+      "slug": "pie-chart",
+      "name": "EvoPieChart",
+      "title": "Pie chart",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/pie-chart",
+      "source": "@spectrumui/pie-chart",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/pie-chart.json",
+      "inHouse": false,
+      "aliases": [
+        "PieChart"
+      ],
+      "docs": "./docs/components/pie-chart.md"
+    },
+    {
+      "slug": "funnel-chart",
+      "name": "EvoFunnelChart",
+      "title": "Funnel chart",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/funnel-chart",
+      "source": "@spectrumui/cohort-chart",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/cohort-chart.json",
+      "inHouse": false,
+      "aliases": [
+        "FunnelChart"
+      ],
+      "docs": "./docs/components/funnel-chart.md"
+    },
+    {
+      "slug": "radial-chart",
+      "name": "EvoRadialChart",
+      "title": "Radial chart",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/radial-chart",
+      "source": "@spectrumui/radial-chart",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/radial-chart.json",
+      "inHouse": false,
+      "aliases": [
+        "RadialChart"
+      ],
+      "docs": "./docs/components/radial-chart.md"
+    },
+    {
+      "slug": "kpi-card",
+      "name": "EvoKpiCard",
+      "title": "KPI card",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/kpi-card",
+      "source": "@spectrumui/stat-cards",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/stat-cards.json",
+      "inHouse": false,
+      "aliases": [
+        "KpiCard",
+        "StatCard"
+      ],
+      "docs": "./docs/components/kpi-card.md"
+    },
+    {
+      "slug": "sparkline",
+      "name": "EvoSparkline",
+      "title": "Sparkline",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/sparkline",
+      "source": "@spectrumui/sparkline-chart",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/sparkline-chart.json",
+      "inHouse": false,
+      "aliases": [
+        "Sparkline"
+      ],
+      "docs": "./docs/components/sparkline.md"
+    },
+    {
+      "slug": "heatmap",
+      "name": "EvoHeatmap",
+      "title": "Heatmap",
+      "category": "Charts & KPIs",
+      "categorySlug": "charts",
+      "import": "@evotechly/ui",
+      "path": "./components/charts/heatmap",
+      "source": "@spectrumui/calendar-heatmap",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/calendar-heatmap.json",
+      "inHouse": false,
+      "aliases": [
+        "Heatmap"
+      ],
+      "docs": "./docs/components/heatmap.md"
+    },
+    {
+      "slug": "alert",
+      "name": "EvoAlert",
+      "title": "Alert",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "import": "@evotechly/ui",
+      "path": "./components/feedback/alert",
+      "source": "@spectrumui/alert-2",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/alert-2.json",
+      "inHouse": false,
+      "aliases": [
+        "Alert"
+      ],
+      "docs": "./docs/components/alert.md"
+    },
+    {
+      "slug": "toast",
+      "name": "EvoToaster",
+      "title": "Toast",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "import": "@evotechly/ui",
+      "path": "./components/feedback/toast",
+      "source": "@spectrumui/toast-stack",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/toast-stack.json",
+      "inHouse": false,
+      "aliases": [
+        "Toaster",
+        "toast"
+      ],
+      "docs": "./docs/components/toast.md"
+    },
+    {
+      "slug": "banner",
+      "name": "EvoBanner",
+      "title": "Banner",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "import": "@evotechly/ui",
+      "path": "./components/feedback/banner",
+      "source": "@spectrumui/suggestion-banner",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/suggestion-banner.json",
+      "inHouse": false,
+      "aliases": [
+        "Banner"
+      ],
+      "docs": "./docs/components/banner.md"
+    },
+    {
+      "slug": "notification-center",
+      "name": "EvoNotificationCenter",
+      "title": "Notification center",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "import": "@evotechly/ui",
+      "path": "./components/feedback/notification-center",
+      "source": "@spectrumui/notification-bell",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/notification-bell.json",
+      "inHouse": false,
+      "aliases": [
+        "NotificationCenter"
+      ],
+      "docs": "./docs/components/notification-center.md"
+    },
+    {
+      "slug": "error-page",
+      "name": "EvoErrorPage",
+      "title": "Error page",
+      "category": "Feedback",
+      "categorySlug": "feedback",
+      "import": "@evotechly/ui",
+      "path": "./components/feedback/error-page",
+      "source": "@spectrumui/not-found-empty",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/not-found-empty.json",
+      "inHouse": false,
+      "aliases": [
+        "ErrorPage"
+      ],
+      "docs": "./docs/components/error-page.md"
+    },
+    {
+      "slug": "dialog",
+      "name": "EvoDialog",
+      "title": "Dialog",
+      "category": "Overlays",
+      "categorySlug": "overlays",
+      "import": "@evotechly/ui",
+      "path": "./components/overlays/dialog",
+      "source": "@spectrumui/responsive-modal",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/responsive-modal.json",
+      "inHouse": false,
+      "aliases": [
+        "Dialog"
+      ],
+      "docs": "./docs/components/dialog.md"
+    },
+    {
+      "slug": "alert-dialog",
+      "name": "EvoAlertDialog",
+      "title": "Alert dialog",
+      "category": "Overlays",
+      "categorySlug": "overlays",
+      "import": "@evotechly/ui",
+      "path": "./components/overlays/alert-dialog",
+      "source": "@spectrumui/hold-to-confirm",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/hold-to-confirm.json",
+      "inHouse": false,
+      "aliases": [
+        "AlertDialog"
+      ],
+      "docs": "./docs/components/alert-dialog.md"
+    },
+    {
+      "slug": "sheet",
+      "name": "EvoSheet",
+      "title": "Sheet",
+      "category": "Overlays",
+      "categorySlug": "overlays",
+      "import": "@evotechly/ui",
+      "path": "./components/overlays/sheet",
+      "source": "@spectrumui/responsive-modal-side",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/responsive-modal-side.json",
+      "inHouse": false,
+      "aliases": [
+        "Sheet",
+        "Drawer"
+      ],
+      "docs": "./docs/components/sheet.md"
+    },
+    {
+      "slug": "popover",
+      "name": "EvoPopover",
+      "title": "Popover",
+      "category": "Overlays",
+      "categorySlug": "overlays",
+      "import": "@evotechly/ui",
+      "path": "./components/overlays/popover",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "Popover"
+      ],
+      "docs": "./docs/components/popover.md"
+    },
+    {
+      "slug": "dropdown-menu",
+      "name": "EvoDropdownMenu",
+      "title": "Dropdown menu",
+      "category": "Overlays",
+      "categorySlug": "overlays",
+      "import": "@evotechly/ui",
+      "path": "./components/overlays/dropdown-menu",
+      "source": "@spectrumui/profile-dropdown",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/profile-dropdown.json",
+      "inHouse": false,
+      "aliases": [
+        "DropdownMenu"
+      ],
+      "docs": "./docs/components/dropdown-menu.md"
+    },
+    {
+      "slug": "context-menu",
+      "name": "EvoContextMenu",
+      "title": "Context menu",
+      "category": "Overlays",
+      "categorySlug": "overlays",
+      "import": "@evotechly/ui",
+      "path": "./components/overlays/context-menu",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "ContextMenu"
+      ],
+      "docs": "./docs/components/context-menu.md"
+    },
+    {
+      "slug": "kanban",
+      "name": "EvoKanban",
+      "title": "Kanban",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/kanban",
+      "source": "@spectrumui/kanbanboard",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/kanbanboard.json",
+      "inHouse": false,
+      "aliases": [
+        "Kanban"
+      ],
+      "docs": "./docs/components/kanban.md"
+    },
+    {
+      "slug": "sortable-list",
+      "name": "EvoSortableList",
+      "title": "Sortable list",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/sortable-list",
+      "source": "@spectrumui/task-rows",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/task-rows.json",
+      "inHouse": false,
+      "aliases": [
+        "SortableList"
+      ],
+      "docs": "./docs/components/sortable-list.md"
+    },
+    {
+      "slug": "calendar",
+      "name": "EvoCalendar",
+      "title": "Calendar",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/calendar",
+      "source": "@spectrumui/event-calendar",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/event-calendar.json",
+      "inHouse": false,
+      "aliases": [
+        "Calendar"
+      ],
+      "docs": "./docs/components/calendar.md"
+    },
+    {
+      "slug": "event-calendar",
+      "name": "EvoEventCalendar",
+      "title": "Event calendar",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/event-calendar",
+      "source": "@spectrumui/event-calendar",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/event-calendar.json",
+      "inHouse": false,
+      "aliases": [
+        "EventCalendar"
+      ],
+      "docs": "./docs/components/event-calendar.md"
+    },
+    {
+      "slug": "gantt",
+      "name": "EvoGantt",
+      "title": "Gantt",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/gantt",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "Gantt"
+      ],
+      "docs": "./docs/components/gantt.md"
+    },
+    {
+      "slug": "activity-feed",
+      "name": "EvoActivityFeed",
+      "title": "Activity feed",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/activity-feed",
+      "source": "@spectrumui/recent-activity",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/recent-activity.json",
+      "inHouse": false,
+      "aliases": [
+        "ActivityFeed"
+      ],
+      "docs": "./docs/components/activity-feed.md"
+    },
+    {
+      "slug": "chat",
+      "name": "EvoChat",
+      "title": "Chat",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/chat",
+      "source": "@spectrumui/ai-chat-card",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/ai-chat-card.json",
+      "inHouse": false,
+      "aliases": [
+        "Chat"
+      ],
+      "docs": "./docs/components/chat.md"
+    },
+    {
+      "slug": "conversation",
+      "name": "EvoConversation",
+      "title": "Conversation",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/conversation",
+      "source": "@spectrumui/conversation-list",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/conversation-list.json",
+      "inHouse": false,
+      "aliases": [
+        "Conversation"
+      ],
+      "docs": "./docs/components/conversation.md"
+    },
+    {
+      "slug": "prompt-input",
+      "name": "EvoPromptInput",
+      "title": "AI prompt input",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/prompt-input",
+      "source": "@spectrumui/prompt-composer",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/prompt-composer.json",
+      "inHouse": false,
+      "aliases": [
+        "PromptInput"
+      ],
+      "docs": "./docs/components/prompt-input.md"
+    },
+    {
+      "slug": "email-composer",
+      "name": "EvoEmailComposer",
+      "title": "Email composer",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/email-composer",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "EmailComposer"
+      ],
+      "docs": "./docs/components/email-composer.md"
+    },
+    {
+      "slug": "contact-card",
+      "name": "EvoContactCard",
+      "title": "Contact card",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/contact-card",
+      "source": "@spectrumui/contact-card-footer",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/contact-card-footer.json",
+      "inHouse": false,
+      "aliases": [
+        "ContactCard"
+      ],
+      "docs": "./docs/components/contact-card.md"
+    },
+    {
+      "slug": "workflow-builder",
+      "name": "EvoWorkflowBuilder",
+      "title": "Workflow builder",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/workflow-builder",
+      "source": "@spectrumui/agent-plan",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/agent-plan.json",
+      "inHouse": false,
+      "aliases": [
+        "WorkflowBuilder"
+      ],
+      "docs": "./docs/components/workflow-builder.md"
+    },
+    {
+      "slug": "comments",
+      "name": "EvoComments",
+      "title": "Comments",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/comments",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "Comments"
+      ],
+      "docs": "./docs/components/comments.md"
+    },
+    {
+      "slug": "pricing-table",
+      "name": "EvoPricingTable",
+      "title": "Pricing table",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/pricing-table",
+      "source": "@spectrumui/blueprint-tiers",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/blueprint-tiers.json",
+      "inHouse": false,
+      "aliases": [
+        "PricingTable"
+      ],
+      "docs": "./docs/components/pricing-table.md"
+    },
+    {
+      "slug": "invoice",
+      "name": "EvoInvoice",
+      "title": "Invoice",
+      "category": "CRM domain",
+      "categorySlug": "crm",
+      "import": "@evotechly/ui",
+      "path": "./components/crm/invoice",
+      "source": "@spectrumui/invoices-table",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/invoices-table.json",
+      "inHouse": false,
+      "aliases": [
+        "Invoice"
+      ],
+      "docs": "./docs/components/invoice.md"
+    },
+    {
+      "slug": "sign-in",
+      "name": "EvoSignIn",
+      "title": "Sign in",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/sign-in",
+      "source": "@spectrumui/login-card",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/login-card.json",
+      "inHouse": false,
+      "aliases": [
+        "SignIn"
+      ],
+      "docs": "./docs/components/sign-in.md"
+    },
+    {
+      "slug": "sign-up",
+      "name": "EvoSignUp",
+      "title": "Sign up",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/sign-up",
+      "source": "@spectrumui/login-card",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/login-card.json",
+      "inHouse": false,
+      "aliases": [
+        "SignUp"
+      ],
+      "docs": "./docs/components/sign-up.md"
+    },
+    {
+      "slug": "forgot-password",
+      "name": "EvoForgotPassword",
+      "title": "Forgot password",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/forgot-password",
+      "source": "@spectrumui/password-strength",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/password-strength.json",
+      "inHouse": false,
+      "aliases": [
+        "ForgotPassword"
+      ],
+      "docs": "./docs/components/forgot-password.md"
+    },
+    {
+      "slug": "two-factor",
+      "name": "EvoTwoFactor",
+      "title": "Two-factor",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/two-factor",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "TwoFactor"
+      ],
+      "docs": "./docs/components/two-factor.md"
+    },
+    {
+      "slug": "account-button",
+      "name": "EvoAccountButton",
+      "title": "Account button",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/account-button",
+      "source": "@spectrumui/profile-dropdown",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/profile-dropdown.json",
+      "inHouse": false,
+      "aliases": [
+        "AccountButton"
+      ],
+      "docs": "./docs/components/account-button.md"
+    },
+    {
+      "slug": "settings-page",
+      "name": "EvoSettingsPage",
+      "title": "Settings page",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/settings-page",
+      "source": "@spectrumui/feature-flags-table",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/feature-flags-table.json",
+      "inHouse": false,
+      "aliases": [
+        "SettingsPage"
+      ],
+      "docs": "./docs/components/settings-page.md"
+    },
+    {
+      "slug": "org-switcher",
+      "name": "EvoOrgSwitcher",
+      "title": "Organization switcher",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/org-switcher",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "OrgSwitcher"
+      ],
+      "docs": "./docs/components/org-switcher.md"
+    },
+    {
+      "slug": "api-keys",
+      "name": "EvoApiKeys",
+      "title": "API keys",
+      "category": "Auth & settings",
+      "categorySlug": "auth",
+      "import": "@evotechly/ui",
+      "path": "./components/auth/api-keys",
+      "source": "@spectrumui/api-keys-table",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/api-keys-table.json",
+      "inHouse": false,
+      "aliases": [
+        "ApiKeys"
+      ],
+      "docs": "./docs/components/api-keys.md"
+    },
+    {
+      "slug": "empty-state",
+      "name": "EvoEmptyState",
+      "title": "Empty state",
+      "category": "Empty & onboarding",
+      "categorySlug": "empty",
+      "import": "@evotechly/ui",
+      "path": "./components/empty/empty-state",
+      "source": "@spectrumui/project-empty",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/project-empty.json",
+      "inHouse": false,
+      "aliases": [
+        "EmptyState",
+        "Empty"
+      ],
+      "docs": "./docs/components/empty-state.md"
+    },
+    {
+      "slug": "onboarding",
+      "name": "EvoOnboarding",
+      "title": "Onboarding",
+      "category": "Empty & onboarding",
+      "categorySlug": "empty",
+      "import": "@evotechly/ui",
+      "path": "./components/empty/onboarding",
+      "source": "@spectrumui/integration-empty",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/integration-empty.json",
+      "inHouse": false,
+      "aliases": [
+        "Onboarding"
+      ],
+      "docs": "./docs/components/onboarding.md"
+    },
+    {
+      "slug": "announcement",
+      "name": "EvoAnnouncement",
+      "title": "Announcement",
+      "category": "Empty & onboarding",
+      "categorySlug": "empty",
+      "import": "@evotechly/ui",
+      "path": "./components/empty/announcement",
+      "source": "@spectrumui/suggestion-banner",
+      "license": "Apache-2.0",
+      "registryUrl": "https://ui.spectrumhq.in/r/suggestion-banner.json",
+      "inHouse": false,
+      "aliases": [
+        "Announcement"
+      ],
+      "docs": "./docs/components/announcement.md"
+    },
+    {
+      "slug": "feature-tour",
+      "name": "EvoFeatureTour",
+      "title": "Feature tour",
+      "category": "Empty & onboarding",
+      "categorySlug": "empty",
+      "import": "@evotechly/ui",
+      "path": "./components/empty/feature-tour",
+      "source": null,
+      "license": "in-house",
+      "registryUrl": null,
+      "inHouse": true,
+      "aliases": [
+        "FeatureTour"
+      ],
+      "docs": "./docs/components/feature-tour.md"
+    }
   ]
 }

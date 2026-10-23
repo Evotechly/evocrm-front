@@ -1,4 +1,5 @@
-import { AuthCard, Button, Input } from '@evotechly/ui';
+import { EvoButton, EvoInput } from '@evotechly/ui';
+import { AuthCard } from '@/components/crm/ui';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 
 export function LoginPage() {
@@ -13,11 +14,11 @@ export function LoginPage() {
           navigate('/dashboard');
         }}
       >
-        <Input label="Email" type="email" defaultValue="mohamed@clinique-eldjazair.dz" />
-        <Input label="Mot de passe" type="password" defaultValue="demo" />
-        <Button type="submit" variant="primary">
+        <EvoInput label="Email" type="email" defaultValue="mohamed@clinique-eldjazair.dz" />
+        <EvoInput label="Mot de passe" type="password" defaultValue="demo" />
+        <EvoButton type="submit" variant="primary">
           Entrer dans l’espace
-        </Button>
+        </EvoButton>
       </form>
     </AuthCard>
   );

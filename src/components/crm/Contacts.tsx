@@ -1,12 +1,12 @@
 import { formatDateDisplay } from '@/lib/format';
 import type { Contact } from '@/contracts/entities';
-import { Avatar, Button } from '@evotechly/ui';
-import { StatusBadge } from '@evotechly/ui';
-import { RecordActivityTimeline } from '@evotechly/ui';
+import { EvoAvatar, EvoButton } from '@evotechly/ui';
+import { RecordActivityTimeline, StatusBadge } from '@/components/crm/ui';
+
 export function ContactCard({ contact, onOpen }: { contact: Contact; onOpen: () => void }) {
   return (
     <div className="person-cell">
-      <Avatar initials={contact.initials} />
+      <EvoAvatar fallback={contact.initials} alt={contact.name} />
       <span>
         <button className="record-link" onClick={onOpen}>
           {contact.name}
@@ -16,11 +16,12 @@ export function ContactCard({ contact, onOpen }: { contact: Contact; onOpen: () 
     </div>
   );
 }
+
 export function ContactDetailPanel({ contact, onEdit }: { contact: Contact; onEdit?: () => void }) {
   return (
     <div className="detail-stack">
       <div className="record-hero">
-        <Avatar initials={contact.initials} />
+        <EvoAvatar fallback={contact.initials} alt={contact.name} />
         <h3>{contact.name}</h3>
         <StatusBadge status={contact.status} />
       </div>
@@ -34,11 +35,11 @@ export function ContactDetailPanel({ contact, onEdit }: { contact: Contact; onEd
         <dt>Dernière activité</dt>
         <dd>{formatDateDisplay(contact.lastActivity)}</dd>
       </dl>
-      {onEdit && (
-        <Button variant="secondary" onClick={onEdit}>
+      {onEdit ? (
+        <EvoButton variant="secondary" onClick={onEdit}>
           Modifier le contact
-        </Button>
-      )}
+        </EvoButton>
+      ) : null}
       <RecordActivityTimeline
         items={[
           {

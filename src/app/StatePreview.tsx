@@ -1,5 +1,5 @@
-import { Select } from '@evotechly/ui';
 import { useSearchParams } from 'react-router-dom';
+import { FieldSelect } from '@/components/crm/ui';
 
 export function StatePreview() {
   const [params, setParams] = useSearchParams();
@@ -7,7 +7,7 @@ export function StatePreview() {
   return (
     <details className="state-preview">
       <summary>Atelier · états de démonstration</summary>
-      <Select
+      <FieldSelect
         label="État de l’écran"
         value={params.get('state') ?? 'populated'}
         onChange={(event) => {
@@ -23,7 +23,7 @@ export function StatePreview() {
             {['Peuplé', 'Vide', 'Chargement', 'Erreur', 'Accès refusé'][index]}
           </option>
         ))}
-      </Select>
+      </FieldSelect>
       <a href="/dev/components">Galerie des composants</a>
     </details>
   );

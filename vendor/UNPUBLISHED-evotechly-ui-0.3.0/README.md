@@ -1,24 +1,29 @@
-# @evotechly/ui 0.3.0 (unpublished snapshot)
+# @evotechly/ui
 
-Vendored copy of Evotechly UI for EvoCRM. **Do not publish this folder.**
+EvoUI **0.3.0** — 113 React components for Evotechly Design System 2.0, classified in 12 categories.
 
-`0.3.0` lives on Evotechly/Brandbook draft PR #13 (`cursor/evoui-v030-a23f`, `packages/ui`). That private repo was not cloneable from this workspace, so this snapshot starts from the `0.1.0` source that already shipped in `evocrm-front` (`feature/evotechly-ui-component-library`) and is expanded for the Aurora CRM shell (212px dark sidebar, orange primary, teal selection, CRM composites).
+The library does not depend on EvoCRM. Style comes from Brandbook tokens. Activate a product with `<html data-product="crm" data-theme="light">`.
 
-## TODO
-
-Switch the app dependency to the approved GitHub Packages release once Brandbook 0.3.0 is published:
+## Install
 
 ```bash
-pnpm add @evotechly/ui@0.3.0
+npm install @evotechly/ui@0.3.0 @evotechly/brand@^2.0.0
 ```
-
-Then delete this `vendor/UNPUBLISHED-evotechly-ui-0.3.0` folder. Keep `vercel.json` `installCommand` (it still authenticates `@evotechly` on GitHub Packages).
-
-## Consume
 
 ```ts
-import { Button, Sidebar, Topbar } from '@evotechly/ui';
-import '@evotechly/ui/styles.css';
+import "@evotechly/ui/styles.css";
+import { EvoButton } from "@evotechly/ui";
 ```
 
-Set `<html data-product="crm" data-theme="light">`. CRM tokens: paper `#EAEAEA`, ink `#0D1B24`, orange `#D9500F` (primary actions only), teal for selection.
+`dist/styles.css` inlines DS 2.0 tokens. Agents: read [AGENTS.md](./AGENTS.md) and [llms.txt](./llms.txt). Index: [src/catalog.json](./src/catalog.json). Attribution: [NOTICE](./NOTICE).
+
+## Scripts
+
+```bash
+npm test
+npm run test:e2e
+npm run build
+npm run dev
+```
+
+Showcase: `npm run dev` → http://127.0.0.1:4177

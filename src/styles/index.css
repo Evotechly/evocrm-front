@@ -1,5 +1,6 @@
 @import '@evotechly/brand/theme.css';
 @import './tokens.css';
+@import './aurora-shell.css';
 /* Scan application source only: research, generated evidence and tool bundles are not UI. */
 @import 'tailwindcss' source('../');
 * {

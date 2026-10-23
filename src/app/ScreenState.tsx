@@ -1,6 +1,6 @@
 import type { ReactNode } from 'react';
 import { useSearchParams } from 'react-router-dom';
-import { Button, EmptyState, Skeleton } from '@evotechly/ui';
+import { EvoButton, EvoEmptyState, EvoSkeleton } from '@evotechly/ui';
 import { useCrm } from '@/app/providers/CrmProvider';
 import type { Permission } from '@/contracts/permissions';
 
@@ -37,9 +37,9 @@ export function ScreenState({
       <section className="state-surface" role="status" aria-busy="true">
         <h1>Chargement en cours</h1>
         <p>Préparation de votre espace…</p>
-        <Skeleton style={{ height: 48, marginBottom: 8 }} />
-        <Skeleton style={{ height: 48, marginBottom: 8 }} />
-        <Skeleton style={{ height: 48 }} />
+        <EvoSkeleton style={{ height: 48, marginBottom: 8 }} />
+        <EvoSkeleton style={{ height: 48, marginBottom: 8 }} />
+        <EvoSkeleton style={{ height: 48 }} />
       </section>
     );
   if (state === 'error')
@@ -47,7 +47,7 @@ export function ScreenState({
       <section className="state-surface" role="alert">
         <h1>Impossible de charger cet espace</h1>
         <p>Les données sont temporairement indisponibles.</p>
-        <Button onClick={retry}>Réessayer</Button>
+        <EvoButton onClick={retry}>Réessayer</EvoButton>
       </section>
     );
   return children;
@@ -62,5 +62,5 @@ export function NoResults({
   detail?: string;
   action?: ReactNode;
 }) {
-  return <EmptyState title={title} description={detail} action={action} />;
+  return <EvoEmptyState title={title} description={detail} action={action} />;
 }

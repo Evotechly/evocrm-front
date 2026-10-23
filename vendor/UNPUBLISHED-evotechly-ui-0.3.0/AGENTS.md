@@ -1,20 +1,84 @@
-# @evotechly/ui 0.3.0 — agent notes
+# EvoUI 0.3.0 — agent contract
 
-Unpublished snapshot consumed by EvoCRM via `workspace:*`. **Do not publish.**
+React component library for Evotechly Design System 2.0. One package, many products. **Do not depend on EvoCRM or any product app.**
 
-Official Brandbook docs live on Evotechly/Brandbook draft PR #13 (`packages/ui/AGENTS.md`, `llms.txt`, `docs/components/`, `src/catalog.json`). That private repo was not cloneable here; this snapshot documents the surface actually shipped in `src/index.ts` and `src/catalog.json`.
+## Install
 
-## Consume
-
-```ts
-import { Button, Sidebar, DataTable, KanbanBoard } from '@evotechly/ui';
-import '@evotechly/ui/styles.css';
+```bash
+npm install @evotechly/ui@0.3.0 @evotechly/brand@^2.0.0
 ```
 
-Set `<html data-product="crm" data-theme="light|dark">`.
+```tsx
+import "@evotechly/ui/styles.css";
+import { EvoButton, EvoInput } from "@evotechly/ui";
+```
 
-CRM tokens: paper `#EAEAEA`, ink `#0D1B24`, orange `#D9500F` (primary actions only), teal for selection. Sidebar width: 212px dark rail.
+Activate a product on the document:
 
-## TODO
+```html
+<html data-product="crm" data-theme="light">
+```
 
-Replace this workspace package with `@evotechly/ui@0.3.0` from GitHub Packages after Brandbook approval.
+`data-product` values: `suite`, `crm`, `track`, `stock`, `scan`, `archive`, `finance`, `hr`, `commerce`, `compta`, `paie`, `project`.  
+`data-theme`: `light` | `dark`.
+
+## Import paths
+
+- Package entry: `@evotechly/ui`
+- Styles: `@evotechly/ui/styles.css` (tokens inlined at build)
+- Catalog: `@evotechly/ui/catalog.json` or `packages/ui/src/catalog.json`
+- Per-component docs: `packages/ui/docs/components/<slug>.md`
+- Source: `packages/ui/src/components/<category>/<slug>.tsx`
+
+Every component is exported as `EvoName` and as an unprefixed alias (`Button`, `Input`, …).
+
+## API
+
+Shared props (when the control supports them):
+
+| Prop | Values | Notes |
+|------|--------|-------|
+| `size` | `sm` `md` `lg` | 28 / 36 / 44 |
+| `variant` | `primary` `secondary` `outline` `ghost` `danger` `link` | One primary CTA per view |
+| `tone` | `neutral` `brand` `success` `warning` `danger` `info` | Never color alone |
+| `asChild` | boolean | Radix Slot on triggers |
+
+## Tokens (MUST)
+
+- Page / paper: `--bg` / `--surface` / `--brand-paper`
+- Body: `--text`
+- Primary fill: `--brand-actionA11y` + `--brand-actionFg`
+- Brand text on surface: `--brand-text`
+- Focus: 2px `--brand-action` with 2px offset (inputs: 3px `--brand-selection`)
+- Geist / Geist Mono. 4pt grid. Radii 4 / 6 / 8 / 12
+- CRM locked pair: paper `#EAEAEA`, ink `#0D1B24`, orange `#D9500F` via `data-product="crm"`
+
+## MUST
+
+- MUST use tokens, never raw hex in product UI.
+- MUST set `data-product` + `data-theme`.
+- MUST label icon-only controls (`aria-label` or `EvoIconButton label`).
+- MUST keep dialogs modal (`aria-modal`, titled, focus trap).
+- MUST honor `prefers-reduced-motion`.
+
+## NEVER
+
+- NEVER hard-code hex / rgb / `bg-[#…]` for brand or neutrals.
+- NEVER import from an EvoCRM app package.
+- NEVER add AGPL code or three.js.
+- NEVER edit generated Brandbook token files.
+- NEVER publish, merge to `main`, or move the `v2.0.0` tag from this package bump.
+
+## Categories (113)
+
+Foundations 10 · Layout & shell 9 · Navigation 6 · Forms & inputs 24 · Data display 10 · Tables 7 · Charts & KPIs 9 · Feedback 5 · Overlays 6 · CRM domain 15 · Auth & settings 8 · Empty & onboarding 4
+
+See `src/catalog.json` for slugs, licenses, and registry URLs.
+
+## Commands
+
+```bash
+npm test --prefix packages/ui
+npm run test:e2e --prefix packages/ui
+npm run build --prefix packages/ui
+```

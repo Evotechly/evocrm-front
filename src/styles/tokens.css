@@ -1,11 +1,131 @@
 /**
- * App-level aliases on top of @evotechly/ui CRM tokens.
- * Source of truth: vendor/UNPUBLISHED-evotechly-ui-0.3.0/src/styles/tokens.css
+ * App-level Aurora aliases on top of @evotechly/brand + @evotechly/ui tokens.
  * Activate with <html data-product="crm" data-theme="light|dark">.
- * Do not override teal selection or avatar ink — those must stay visible in dark mode.
+ * Orange #D9500F is primary actions only; teal is selection.
  */
 :root,
 [data-product='crm'] {
-  --color-avatar-ink: var(--color-ink);
-  --color-avatar-ink-bg: var(--color-paper);
+  --color-avatar-ink: var(--color-ink, #0d1b24);
+  --color-avatar-ink-bg: var(--color-paper, #eaeaea);
+  --color-ink: #0d1b24;
+  --color-paper: #eaeaea;
+  --color-muted-strong: #425568;
+  --color-muted: #56677b;
+  --color-canvas: #ffffff;
+  --color-canvas-soft: #eaeaea;
+  --color-surface: #ffffff;
+  --color-surface-raised: #f6f6f6;
+  --color-border: #d5d8dc;
+  --color-border-strong: #b7bec6;
+  --color-orange: #d9500f;
+  --color-orange-text: #ad410f;
+  --color-orange-soft: #fff1e8;
+  --color-teal: #0f4c5c;
+  --color-teal-soft: #d7e8ec;
+  --color-brand: #0f4c5c;
+  --color-brand-deep: #0a3642;
+  --color-brand-soft: #d7e8ec;
+  --color-on-brand: #ffffff;
+  --color-action: #d9500f;
+  --color-on-action: #ffffff;
+  --color-focus: #0f4c5c;
+  --color-voltage: #d9500f;
+  --color-voltage-deep: #b03e0a;
+  --color-voltage-soft: #fff1e8;
+  --color-indigo: #4f46e5;
+  --color-indigo-soft: #eef2ff;
+  --color-purple: #6d28d9;
+  --color-purple-soft: #f2ecff;
+  --color-success: #087450;
+  --color-success-soft: #e8f7ee;
+  --color-warning: #875700;
+  --color-warning-soft: #fff6db;
+  --color-info: #23578e;
+  --color-info-soft: #e0efff;
+  --color-danger: #b52b36;
+  --color-danger-soft: #fff0f1;
+  --color-demo: #b31d61;
+  --color-demo-soft: #fdf0f6;
+  --color-overlay: rgba(13, 27, 36, 0.38);
+  --color-hover: rgb(13 27 36 / 0.04);
+  --color-selected: #d7e8ec;
+  --color-rail: #0d1b24;
+  --color-rail-fg: #eaeaea;
+  --color-rail-muted: #8aa0ad;
+  --color-rail-active: #1a6b7d;
+  --color-avatar-orange: #ad410f;
+  --color-avatar-orange-bg: #fff1e8;
+  --color-avatar-indigo: #3730a3;
+  --color-avatar-indigo-bg: #eef2ff;
+  --color-avatar-teal: #0a3642;
+  --color-avatar-teal-bg: #d7e8ec;
+  --color-avatar-purple: #6d28d9;
+  --color-avatar-purple-bg: #f2ecff;
+  --sidebar-expanded: 212px;
+  --sidebar-collapsed: 56px;
+  --topbar-height: 52px;
+  --layout-sidebar: 212px;
+  --motion-fast: 80ms;
+  --motion-moderate: 160ms;
+  --ease-standard: cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+[data-theme='dark'] {
+  color-scheme: dark;
+  --color-ink: #edf3f9;
+  --color-paper: #12181e;
+  --color-muted-strong: #c2d0dc;
+  --color-muted: #a2b3c4;
+  --color-canvas: #0e1419;
+  --color-canvas-soft: #05080c;
+  --color-surface: #12181e;
+  --color-surface-raised: #17212a;
+  --color-border: #26333f;
+  --color-border-strong: #405162;
+  --color-orange-text: #ffbc91;
+  --color-orange-soft: #39291d;
+  --color-teal: #8ad0d5;
+  --color-teal-soft: #15303a;
+  --color-brand: #8ad0d5;
+  --color-brand-deep: #b3e5e8;
+  --color-brand-soft: #15303a;
+  --color-on-brand: #0a252c;
+  --color-action: #d9500f;
+  --color-focus: #8ad0d5;
+  --color-voltage: #ffbc91;
+  --color-voltage-soft: #39291d;
+  --color-indigo: #b8b1ff;
+  --color-indigo-soft: #272644;
+  --color-purple: #dec3ff;
+  --color-purple-soft: #352744;
+  --color-success: #80d9ac;
+  --color-success-soft: #163328;
+  --color-warning: #eacc89;
+  --color-warning-soft: #342d1c;
+  --color-info: #bedaff;
+  --color-info-soft: #213448;
+  --color-danger: #ffa1a9;
+  --color-danger-soft: #3a2028;
+  --color-demo: #f5acd0;
+  --color-demo-soft: #321d2a;
+  --color-overlay: rgba(5, 8, 12, 0.62);
+  --color-hover: rgb(255 255 255 / 0.06);
+  --color-selected: #1a3a44;
+  --color-rail: #05080c;
+  --color-rail-fg: #edf3f9;
+  --color-rail-muted: #8aa0ad;
+  --color-rail-active: #245866;
+}
+
+[data-product='crm'][data-theme='dark'] {
+  --color-action: #d9500f;
+  --color-on-action: #ffffff;
+  --color-selected: #1a3a44;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  :root {
+    --motion-fast: 1ms;
+    --motion-moderate: 1ms;
+  }
 }

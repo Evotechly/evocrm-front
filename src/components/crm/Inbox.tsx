@@ -1,7 +1,8 @@
 import { useState } from 'react';
-import { Avatar, Button } from '@evotechly/ui';
+import { EvoAvatar, EvoButton, EvoTextarea } from '@evotechly/ui';
 import { NoResults } from '@/app/ScreenState';
 import type { ThreadRecord, Message } from '@/app/providers/CrmProvider';
+
 export function ConversationList({
   threads,
   activeId,
@@ -14,27 +15,28 @@ export function ConversationList({
   return (
     <div className="thread-list">
       {threads.length ? (
-        threads.map((t) => (
+        threads.map((thread) => (
           <button
-            key={t.id}
-            className={`thread-row ${activeId === t.id ? 'active' : ''}`}
-            aria-pressed={activeId === t.id}
-            onClick={() => onSelect(t.id)}
+            key={thread.id}
+            className={`thread-row ${activeId === thread.id ? 'active' : ''}`}
+            aria-pressed={activeId === thread.id}
+            onClick={() => onSelect(thread.id)}
           >
-            <Avatar
-              initials={t.contact
+            <EvoAvatar
+              fallback={thread.contact
                 .split(' ')
-                .map((w) => w[0])
+                .map((word) => word[0])
                 .join('')}
+              alt={thread.contact}
             />
             <span>
-              <strong>{t.contact}</strong>
-              <small>{t.subject}</small>
-              <em>{t.preview}</em>
+              <strong>{thread.contact}</strong>
+              <small>{thread.subject}</small>
+              <em>{thread.preview}</em>
             </span>
             <aside>
-              <small>{t.channel}</small>
-              {t.unread && <span className="unread-label">Non lue</span>}
+              <small>{thread.channel}</small>
+              {thread.unread ? <span className="unread-label">Non lue</span> : null}
             </aside>
           </button>
         ))
@@ -44,6 +46,7 @@ export function ConversationList({
     </div>
   );
 }
+
 export function MessageThread({ messages, contact }: { messages: Message[]; contact: string }) {
   return (
     <div
@@ -52,17 +55,18 @@ export function MessageThread({ messages, contact }: { messages: Message[]; cont
       aria-label={`Messages avec ${contact}`}
       aria-live="polite"
     >
-      {messages.map((m) => (
-        <div key={m.id} className={`message ${m.direction}`}>
+      {messages.map((message) => (
+        <div key={message.id} className={`message ${message.direction}`}>
           <small>
-            {m.direction === 'sent' ? 'Vous · simulation' : contact} · {m.time}
+            {message.direction === 'sent' ? 'Vous · simulation' : contact} · {message.time}
           </small>
-          <p>{m.body}</p>
+          <p>{message.body}</p>
         </div>
       ))}
     </div>
   );
 }
+
 export function MessageComposer({
   onSend,
   disabled,
@@ -74,30 +78,28 @@ export function MessageComposer({
   return (
     <form
       className="composer"
-      onSubmit={(e) => {
-        e.preventDefault();
+      onSubmit={(event) => {
+        event.preventDefault();
         if (body.trim()) {
           onSend(body.trim());
           setBody('');
         }
       }}
     >
-      <label className="field">
-        <span>Votre réponse</span>
-        <textarea
-          aria-label="Votre réponse"
-          maxLength={5000}
-          placeholder="Écrire une réponse…"
-          value={body}
-          disabled={disabled}
-          onChange={(e) => setBody(e.target.value)}
-        />
-      </label>
+      <EvoTextarea
+        label="Votre réponse"
+        aria-label="Votre réponse"
+        maxLength={5000}
+        placeholder="Écrire une réponse…"
+        value={body}
+        disabled={disabled}
+        onChange={(event) => setBody(event.target.value)}
+      />
       <div>
         <span>Envoi simulé · aucun message externe</span>
-        <Button type="submit" variant="primary" disabled={disabled || !body.trim()}>
+        <EvoButton type="submit" variant="primary" disabled={disabled || !body.trim()}>
           Envoyer (simulation)
-        </Button>
+        </EvoButton>
       </div>
     </form>
   );

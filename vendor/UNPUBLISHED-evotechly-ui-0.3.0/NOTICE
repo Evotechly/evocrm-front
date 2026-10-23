@@ -1,11 +1,177 @@
-@evotechly/ui includes adapted MIT source from:
+EvoUI 0.3.0 — third-party notices
+=================================
 
-- Fluid Functionalism, Copyright (c) 2026 Micka Touillaud
-  https://github.com/mickadesign/fluid-functionalism
-  License: docs/ui-collection/LICENSES/fluid-functionalism-MIT.txt
+This package restyles third-party registry components onto Evotechly Design
+System 2.0 tokens. Registry source is not copied verbatim. Apache-2.0 requires
+attribution of the original work; MIT sources are listed for the same reason.
 
-- shadcn/ui, Copyright (c) 2023 shadcn
-  https://ui.shadcn.com
-  License: docs/ui-collection/LICENSES/shadcn-ui-MIT.txt
+NO AGPL-licensed code is included. three.js and other heavy demo dependencies
+were not vendored.
 
-AGPL-licensed coss UI source was not incorporated.
+------------------------------------------------------------------------
+Spectrum UI
+Copyright (c) Spectrum UI / Arihant Jain and contributors
+License: Apache License 2.0
+https://github.com/arihantcodes/spectrum-ui/blob/main/LICENSE
+Registry: https://ui.spectrumhq.in/r/<name>.json
+
+The following EvoUI components were adapted from Spectrum registry items:
+
+  kbd                 @spectrumui/kbd-key
+  spinner             @spectrumui/spinner-size
+  sidebar             @spectrumui/sidebar-navbar
+  app-shell           @spectrumui/bento-grid
+  card                @spectrumui/animated-card
+  page-header         @spectrumui/heading-with-anchor
+  tabs                @spectrumui/tab-navbar
+  accordion           @spectrumui/accordion
+  collapsible         @spectrumui/accordion-ghost
+  command             @spectrumui/command-palette
+  navigation-menu     @spectrumui/tab-navbar
+  menubar             @spectrumui/expandable-action-bar
+  stepper             @spectrumui/agent-steps
+  input               @spectrumui/floating-label-input
+  textarea            @spectrumui/autosize-textarea-form
+  select              @spectrumui/model-selector
+  combobox            @spectrumui/multiple-selector-with-async-search
+  multi-select        @spectrumui/multiple-selector-controlled
+  tags-input          @spectrumui/multiple-selector-creatable
+  checkbox            @spectrumui/task-checkbox
+  switch              @spectrumui/animated-switch
+  slider              @spectrumui/dual-range-slider-single
+  date-picker         @spectrumui/datetime-picker-form
+  date-range-picker   @spectrumui/datetime-picker-year-range
+  time-picker         @spectrumui/datetime-picker-and-time-input
+  number-input        @spectrumui/quantity-stepper
+  currency-input      @spectrumui/transfer-funds-card
+  file-upload         @spectrumui/upload-empty
+  form                @spectrumui/multiple-selector-with-form
+  rating              @spectrumui/star-rating
+  toggle-group        @spectrumui/morph-button
+  progress            @spectrumui/progress-with-value
+  timeline            @spectrumui/recent-activity
+  tree-view           @spectrumui/tree-nav
+  status              @spectrumui/status-badge
+  copy-button         @spectrumui/share-button
+  image               @spectrumui/image-preview
+  data-table          @spectrumui/data-table
+  table               @spectrumui/payments-table
+  data-table-filters  @spectrumui/filter-empty
+  data-grid           @spectrumui/feature-flags-table
+  inline-edit         @spectrumui/inline-edit
+  area-chart          @spectrumui/area-chart
+  bar-chart           @spectrumui/bar-chart
+  line-chart          @spectrumui/line-chart
+  pie-chart           @spectrumui/pie-chart
+  funnel-chart        @spectrumui/cohort-chart
+  radial-chart        @spectrumui/radial-chart
+  kpi-card            @spectrumui/stat-cards
+  sparkline           @spectrumui/sparkline-chart
+  heatmap             @spectrumui/calendar-heatmap
+  alert               @spectrumui/alert-2
+  toast               @spectrumui/toast-stack
+  banner              @spectrumui/suggestion-banner
+  notification-center @spectrumui/notification-bell
+  error-page          @spectrumui/not-found-empty
+  dialog              @spectrumui/responsive-modal
+  alert-dialog        @spectrumui/hold-to-confirm
+  sheet               @spectrumui/responsive-modal-side
+  dropdown-menu       @spectrumui/profile-dropdown
+  kanban              @spectrumui/kanbanboard
+  sortable-list       @spectrumui/task-rows
+  calendar            @spectrumui/event-calendar
+  event-calendar      @spectrumui/event-calendar
+  activity-feed       @spectrumui/recent-activity
+  chat                @spectrumui/ai-chat-card
+  conversation        @spectrumui/conversation-list
+  prompt-input        @spectrumui/prompt-composer
+  contact-card        @spectrumui/contact-card-footer
+  workflow-builder    @spectrumui/agent-plan
+  pricing-table       @spectrumui/blueprint-tiers
+  invoice             @spectrumui/invoices-table
+  sign-in             @spectrumui/login-card
+  sign-up             @spectrumui/login-card
+  forgot-password     @spectrumui/password-strength
+  account-button      @spectrumui/profile-dropdown
+  settings-page       @spectrumui/feature-flags-table
+  api-keys            @spectrumui/api-keys-table
+  empty-state         @spectrumui/project-empty
+  onboarding          @spectrumui/integration-empty
+  announcement        @spectrumui/suggestion-banner
+
+A copy of the Apache License 2.0 is at the end of this file.
+
+------------------------------------------------------------------------
+SmoothUI
+Copyright (c) 2024 Eduardo Calvo
+License: MIT
+https://github.com/educlopez/smoothui
+
+  button        @smoothui/button-copy     https://smoothui.dev/r/button-copy.json
+  badge         @smoothui/badge           https://smoothui.dev/r/badge.json
+  avatar        @smoothui/avatar          https://smoothui.dev/r/avatar.json
+  avatar-group  @smoothui/animated-avatar-group  https://smoothui.dev/r/animated-avatar-group.json
+  skeleton      @smoothui/skeleton        https://smoothui.dev/r/skeleton.json
+
+------------------------------------------------------------------------
+Intent UI
+Copyright (c) 2024 Irsyad A. Panjaitan
+License: MIT
+https://github.com/irsyadadl/intentui
+
+  separator     @intentui/separator       https://intentui.com/r/separator
+  Note: EvoSeparator is Radix-backed (MIT) instead of react-aria-components,
+  to stay on the Evo primitive stack. Visual contract matches the pick.
+
+------------------------------------------------------------------------
+Kibo UI
+Copyright (c) 2023 — Present shadcnblocks / Hayden Bleasel
+License: MIT
+https://github.com/haydenbleasel/kibo
+
+  typography    @kibo-ui/typography       https://www.kibo-ui.com/r/typography.json
+  Note: the registry item is CSS-only; EvoTypography is a React primitive
+  restyled onto DS 2.0 type tokens.
+
+------------------------------------------------------------------------
+assistant-ui
+Copyright (c) 2026 AgentbaseAI Inc.
+License: MIT
+https://github.com/assistant-ui/assistant-ui
+
+  icon-button   @assistant-ui/tooltip-icon-button
+                https://r.assistant-ui.com/tooltip-icon-button.json
+
+------------------------------------------------------------------------
+In-house (Evotechly)
+
+  resizable, scroll-area, breadcrumb, pagination, radio-group, phone-input,
+  input-otp, rich-text, mention-input, color-picker, tooltip, hover-card,
+  relative-time, description-list, column-visibility, virtualized-list,
+  popover, context-menu, gantt, email-composer, comments, two-factor,
+  org-switcher, feature-tour
+
+Dependencies used by in-house components (all MIT):
+  @radix-ui/*, react-resizable-panels, input-otp, libphonenumber-js,
+  @tanstack/react-virtual, @tanstack/react-table, @dnd-kit/*, @tiptap/*,
+  date-fns, cmdk, sonner, react-day-picker, react-hook-form, zod, vaul,
+  class-variance-authority, clsx
+
+------------------------------------------------------------------------
+Apache License 2.0 (Spectrum UI)
+
+                                 Apache License
+                           Version 2.0, January 2004
+                        http://www.apache.org/licenses/
+
+   Licensed under the Apache License, Version 2.0 (the "License");
+   you may not use this file except in compliance with the License.
+   You may obtain a copy of the License at
+
+       http://www.apache.org/licenses/LICENSE-2.0
+
+   Unless required by applicable law or agreed to in writing, software
+   distributed under the License is distributed on an "AS IS" BASIS,
+   WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+   See the License for the specific language governing permissions and
+   limitations under the License.

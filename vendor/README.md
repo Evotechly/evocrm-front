@@ -4,8 +4,8 @@ This folder vendors **unpublished** Design System packages so EvoCRM can consume
 
 | Package | Path | Notes |
 | --- | --- | --- |
-| `@evotechly/ui` `0.3.0` | `UNPUBLISHED-evotechly-ui-0.3.0` | Do **not** publish. Brandbook draft PR #13 (`cursor/evoui-v030-a23f`) was not cloneable from this workspace. |
-| `@evotechly/brand` `2.0.0` | `evotechly-brand-2.0.0` | Token snapshot used by the UI package. |
+| `@evotechly/ui` `0.3.0` | `UNPUBLISHED-evotechly-ui-0.3.0` | Exact Brandbook PR #13 `packages/ui` (113 components, `src` + `dist` + docs + **NOTICE**). Entry points resolve `src/index.ts` so the AGENTS.md / catalog surface (`EvoButton`, `EvoKanban`, …) is the one the app imports. Do **not** publish. |
+| `@evotechly/brand` `2.0.0` | `evotechly-brand-2.0.0` | Token snapshot used by the UI package (`workspace:*`). |
 
 ## TODO
 

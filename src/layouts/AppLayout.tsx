@@ -1,8 +1,7 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Outlet, useLocation } from 'react-router-dom';
 import {
   AddressBook,
-  Bell,
   Buildings,
   CaretDown,
   ChartLineUp,
@@ -11,6 +10,7 @@ import {
   GearSix,
   Handshake,
   House,
+  List,
   MagnifyingGlass,
   Moon,
   PaperPlaneTilt,
@@ -22,15 +22,17 @@ import {
   UsersThree,
 } from '@phosphor-icons/react';
 import {
-  Button,
-  CommandMenu,
-  IconButton,
-  NotificationCenter,
-  Popover,
-  ProfileMenu,
-  Sidebar,
-  TeamSwitcher,
-  Tooltip,
+  EvoAccountButton,
+  EvoButton,
+  EvoCommandInput,
+  EvoCommandItem,
+  EvoCommandList,
+  EvoCommandPalette,
+  EvoDropdownMenu,
+  EvoIconButton,
+  EvoNotificationCenter,
+  EvoOrgSwitcher,
+  EvoSheet,
 } from '@evotechly/ui';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useTheme } from '@/app/providers/ThemeProvider';
@@ -52,6 +54,13 @@ const advancedNav = [
   { id: 'outbound', label: 'Outbound', path: '/outbound', icon: PaperPlaneTilt },
 ];
 
+const orgs = [
+  { id: 'clinique', name: 'Clinique El Djazair', role: 'Espace principal' },
+  { id: 'ibn', name: 'Hôpital Ibn Sina', role: 'Établissement' },
+  { id: 'amrani', name: 'Cabinet Dr. Amrani', role: 'Cabinet' },
+  { id: 'pharma', name: 'Pharmacie Centrale', role: 'Pharmacie' },
+];
+
 export function AppLayout() {
   const { pathname } = useLocation();
   const { navigate } = useNavigation();
@@ -59,14 +68,10 @@ export function AppLayout() {
   const { notify } = useCrm();
   const [advanced, setAdvanced] = useState(false);
   const [commandOpen, setCommandOpen] = useState(false);
-  const [collapsed, setCollapsed] = useState(false);
-  const items = (advanced ? [...simpleNav, ...advancedNav] : simpleNav).map((item) => ({
-    id: item.id,
-    label: item.label,
-    icon: <item.icon size={18} weight={pathname === item.path ? 'fill' : 'regular'} />,
-    active: pathname === item.path,
-    onSelect: () => navigate(item.path),
-  }));
+  const [mobileOpen, setMobileOpen] = useState(false);
+  const items = (advanced ? [...simpleNav, ...advancedNav] : simpleNav).concat([
+    { id: 'settings', label: 'Paramètres', path: '/settings', icon: GearSix },
+  ]);
   const destination = pathname.includes('contacts')
     ? 'Contacts'
     : pathname.includes('deals')
@@ -79,66 +84,91 @@ export function AppLayout() {
             ? 'Paramètres'
             : 'Vue d’ensemble';
 
+  useEffect(() => {
+    const onKey = (event: KeyboardEvent) => {
+      if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
+        event.preventDefault();
+        setCommandOpen(true);
+      }
+    };
+    window.addEventListener('keydown', onKey);
+    return () => window.removeEventListener('keydown', onKey);
+  }, []);
+
+  const go = (path: string) => {
+    setMobileOpen(false);
+    setCommandOpen(false);
+    navigate(path);
+  };
+
+  const navList = (
+    <ul className="evo-sidebar-menu">
+      {items.map((item) => {
+        const Icon = item.icon;
+        const active = pathname === item.path;
+        return (
+          <li key={item.id}>
+            <a
+              className="evo-sidebar-menu-button"
+              data-active={active}
+              href={item.path}
+              onClick={(event) => {
+                event.preventDefault();
+                go(item.path);
+              }}
+            >
+              <Icon size={18} weight={active ? 'fill' : 'regular'} />
+              {item.label}
+            </a>
+          </li>
+        );
+      })}
+    </ul>
+  );
+
   return (
-    <div className={`ev-app-shell ${collapsed ? 'sidebar-collapsed' : ''}`}>
+    <div className="ev-app-shell">
       <a href="#main-content" className="skip-link">
         Aller au contenu
       </a>
-      <Sidebar
-        collapsed={collapsed}
-        onCollapsedChange={setCollapsed}
-        items={[
-          ...items,
-          {
-            id: 'settings',
-            label: 'Paramètres',
-            icon: <GearSix size={18} />,
-            active: pathname === '/settings',
-            onSelect: () => navigate('/settings'),
-          },
-        ]}
-        header={
-          <div className="brand-lockup">
-            <img className="brand-logo" src="/evotechly.svg" alt="Evotechly" />
+      <aside className="ev-sidebar-desktop evo-sidebar ev-sidebar" aria-label="Navigation principale">
+        <div className="evo-sidebar-header brand-lockup">
+          <img className="brand-logo" src="/evotechly.svg" alt="Evotechly" />
+          <span>
+            <strong>EvoCRM</strong>
+            <small>EVOTECHLY</small>
+          </span>
+        </div>
+        {navList}
+        <div className="evo-sidebar-footer">
+          <EvoOrgSwitcher orgs={orgs} />
+          <button type="button" className="mode-toggle" onClick={() => setAdvanced((value) => !value)}>
+            <span className="mode-pill">{advanced ? 'A' : 'S'}</span>
             <span>
-              <strong>EvoCRM</strong>
-              <small>EVOTECHLY</small>
+              <strong>{advanced ? 'Mode avancé' : 'Mode simple'}</strong>
+              <small>{advanced ? 'Fonctions étendues' : 'Vue essentielle'}</small>
             </span>
-          </div>
-        }
-        footer={
-          <>
-            <TeamSwitcher
-              name="Clinique El Djazair"
-              detail="Espace principal"
-              options={[
-                { name: 'Clinique El Djazair', detail: 'Espace principal' },
-                { name: 'Hôpital Ibn Sina', detail: 'Établissement' },
-                { name: 'Cabinet Dr. Amrani', detail: 'Cabinet' },
-                { name: 'Pharmacie Centrale', detail: 'Pharmacie' },
-              ]}
-            />
-            <button type="button" className="mode-toggle" onClick={() => setAdvanced((value) => !value)}>
-              <span className="mode-pill">{advanced ? 'A' : 'S'}</span>
-              <span>
-                <strong>{advanced ? 'Mode avancé' : 'Mode simple'}</strong>
-                <small>{advanced ? 'Fonctions étendues' : 'Vue essentielle'}</small>
-              </span>
-            </button>
-            <Button
-              variant="ghost"
-              className="theme-button"
-              onClick={toggleTheme}
-              aria-label={theme === 'light' ? 'Thème sombre dans la barre latérale' : 'Thème clair dans la barre latérale'}
-            >
-              {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
-              <span>{theme === 'light' ? 'Mode sombre' : 'Mode clair'}</span>
-            </Button>
-          </>
-        }
-      />
+          </button>
+          <EvoButton
+            variant="ghost"
+            className="theme-button"
+            onClick={toggleTheme}
+            aria-label={theme === 'light' ? 'Thème sombre dans la barre latérale' : 'Thème clair dans la barre latérale'}
+          >
+            {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
+            <span>{theme === 'light' ? 'Mode sombre' : 'Mode clair'}</span>
+          </EvoButton>
+        </div>
+      </aside>
       <main className="ev-workspace">
         <div className="ev-top-strip">
+          <EvoIconButton
+            className="ev-sidebar-mobile-trigger"
+            label="Ouvrir la navigation"
+            onClick={() => setMobileOpen(true)}
+          >
+            <List size={18} />
+          </EvoIconButton>
           <button
             type="button"
             className="command-trigger"
@@ -157,52 +187,36 @@ export function AppLayout() {
             {destination}
           </div>
           <div className="header-actions">
-            <Popover
-              closeOnAction
-              label="Créer un enregistrement"
-              trigger={
-                <Button variant="primary">
-                  <Plus size={17} /> Créer <CaretDown size={14} />
-                </Button>
-              }
+            <EvoDropdownMenu
+              items={[
+                { label: 'Nouveau contact', onSelect: () => go('/crm/contacts?create=1') },
+                { label: 'Nouveau deal', onSelect: () => go('/crm/deals?create=1') },
+                { label: 'Nouveau devis', onSelect: () => go('/crm/quotes?create=1') },
+              ]}
             >
-              <div className="menu-list">
-                {[
-                  ['contact', 'contacts'],
-                  ['deal', 'deals'],
-                  ['devis', 'quotes'],
-                ].map(([label, path]) => (
-                  <Button key={path} variant="ghost" onClick={() => navigate(`/crm/${path}?create=1`)}>
-                    Nouveau {label}
-                  </Button>
-                ))}
-              </div>
-            </Popover>
-            <Tooltip text={theme === 'light' ? 'Mode sombre' : 'Mode clair'}>
-              <IconButton
-                label={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
-                icon={theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
-                variant="ghost"
-                tooltip={false}
-                onClick={toggleTheme}
-              />
-            </Tooltip>
-            <NotificationCenter
-              trigger={
-                <button type="button" className="icon-button notification-button" aria-label="Notifications">
-                  <Bell size={19} />
-                </button>
-              }
+              <EvoButton variant="primary">
+                <Plus size={17} /> Créer <CaretDown size={14} />
+              </EvoButton>
+            </EvoDropdownMenu>
+            <EvoIconButton
+              label={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
+              onClick={toggleTheme}
+            >
+              {theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+            </EvoIconButton>
+            <EvoNotificationCenter
+              items={[{ id: 'demo', title: 'Session locale — aucune notification serveur.' }]}
             />
-            <ProfileMenu name="Mohamed" detail="Propriétaire · Démo" initials="MB">
-              <p className="ev-muted">Session locale, sans compte connecté.</p>
-              <Button onClick={() => notify('Session de démonstration : aucune connexion serveur active.')}>
-                Informations de session
-              </Button>
-              <Button variant="ghost" onClick={() => navigate('/login')}>
-                Écran de connexion
-              </Button>
-            </ProfileMenu>
+            <EvoAccountButton name="Mohamed" email="Propriétaire · Démo" />
+            <EvoButton
+              variant="ghost"
+              onClick={() => notify('Session de démonstration : aucune connexion serveur active.')}
+            >
+              Informations de session
+            </EvoButton>
+            <EvoButton variant="ghost" onClick={() => go('/login')}>
+              Écran de connexion
+            </EvoButton>
           </div>
         </div>
         <div className="ev-demo-banner">
@@ -215,23 +229,36 @@ export function AppLayout() {
           <StatePreview />
         </div>
       </main>
-      <CommandMenu
-        open={commandOpen}
-        onOpenChange={setCommandOpen}
-        title="Palette de commandes"
-        items={[
-          { id: 'home', label: 'Accueil', group: 'Navigation', onSelect: () => navigate('/dashboard') },
-          { id: 'contacts', label: 'Contacts', group: 'Navigation', onSelect: () => navigate('/crm/contacts') },
-          { id: 'deals', label: 'Deals', group: 'Navigation', onSelect: () => navigate('/crm/deals') },
-          { id: 'pipeline', label: 'Pipeline', group: 'Navigation', onSelect: () => navigate('/crm/deals/board') },
-          { id: 'inbox', label: 'Inbox', group: 'Navigation', onSelect: () => navigate('/inbox') },
-          { id: 'quotes', label: 'Devis', group: 'Navigation', onSelect: () => navigate('/crm/quotes') },
-          { id: 'settings', label: 'Paramètres', group: 'Navigation', onSelect: () => navigate('/settings') },
-          { id: 'new-contact', label: 'Nouveau contact', group: 'Actions', onSelect: () => navigate('/crm/contacts?create=1') },
-          { id: 'new-deal', label: 'Nouveau deal', group: 'Actions', onSelect: () => navigate('/crm/deals?create=1') },
-          { id: 'new-quote', label: 'Nouveau devis', group: 'Actions', onSelect: () => navigate('/crm/quotes?create=1') },
-        ]}
-      />
+      <EvoSheet title="Navigation" open={mobileOpen} onOpenChange={setMobileOpen} side="left">
+        <nav aria-label="Navigation mobile">
+          {items.map((item) => (
+            <EvoButton key={item.id} variant="ghost" onClick={() => go(item.path)}>
+              {item.label}
+            </EvoButton>
+          ))}
+        </nav>
+      </EvoSheet>
+      <EvoCommandPalette open={commandOpen} onOpenChange={setCommandOpen}>
+        <EvoCommandInput placeholder="Rechercher une commande…" />
+        <EvoCommandList>
+          {[
+            { id: 'home', label: 'Accueil', path: '/dashboard' },
+            { id: 'contacts', label: 'Contacts', path: '/crm/contacts' },
+            { id: 'deals', label: 'Deals', path: '/crm/deals' },
+            { id: 'pipeline', label: 'Pipeline', path: '/crm/deals/board' },
+            { id: 'inbox', label: 'Inbox', path: '/inbox' },
+            { id: 'quotes', label: 'Devis', path: '/crm/quotes' },
+            { id: 'settings', label: 'Paramètres', path: '/settings' },
+            { id: 'new-contact', label: 'Nouveau contact', path: '/crm/contacts?create=1' },
+            { id: 'new-deal', label: 'Nouveau deal', path: '/crm/deals?create=1' },
+            { id: 'new-quote', label: 'Nouveau devis', path: '/crm/quotes?create=1' },
+          ].map((item) => (
+            <EvoCommandItem key={item.id} value={item.label} onSelect={() => go(item.path)}>
+              {item.label}
+            </EvoCommandItem>
+          ))}
+        </EvoCommandList>
+      </EvoCommandPalette>
     </div>
   );
 }

@@ -1,8 +1,8 @@
+import { EvoButton, EvoInput } from '@evotechly/ui';
 import type { LineItem } from '@/app/providers/CrmProvider';
-import { Input } from '@evotechly/ui';
-import { Button } from '@evotechly/ui';
 import { formatDzd } from '@/lib/format';
 import { lineTotal, quoteTotal } from '@/lib/quotes';
+
 export function QuoteLineItem({
   item,
   index,
@@ -25,15 +25,15 @@ export function QuoteLineItem({
   return (
     <fieldset className="quote-line">
       <legend>Ligne {index + 1}</legend>
-      <Input
+      <EvoInput
         label={`Description ${index + 1}`}
         required
         value={item.description}
         disabled={disabled}
-        onChange={(e) => onChange({ ...item, description: e.target.value })}
+        onChange={(event) => onChange({ ...item, description: event.target.value })}
       />
       <div className="form-grid">
-        <Input
+        <EvoInput
           label={`Quantité ${index + 1}`}
           required
           type="number"
@@ -42,9 +42,9 @@ export function QuoteLineItem({
           step="0.01"
           value={item.quantity}
           disabled={disabled}
-          onChange={(e) => onChange({ ...item, quantity: Number(e.target.value) })}
+          onChange={(event) => onChange({ ...item, quantity: Number(event.target.value) })}
         />
-        <Input
+        <EvoInput
           label={`Prix unitaire ${index + 1} (DA)`}
           required
           type="number"
@@ -53,7 +53,7 @@ export function QuoteLineItem({
           step="0.01"
           value={item.unitPrice}
           disabled={disabled}
-          onChange={(e) => onChange({ ...item, unitPrice: Number(e.target.value) })}
+          onChange={(event) => onChange({ ...item, unitPrice: Number(event.target.value) })}
         />
       </div>
       <div className="inline spread">
@@ -64,18 +64,19 @@ export function QuoteLineItem({
         ) : (
           <strong className="money">{formatDzd(total)}</strong>
         )}
-        <Button
+        <EvoButton
           variant="ghost"
           disabled={disabled}
           onClick={onRemove}
           aria-label={`Supprimer la ligne ${index + 1}`}
         >
           Supprimer
-        </Button>
+        </EvoButton>
       </div>
     </fieldset>
   );
 }
+
 export function QuoteSummary({ items }: { items: LineItem[] }) {
   let total: number | undefined;
   try {

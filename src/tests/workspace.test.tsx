@@ -6,7 +6,7 @@ import {
   RecordActivityTimeline,
   WorkspaceHeader,
   WorkspaceToolbar,
-} from '@evotechly/ui';
+} from '@/components/crm/ui';
 
 describe('shared workspace foundation', () => {
   it('exposes a consistent header, toolbar and bulk-action contract', async () => {

@@ -6,12 +6,15 @@
     "moduleResolution": "bundler",
     "jsx": "react-jsx",
     "strict": true,
-    "skipLibCheck": true,
     "declaration": true,
-    "noEmit": true,
+    "declarationMap": true,
+    "skipLibCheck": true,
+    "esModuleInterop": true,
+    "forceConsistentCasingInFileNames": true,
     "isolatedModules": true,
-    "verbatimModuleSyntax": true,
-    "types": ["vitest/globals"]
+    "noEmit": true,
+    "types": ["vitest/globals", "@testing-library/jest-dom"]
   },
-  "include": ["src", "tests"]
+  "include": ["src", "vitest.setup.ts"],
+  "exclude": ["e2e", "showcase/vite.config.ts"]
 }
