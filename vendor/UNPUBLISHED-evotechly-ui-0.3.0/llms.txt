@@ -1,0 +1,17 @@
+# EvoUI 0.3.0
+
+Library: `@evotechly/ui` — React components for Evotechly DS 2.0.
+Tokens: `@evotechly/brand` via `<html data-product="crm" data-theme="light">`.
+No EvoCRM runtime. Light + dark. Geist Sans / Geist Mono.
+
+```ts
+import "@evotechly/ui/styles.css";
+import { EvoButton, EvoInput, EvoDataTable } from "@evotechly/ui";
+```
+
+Props: `size` (sm|md|lg), `variant` (primary|secondary|outline|ghost|danger|link), `tone` (neutral|brand|success|warning|danger|info), `asChild`.
+Primary button fill: `--brand-actionA11y`. Brand text: `--brand-text`. Focus ring required.
+Catalog: `packages/ui/src/catalog.json`. Docs: `packages/ui/docs/components/<slug>.md`.
+Attribution: `packages/ui/NOTICE` (Apache-2.0 Spectrum + MIT SmoothUI / Intent UI / Kibo / assistant-ui).
+In-house: Radix, Tiptap, react-resizable-panels, input-otp, libphonenumber-js, @tanstack/react-virtual, dnd-kit.
+Do not hard-code hex. Do not add AGPL or three.js. Do not publish from this change.

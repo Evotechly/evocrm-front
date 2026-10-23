@@ -6,6 +6,8 @@ import { DashboardPage } from '@/pages/dashboard/DashboardPage';
 import { DealsPage } from '@/pages/deals/DealsPage';
 import { InboxPage } from '@/pages/inbox/InboxPage';
 import { QuotesPage } from '@/pages/quotes/QuotesPage';
+import { SettingsPage } from '@/pages/settings/SettingsPage';
+import { LoginPage } from '@/pages/auth/LoginPage';
 
 const Gallery = import.meta.env.DEV
   ? lazy(() => import('@/pages/dev/ComponentsPage').then((m) => ({ default: m.ComponentsPage })))
@@ -14,6 +16,7 @@ const Gallery = import.meta.env.DEV
 export function AppRouter() {
   return (
     <Routes>
+      <Route path="/login" element={<LoginPage />} />
       <Route element={<AppLayout />}>
         <Route path="/" element={<Navigate to="/dashboard" replace />} />
         <Route path="/dashboard" element={<DashboardPage />} />
@@ -22,6 +25,7 @@ export function AppRouter() {
         <Route path="/crm/deals/board" element={<DealsPage board />} />
         <Route path="/inbox" element={<InboxPage />} />
         <Route path="/crm/quotes" element={<QuotesPage />} />
+        <Route path="/settings" element={<SettingsPage />} />
         {Gallery && (
           <Route
             path="/dev/components"
@@ -33,34 +37,15 @@ export function AppRouter() {
           />
         )}
         <Route
-          path="/settings"
-          element={
-            <PagePlaceholder
-              title="Paramètres"
-              detail="La navigation des réglages est prête pour la prochaine vague."
-            />
-          }
-        />
-        <Route
           path="*"
           element={
-            <PagePlaceholder
-              title="Écran introuvable"
-              detail="Cette route n’est pas encore enregistrée dans le frontend."
-            />
+            <section className="page-stack">
+              <h1>Écran introuvable</h1>
+              <p className="ev-muted">Cette route n’est pas encore enregistrée dans le frontend.</p>
+            </section>
           }
         />
       </Route>
     </Routes>
-  );
-}
-
-function PagePlaceholder({ title, detail }: { title: string; detail: string }) {
-  return (
-    <section className="page-stack">
-      <div className="eyebrow">EVOCRM / ROUTE</div>
-      <h1>{title}</h1>
-      <p className="muted">{detail}</p>
-    </section>
   );
 }

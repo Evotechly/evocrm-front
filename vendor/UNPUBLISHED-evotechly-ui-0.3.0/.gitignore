@@ -1,0 +1,8 @@
+node_modules/
+coverage/
+playwright-report/
+test-results/
+blob-report/
+src/styles.bundled.css
+__pycache__/
+*.pyc

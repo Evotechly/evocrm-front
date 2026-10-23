@@ -1,27 +1,26 @@
 import { useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { Plus } from '@phosphor-icons/react';
+import { EvoButton, EvoInput, EvoSheet } from '@evotechly/ui';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useCrm } from '@/app/providers/CrmProvider';
-import { Button, Panel } from '@/components/ui';
-import { Drawer } from '@/components/ui/Overlays';
-import { ScreenState, NoResults, usePreviewState } from '@/components/ui/ScreenState';
-import { Input, Select } from '@/components/forms/Fields';
-import {
-  SearchInput,
-  FilterBar,
-  ViewSwitcher,
-  SortControl,
-} from '@/components/data-display/Controls';
+import { ScreenState, NoResults, usePreviewState } from '@/app/ScreenState';
 import { KanbanBoard, stages, probabilities } from '@/components/crm/Deals';
-import { StatusBadge } from '@/components/ui/StatusBadge';
-import type { Deal } from '@/contracts/entities';
-import { formatDzd } from '@/lib/format';
 import {
+  FieldSelect,
+  FilterBar,
+  Panel,
   RecordActivityTimeline,
+  SearchField,
+  SortControl,
+  StatusBadge,
+  ViewSwitcher,
   WorkspaceHeader,
   WorkspaceToolbar,
-} from '@/components/workspace/Workspace';
+} from '@/components/crm/ui';
+import type { Deal } from '@/contracts/entities';
+import { formatDzd } from '@/lib/format';
+
 export function DealsPage({ board = false }: { board?: boolean }) {
   const { navigate } = useNavigation();
   const { deals, setDeals, contacts, notify, can } = useCrm();
@@ -36,10 +35,10 @@ export function DealsPage({ board = false }: { board?: boolean }) {
     [createStage, setCreateStage] = useState('Qualification');
   const rows = (state === 'empty' ? [] : deals)
     .filter(
-      (d) =>
-        `${d.name} ${d.company}`.toLowerCase().includes(query.toLowerCase()) &&
-        (!owner || d.owner === owner) &&
-        (!stage || d.stage === stage),
+      (deal) =>
+        `${deal.name} ${deal.company}`.toLowerCase().includes(query.toLowerCase()) &&
+        (!owner || deal.owner === owner) &&
+        (!stage || deal.stage === stage),
     )
     .sort((a, b) => (sort === 'value' ? b.value - a.value : a.name.localeCompare(b.name, 'fr')));
   const close = () => {
@@ -51,17 +50,17 @@ export function DealsPage({ board = false }: { board?: boolean }) {
   };
   const move = (id: string, next: string) => {
     if (!can('crm.edit') || !stages.includes(next)) return;
-    setDeals((ds) =>
-      ds.map((d) =>
-        d.id === id
-          ? { ...d, stage: next, probability: probabilities[next], updatedAt: 'À l’instant' }
-          : d,
+    setDeals((current) =>
+      current.map((deal) =>
+        deal.id === id
+          ? { ...deal, stage: next, probability: probabilities[next], updatedAt: 'À l’instant' }
+          : deal,
       ),
     );
     notify(`Deal déplacé vers ${next}. Totaux recalculés.`);
   };
-  const create = (s = 'Qualification') => {
-    setCreateStage(s);
+  const create = (nextStage = 'Qualification') => {
+    setCreateStage(nextStage);
     setCreating(true);
   };
   return (
@@ -72,14 +71,9 @@ export function DealsPage({ board = false }: { board?: boolean }) {
           description="De la première rencontre à la prochaine réussite."
           count={rows.length}
           actions={
-            <Button
-              data-page-primary
-              variant="primary"
-              disabled={!can('crm.edit')}
-              onClick={() => create()}
-            >
+            <EvoButton data-page-primary variant="primary" disabled={!can('crm.edit')} onClick={() => create()}>
               <Plus size={17} /> Nouveau deal
-            </Button>
+            </EvoButton>
           }
         />
         <div className="forecast-strip">
@@ -88,8 +82,8 @@ export function DealsPage({ board = false }: { board?: boolean }) {
             <strong className="money">
               {formatDzd(
                 rows
-                  .filter((d) => !['Gagné', 'Perdu'].includes(d.stage))
-                  .reduce((s, d) => s + d.value, 0),
+                  .filter((deal) => !['Gagné', 'Perdu'].includes(deal.stage))
+                  .reduce((sum, deal) => sum + deal.value, 0),
               )}
             </strong>
           </div>
@@ -98,8 +92,8 @@ export function DealsPage({ board = false }: { board?: boolean }) {
             <strong className="money">
               {formatDzd(
                 rows
-                  .filter((d) => !['Gagné', 'Perdu'].includes(d.stage))
-                  .reduce((s, d) => s + (d.value * d.probability) / 100, 0),
+                  .filter((deal) => !['Gagné', 'Perdu'].includes(deal.stage))
+                  .reduce((sum, deal) => sum + (deal.value * deal.probability) / 100, 0),
               )}
             </strong>
           </div>
@@ -115,10 +109,8 @@ export function DealsPage({ board = false }: { board?: boolean }) {
               { value: 'list', label: 'Liste' },
               { value: 'board', label: 'Pipeline' },
             ]}
-            onChange={(v) =>
-              navigate(
-                `/crm/deals${v === 'board' ? '/board' : ''}${params.toString() ? `?${params}` : ''}`,
-              )
+            onChange={(value) =>
+              navigate(`/crm/deals${value === 'board' ? '/board' : ''}${params.toString() ? `?${params}` : ''}`)
             }
           />
           <span className="muted">Glissez une carte ou utilisez son sélecteur d’étape.</span>
@@ -126,19 +118,19 @@ export function DealsPage({ board = false }: { board?: boolean }) {
         <Panel>
           <WorkspaceToolbar label="Filtres des deals">
             <FilterBar>
-              <SearchInput label="Rechercher un deal" value={query} onChange={setQuery} />
-              <Select label="Responsable" value={owner} onChange={(e) => setOwner(e.target.value)}>
+              <SearchField label="Rechercher un deal" value={query} onChange={setQuery} />
+              <FieldSelect label="Responsable" value={owner} onChange={(event) => setOwner(event.target.value)}>
                 <option value="">Tous les responsables</option>
-                {[...new Set(deals.map((d) => d.owner))].map((o) => (
-                  <option key={o}>{o}</option>
+                {[...new Set(deals.map((deal) => deal.owner))].map((value) => (
+                  <option key={value}>{value}</option>
                 ))}
-              </Select>
-              <Select label="Étape" value={stage} onChange={(e) => setStage(e.target.value)}>
+              </FieldSelect>
+              <FieldSelect label="Étape" value={stage} onChange={(event) => setStage(event.target.value)}>
                 <option value="">Toutes les étapes</option>
-                {stages.map((s) => (
-                  <option key={s}>{s}</option>
+                {stages.map((value) => (
+                  <option key={value}>{value}</option>
                 ))}
-              </Select>
+              </FieldSelect>
               <SortControl
                 value={sort}
                 onChange={setSort}
@@ -155,9 +147,9 @@ export function DealsPage({ board = false }: { board?: boolean }) {
             title="Aucun deal à afficher"
             detail="Ajoutez une opportunité ou modifiez vos filtres."
             action={
-              <Button disabled={!can('crm.edit')} onClick={() => create()}>
+              <EvoButton disabled={!can('crm.edit')} onClick={() => create()}>
                 Créer un deal
-              </Button>
+              </EvoButton>
             }
           />
         ) : board ? (
@@ -175,30 +167,28 @@ export function DealsPage({ board = false }: { board?: boolean }) {
                 <caption className="sr-only">Opportunités commerciales</caption>
                 <thead>
                   <tr>
-                    {['Deal', 'Entreprise', 'Montant', 'Probabilité', 'Responsable', 'Étape'].map(
-                      (h) => (
-                        <th scope="col" key={h}>
-                          {h}
-                        </th>
-                      ),
-                    )}
+                    {['Deal', 'Entreprise', 'Montant', 'Probabilité', 'Responsable', 'Étape'].map((heading) => (
+                      <th scope="col" key={heading}>
+                        {heading}
+                      </th>
+                    ))}
                   </tr>
                 </thead>
                 <tbody>
-                  {rows.map((d) => (
-                    <tr key={d.id}>
+                  {rows.map((deal) => (
+                    <tr key={deal.id}>
                       <td>
-                        <button className="record-link" onClick={() => setEditing(d)}>
-                          {d.name}
+                        <button className="record-link" onClick={() => setEditing(deal)}>
+                          {deal.name}
                         </button>
-                        <small className="cell-meta">{d.updatedAt}</small>
+                        <small className="cell-meta">{deal.updatedAt}</small>
                       </td>
-                      <td>{d.company}</td>
-                      <td className="money">{formatDzd(d.value)}</td>
-                      <td>{d.probability}%</td>
-                      <td>{d.owner}</td>
+                      <td>{deal.company}</td>
+                      <td className="money">{formatDzd(deal.value)}</td>
+                      <td>{deal.probability}%</td>
+                      <td>{deal.owner}</td>
                       <td>
-                        <StatusBadge status={d.stage} />
+                        <StatusBadge status={deal.stage} />
                       </td>
                     </tr>
                   ))}
@@ -207,39 +197,35 @@ export function DealsPage({ board = false }: { board?: boolean }) {
             </div>
           </Panel>
         )}
-        <Drawer
+        <EvoSheet
           open={can('crm.edit') && (creating || params.get('create') === '1' || !!editing)}
-          onClose={close}
+          onOpenChange={(next) => !next && close()}
           title={editing ? 'Détail du deal' : 'Nouveau deal'}
         >
           <DealForm
             key={editing?.id ?? createStage}
             deal={editing}
             stage={createStage}
-            companies={[...new Set(contacts.map((c) => c.company))]}
-            onSave={(d) => {
-              setDeals((ds) => (editing ? ds.map((v) => (v.id === d.id ? d : v)) : [...ds, d]));
+            companies={[...new Set(contacts.map((contact) => contact.company))]}
+            onSave={(deal) => {
+              setDeals((current) => (editing ? current.map((value) => (value.id === deal.id ? deal : value)) : [...current, deal]));
               close();
               notify('Deal enregistré dans cette session.');
             }}
           />
-        </Drawer>
-        {!can('crm.edit') && editing && (
-          <Drawer
-            open
-            onClose={() => setEditing(null)}
-            title={editing.name}
-            description="Lecture seule"
-          >
+        </EvoSheet>
+        {!can('crm.edit') && editing ? (
+          <EvoSheet open onOpenChange={(next) => !next && setEditing(null)} title={editing.name}>
             <p>{editing.company}</p>
             <strong className="money">{formatDzd(editing.value)}</strong>
             <StatusBadge status={editing.stage} />
-          </Drawer>
-        )}
+          </EvoSheet>
+        ) : null}
       </section>
     </ScreenState>
   );
 }
+
 function DealForm({
   deal,
   stage,
@@ -249,7 +235,7 @@ function DealForm({
   deal: Deal | null;
   stage: string;
   companies: string[];
-  onSave: (d: Deal) => void;
+  onSave: (deal: Deal) => void;
 }) {
   const [name, setName] = useState(deal?.name ?? ''),
     [company, setCompany] = useState(deal?.company ?? companies[0]),
@@ -259,8 +245,8 @@ function DealForm({
   return (
     <form
       className="form-stack"
-      onSubmit={(e) => {
-        e.preventDefault();
+      onSubmit={(event) => {
+        event.preventDefault();
         if (!name.trim()) return;
         onSave({
           id: deal?.id ?? crypto.randomUUID(),
@@ -274,17 +260,13 @@ function DealForm({
         });
       }}
     >
-      <Input label="Nom du deal" required value={name} onChange={(e) => setName(e.target.value)} />
-      <Select
-        label="Entreprise associée"
-        value={company}
-        onChange={(e) => setCompany(e.target.value)}
-      >
-        {companies.map((c) => (
-          <option key={c}>{c}</option>
+      <EvoInput label="Nom du deal" required value={name} onChange={(event) => setName(event.target.value)} />
+      <FieldSelect label="Entreprise associée" value={company} onChange={(event) => setCompany(event.target.value)}>
+        {companies.map((value) => (
+          <option key={value}>{value}</option>
         ))}
-      </Select>
-      <Input
+      </FieldSelect>
+      <EvoInput
         label="Montant (DA)"
         required
         type="number"
@@ -292,23 +274,19 @@ function DealForm({
         max="100000000000"
         step="0.01"
         value={value}
-        onChange={(e) => setValue(Number(e.target.value))}
+        onChange={(event) => setValue(Number(event.target.value))}
       />
-      <Select
-        label="Étape du pipeline"
-        value={nextStage}
-        onChange={(e) => setStage(e.target.value)}
-      >
-        {stages.map((s) => (
-          <option key={s}>{s}</option>
+      <FieldSelect label="Étape du pipeline" value={nextStage} onChange={(event) => setStage(event.target.value)}>
+        {stages.map((value) => (
+          <option key={value}>{value}</option>
         ))}
-      </Select>
-      <Select label="Responsable du deal" value={owner} onChange={(e) => setOwner(e.target.value)}>
-        {['MB', 'SA', 'NS'].map((o) => (
-          <option key={o}>{o}</option>
+      </FieldSelect>
+      <FieldSelect label="Responsable du deal" value={owner} onChange={(event) => setOwner(event.target.value)}>
+        {['MB', 'SA', 'NS'].map((value) => (
+          <option key={value}>{value}</option>
         ))}
-      </Select>
-      {deal && (
+      </FieldSelect>
+      {deal ? (
         <RecordActivityTimeline
           items={[
             {
@@ -318,10 +296,10 @@ function DealForm({
             },
           ]}
         />
-      )}
-      <Button type="submit" variant="primary">
+      ) : null}
+      <EvoButton type="submit" variant="primary">
         Enregistrer le deal
-      </Button>
+      </EvoButton>
     </form>
   );
 }

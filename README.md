@@ -4,7 +4,19 @@ Standalone React 19 + TypeScript frontend foundation for EvoCRM 2.0. The reposit
 
 ## Development
 
-`@evotechly/ui` and `@evotechly/brand` are private packages on GitHub Packages (`https://npm.pkg.github.com`). The committed `.npmrc` keeps the `@evotechly` registry mapping. pnpm 11.25.0 does not expand `${NODE_AUTH_TOKEN}` from that file, so write a GitHub classic PAT with `read:packages` into your user config (never commit the token):
+`@evotechly/ui` and `@evotechly/brand` are private packages on GitHub Packages (`https://npm.pkg.github.com`). This branch vendors an unpublished **0.3.0** snapshot under `vendor/` (`workspace:*`) so the app can ship the Aurora shell without publishing.
+
+## TODO — switch to GitHub Packages `@evotechly/ui@0.3.0`
+
+`0.3.0` is **not published**. Do not publish the vendor folder. After Brandbook draft PR #13 is approved:
+
+```bash
+pnpm add @evotechly/ui@0.3.0
+```
+
+Then delete `vendor/UNPUBLISHED-evotechly-ui-0.3.0` and point the app at the registry package. Keep `vercel.json` `installCommand` (it still authenticates `@evotechly` on GitHub Packages).
+
+Until then, `pnpm install` resolves `@evotechly/ui` and `@evotechly/brand` from the workspace. The committed `.npmrc` keeps the `@evotechly` registry mapping for the future switch. pnpm 11.25.0 does not expand `${NODE_AUTH_TOKEN}` from that file, so write a GitHub classic PAT with `read:packages` into your user config when you consume the published packages (never commit the token):
 
 ```bash
 export NODE_AUTH_TOKEN=ghp_your_classic_token_with_read_packages
@@ -32,14 +44,14 @@ The initial shell follows the documented `simple_mode=true` navigation: Accueil,
 
 ## Design system
 
-The app consumes published **Design System 2.0** packages:
+The app consumes **EvoUI 0.3.0** (vendored Brandbook PR #13 `packages/ui`, unpublished) and Brand 2.0 tokens:
 
-- `@evotechly/ui@0.1.0` — React primitives (`import { Button } from '@evotechly/ui'`, `import '@evotechly/ui/styles.css'`)
-- `@evotechly/brand@^2.0.0` — tokens (`@evotechly/brand/tokens.css`, Tailwind `@evotechly/brand/theme.css`)
+- `@evotechly/ui@0.3.0` — workspace snapshot of the official 113-component library (`import { EvoButton, EvoInput } from '@evotechly/ui'`, `import '@evotechly/ui/styles.css'`, catalog in `@evotechly/ui/catalog.json`). CRM-only blocks live in `src/components/crm` as compositions of those primitives.
+- `@evotechly/brand@2.0.0` — workspace snapshot (`@evotechly/brand/tokens.css`, `@evotechly/brand/theme.css`)
 
-Set `<html data-product="crm" data-theme="light">`. EvoCRM palette from DS 2.0: paper `#EAEAEA`, ink `#0D1B24`, orange `#D9500F`. Do not use retired hexes (`#EC6025`, `#111111`, `#000000`, `#2E3A45`, and the rest of Brandbook `RETIRED.md`).
+Set `<html data-product="crm" data-theme="light">`. Aurora CRM shell: 212px dark sidebar + light workspace, paper `#EAEAEA`, ink `#0D1B24`, orange `#D9500F` for primary actions only, teal for selection. Do not use retired hexes (`#EC6025`, `#111111`, `#000000`, `#2E3A45`, and the rest of Brandbook `RETIRED.md`).
 
-Shared primitives (buttons, inputs, checkboxes, dialogs, drawers, popovers, tooltips, toasts, badges, avatars, empty states) come from `@evotechly/ui`. CRM-specific composites, native selects/date fields, and the typed DataTable stay local because their APIs are not a straight swap. Details are in the adoption PR.
+Production copy is French. Demo organisations: Clinique El Djazair, Hôpital Ibn Sina, Cabinet Dr. Amrani, Pharmacie Centrale.
 
 ## Integration strategy
 

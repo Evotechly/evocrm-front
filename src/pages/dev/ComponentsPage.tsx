@@ -1,27 +1,42 @@
 import { formatDzd } from '@/lib/format';
 import { useState } from 'react';
-import { Button, Avatar, Panel, EmptyState, StatCard } from '@/components/ui';
-import { toast } from '@evotechly/ui';
-import { Dialog, Drawer, Popover, Tooltip } from '@/components/ui/Overlays';
-import { Input, Select, Checkbox, DatePicker } from '@/components/forms/Fields';
 import {
-  SearchInput,
-  FilterBar,
-  Pagination,
-  SortControl,
-  ViewSwitcher,
-  ActivityTimeline,
-} from '@/components/data-display/Controls';
-import { DataTable } from '@/components/data-display/DataTable';
-import { StatusBadge } from '@/components/ui/StatusBadge';
+  EvoAvatar,
+  EvoButton,
+  EvoCheckbox,
+  EvoCommandInput,
+  EvoCommandItem,
+  EvoCommandList,
+  EvoCommandPalette,
+  EvoDataTable,
+  EvoDialog,
+  EvoEmptyState,
+  EvoInput,
+  EvoKpiCard,
+  EvoOrgSwitcher,
+  EvoPopover,
+  EvoSheet,
+  EvoTooltip,
+  toast,
+} from '@evotechly/ui';
 import { ContactCard, ContactDetailPanel } from '@/components/crm/Contacts';
 import { KanbanBoard } from '@/components/crm/Deals';
 import { ConversationList, MessageThread, MessageComposer } from '@/components/crm/Inbox';
 import { QuoteLineItem, QuoteSummary } from '@/components/crm/Quotes';
-import { CommandPalette } from '@/components/navigation/CommandPalette';
-import { WorkspaceSwitcher } from '@/components/navigation/Sidebar';
-import { GlobalCreateMenu, UserMenu } from '@/components/navigation/Header';
+import {
+  DateField,
+  FieldSelect,
+  FilterBar,
+  Panel,
+  RecordActivityTimeline,
+  SearchField,
+  SortControl,
+  StatusBadge,
+  TablePagination,
+  ViewSwitcher,
+} from '@/components/crm/ui';
 import { useCrm, type LineItem } from '@/app/providers/CrmProvider';
+
 export function ComponentsPage() {
   const { contacts, deals, threads } = useCrm();
   const [overlay, setOverlay] = useState(''),
@@ -42,73 +57,71 @@ export function ComponentsPage() {
     <section className="page-stack">
       <div>
         <h1>Composants interactifs</h1>
-        <p className="muted">
-          Contrats et variantes : docs/design-system/components.md. Route exclue en production.
-        </p>
+        <p className="ev-muted">Galerie EvoUI 0.3.0 — hors production.</p>
       </div>
       <div className="gallery-grid">
         <Panel title="Actions et feedback">
           <div className="gallery-example">
             <div className="inline">
-              {(['primary', 'secondary', 'ghost', 'soft', 'danger'] as const).map((v) => (
-                <Button key={v} variant={v} onClick={() => toast.information(`Variante ${v} activée`)}>
-                  {v}
-                </Button>
+              {(['primary', 'secondary', 'ghost', 'outline', 'danger'] as const).map((variant) => (
+                <EvoButton key={variant} variant={variant} onClick={() => toast(`Variante ${variant} activée`)}>
+                  {variant}
+                </EvoButton>
               ))}
             </div>
             <div className="inline">
-              <Button loading>Chargement</Button>
-              <Button disabled>Désactivé</Button>
-              <Tooltip text="Créer une relation">
-                <Button onClick={() => toast.information('Info-bulle testée')}>Info-bulle</Button>
-              </Tooltip>
+              <EvoButton disabled>Désactivé</EvoButton>
+              <EvoTooltip content="Créer une relation">
+                <EvoButton onClick={() => toast('Info-bulle testée')}>Info-bulle</EvoButton>
+              </EvoTooltip>
             </div>
             <div className="inline">
-              {['Actif', 'Prospect', 'Inactif', 'Envoyé', 'Accepté', 'Perdu'].map((s) => (
-                <StatusBadge key={s} status={s} />
+              {['Actif', 'Prospect', 'Inactif', 'Envoyé', 'Accepté', 'Perdu'].map((status) => (
+                <StatusBadge key={status} status={status} />
               ))}
-              {['orange', 'indigo', 'teal', 'purple', 'blue', 'ink'].map((t) => (
-                <Avatar key={t} initials="EV" tone={t} />
-              ))}
+              <EvoAvatar fallback="EV" alt="Evotechly" />
             </div>
           </div>
         </Panel>
         <Panel title="Champs">
           <div className="gallery-example">
-            <Input label="Nom" placeholder="Votre nom" />
-            <Input label="Email invalide" error="Vérifiez cette adresse" defaultValue="exemple" />
-            <Input label="Désactivé" disabled value="Lecture seule" />
-            <Select label="Choix">
-              <option>Option A</option>
-              <option>Option B</option>
-            </Select>
-            <Checkbox
+            <EvoInput label="Nom" placeholder="Votre nom" />
+            <EvoInput label="Email invalide" defaultValue="exemple" />
+            <EvoInput label="Désactivé" disabled value="Lecture seule" />
+            <FieldSelect label="Choix" defaultValue="a">
+              <option value="a">Option A</option>
+              <option value="b">Option B</option>
+            </FieldSelect>
+            <EvoCheckbox
               label="Recevoir les mises à jour"
               checked={checked}
-              onChange={() => setChecked((v) => !v)}
+              onCheckedChange={(value) => setChecked(value === true)}
             />
-            <DatePicker label="Échéance" />
+            <DateField label="Échéance" />
           </div>
         </Panel>
         <Panel title="Navigation et overlays">
           <div className="gallery-example">
-            <WorkspaceSwitcher />
+            <EvoOrgSwitcher
+              orgs={[
+                { id: 'clinique', name: 'Clinique El Djazair', role: 'Espace principal' },
+                { id: 'ibn', name: 'Hôpital Ibn Sina', role: 'Établissement' },
+              ]}
+            />
             <div className="inline">
-              <GlobalCreateMenu />
-              <UserMenu />
-              <Button onClick={() => setOverlay('command')}>Commandes</Button>
-              <Button onClick={() => setOverlay('dialog')}>Dialogue</Button>
-              <Button onClick={() => setOverlay('drawer')}>Tiroir</Button>
-              <Popover label="Exemple de popover" trigger={<Button>Popover</Button>}>
-                <Input label="Note contextuelle" />
-              </Popover>
+              <EvoButton onClick={() => setOverlay('command')}>Commandes</EvoButton>
+              <EvoButton onClick={() => setOverlay('dialog')}>Dialogue</EvoButton>
+              <EvoButton onClick={() => setOverlay('drawer')}>Tiroir</EvoButton>
+              <EvoPopover content={<EvoInput label="Note contextuelle" />}>
+                <EvoButton>Popover</EvoButton>
+              </EvoPopover>
             </div>
           </div>
         </Panel>
         <Panel title="Données et contrôles">
           <div className="gallery-example">
             <FilterBar>
-              <SearchInput value={query} onChange={setQuery} label="Filtrer la démo" />
+              <SearchField value={query} onChange={setQuery} label="Filtrer la démo" />
               <SortControl
                 value={sort}
                 onChange={setSort}
@@ -126,52 +139,30 @@ export function ComponentsPage() {
                 { value: 'board', label: 'Board' },
               ]}
             />
-            <DataTable
-              data={contacts}
-              caption="Contacts de démonstration"
-              rowKey={(c) => c.id}
-              query={query}
-              matchesQuery={(c, q) => c.name.toLowerCase().includes(q.toLowerCase())}
-              pageSize={2}
-              selectable
+            <EvoDataTable
+              data={contacts.filter((contact) =>
+                contact.name.toLowerCase().includes(query.toLowerCase()),
+              )}
               columns={[
-                { key: 'name', label: 'Nom', render: (c) => c.name, sortValue: (c) => c.name },
-                {
-                  key: 'company',
-                  label: 'Entreprise',
-                  render: (c) => c.company,
-                  sortValue: (c) => c.company,
-                },
+                { accessorKey: 'name', header: 'Nom' },
+                { accessorKey: 'company', header: 'Entreprise' },
               ]}
             />
-            <Pagination page={page} total={contacts.length} pageSize={2} onChange={setPage} />
-            <ActivityTimeline
-              items={[
-                { title: 'Contact créé', detail: 'Exemple de timeline', time: 'À l’instant' },
-              ]}
+            <TablePagination page={page} total={contacts.length} pageSize={2} onChange={setPage} />
+            <RecordActivityTimeline
+              items={[{ title: 'Contact créé', detail: 'Exemple de timeline', time: 'À l’instant' }]}
             />
           </div>
         </Panel>
         <Panel title="Relations">
           <div className="gallery-example">
             <ContactCard contact={contacts[0]} onOpen={() => setOverlay('contact')} />
-            <StatCard
-              label="Pipeline"
-              value={formatDzd(820000)}
-              monetary
-              change="Fixture de démonstration"
-              icon={<span>↗</span>}
-            />
+            <EvoKpiCard label="Pipeline" value={formatDzd(820000)} delta="Fixture de démonstration" />
           </div>
         </Panel>
         <Panel title="Devis">
           <div className="gallery-example">
-            <QuoteLineItem
-              item={item}
-              index={0}
-              onChange={setItem}
-              onRemove={() => setItem({ ...item, quantity: 0 })}
-            />
+            <QuoteLineItem item={item} index={0} onChange={setItem} onRemove={() => setItem({ ...item, quantity: 0 })} />
             <QuoteSummary items={[item]} />
           </div>
         </Panel>
@@ -182,7 +173,7 @@ export function ComponentsPage() {
             deals={stageDeals}
             onOpen={() => setOverlay('drawer')}
             onMove={(id, stage) =>
-              setDeals((ds) => ds.map((d) => (d.id === id ? { ...d, stage } : d)))
+              setDeals((rows) => rows.map((deal) => (deal.id === id ? { ...deal, stage } : deal)))
             }
             onCreate={() => setOverlay('drawer')}
           />
@@ -193,50 +184,50 @@ export function ComponentsPage() {
           <ConversationList
             threads={threads}
             activeId={threads[0].id}
-            onSelect={() => toast.information('Conversation sélectionnée')}
+            onSelect={() => toast('Conversation sélectionnée')}
           />
           <MessageThread messages={messages} contact={threads[0].contact} />
           <MessageComposer
             onSend={(body) =>
-              setMessages((ms) => [
-                ...ms,
-                { id: crypto.randomUUID(), body, direction: 'sent', time: 'À l’instant' },
-              ])
+              setMessages((rows) => [...rows, { id: crypto.randomUUID(), body, direction: 'sent', time: 'À l’instant' }])
             }
           />
         </div>
       </Panel>
-      <EmptyState
+      <EvoEmptyState
         title="Aucun résultat"
-        detail="Exemple de l’état vide"
-        action={<Button onClick={() => toast.information('Action de création')}>Créer</Button>}
+        description="Exemple de l’état vide"
+        action={<EvoButton onClick={() => toast('Action de création')}>Créer</EvoButton>}
       />
-      <Dialog
-        open={overlay === 'dialog'}
-        onClose={() => setOverlay('')}
-        title="Confirmer une action"
-      >
-        <Input label="Note" />
-        <Button
+      <EvoDialog open={overlay === 'dialog'} onOpenChange={(open) => !open && setOverlay('')} title="Confirmer une action">
+        <EvoInput label="Note" />
+        <EvoButton
           onClick={() => {
             setOverlay('');
-            toast.information('Action confirmée');
+            toast('Action confirmée');
           }}
         >
           Confirmer
-        </Button>
-      </Dialog>
-      <Drawer
+        </EvoButton>
+      </EvoDialog>
+      <EvoSheet
         open={overlay === 'drawer' || overlay === 'contact'}
-        onClose={() => setOverlay('')}
+        onOpenChange={(open) => !open && setOverlay('')}
         title="Détail de contact"
       >
         <ContactDetailPanel
           contact={contacts[0]}
-          onEdit={() => toast.information('Édition disponible dans Contacts')}
+          onEdit={() => toast('Édition disponible dans Contacts')}
         />
-      </Drawer>
-      {overlay === 'command' && <CommandPalette onClose={() => setOverlay('')} />}
+      </EvoSheet>
+      <EvoCommandPalette open={overlay === 'command'} onOpenChange={(open) => !open && setOverlay('')}>
+        <EvoCommandInput />
+        <EvoCommandList>
+          <EvoCommandItem value="Accueil" onSelect={() => setOverlay('')}>
+            Accueil
+          </EvoCommandItem>
+        </EvoCommandList>
+      </EvoCommandPalette>
     </section>
   );
 }

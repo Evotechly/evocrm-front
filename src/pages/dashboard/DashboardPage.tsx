@@ -1,13 +1,13 @@
 import { useState } from 'react';
 import { ArrowRight, Plus, Sun } from '@phosphor-icons/react';
+import { EvoButton, EvoKpiCard } from '@evotechly/ui';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useCrm } from '@/app/providers/CrmProvider';
-import { Button } from '@/components/ui';
-import { Select } from '@/components/forms/Fields';
-import { ScreenState, usePreviewState } from '@/components/ui/ScreenState';
+import { FieldSelect } from '@/components/crm/ui';
+import { ScreenState, usePreviewState } from '@/app/ScreenState';
 import { UnifiedDashboardLayout } from './UnifiedDashboardLayout';
 
-export { StatCard as KPICard } from '@/components/data-display/StatCard';
+export const KPICard = EvoKpiCard;
 
 export function DashboardPage() {
   const { navigate } = useNavigation();
@@ -18,18 +18,18 @@ export function DashboardPage() {
   const data = state === 'empty' ? [] : deals;
   const filtered =
     range === 'today'
-      ? data.filter((d) => ['Aujourd’hui', 'À l’instant'].includes(d.updatedAt))
+      ? data.filter((deal) => ['Aujourd’hui', 'À l’instant'].includes(deal.updatedAt))
       : range === 'week'
-        ? data.filter((d) => !d.updatedAt.includes('10 oct.'))
+        ? data.filter((deal) => !deal.updatedAt.includes('10 oct.'))
         : data;
-  const open = filtered.filter((d) => !['Gagné', 'Perdu'].includes(d.stage));
-  const won = filtered.filter((d) => d.stage === 'Gagné');
-  const lost = filtered.filter((d) => d.stage === 'Perdu');
-  const pending = state === 'empty' ? [] : quotes.filter((q) => q.status === 'Envoyé');
-  const tasks = open.map((d) => ({
-    id: d.id,
-    title: `Faire le point · ${d.name}`,
-    company: d.company,
+  const open = filtered.filter((deal) => !['Gagné', 'Perdu'].includes(deal.stage));
+  const won = filtered.filter((deal) => deal.stage === 'Gagné');
+  const lost = filtered.filter((deal) => deal.stage === 'Perdu');
+  const pending = state === 'empty' ? [] : quotes.filter((quote) => quote.status === 'Envoyé');
+  const tasks = open.map((deal) => ({
+    id: deal.id,
+    title: `Faire le point · ${deal.name}`,
+    company: deal.company,
   }));
   const total = open.reduce((sum, deal) => sum + deal.value, 0);
   const conversionRate =
@@ -45,21 +45,21 @@ export function DashboardPage() {
             </h1>
             <p className="muted">Voici ce qui mérite votre attention aujourd’hui.</p>
           </div>
-          <Select label="Période des deals" value={range} onChange={(e) => setRange(e.target.value)}>
+          <FieldSelect label="Période des deals" value={range} onChange={(event) => setRange(event.target.value)}>
             <option value="all">Toutes les données</option>
             <option value="week">7 derniers jours · démo</option>
             <option value="today">Aujourd’hui</option>
-          </Select>
+          </FieldSelect>
         </div>
         <div className="dashboard-topline">
           <p className="dashboard-subtitle">Centre de commande · Evotechly</p>
           <div className="dashboard-shortcuts">
-            <Button onClick={() => navigate('/crm/contacts?create=1')}>
+            <EvoButton variant="secondary" onClick={() => navigate('/crm/contacts?create=1')}>
               <Plus size={14} /> Ajouter un contact
-            </Button>
-            <Button onClick={() => navigate('/crm/deals/board')}>
+            </EvoButton>
+            <EvoButton variant="secondary" onClick={() => navigate('/crm/deals/board')}>
               Ouvrir le pipeline <ArrowRight size={14} />
-            </Button>
+            </EvoButton>
           </div>
         </div>
         <UnifiedDashboardLayout

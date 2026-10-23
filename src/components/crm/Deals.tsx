@@ -1,9 +1,9 @@
 import { useState } from 'react';
+import { EvoButton } from '@evotechly/ui';
 import type { Deal } from '@/contracts/entities';
-import { Button } from '@/components/ui';
-import { Select } from '@/components/forms/Fields';
-import { StatusBadge } from '@/components/ui/StatusBadge';
 import { formatDzd } from '@/lib/format';
+import { FieldSelect } from '@/components/crm/ui';
+
 export const stages = ['Qualification', 'Proposition', 'Négociation', 'Gagné', 'Perdu'];
 export const probabilities: Record<string, number> = {
   Qualification: 35,
@@ -12,52 +12,7 @@ export const probabilities: Record<string, number> = {
   Gagné: 100,
   Perdu: 0,
 };
-export function DealCard({
-  deal,
-  onOpen,
-  onMove,
-  disabled,
-}: {
-  deal: Deal;
-  onOpen: () => void;
-  onMove: (stage: string) => void;
-  disabled?: boolean;
-}) {
-  return (
-    <article
-      className="deal-card"
-      draggable={!disabled}
-      onDragStart={(e) => {
-        e.dataTransfer.setData('text/plain', deal.id);
-        e.dataTransfer.effectAllowed = 'move';
-      }}
-      aria-label={deal.name}
-    >
-      <div className="deal-card-top">
-        <StatusBadge status={deal.stage} />
-        <span className="muted">{deal.probability}%</span>
-      </div>
-      <button className="record-link deal-title" onClick={onOpen}>
-        {deal.name}
-      </button>
-      <small>{deal.company}</small>
-      <div className="deal-card-bottom">
-        <strong className="money">{formatDzd(deal.value)}</strong>
-        <span className="owner-avatar">{deal.owner}</span>
-      </div>
-      <Select
-        label={`Étape de ${deal.name}`}
-        value={deal.stage}
-        disabled={disabled}
-        onChange={(e) => onMove(e.target.value)}
-      >
-        {stages.map((s) => (
-          <option key={s}>{s}</option>
-        ))}
-      </Select>
-    </article>
-  );
-}
+
 export function KanbanBoard({
   deals,
   onMove,
@@ -71,52 +26,65 @@ export function KanbanBoard({
   onCreate: (stage: string) => void;
   disabled?: boolean;
 }) {
-  const [over, setOver] = useState('');
+  const [over, setOver] = useState<string | null>(null);
   return (
-    <div className="kanban-board" role="region" aria-label="Pipeline commercial">
+    <div className="ev-kanban" data-evo="kanban">
       {stages.map((stage) => {
-        const rows = deals.filter((d) => d.stage === stage);
-        const total = rows.reduce((sum, d) => sum + d.value, 0);
+        const column = deals.filter((deal) => deal.stage === stage);
+        const total = column.reduce((sum, deal) => sum + deal.value, 0);
         return (
           <section
             key={stage}
+            className={`ev-kanban-column ${over === stage ? 'is-over' : ''}`}
             aria-label={stage}
-            className={`kanban-column ${over === stage ? 'drop-target' : ''}`}
-            onDragOver={(e) => {
-              e.preventDefault();
+            onDragOver={(event) => {
+              event.preventDefault();
               setOver(stage);
             }}
-            onDragLeave={() => setOver('')}
-            onDrop={(e) => {
-              e.preventDefault();
-              setOver('');
-              if (!disabled) onMove(e.dataTransfer.getData('text/plain'), stage);
+            onDragLeave={() => setOver((value) => (value === stage ? null : value))}
+            onDrop={(event) => {
+              event.preventDefault();
+              const id = event.dataTransfer.getData('text/plain');
+              setOver(null);
+              if (id && !disabled) onMove(id, stage);
             }}
           >
-            <div className="kanban-heading">
-              <h2>{stage}</h2>
-              <span className="column-count">{rows.length}</span>
-            </div>
-            <p className="column-total money">{formatDzd(total)}</p>
-            {rows.map((deal) => (
-              <DealCard
+            <header>
+              <strong>{stage}</strong>
+              <span className="money">{formatDzd(total)}</span>
+            </header>
+            {column.map((deal) => (
+              <article
                 key={deal.id}
-                deal={deal}
-                onOpen={() => onOpen(deal)}
-                onMove={(s) => onMove(deal.id, s)}
-                disabled={disabled}
-              />
+                className="ev-deal-card"
+                aria-label={deal.name}
+                draggable={!disabled}
+                onDragStart={(event) => event.dataTransfer.setData('text/plain', deal.id)}
+              >
+                <div className="ev-deal-card-top">
+                  <button type="button" className="record-link" onClick={() => onOpen(deal)}>
+                    {deal.name}
+                  </button>
+                  <span className="ev-owner" aria-hidden="true">
+                    {deal.owner}
+                  </span>
+                </div>
+                <small>{deal.company}</small>
+                <strong className="money">{formatDzd(deal.value)}</strong>
+                <FieldSelect
+                  label={`Étape de ${deal.name}`}
+                  value={deal.stage}
+                  onChange={(event) => onMove(deal.id, event.target.value)}
+                >
+                  {stages.map((item) => (
+                    <option key={item}>{item}</option>
+                  ))}
+                </FieldSelect>
+              </article>
             ))}
-            {!rows.length && <p className="column-empty">Aucun deal</p>}
-            <Button disabled={disabled} variant="ghost" onClick={() => onCreate(stage)}>
-              + Ajouter un deal
-            </Button>
-            <footer className="column-footer">
-              Pondéré :{' '}
-              <span className="money">
-                {formatDzd(rows.reduce((sum, d) => sum + (d.value * d.probability) / 100, 0))}
-              </span>
-            </footer>
+            <EvoButton variant="ghost" disabled={disabled} onClick={() => onCreate(stage)}>
+              Ajouter
+            </EvoButton>
           </section>
         );
       })}

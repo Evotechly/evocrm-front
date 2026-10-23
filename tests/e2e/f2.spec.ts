@@ -5,7 +5,7 @@ test('contact creation, search, editing, filters and column visibility', async (
   await page.goto('/crm/contacts?create=1');
   await page.getByLabel('Nom complet').fill('Amel F2');
   await page.getByLabel('Email', { exact: true }).fill('amel.f2@example.test');
-  await page.getByLabel('Entreprise associée').selectOption('Atlas Logistics');
+  await page.getByLabel('Entreprise associée').selectOption('Clinique El Djazair');
   await page.getByRole('button', { name: 'Enregistrer le contact' }).click();
   await page.getByRole('searchbox', { name: 'Rechercher un contact' }).fill('Amel F2');
   await page.getByRole('button', { name: 'Amel F2' }).click();

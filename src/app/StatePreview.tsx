@@ -1,0 +1,30 @@
+import { useSearchParams } from 'react-router-dom';
+import { FieldSelect } from '@/components/crm/ui';
+
+export function StatePreview() {
+  const [params, setParams] = useSearchParams();
+  if (!import.meta.env.DEV) return null;
+  return (
+    <details className="state-preview">
+      <summary>Atelier · états de démonstration</summary>
+      <FieldSelect
+        label="État de l’écran"
+        value={params.get('state') ?? 'populated'}
+        onChange={(event) => {
+          const next = new URLSearchParams(params);
+          if (event.target.value === 'populated') next.delete('state');
+          else next.set('state', event.target.value);
+          next.delete('create');
+          setParams(next);
+        }}
+      >
+        {['populated', 'empty', 'loading', 'error', 'denied'].map((value, index) => (
+          <option key={value} value={value}>
+            {['Peuplé', 'Vide', 'Chargement', 'Erreur', 'Accès refusé'][index]}
+          </option>
+        ))}
+      </FieldSelect>
+      <a href="/dev/components">Galerie des composants</a>
+    </details>
+  );
+}

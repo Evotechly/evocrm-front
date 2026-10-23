@@ -1,5 +1,5 @@
-import { useEffect, type PropsWithChildren } from 'react';
-import { EvotechlyUIProvider, useTheme as useBrandTheme } from '@evotechly/ui';
+import { createContext, useContext, useEffect, useMemo, useState, type PropsWithChildren } from 'react';
+import { EvoToaster } from '@evotechly/ui';
 import type { Theme } from '@/contracts/pages';
 
 function readInitialMode(): Theme {
@@ -15,21 +15,38 @@ function readInitialMode(): Theme {
   } catch {
     /* ignore */
   }
-  return 'light';
+  return document.documentElement.getAttribute('data-theme') === 'dark' ? 'dark' : 'light';
 }
 
+const ThemeContext = createContext<{ theme: Theme; toggleTheme: () => void }>({
+  theme: 'light',
+  toggleTheme: () => undefined,
+});
+
 export function ThemeProvider({ children }: PropsWithChildren) {
+  const [theme, setTheme] = useState<Theme>(readInitialMode);
+  useEffect(() => {
+    document.documentElement.setAttribute('data-product', 'crm');
+    document.documentElement.setAttribute('data-theme', theme);
+    window.localStorage.setItem('evocrm-theme', theme);
+  }, [theme]);
+  const value = useMemo(
+    () => ({
+      theme,
+      toggleTheme: () => setTheme((current) => (current === 'light' ? 'dark' : 'light')),
+    }),
+    [theme],
+  );
   return (
-    <EvotechlyUIProvider defaultProduct="crm" defaultMode={readInitialMode()}>
-      {children}
-    </EvotechlyUIProvider>
+    <ThemeContext.Provider value={value}>
+      <div className="evo-root evo-ui ev-ui" data-product="crm" data-theme={theme}>
+        {children}
+      </div>
+      <EvoToaster />
+    </ThemeContext.Provider>
   );
 }
 
 export function useTheme() {
-  const { mode, toggleMode } = useBrandTheme();
-  useEffect(() => {
-    window.localStorage.setItem('evocrm-theme', mode);
-  }, [mode]);
-  return { theme: mode as Theme, toggleTheme: toggleMode };
+  return useContext(ThemeContext);
 }

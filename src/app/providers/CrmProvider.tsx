@@ -93,7 +93,7 @@ function useSession(data: SessionData, permissions: Permission[]) {
     notice,
     notify: (message: string) => {
       setNotice(message);
-      if (message) toast.information(message);
+      if (message) toast(message);
     },
     can: (p: Permission) => permissions.includes(p),
   };

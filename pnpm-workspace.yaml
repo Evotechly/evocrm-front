@@ -1,5 +1,10 @@
+packages:
+  - vendor/UNPUBLISHED-evotechly-ui-0.3.0
+  - vendor/evotechly-brand-2.0.0
 allowBuilds:
   esbuild: true
 minimumReleaseAgeExclude:
-  - '@evotechly/brand@2.0.0'
-  - '@evotechly/ui@0.1.0'
+  - '@evotechly/brand'
+  - '@evotechly/ui'
+  - baseline-browser-mapping
+  - electron-to-chromium

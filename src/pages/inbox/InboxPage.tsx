@@ -1,19 +1,20 @@
 import { useState } from 'react';
+import { EvoButton, EvoInput, EvoPopover } from '@evotechly/ui';
 import { useCrm } from '@/app/providers/CrmProvider';
 import { useNavigation } from '@/app/providers/NavigationProvider';
-import { Button } from '@/components/ui';
-import { ScreenState, usePreviewState, NoResults } from '@/components/ui/ScreenState';
-import { Select, Input } from '@/components/forms/Fields';
-import { SearchInput, ViewSwitcher } from '@/components/data-display/Controls';
+import { ScreenState, usePreviewState, NoResults } from '@/app/ScreenState';
 import { ConversationList, MessageThread, MessageComposer } from '@/components/crm/Inbox';
 import { ContactDetailPanel } from '@/components/crm/Contacts';
-import { Popover } from '@/components/ui/Overlays';
-import { formatDzd } from '@/lib/format';
 import {
+  FieldSelect,
   RecordActivityTimeline,
+  SearchField,
+  ViewSwitcher,
   WorkspaceHeader,
   WorkspaceToolbar,
-} from '@/components/workspace/Workspace';
+} from '@/components/crm/ui';
+import { formatDzd } from '@/lib/format';
+
 export function InboxPage() {
   const { threads, setThreads, contacts, deals, notify, can } = useCrm();
   const { navigate } = useNavigation();
@@ -24,18 +25,18 @@ export function InboxPage() {
     [queue, setQueue] = useState('all'),
     [showList, setShowList] = useState(true);
   const rows = (state === 'empty' ? [] : threads).filter(
-    (t) =>
-      `${t.contact} ${t.subject} ${t.preview}`.toLowerCase().includes(query.toLowerCase()) &&
-      (!channel || t.channel === channel) &&
-      (queue !== 'unread' || t.unread) &&
-      (queue !== 'mine' || t.assignee === 'MB'),
+    (thread) =>
+      `${thread.contact} ${thread.subject} ${thread.preview}`.toLowerCase().includes(query.toLowerCase()) &&
+      (!channel || thread.channel === channel) &&
+      (queue !== 'unread' || thread.unread) &&
+      (queue !== 'mine' || thread.assignee === 'MB'),
   );
-  const active = rows.find((t) => t.id === activeId) ?? rows[0];
-  const contact = contacts.find((c) => c.name === active?.contact);
-  const linked = deals.find((d) => d.company === contact?.company);
+  const active = rows.find((thread) => thread.id === activeId) ?? rows[0];
+  const contact = contacts.find((row) => row.name === active?.contact);
+  const linked = deals.find((deal) => deal.company === contact?.company);
   const update = (values: Partial<(typeof threads)[number]>) => {
     if (active && can('desk.manage'))
-      setThreads((ts) => ts.map((t) => (t.id === active.id ? { ...t, ...values } : t)));
+      setThreads((current) => current.map((thread) => (thread.id === active.id ? { ...thread, ...values } : thread)));
   };
   return (
     <ScreenState permission="desk.view">
@@ -54,7 +55,7 @@ export function InboxPage() {
             </div>
             <WorkspaceToolbar label="Filtres des conversations">
               <div className="inbox-filters">
-                <SearchInput label="Rechercher une conversation" value={query} onChange={setQuery} />
+                <SearchField label="Rechercher une conversation" value={query} onChange={setQuery} />
                 <ViewSwitcher
                   value={queue}
                   onChange={setQueue}
@@ -64,11 +65,11 @@ export function InboxPage() {
                     { value: 'unread', label: 'Non lues' },
                   ]}
                 />
-                <Select label="Canal" value={channel} onChange={(e) => setChannel(e.target.value)}>
+                <FieldSelect label="Canal" value={channel} onChange={(event) => setChannel(event.target.value)}>
                   <option value="">Tous les canaux</option>
                   <option>Email</option>
                   <option>WhatsApp</option>
-                </Select>
+                </FieldSelect>
               </div>
             </WorkspaceToolbar>
             <ConversationList
@@ -77,7 +78,7 @@ export function InboxPage() {
               onSelect={(id) => {
                 setActive(id);
                 setShowList(false);
-                setThreads((ts) => ts.map((t) => (t.id === id ? { ...t, unread: false } : t)));
+                setThreads((current) => current.map((thread) => (thread.id === id ? { ...thread, unread: false } : thread)));
               }}
             />
           </div>
@@ -94,13 +95,11 @@ export function InboxPage() {
                       {active.subject} · {active.channel}
                     </small>
                   </div>
-                  <Popover label="Contexte du contact" trigger={<Button>Contexte</Button>}>
-                    {contact ? (
-                      <ContactDetailPanel contact={contact} />
-                    ) : (
-                      <p>Contact non associé</p>
-                    )}
-                  </Popover>
+                  <EvoPopover
+                    content={contact ? <ContactDetailPanel contact={contact} /> : <p>Contact non associé</p>}
+                  >
+                    <EvoButton variant="secondary">Contexte</EvoButton>
+                  </EvoPopover>
                 </div>
                 <MessageThread messages={active.messages} contact={active.contact} />
                 <MessageComposer
@@ -126,7 +125,7 @@ export function InboxPage() {
               />
             )}
           </div>
-          {active && (
+          {active ? (
             <aside className="context-panel panel">
               <h2>Contexte client</h2>
               {contact ? (
@@ -138,16 +137,16 @@ export function InboxPage() {
               ) : (
                 <p>Contact non associé</p>
               )}
-              <Select
+              <FieldSelect
                 label="Attribuer à"
                 value={active.assignee}
                 disabled={!can('desk.manage')}
-                onChange={(e) => update({ assignee: e.target.value })}
+                onChange={(event) => update({ assignee: event.target.value })}
               >
-                {['MB', 'SA', 'NS', 'Non attribué'].map((o) => (
-                  <option key={o}>{o}</option>
+                {['MB', 'SA', 'NS', 'Non attribué'].map((value) => (
+                  <option key={value}>{value}</option>
                 ))}
-              </Select>
+              </FieldSelect>
               <h3>Deal lié</h3>
               {linked ? (
                 <button className="linked-record" onClick={() => navigate('/crm/deals')}>
@@ -159,12 +158,12 @@ export function InboxPage() {
               ) : (
                 <p className="muted">Aucun deal associé</p>
               )}
-              <Input
+              <EvoInput
                 label="Prochaine action"
                 value={active.nextAction}
                 disabled={!can('desk.manage')}
                 placeholder="Ex. Confirmer le calendrier"
-                onChange={(e) => update({ nextAction: e.target.value })}
+                onChange={(event) => update({ nextAction: event.target.value })}
               />
               <RecordActivityTimeline
                 items={[
@@ -177,13 +176,13 @@ export function InboxPage() {
               />
               <p className="muted">Note locale, sans rappel automatique.</p>
             </aside>
-          )}
+          ) : null}
         </div>
-        {active && showList && (
-          <Button className="inbox-show-thread" onClick={() => setShowList(false)}>
+        {active && showList ? (
+          <EvoButton className="inbox-show-thread" onClick={() => setShowList(false)}>
             Ouvrir la conversation · {active.contact}
-          </Button>
-        )}
+          </EvoButton>
+        ) : null}
       </section>
     </ScreenState>
   );

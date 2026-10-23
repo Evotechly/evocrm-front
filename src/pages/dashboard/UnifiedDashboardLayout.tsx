@@ -8,8 +8,8 @@ import {
   TrendUp,
 } from '@phosphor-icons/react';
 import type { Deal, Quote } from '@/contracts/entities';
-import { Button, Panel } from '@/components/ui';
-import { StatusBadge } from '@/components/ui/StatusBadge';
+import { EvoButton } from '@evotechly/ui';
+import { Panel, StatusBadge } from '@/components/crm/ui';
 import { formatDzd } from '@/lib/format';
 
 type Task = { id: string; title: string; company: string };
@@ -46,19 +46,19 @@ export function UnifiedDashboardLayout({
     <div className="unified-dashboard-layout" data-layout="unified-evocrm">
       <div className="workspace-hero">
         <div>
-          <div className="eyebrow">EVOCRM / DAILY COMMAND CENTER</div>
+          <div className="eyebrow">EvoCRM · Centre de commande</div>
           <h2>Une journée commerciale qui avance.</h2>
           <p className="muted">
             Les prochaines actions, les conversations et le pipeline réunis dans un seul espace.
           </p>
         </div>
         <div className="workspace-hero-actions">
-          <Button onClick={() => onNavigate('/inbox')}>
+          <EvoButton variant="secondary" onClick={() => onNavigate('/inbox')}>
             <EnvelopeSimple size={16} /> Ouvrir l’Inbox
-          </Button>
-          <Button variant="primary" onClick={() => onNavigate('/crm/deals?create=1')}>
+          </EvoButton>
+          <EvoButton variant="primary" onClick={() => onNavigate('/crm/deals?create=1')}>
             <Plus size={16} /> Créer un deal
-          </Button>
+          </EvoButton>
         </div>
       </div>
 
@@ -68,9 +68,9 @@ export function UnifiedDashboardLayout({
             <strong>Priorités du jour</strong>
             <span className="muted">Les actions qui méritent votre attention maintenant</span>
           </div>
-          <Button variant="ghost" onClick={() => onNavigate('/inbox')}>
+          <EvoButton variant="ghost" onClick={() => onNavigate('/inbox')}>
             Ouvrir la vue complète <ArrowRight size={15} />
-          </Button>
+          </EvoButton>
         </div>
         <div className="guided-action-grid">
           <button className="guided-action-card" onClick={() => onNavigate('/crm/contacts')}>
@@ -127,9 +127,9 @@ export function UnifiedDashboardLayout({
         <Panel
           title="Intelligence du pipeline"
           action={
-            <Button variant="ghost" onClick={() => onNavigate('/crm/deals/board')}>
+            <EvoButton variant="ghost" onClick={() => onNavigate('/crm/deals/board')}>
               Ouvrir le pipeline <ArrowRight size={15} />
-            </Button>
+            </EvoButton>
           }
         >
           <div className="pipeline-layout-summary">
@@ -210,9 +210,9 @@ export function UnifiedDashboardLayout({
       <Panel
         title="Opportunités prioritaires"
         action={
-          <Button variant="ghost" onClick={() => onNavigate('/crm/deals')}>
+          <EvoButton variant="ghost" onClick={() => onNavigate('/crm/deals')}>
             Voir tous les deals <ArrowRight size={15} />
-          </Button>
+          </EvoButton>
         }
       >
         <div className="priority-deals-table">

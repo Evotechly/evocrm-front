@@ -1,5 +1,7 @@
 node_modules
 dist
+!vendor/UNPUBLISHED-evotechly-ui-0.3.0/dist
+!vendor/UNPUBLISHED-evotechly-ui-0.3.0/dist/**
 coverage
 playwright-report
 test-results
