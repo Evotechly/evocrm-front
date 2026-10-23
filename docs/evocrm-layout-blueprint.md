@@ -84,16 +84,16 @@ For the layout shown at `/dashboard`, the recommended implementation set is:
 
 | Surface | Use now | Shoogle candidate if the local version needs replacement |
 | --- | --- | --- |
-| App shell and navigation | Local `Sidebar`, `Header`, `WorkspaceSwitcher` | `@intentui/sidebar` |
-| Global search and quick actions | Local `CommandPalette` | `@hirael/command-palette` |
-| KPI and report cards | Local `Panel` plus compact dashboard KPI markup | Recharts for richer data visualization |
-| Pipeline board | Local `KanbanBoard` | `@shadcncraft/kanban-1` |
-| Contacts and deals tables | Local `DataTable` | `@hirael/data-table` or `@data-table-filters/data-table` |
-| Row detail and record peek | Local `Drawer` / `Dialog` | `@data-table-filters/data-table-sheet` |
-| Feedback | Local `Toast` | `@cult-ui/halo-toast` (Sonner-backed) |
-| Dates and filters | Local `Select`, `DatePicker`, `Popover` | Radix Popover + `react-day-picker` |
+| App shell and navigation | Existing `Sidebar`, `Header`, `WorkspaceSwitcher` retained as the IntentUI-compatible adapter | `@intentui/sidebar` registry source |
+| Global search and quick actions | `CommandPalette` with Hirael-style affordances and Lucide chevron | `@hirael/command-palette` registry source |
+| KPI and report cards | Existing `Panel` plus live Recharts pipeline chart | Recharts |
+| Pipeline board | Existing accessible `KanbanBoard` with stage totals and keyboard select | `@shadcncraft/kanban-1` registry source |
+| Contacts and deals tables | Existing semantic `DataTable` contract retained for current CRM rows | `@hirael/data-table` / `@data-table-filters/data-table` registry source |
+| Row detail and record peek | Existing Radix `Drawer` / `Dialog` contract retained | `@data-table-filters/data-table-sheet` registry source |
+| Feedback | Sonner-backed `Toast` adapter with halo-compatible styling | `@cult-ui/halo-toast` registry source |
+| Dates and filters | Radix Popover + `react-day-picker`, while preserving fillable date-input behavior | Radix Popover + `react-day-picker` |
 
-This keeps the current preview lightweight and avoids adding packages until a real capability gap appears. The Shoogle candidates are free/open-source registry options to evaluate; license metadata should still be checked before adding each third-party registry item to production.
+The runtime pass applies the map without duplicating the CRM contracts. Shoogle registry entries are source blocks rather than npm packages, and `@shadcncraft/kanban-1` is currently protected by a registry endpoint; the existing accessible board remains the compatible implementation until that source is available for audit.
 
 ## Suggested implementation order
 

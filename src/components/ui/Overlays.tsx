@@ -1,8 +1,9 @@
 import * as D from '@radix-ui/react-dialog';
 import * as P from '@radix-ui/react-popover';
 import * as T from '@radix-ui/react-tooltip';
-import { useRef, useState, type ReactNode } from 'react';
+import { useEffect, useRef, useState, type ReactNode } from 'react';
 import { X } from '@phosphor-icons/react';
+import { Toaster, toast as sonnerToast } from 'sonner';
 export function Dialog({
   open,
   onClose,
@@ -105,16 +106,25 @@ export function Tooltip({ children, text }: { children: ReactNode; text: string 
   );
 }
 export function Toast({ message, onClose }: { message: string; onClose: () => void }) {
+  useEffect(() => {
+    if (!message) {
+      sonnerToast.dismiss('evocrm-notice');
+      return;
+    }
+    sonnerToast(message, {
+      id: 'evocrm-notice',
+      duration: 5000,
+      onAutoClose: onClose,
+      onDismiss: onClose,
+    });
+  }, [message, onClose]);
+
   return (
-    <div className="toast-region" aria-live="polite" aria-atomic="true">
-      {message && (
-        <div className="toast">
-          <span>{message}</span>
-          <button className="icon-button" onClick={onClose} aria-label="Fermer la notification">
-            <X size={16} />
-          </button>
-        </div>
-      )}
-    </div>
+    <Toaster
+      position="bottom-right"
+      closeButton
+      toastOptions={{ className: 'toast', duration: 5000 }}
+      data-shoogle-source="cult-ui-halo-toast"
+    />
   );
 }

@@ -1,4 +1,5 @@
 import { Command } from 'cmdk';
+import { ChevronRight } from 'lucide-react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { Dialog } from '@/components/ui/Overlays';
 const commands = [
@@ -21,7 +22,7 @@ export function CommandPalette({ onClose }: { onClose: () => void }) {
       title="Palette de commandes"
       description="Rechercher, puis utiliser les flèches et Entrée."
     >
-      <Command label="Navigation rapide">
+      <Command label="Navigation rapide" data-shoogle-source="hirael-command-palette">
         <Command.Input
           autoFocus
           placeholder="Rechercher une page ou une action…"
@@ -40,7 +41,7 @@ export function CommandPalette({ onClose }: { onClose: () => void }) {
                 }}
               >
                 {c.label}
-                <span>↵</span>
+                <ChevronRight size={15} aria-hidden="true" />
               </Command.Item>
             ))}
           </Command.Group>

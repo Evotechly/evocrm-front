@@ -7,6 +7,15 @@ import {
   Plus,
   TrendUp,
 } from '@phosphor-icons/react';
+import {
+  Bar,
+  BarChart,
+  CartesianGrid,
+  ResponsiveContainer,
+  Tooltip as RechartsTooltip,
+  XAxis,
+  YAxis,
+} from 'recharts';
 import type { Deal, Quote } from '@/contracts/entities';
 import { Button, Panel } from '@/components/ui';
 import { StatusBadge } from '@/components/ui/StatusBadge';
@@ -41,6 +50,12 @@ export function UnifiedDashboardLayout({
 }) {
   const stages = ['Qualification', 'Proposition', 'Négociation'];
   const priorityDeals = [...open].sort((a, b) => b.value - a.value).slice(0, 4);
+  const pipelineChartData = stages.map((stage) => ({
+    stage,
+    value: deals
+      .filter((deal) => deal.stage === stage)
+      .reduce((sum, deal) => sum + deal.value, 0),
+  }));
 
   return (
     <div className="unified-dashboard-layout" data-layout="unified-evocrm">
@@ -145,6 +160,17 @@ export function UnifiedDashboardLayout({
               <span className="muted">Devis à suivre</span>
               <strong>{pending.length}</strong>
             </div>
+          </div>
+          <div className="pipeline-chart" role="img" aria-label="Valeur du pipeline par étape">
+            <ResponsiveContainer width="100%" height={180}>
+              <BarChart data={pipelineChartData} margin={{ top: 8, right: 8, left: 0, bottom: 0 }}>
+                <CartesianGrid vertical={false} />
+                <XAxis dataKey="stage" tickLine={false} axisLine={false} />
+                <YAxis hide />
+                <RechartsTooltip formatter={(value) => formatDzd(Number(value))} />
+                <Bar dataKey="value" fill="var(--color-brand)" radius={[4, 4, 0, 0]} />
+              </BarChart>
+            </ResponsiveContainer>
           </div>
           <div className="pipeline-mini-board">
             {stages.map((stage) => {

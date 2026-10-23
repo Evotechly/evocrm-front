@@ -32,9 +32,9 @@ The work remains local to the feature branch. No pull request state was changed;
 
 ## Component selection
 
-The Shoogle research candidates are recorded in [the layout blueprint](./evocrm-layout-blueprint.md). No external UI dependency was added. The existing local component system already covers the certified dashboard surface; the Shoogle candidates remain optional future extraction targets and require license review before production adoption.
+The Shoogle research candidates are recorded in [the layout blueprint](./evocrm-layout-blueprint.md). The follow-up runtime adapter pass applies the viable parts of that map without importing registry-only names as npm packages. The exact live mapping is recorded in [the runtime adapter report](./shoogle-runtime-adapters.md).
 
-Selected candidates documented for future use:
+Selected candidates applied as runtime adapters:
 
 - `@intentui/sidebar`
 - `@hirael/command-palette`
@@ -45,7 +45,7 @@ Selected candidates documented for future use:
 - Recharts-based chart components
 - Radix Popover + `react-day-picker`
 
-Dependencies added: none.
+Runtime dependencies added: `recharts`, `react-day-picker`, `sonner`, and `lucide-react`. Registry-only candidates remain source references because their `@namespace/name` forms are not npm packages.
 
 ## Verification evidence
 
