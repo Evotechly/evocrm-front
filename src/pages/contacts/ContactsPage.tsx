@@ -1,5 +1,5 @@
 import { formatDateDisplay } from '@/lib/format';
-import { useState } from 'react';
+import { useRef, useState } from 'react';
 import { useSearchParams } from 'react-router-dom';
 import { ObjectViews } from '@evotechly/ui';
 import { Plus } from '@phosphor-icons/react';
@@ -22,6 +22,7 @@ export function ContactsPage() {
   const { contacts, setContacts, notify, can } = useCrm();
   const state = usePreviewState();
   const [params, setParams] = useSearchParams();
+  const primaryRef = useRef<HTMLButtonElement>(null);
   const [query, setQuery] = useState(''),
     [status, setStatus] = useState(''),
     [company, setCompany] = useState(''),
@@ -61,6 +62,7 @@ export function ContactsPage() {
       next.delete('create');
       setParams(next, { replace: true });
     }
+    requestAnimationFrame(() => primaryRef.current?.focus());
   };
   const toggle = (id: string) =>
     setSelected((s) => (s.includes(id) ? s.filter((v) => v !== id) : [...s, id]));
@@ -73,6 +75,7 @@ export function ContactsPage() {
           count={records.length}
           actions={
             <Button
+              ref={primaryRef}
               data-page-primary
               variant="primary"
               disabled={!can('crm.edit')}
@@ -149,7 +152,7 @@ export function ContactsPage() {
                   { value: 'company', label: 'Entreprise' },
                 ]}
               />
-              <Popover label="Colonnes visibles" trigger={<Button>Colonnes</Button>}>
+              <Popover label="Colonnes visibles" trigger={<Button variant="secondary">Colonnes</Button>}>
                 <div className="detail-stack">
                   {[
                     ['company', 'Entreprise'],

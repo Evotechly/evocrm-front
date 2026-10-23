@@ -469,13 +469,13 @@ export function TablePagination({
         {total ? `${(page - 1) * pageSize + 1}–${Math.min(page * pageSize, total)}` : '0'} sur {total}
       </span>
       <div className="ev-inline">
-        <Button disabled={page <= 1} onClick={() => onChange(page - 1)} aria-label="Page précédente">
+        <Button variant="secondary" disabled={page <= 1} onClick={() => onChange(page - 1)} aria-label="Page précédente">
           ←
         </Button>
         <span>
           Page {page} / {pages}
         </span>
-        <Button disabled={page >= pages} onClick={() => onChange(page + 1)} aria-label="Page suivante">
+        <Button variant="secondary" disabled={page >= pages} onClick={() => onChange(page + 1)} aria-label="Page suivante">
           →
         </Button>
       </div>

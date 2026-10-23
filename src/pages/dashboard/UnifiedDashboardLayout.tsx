@@ -53,7 +53,7 @@ export function UnifiedDashboardLayout({
           </p>
         </div>
         <div className="workspace-hero-actions">
-          <Button onClick={() => onNavigate('/inbox')}>
+          <Button variant="secondary" onClick={() => onNavigate('/inbox')}>
             <EnvelopeSimple size={16} /> Ouvrir l’Inbox
           </Button>
           <Button variant="primary" onClick={() => onNavigate('/crm/deals?create=1')}>

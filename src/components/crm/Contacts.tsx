@@ -34,7 +34,11 @@ export function ContactDetailPanel({ contact, onEdit }: { contact: Contact; onEd
         <dt>Dernière activité</dt>
         <dd>{formatDateDisplay(contact.lastActivity)}</dd>
       </dl>
-      {onEdit && <Button onClick={onEdit}>Modifier le contact</Button>}
+      {onEdit && (
+        <Button variant="secondary" onClick={onEdit}>
+          Modifier le contact
+        </Button>
+      )}
       <RecordActivityTimeline
         items={[
           {

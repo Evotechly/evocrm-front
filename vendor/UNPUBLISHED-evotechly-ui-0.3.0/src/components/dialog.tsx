@@ -50,6 +50,7 @@ export function Dialog({
               icon={<X size={16} />}
               variant="ghost"
               size="sm"
+              tooltip={false}
               style={{ position: 'absolute', top: 16, right: 16 }}
             />
           </DialogPrimitive.Close>

@@ -44,7 +44,7 @@ export function Drawer({
           )}
           {children}
           <DialogPrimitive.Close asChild>
-            <IconButton label="Fermer" icon={<X size={16} />} variant="ghost" size="sm" />
+            <IconButton label="Fermer" icon={<X size={16} />} variant="ghost" size="sm" tooltip={false} />
           </DialogPrimitive.Close>
         </DialogPrimitive.Content>
       </DialogPrimitive.Portal>

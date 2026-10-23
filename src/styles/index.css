@@ -2928,14 +2928,13 @@ input[type='number'] {
   justify-content: flex-start;
   width: 100%;
 }
-.ev-avatar,
 .avatar,
 .avatar-ink,
 .avatar-orange,
 .owner-avatar,
 .ev-owner {
-  color: var(--color-ink) !important;
-  background: var(--color-paper) !important;
+  color: var(--color-ink);
+  background: color-mix(in srgb, var(--color-ink) 10%, var(--color-surface));
 }
 .ev-segmented button.selected,
 .ev-object-views button.selected,
@@ -2965,4 +2964,12 @@ input[type='number'] {
 .form-stack {
   display: grid;
   gap: 14px;
+}
+.table-wrap .ev-check label,
+.contacts-desktop-table .ev-check label {
+  position: absolute;
+  width: 1px;
+  height: 1px;
+  overflow: hidden;
+  clip: rect(0, 0, 0, 0);
 }

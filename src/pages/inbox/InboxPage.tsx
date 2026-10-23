@@ -94,7 +94,7 @@ export function InboxPage() {
                       {active.subject} · {active.channel}
                     </small>
                   </div>
-                  <Popover label="Contexte du contact" trigger={<Button>Contexte</Button>}>
+                  <Popover label="Contexte du contact" trigger={<Button variant="secondary">Contexte</Button>}>
                     {contact ? (
                       <ContactDetailPanel contact={contact} />
                     ) : (
