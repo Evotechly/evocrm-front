@@ -4,9 +4,8 @@ import { List, SidebarSimple, Flask } from '@phosphor-icons/react';
 import { CommandPalette } from '@/components/navigation/CommandPalette';
 import { Header } from '@/components/navigation/Header';
 import { Sidebar } from '@/components/navigation/Sidebar';
-import { Toast, Drawer } from '@/components/ui/Overlays';
+import { Drawer } from '@/components/ui/Overlays';
 import { StatePreview } from '@/components/ui/ScreenState';
-import { useCrm } from '@/app/providers/CrmProvider';
 export function MobileNavigation({
   open,
   onClose,
@@ -41,7 +40,6 @@ export function AppLayout() {
     [commandOpen, setCommandOpen] = useState(false),
     [mobile, setMobile] = useState(false),
     [collapsed, setCollapsed] = useState(false);
-  const { notice, notify } = useCrm();
   useEffect(() => {
     const handler = (e: KeyboardEvent) => {
       if ((e.metaKey || e.ctrlKey) && e.key.toLowerCase() === 'k') {
@@ -95,7 +93,6 @@ export function AppLayout() {
         onToggleAdvanced={() => setAdvanced((v) => !v)}
       />
       {commandOpen && <CommandPalette onClose={() => setCommandOpen(false)} />}
-      <Toast message={notice} onClose={() => notify('')} />
     </div>
   );
 }

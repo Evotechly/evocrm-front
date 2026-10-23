@@ -1,15 +1,19 @@
+@import '@evotechly/brand/theme.css';
 @import './tokens.css';
 /* Scan application source only: research, generated evidence and tool bundles are not UI. */
 @import 'tailwindcss' source('../');
 * {
   box-sizing: border-box;
 }
+.ev-ui {
+  min-height: 100dvh;
+}
 body {
   margin: 0;
   min-width: 320px;
   font: 14px/1.5 var(--font-sans);
   color: var(--color-ink);
-  background: var(--color-canvas-soft);
+  background: var(--bg);
 }
 button,
 input,
@@ -2820,11 +2824,14 @@ tbody tr:hover td {
   .app-shell,
   .modal-backdrop,
   .modal-heading,
+  .ev-overlay,
   .no-print,
-  .toast-region {
+  .toast-region,
+  [data-sonner-toaster] {
     display: none !important;
   }
-  .modal-content.dialog {
+  .modal-content.dialog,
+  .ev-dialog {
     position: static;
     transform: none;
     max-height: none;

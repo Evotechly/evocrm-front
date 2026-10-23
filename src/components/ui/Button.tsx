@@ -1,26 +1,23 @@
-import type { ButtonHTMLAttributes, PropsWithChildren } from 'react';
-type ButtonProps = PropsWithChildren<ButtonHTMLAttributes<HTMLButtonElement>> & {
-  variant?: 'primary' | 'secondary' | 'ghost' | 'soft' | 'danger';
-  loading?: boolean;
-};
-export function Button({
-  children,
-  variant = 'secondary',
-  className = '',
-  loading = false,
-  disabled,
-  type = 'button',
-  ...props
-}: ButtonProps) {
+import { Button as UiButton, type ButtonProps as UiButtonProps } from '@evotechly/ui';
+
+type AppVariant = 'primary' | 'secondary' | 'ghost' | 'soft' | 'danger';
+
+export type ButtonProps = Omit<UiButtonProps, 'variant'> & { variant?: AppVariant };
+
+const variantMap = {
+  primary: 'primary',
+  secondary: 'secondary',
+  ghost: 'ghost',
+  soft: 'secondary',
+  danger: 'destructive',
+} as const;
+
+export function Button({ variant = 'secondary', className = '', ...props }: ButtonProps) {
   return (
-    <button
-      type={type}
+    <UiButton
+      variant={variantMap[variant]}
       className={`button button-${variant} ${className}`}
-      disabled={disabled || loading}
-      aria-busy={loading || undefined}
       {...props}
-    >
-      {loading ? 'Chargement…' : children}
-    </button>
+    />
   );
 }

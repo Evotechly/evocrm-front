@@ -1,28 +1,21 @@
-import { useId, type InputHTMLAttributes, type SelectHTMLAttributes, type ReactNode } from 'react';
+import {
+  useId,
+  type ChangeEvent,
+  type InputHTMLAttributes,
+  type SelectHTMLAttributes,
+  type ReactNode,
+} from 'react';
+import { Input as UiInput, Checkbox as UiCheckbox } from '@evotechly/ui';
+
 export function Input({
   label,
   error,
   hint,
   ...props
 }: InputHTMLAttributes<HTMLInputElement> & { label: string; error?: string; hint?: string }) {
-  const id = useId();
-  return (
-    <label className="field" htmlFor={id}>
-      <span>{label}</span>
-      <input
-        {...props}
-        id={id}
-        aria-invalid={!!error}
-        aria-describedby={error || hint ? `${id}-help` : undefined}
-      />
-      {(error || hint) && (
-        <small id={`${id}-help`} className={error ? 'field-error' : 'muted'}>
-          {error || hint}
-        </small>
-      )}
-    </label>
-  );
+  return <UiInput label={label} error={error} hint={hint} {...props} />;
 }
+
 export function Select({
   label,
   children,
@@ -38,17 +31,37 @@ export function Select({
     </label>
   );
 }
+
 export function Checkbox({
   label,
-  ...props
-}: Omit<InputHTMLAttributes<HTMLInputElement>, 'type'> & { label: string }) {
+  onChange,
+  checked,
+  defaultChecked,
+  disabled,
+  name,
+  value,
+}: Omit<InputHTMLAttributes<HTMLInputElement>, 'type' | 'onChange'> & {
+  label: string;
+  onChange?: (event: ChangeEvent<HTMLInputElement>) => void;
+}) {
   return (
-    <label className="checkbox">
-      <input {...props} type="checkbox" />
-      <span>{label}</span>
-    </label>
+    <UiCheckbox
+      label={label}
+      checked={checked}
+      defaultChecked={defaultChecked}
+      disabled={disabled}
+      name={name}
+      value={typeof value === 'string' ? value : undefined}
+      onCheckedChange={(next) => {
+        onChange?.({
+          target: { checked: next === true },
+          currentTarget: { checked: next === true },
+        } as ChangeEvent<HTMLInputElement>);
+      }}
+    />
   );
 }
+
 export function DatePicker(props: Omit<Parameters<typeof Input>[0], 'type'>) {
   return <Input {...props} type="date" />;
 }

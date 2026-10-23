@@ -1,3 +1,4 @@
+import { toast } from '@evotechly/ui';
 import { createContext, useContext, useState, type PropsWithChildren } from 'react';
 import type { Contact, Deal, Quote, InboxThread } from '@/contracts/entities';
 import type { Permission } from '@/contracts/permissions';
@@ -90,7 +91,10 @@ function useSession(data: SessionData, permissions: Permission[]) {
     threads,
     setThreads,
     notice,
-    notify: setNotice,
+    notify: (message: string) => {
+      setNotice(message);
+      if (message) toast.information(message);
+    },
     can: (p: Permission) => permissions.includes(p),
   };
 }
