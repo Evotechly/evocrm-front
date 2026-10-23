@@ -234,4 +234,30 @@ describe('accessibility', () => {
     const results = await axe(container);
     expect(results.violations.filter((item) => item.impact === 'critical' || item.impact === 'serious')).toEqual([]);
   });
+
+  it('has no serious axe violations on display and feedback primitives', async () => {
+    const { container } = wrap(
+      <>
+        <ButtonGroup>
+          <Button>One</Button>
+          <Button>Two</Button>
+        </ButtonGroup>
+        <Textarea label="Notes" />
+        <Switch label="Advanced" />
+        <RadioGroup legend="Plan" options={[{ value: 'solo', label: 'Solo' }]} />
+        <Breadcrumbs items={[{ label: 'Home', href: '/' }, { label: 'Here' }]} />
+        <Badge tone="success">Won</Badge>
+        <Avatar initials="AL" alt="Ada Lovelace" />
+        <Pagination page={1} pageCount={3} />
+        <EmptyState title="Empty" description="Nothing yet." />
+        <Skeleton variant="text" />
+        <Alert tone="information" title="Hint" description="Use filters." />
+        <Progress value={40} label="Upload" />
+        <Spinner label="Saving" />
+        <Tabs items={[{ value: 'one', label: 'One', content: 'First' }]} />
+      </>,
+    );
+    const results = await axe(container);
+    expect(results.violations.filter((item) => item.impact === 'critical' || item.impact === 'serious')).toEqual([]);
+  });
 });

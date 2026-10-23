@@ -11,9 +11,9 @@ Automated checks are not a WCAG certification. Manual screen-reader review was n
 | TypeScript `@evotechly/ui` | PASS | `pnpm --filter @evotechly/ui typecheck` |
 | TypeScript root CRM | PASS | `pnpm run typecheck` |
 | ESLint | PASS | `pnpm run lint` |
-| Unit / interaction tests | PASS | 20 tests in `packages/ui/tests` |
-| Accessibility (axe unit) | PASS | Form cluster; critical/serious empty |
-| Accessibility (axe browser) | PASS | Showcase Chromium, wcag2a/aa, no critical on 11 pages |
+| Unit / interaction tests | PASS | Unit files in `packages/ui/tests` cover all 31 primitives including Tooltip, Popover, Toast |
+| Accessibility (axe unit) | PASS | Form cluster plus display/feedback cluster plus overlay triggers; critical/serious empty |
+| Accessibility (axe browser) | PASS | Showcase Chromium, wcag2a/aa, no critical on home + all 31 component pages |
 | Production build UI | PASS | tsup ESM + d.ts, 45.71 KB JS |
 | Showcase production build | PASS | Vite |
 | Consumer production build | PASS | Vite |
@@ -30,42 +30,43 @@ Automated checks are not a WCAG certification. Manual screen-reader review was n
 |---|---|---|---|---|---|
 | Button | PASS | PASS | PASS | PASS | PASS |
 | IconButton | PASS | PASS | PASS | PASS | PASS |
-| ButtonGroup | PASS | PASS | pending | pending | PASS |
+| ButtonGroup | PASS | PASS | PASS | PASS | PASS |
 | Input | PASS | PASS | PASS | PASS | PASS |
-| Textarea | PASS | PASS | pending | pending | PASS |
-| Select | PASS | PASS | pending | PASS | PASS |
-| Combobox | PASS | PASS | pending | pending | PASS |
-| Checkbox | PASS | PASS | PASS | pending | PASS |
-| RadioGroup | PASS | PASS | pending | pending | PASS |
-| Switch | PASS | PASS | pending | pending | PASS |
-| DatePicker | PASS | PASS | pending | PASS | PASS |
-| Sidebar | PASS | PASS | pending | PASS | PASS |
-| Topbar | PASS | PASS | pending | PASS | PASS |
-| Tabs | PASS | PASS | pending | pending | PASS |
-| CommandMenu | PASS | PASS | pending | pending | PASS |
-| Breadcrumbs | PASS | PASS | pending | pending | PASS |
-| DataTable | PASS | PASS | pending | PASS | PASS |
-| Badge | PASS | PASS | pending | pending | PASS |
-| Avatar | PASS | PASS | pending | pending | PASS |
-| Pagination | PASS | PASS | pending | pending | PASS |
-| EmptyState | PASS | PASS | pending | pending | PASS |
-| Skeleton | PASS | PASS | pending | pending | PASS |
-| Dialog | PASS | PASS | pending | PASS | PASS |
-| Drawer | PASS | PASS | pending | pending | PASS |
-| DropdownMenu | PASS | PASS | pending | pending | PASS |
-| Tooltip | PASS | pending | pending | pending | PASS |
-| Popover | PASS | pending | pending | pending | PASS |
-| Toast | PASS | pending | pending | PASS | PASS |
-| Alert | PASS | PASS | pending | pending | PASS |
-| Progress | PASS | PASS | pending | pending | PASS |
-| Spinner | PASS | PASS | pending | pending | PASS |
+| Textarea | PASS | PASS | PASS | PASS | PASS |
+| Select | PASS | PASS | PASS | PASS | PASS |
+| Combobox | PASS | PASS | PASS | PASS | PASS |
+| Checkbox | PASS | PASS | PASS | PASS | PASS |
+| RadioGroup | PASS | PASS | PASS | PASS | PASS |
+| Switch | PASS | PASS | PASS | PASS | PASS |
+| DatePicker | PASS | PASS | PASS | PASS | PASS |
+| Sidebar | PASS | PASS | PASS | PASS | PASS |
+| Topbar | PASS | PASS | PASS | PASS | PASS |
+| Tabs | PASS | PASS | PASS | PASS | PASS |
+| CommandMenu | PASS | PASS | PASS | PASS | PASS |
+| Breadcrumbs | PASS | PASS | PASS | PASS | PASS |
+| DataTable | PASS | PASS | PASS | PASS | PASS |
+| Badge | PASS | PASS | PASS | PASS | PASS |
+| Avatar | PASS | PASS | PASS | PASS | PASS |
+| Pagination | PASS | PASS | PASS | PASS | PASS |
+| EmptyState | PASS | PASS | PASS | PASS | PASS |
+| Skeleton | PASS | PASS | PASS | PASS | PASS |
+| Dialog | PASS | PASS | PASS | PASS | PASS |
+| Drawer | PASS | PASS | PASS | PASS | PASS |
+| DropdownMenu | PASS | PASS | PASS | PASS | PASS |
+| Tooltip | PASS | PASS | PASS | PASS | PASS |
+| Popover | PASS | PASS | PASS | PASS | PASS |
+| Toast | PASS | PASS | PASS | PASS | PASS |
+| Alert | PASS | PASS | PASS | PASS | PASS |
+| Progress | PASS | PASS | PASS | PASS | PASS |
+| Spinner | PASS | PASS | PASS | PASS | PASS |
 
-`pending` means that check was not executed for that component. Home listing of all 31 cards did pass in the browser.
+Browser accessibility is axe on each showcase page (wcag2a/aa, no critical). Unit accessibility is vitest-axe on form, display/feedback, and overlay clusters. Manual screen-reader review was not run.
 
 ## Remaining issues
 
 - Official Brandbook repository and published `@evotechly/brand` are unavailable; tokens are a local snapshot of DESIGN.md / Aurora 1.1.0.
+- Literal `ui-collection.zip` was not attached. Sources used are the extracted tree in `docs/ui-collection/` (255 files).
 - Evopulse and EvoRail inherit Suite tokens until Brandbook publishes product palettes.
 - Pixel visual-regression goldens are not established.
-- Several components still need dedicated unit/browser coverage beyond the shared showcase and form-cluster axe run.
+- Literal `ui-collection.zip` was not attached. Sources used are the extracted tree in `docs/ui-collection/` (255 files).
 - Showcase and consumer bundles are large because they compile the library from source; the packed library itself is 46 KB ESM.
