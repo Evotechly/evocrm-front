@@ -1,2 +1,5 @@
 allowBuilds:
   esbuild: true
+minimumReleaseAgeExclude:
+  - '@evotechly/brand@2.0.0'
+  - '@evotechly/ui@0.1.0'
