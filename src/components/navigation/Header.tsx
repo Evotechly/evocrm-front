@@ -80,17 +80,17 @@ export function Header({
   return (
     <header className="app-header">
       <div className="header-context">
-        <strong>Espace commercial</strong>
+        <strong>Espace de travail</strong>
         <span>/</span>
         {destination}
       </div>
       <button
         className="command-trigger"
         onClick={onOpenCommand}
-        aria-label="Rechercher dans EvoCRM"
+        aria-label="Rechercher dans le CRM"
       >
         <MagnifyingGlass size={18} />
-        <span>Rechercher dans EvoCRM…</span>
+        <span>Rechercher dans le CRM…</span>
         <kbd>
           <Command size={12} /> K
         </kbd>

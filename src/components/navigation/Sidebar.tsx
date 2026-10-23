@@ -1,9 +1,8 @@
 import {
-  AddressBook,
   Buildings,
+  CaretRight,
   ChartLineUp,
   GearSix,
-  Handshake,
   House,
   MagnifyingGlass,
   Moon,
@@ -16,6 +15,7 @@ import {
 } from '@phosphor-icons/react';
 import type { Icon } from '@phosphor-icons/react';
 import { useLocation } from 'react-router-dom';
+import { useEffect, useState } from 'react';
 import { useNavigation } from '@/app/providers/NavigationProvider';
 import { useCrm } from '@/app/providers/CrmProvider';
 import { useTheme } from '@/app/providers/ThemeProvider';
@@ -24,8 +24,8 @@ import { Popover } from '@/components/ui/Overlays';
 type NavItem = { label: string; path: string; icon: Icon; simple: boolean };
 const simpleNav: NavItem[] = [
   { label: 'Accueil', path: '/dashboard', icon: House, simple: true },
-  { label: 'Contacts', path: '/crm/contacts', icon: AddressBook, simple: true },
-  { label: 'Deals', path: '/crm/deals', icon: Handshake, simple: true },
+  { label: 'Contacts', path: '/crm/contacts', icon: UsersThree, simple: true },
+  { label: 'Deals', path: '/crm/deals', icon: SquaresFour, simple: true },
   { label: 'Inbox', path: '/inbox', icon: Tray, simple: true },
   { label: 'Devis', path: '/crm/quotes', icon: Quotes, simple: true },
 ];
@@ -61,13 +61,26 @@ export function Sidebar({
     },
     ...(advanced ? [{ label: 'Analyse', items: advancedNav }] : []),
   ];
+  const [open, setOpen] = useState<string | null>('Workspace');
+
+  useEffect(() => {
+    const currentGroup = groups.find(({ items }) =>
+      items.some(({ path }) =>
+        path === '/dashboard' ? pathname === path : pathname.startsWith(path),
+      ),
+    );
+    if (currentGroup) setOpen(currentGroup.label);
+  }, [pathname, advanced]);
+
   return (
-    <aside className="sidebar" aria-label="Navigation EvoCRM">
-      <div className="sidebar-brand" title="EvoCRM">
-        <img src="/evotechly.svg" alt="" aria-hidden="true" />
+    <aside className="sidebar" aria-label="Navigation du CRM">
+      <div className="sidebar-brand" title="CRM">
+        <span className="sidebar-brand-mark" aria-hidden="true">
+          CRM
+        </span>
         <span>
-          <strong>EvoCRM</strong>
-          <small>EVOTECHLY</small>
+          <strong>CRM</strong>
+          <small>WORKSPACE</small>
         </span>
       </div>
       <WorkspaceSwitcher />
@@ -81,24 +94,40 @@ export function Sidebar({
       <nav className="sidebar-navigation" aria-label="Navigation principale">
         {groups.map((group) => (
           <div className="sidebar-group" key={group.label}>
-            <span className="sidebar-group-label">{group.label}</span>
-            <div className="sidebar-group-items">
-              {group.items.map(({ label, path, icon: Icon }) => {
-                const active =
-                  path === '/dashboard' ? pathname === path : pathname.startsWith(path);
-                return (
-                  <button
-                    key={path}
-                    aria-current={active ? 'page' : undefined}
-                    className={`sidebar-item ${active ? 'active' : ''}`}
-                    onClick={() => navigate(path)}
-                  >
-                    <Icon size={17} weight={active ? 'fill' : 'regular'} />
-                    <span>{label}</span>
-                    {label === 'Inbox' && <span className="sidebar-count">3</span>}
-                  </button>
-                );
-              })}
+            <button
+              className="sidebar-group-toggle group-parent-row"
+              onClick={() => setOpen((value) => (value === group.label ? null : group.label))}
+              aria-expanded={open === group.label}
+              aria-controls={`sidebar-group-${group.label.toLowerCase()}`}
+            >
+              <span className="sidebar-group-label">{group.label}</span>
+              <span className="sidebar-group-chevron" aria-hidden="true">
+                <CaretRight size={15} weight="regular" />
+              </span>
+            </button>
+            <div
+              id={`sidebar-group-${group.label.toLowerCase()}`}
+              className={`sidebar-group-items-wrap ${open === group.label ? 'open' : ''}`}
+              aria-hidden={open !== group.label}
+            >
+              <div className="sidebar-group-items">
+                {group.items.map(({ label, path, icon: Icon }) => {
+                  const active =
+                    path === '/dashboard' ? pathname === path : pathname.startsWith(path);
+                  return (
+                    <button
+                      key={path}
+                      aria-current={active ? 'page' : undefined}
+                      className={`sidebar-item ${active ? 'active' : ''}`}
+                      onClick={() => navigate(path)}
+                    >
+                      <Icon size={16} weight="regular" />
+                      <span>{label}</span>
+                      {label === 'Inbox' && <span className="sidebar-count">3</span>}
+                    </button>
+                  );
+                })}
+              </div>
             </div>
           </div>
         ))}
@@ -136,19 +165,19 @@ export function WorkspaceSwitcher() {
         <button
           className="workspace-switcher"
           aria-label="Changer d’espace de travail"
-          title="Evotechly · Espace principal"
+          title="Mon espace · Espace personnel"
         >
           <span className="workspace-dot" />
           <span>
-            <strong>Evotechly</strong>
-            <small>Espace principal</small>
+            <strong>Mon espace</strong>
+            <small>Espace personnel</small>
           </span>
           <span>⌄</span>
         </button>
       }
     >
-      <strong>Evotechly</strong>
-      <p className="muted">Un seul workspace est disponible dans cette démonstration.</p>
+      <strong>Mon espace</strong>
+      <p className="muted">Espace personnel de démonstration.</p>
     </Popover>
   );
 }
