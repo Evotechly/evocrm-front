@@ -60,20 +60,39 @@ export function UnifiedDashboardLayout({
   return (
     <div className="unified-dashboard-layout" data-layout="unified-evocrm">
       <div className="workspace-hero">
-        <div>
+        <div className="workspace-hero-copy">
           <div className="eyebrow">EVOCRM / DAILY COMMAND CENTER</div>
           <h2>Une journée commerciale qui avance.</h2>
           <p className="muted">
             Les prochaines actions, les conversations et le pipeline réunis dans un seul espace.
           </p>
         </div>
-        <div className="workspace-hero-actions">
-          <Button onClick={() => onNavigate('/inbox')}>
-            <EnvelopeSimple size={16} /> Ouvrir l’Inbox
-          </Button>
-          <Button variant="primary" onClick={() => onNavigate('/crm/deals?create=1')}>
-            <Plus size={16} /> Créer un deal
-          </Button>
+        <div className="workspace-hero-side">
+          <div className="workspace-hero-pulse">
+            <div className="workspace-hero-pulse-heading">
+              <div>
+                <span className="eyebrow">PIPELINE PULSE</span>
+                <strong className="money">{formatDzd(total)}</strong>
+              </div>
+              <TrendUp size={17} />
+            </div>
+            <div className="workspace-hero-pulse-chart" role="img" aria-label="Aperçu du pipeline par étape">
+              <ResponsiveContainer width="100%" height={64}>
+                <BarChart data={pipelineChartData} margin={{ top: 4, right: 0, left: 0, bottom: 0 }}>
+                  <Bar dataKey="value" fill="var(--color-brand)" radius={[3, 3, 0, 0]} />
+                </BarChart>
+              </ResponsiveContainer>
+            </div>
+            <span className="muted">Qualification · Proposition · Négociation</span>
+          </div>
+          <div className="workspace-hero-actions">
+            <Button onClick={() => onNavigate('/inbox')}>
+              <EnvelopeSimple size={16} /> Ouvrir l’Inbox
+            </Button>
+            <Button variant="primary" onClick={() => onNavigate('/crm/deals?create=1')}>
+              <Plus size={16} /> Créer un deal
+            </Button>
+          </div>
         </div>
       </div>
 
