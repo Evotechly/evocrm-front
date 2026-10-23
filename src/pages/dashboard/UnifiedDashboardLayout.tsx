@@ -55,7 +55,11 @@ export function UnifiedDashboardLayout({
           </div>
         </div>
         <div className="guided-action-grid">
-          <button className="guided-action-card" onClick={() => onNavigate('/crm/contacts')}>
+          <button
+            className="guided-action-card"
+            aria-label="Ouvrir les deals à traiter aujourd’hui"
+            onClick={() => onNavigate('/crm/deals')}
+          >
             <span className="guided-action-icon orange">
               <CheckCircle size={19} />
             </span>
