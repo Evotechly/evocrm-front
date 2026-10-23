@@ -10,7 +10,7 @@ function useRestorePrimary(open: boolean) {
   const wasOpen = useRef(open);
   useEffect(() => {
     if (wasOpen.current && !open) {
-      requestAnimationFrame(() => {
+      window.requestAnimationFrame(() => {
         document.querySelector<HTMLElement>('[data-page-primary]')?.focus();
       });
     }
