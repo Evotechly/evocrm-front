@@ -16,8 +16,8 @@ import {
 import type { Icon } from '@phosphor-icons/react';
 import { useLocation } from 'react-router-dom';
 import { useNavigation } from '@/app/providers/NavigationProvider';
+import { useCrm } from '@/app/providers/CrmProvider';
 import { useTheme } from '@/app/providers/ThemeProvider';
-import { Button } from '@/components/ui';
 import { Popover } from '@/components/ui/Overlays';
 
 type NavItem = { label: string; path: string; icon: Icon; simple: boolean };
@@ -46,60 +46,65 @@ export function Sidebar({
   const { pathname } = useLocation();
   const { navigate } = useNavigation();
   const { theme, toggleTheme } = useTheme();
+  const { user } = useCrm();
   const items = advanced ? [...simpleNav, ...advancedNav] : simpleNav;
   return (
-    <aside className="sidebar">
-      <div className="brand-lockup">
-        <img className="brand-logo" src="/evotechly.svg" alt="Evotechly" />
-        <span>
-          <strong>EvoCRM</strong>
-          <small>EVOTECHLY</small>
-        </span>
+    <aside className="sidebar" aria-label="Navigation EvoCRM">
+      <div className="rail-brand" title="EvoCRM">
+        <img src="/evotechly.svg" alt="EvoCRM" />
       </div>
       <WorkspaceSwitcher />
-      <div className="nav-label">Espace commercial</div>
-      <nav aria-label="Navigation principale">
-        {items.map(({ label, path, icon: Icon }) => (
-          <button
-            key={path}
-            aria-current={pathname === path ? 'page' : undefined}
-            className={`nav-item ${pathname === path ? 'active' : ''}`}
-            onClick={() => navigate(path)}
-          >
-            <Icon size={18} weight={pathname.startsWith(path) ? 'fill' : 'regular'} />
-            <span>{label}</span>
-          </button>
-        ))}
+      <nav className="rail-nav" aria-label="Navigation principale">
+        {items.map(({ label, path, icon: Icon }) => {
+          const active = path === '/dashboard' ? pathname === path : pathname.startsWith(path);
+          return (
+            <button
+              key={path}
+              aria-current={active ? 'page' : undefined}
+              aria-label={label}
+              title={label}
+              className={`rail-item ${active ? 'active' : ''}`}
+              onClick={() => navigate(path)}
+            >
+              <Icon size={19} weight={active ? 'fill' : 'regular'} />
+              {label === 'Inbox' && <span className="rail-count">3</span>}
+            </button>
+          );
+        })}
       </nav>
-      <div className="sidebar-spacer" />
-      <button className="mode-toggle" onClick={onToggleAdvanced}>
-        <span className="mode-pill">{advanced ? 'A' : 'S'}</span>
-        <span>
-          <strong>{advanced ? 'Mode avancé' : 'Mode simple'}</strong>
-          <small>{advanced ? 'Fonctions étendues' : 'Vue essentielle'}</small>
-        </span>
-        <span className="toggle-track">
-          <span className={advanced ? 'toggle-thumb on' : 'toggle-thumb'} />
-        </span>
-      </button>
-      <button className="nav-item" onClick={() => navigate('/settings')}>
-        <GearSix size={18} />
-        <span>Paramètres</span>
-      </button>
-      <Button
-        variant="ghost"
-        className="theme-button"
-        onClick={toggleTheme}
-        aria-label={
-          theme === 'light'
-            ? 'Thème sombre dans la barre latérale'
-            : 'Thème clair dans la barre latérale'
-        }
-      >
-        {theme === 'light' ? <Moon size={17} /> : <Sun size={17} />}
-        <span>{theme === 'light' ? 'Mode sombre' : 'Mode clair'}</span>
-      </Button>
-      <div className="sidebar-footnote">v0.2 · Démonstration locale</div>
+      <div className="rail-footer">
+        <button
+          className={`rail-item ${advanced ? 'active' : ''}`}
+          aria-label={advanced ? 'Mode simple' : 'Mode avancé'}
+          title={advanced ? 'Mode simple' : 'Mode avancé'}
+          onClick={onToggleAdvanced}
+        >
+          <SquaresFour size={19} />
+        </button>
+        <button
+          className="rail-item"
+          aria-label="Paramètres"
+          title="Paramètres"
+          onClick={() => navigate('/settings')}
+        >
+          <GearSix size={19} />
+        </button>
+        <button
+          className="rail-item"
+          aria-label={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
+          title={theme === 'light' ? 'Mode sombre' : 'Mode clair'}
+          onClick={toggleTheme}
+        >
+          {theme === 'light' ? <Moon size={19} /> : <Sun size={19} />}
+        </button>
+        <button
+          className="rail-profile"
+          aria-label={`Profil ${user.displayName}`}
+          title={`${user.displayName} · ${user.role}`}
+        >
+          {user.initials}
+        </button>
+      </div>
     </aside>
   );
 }
@@ -109,7 +114,11 @@ export function WorkspaceSwitcher() {
     <Popover
       label="Espace de travail"
       trigger={
-        <button className="workspace-switcher">
+        <button
+          className="workspace-switcher"
+          aria-label="Changer d’espace de travail"
+          title="Evotechly · Espace principal"
+        >
           <span className="workspace-dot" />
           <span>
             <strong>Evotechly</strong>

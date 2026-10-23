@@ -31,23 +31,25 @@ export function GlobalCreateMenu() {
   );
 }
 export function UserMenu() {
-  const { notify } = useCrm();
+  const { notify, user } = useCrm();
   return (
     <Popover
       label="Compte utilisateur"
       trigger={
-        <button className="profile-trigger" aria-label="Compte de Mohamed">
-          <Avatar initials="MB" tone="ink" />
+        <button className="profile-trigger" aria-label={`Compte de ${user.displayName}`}>
+          <Avatar initials={user.initials} tone="ink" />
           <span>
-            <strong>Mohamed</strong>
-            <small>Propriétaire · Démo</small>
+            <strong>{user.displayName}</strong>
+            <small>{user.role}</small>
           </span>
           <CaretDown size={14} />
         </button>
       }
     >
       <div className="menu-list">
-        <strong>Mohamed · Evotechly</strong>
+        <strong>
+          {user.displayName} · {user.workspace}
+        </strong>
         <p className="muted">Session locale, sans compte connecté.</p>
         <Button
           onClick={() => notify('Session de démonstration : aucune connexion serveur active.')}

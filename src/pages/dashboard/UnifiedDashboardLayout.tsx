@@ -9,6 +9,7 @@ import {
 } from '@phosphor-icons/react';
 import type { Deal, Quote } from '@/contracts/entities';
 import { Button, Panel } from '@/components/ui';
+import { DataTable } from '@/components/data-display/DataTable';
 import { StatusBadge } from '@/components/ui/StatusBadge';
 import { formatDzd } from '@/lib/format';
 
@@ -23,6 +24,7 @@ export function UnifiedDashboardLayout({
   total,
   conversionRate,
   wonTotal,
+  priorityConversations = 0,
   onToggleTask,
   onNavigate,
   empty,
@@ -35,6 +37,7 @@ export function UnifiedDashboardLayout({
   total: number;
   conversionRate: number;
   wonTotal: number;
+  priorityConversations?: number;
   onToggleTask: (id: string) => void;
   onNavigate: (path: string) => void;
   empty: boolean;
@@ -44,53 +47,42 @@ export function UnifiedDashboardLayout({
 
   return (
     <div className="unified-dashboard-layout" data-layout="unified-evocrm">
-      <div className="workspace-hero">
-        <div>
-          <div className="eyebrow">EVOCRM / DAILY COMMAND CENTER</div>
-          <h2>Une journée commerciale qui avance.</h2>
-          <p className="muted">
-            Les prochaines actions, les conversations et le pipeline réunis dans un seul espace.
-          </p>
-        </div>
-        <div className="workspace-hero-actions">
-          <Button onClick={() => onNavigate('/inbox')}>
-            <EnvelopeSimple size={16} /> Ouvrir l’Inbox
-          </Button>
-          <Button variant="primary" onClick={() => onNavigate('/crm/deals?create=1')}>
-            <Plus size={16} /> Créer un deal
-          </Button>
-        </div>
-      </div>
-
       <div className="guided-actions" aria-label="Priorités du jour">
         <div className="guided-actions-heading">
           <div>
             <strong>Priorités du jour</strong>
             <span className="muted">Les actions qui méritent votre attention maintenant</span>
           </div>
-          <Button variant="ghost" onClick={() => onNavigate('/inbox')}>
-            Ouvrir la vue complète <ArrowRight size={15} />
-          </Button>
         </div>
         <div className="guided-action-grid">
           <button className="guided-action-card" onClick={() => onNavigate('/crm/contacts')}>
-            <span className="guided-action-icon orange"><CheckCircle size={19} /></span>
+            <span className="guided-action-icon orange">
+              <CheckCircle size={19} />
+            </span>
             <span>
               <strong>À traiter aujourd’hui</strong>
               <small>{tasks.length} suivi(s) et relance(s) à préparer.</small>
             </span>
             <ArrowRight size={15} />
           </button>
-          <button className="guided-action-card" onClick={() => onNavigate('/inbox')}>
-            <span className="guided-action-icon teal"><EnvelopeSimple size={19} /></span>
+          <button
+            className="guided-action-card"
+            aria-label="Ouvrir l’Inbox · Conversations prioritaires"
+            onClick={() => onNavigate('/inbox')}
+          >
+            <span className="guided-action-icon teal">
+              <EnvelopeSimple size={19} />
+            </span>
             <span>
               <strong>Conversations prioritaires</strong>
-              <small>Répondez aux échanges clients sans perdre le contexte CRM.</small>
+              <small>{priorityConversations} conversation(s) non lue(s) à traiter.</small>
             </span>
             <ArrowRight size={15} />
           </button>
           <button className="guided-action-card" onClick={() => onNavigate('/crm/deals/board')}>
-            <span className="guided-action-icon violet"><TrendUp size={19} /></span>
+            <span className="guided-action-icon violet">
+              <TrendUp size={19} />
+            </span>
             <span>
               <strong>Opportunités à suivre</strong>
               <small>{open.length} deal(s) ouverts dans le pipeline actuel.</small>
@@ -158,14 +150,21 @@ export function UnifiedDashboardLayout({
                   </div>
                   <div className="pipeline-mini-total money">{formatDzd(stageTotal)}</div>
                   {stageDeals.slice(0, 3).map((deal) => (
-                    <button className="pipeline-mini-card" key={deal.id} onClick={() => onNavigate('/crm/deals')}>
+                    <button
+                      className="pipeline-mini-card"
+                      key={deal.id}
+                      onClick={() => onNavigate('/crm/deals')}
+                    >
                       <strong>{deal.name}</strong>
                       <small>{deal.company}</small>
                       <span className="money">{formatDzd(deal.value)}</span>
                     </button>
                   ))}
                   {!stageDeals.length && <p className="pipeline-empty">Aucun deal</p>}
-                  <button className="pipeline-add" onClick={() => onNavigate('/crm/deals?create=1')}>
+                  <button
+                    className="pipeline-add"
+                    onClick={() => onNavigate('/crm/deals?create=1')}
+                  >
                     <Plus size={14} /> Ajouter
                   </button>
                 </div>
@@ -180,7 +179,9 @@ export function UnifiedDashboardLayout({
         >
           <div className="activity-feed">
             <div className="activity-feed-item">
-              <span className="activity-feed-icon"><Lightning size={16} /></span>
+              <span className="activity-feed-icon">
+                <Lightning size={16} />
+              </span>
               <div>
                 <strong>Pipeline actualisé</strong>
                 <p className="muted">Les montants et étapes sont prêts pour votre revue.</p>
@@ -188,7 +189,9 @@ export function UnifiedDashboardLayout({
               </div>
             </div>
             <div className="activity-feed-item">
-              <span className="activity-feed-icon"><EnvelopeSimple size={16} /></span>
+              <span className="activity-feed-icon">
+                <EnvelopeSimple size={16} />
+              </span>
               <div>
                 <strong>Conversation à traiter</strong>
                 <p className="muted">Un échange client attend une réponse dans l’Inbox.</p>
@@ -197,8 +200,15 @@ export function UnifiedDashboardLayout({
             </div>
             {tasks.slice(0, 2).map((task) => (
               <label className="activity-task" key={task.id}>
-                <input type="checkbox" checked={done.includes(task.id)} onChange={() => onToggleTask(task.id)} />
-                <span><strong>{task.title}</strong><small>{task.company}</small></span>
+                <input
+                  type="checkbox"
+                  checked={done.includes(task.id)}
+                  onChange={() => onToggleTask(task.id)}
+                />
+                <span>
+                  <strong>{task.title}</strong>
+                  <small>{task.company}</small>
+                </span>
                 <Clock size={15} className="muted" />
               </label>
             ))}
@@ -215,27 +225,54 @@ export function UnifiedDashboardLayout({
           </Button>
         }
       >
-        <div className="priority-deals-table">
-          <div className="priority-deals-head">
-            <span>Client / deal</span><span>Valeur</span><span>Étape</span><span>Responsable</span><span>Prochaine action</span>
-          </div>
-          {priorityDeals.map((deal) => (
-            <button className="priority-deal-row" key={deal.id} onClick={() => onNavigate('/crm/deals')}>
-              <span><strong>{deal.name}</strong><small>{deal.company}</small></span>
-              <span className="money">{formatDzd(deal.value)}</span>
-              <StatusBadge status={deal.stage} />
-              <span>{deal.owner}</span>
-              <span className="priority-next-action">Faire le point <ArrowRight size={13} /></span>
-            </button>
-          ))}
-          {!priorityDeals.length && <p className="empty-inline">{empty ? 'Votre activité apparaîtra ici.' : 'Aucune opportunité prioritaire.'}</p>}
-        </div>
+        {priorityDeals.length ? (
+          <DataTable
+            caption="Opportunités prioritaires"
+            data={priorityDeals}
+            rowKey={(deal) => deal.id}
+            columns={[
+              {
+                key: 'client',
+                label: 'Client / deal',
+                render: (deal) => (
+                  <button
+                    className="record-link priority-deal-link"
+                    onClick={() => onNavigate('/crm/deals')}
+                  >
+                    <strong>{deal.name}</strong>
+                    <small>{deal.company}</small>
+                  </button>
+                ),
+              },
+              {
+                key: 'value',
+                label: 'Valeur',
+                render: (deal) => <span className="money">{formatDzd(deal.value)}</span>,
+                sortValue: (deal) => deal.value,
+              },
+              {
+                key: 'stage',
+                label: 'Étape',
+                render: (deal) => <StatusBadge status={deal.stage} />,
+              },
+              { key: 'owner', label: 'Responsable', render: (deal) => deal.owner },
+              {
+                key: 'next',
+                label: 'Prochaine action',
+                render: () => (
+                  <span className="priority-next-action">
+                    Faire le point <ArrowRight size={13} />
+                  </span>
+                ),
+              },
+            ]}
+          />
+        ) : (
+          <p className="empty-inline">
+            {empty ? 'Votre activité apparaîtra ici.' : 'Aucune opportunité prioritaire.'}
+          </p>
+        )}
       </Panel>
-
-      <div className="unified-proof-row">
-        <span><StatusBadge status="Actif" /> Parcours WhatsApp → Contact → Deal → Devis → Suivi</span>
-        <span className="muted">Simple par défaut · puissant quand nécessaire</span>
-      </div>
     </div>
   );
 }

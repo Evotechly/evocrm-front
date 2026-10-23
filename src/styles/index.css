@@ -956,31 +956,6 @@ tbody tr:hover td {
   display: grid;
   gap: 20px;
 }
-.workspace-hero {
-  display: flex;
-  align-items: flex-end;
-  justify-content: space-between;
-  gap: 24px;
-  padding: 24px;
-  border: 1px solid var(--color-border);
-  border-radius: var(--radius-md);
-  background: var(--color-surface);
-}
-.workspace-hero h2 {
-  margin: 6px 0 6px;
-  font-size: 22px;
-  letter-spacing: -0.03em;
-}
-.workspace-hero p {
-  max-width: 560px;
-  margin: 0;
-}
-.workspace-hero-actions {
-  display: flex;
-  gap: 8px;
-  flex-wrap: wrap;
-  justify-content: flex-end;
-}
 .guided-actions {
   border: 1px solid var(--color-border);
   border-radius: var(--radius-md);
@@ -1022,7 +997,9 @@ tbody tr:hover td {
   background: var(--color-surface-raised);
   color: var(--color-ink);
   text-align: left;
-  transition: border-color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
 }
 .guided-action-card:hover {
   border-color: var(--color-brand);
@@ -1075,7 +1052,9 @@ tbody tr:hover td {
   background: var(--color-surface);
   color: var(--color-ink);
   text-align: left;
-  transition: border-color var(--motion-fast) var(--ease-standard), transform var(--motion-fast) var(--ease-standard);
+  transition:
+    border-color var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
 }
 .unified-kpi:hover {
   border-color: var(--color-brand);
@@ -1279,7 +1258,9 @@ tbody tr:hover td {
 .priority-deals-head,
 .priority-deal-row {
   display: grid;
-  grid-template-columns: minmax(180px, 1.5fr) minmax(110px, 0.8fr) minmax(120px, 0.9fr) minmax(100px, 0.6fr) minmax(150px, 1fr);
+  grid-template-columns:
+    minmax(180px, 1.5fr) minmax(110px, 0.8fr) minmax(120px, 0.9fr) minmax(100px, 0.6fr)
+    minmax(150px, 1fr);
   gap: 14px;
   align-items: center;
   min-width: 760px;
@@ -1328,18 +1309,6 @@ tbody tr:hover td {
   padding: 18px;
   color: var(--color-muted);
   font-size: 12px;
-}
-.unified-proof-row {
-  display: flex;
-  justify-content: space-between;
-  gap: 12px;
-  color: var(--color-muted);
-  font-size: 10px;
-}
-.unified-proof-row > span:first-child {
-  display: flex;
-  align-items: center;
-  gap: 7px;
 }
 .dashboard-shortcuts {
   display: flex;
@@ -2487,21 +2456,6 @@ tbody tr:hover td {
   .dashboard-heading-controls .field {
     flex: 1 1 100%;
   }
-  .workspace-hero {
-    align-items: flex-start;
-    flex-direction: column;
-    padding: 18px;
-  }
-  .workspace-hero h2 {
-    font-size: 20px;
-  }
-  .workspace-hero-actions {
-    width: 100%;
-    justify-content: stretch;
-  }
-  .workspace-hero-actions .button {
-    flex: 1;
-  }
   .guided-actions {
     padding: 14px;
   }
@@ -2537,10 +2491,6 @@ tbody tr:hover td {
     grid-template-columns: repeat(3, minmax(170px, 1fr));
     padding: 14px;
     overflow-x: auto;
-  }
-  .unified-proof-row {
-    align-items: flex-start;
-    flex-direction: column;
   }
   .page-heading h1 {
     font-size: 26px;
@@ -2776,6 +2726,132 @@ tbody tr:hover td {
     max-width: calc(100vw - 24px);
   }
 }
+
+/* Compact global app rail, matching the HubSpot/Salesforce navigation pattern. */
+.desktop-sidebar {
+  flex: 0 0 72px;
+}
+.desktop-sidebar > .sidebar {
+  width: 72px;
+  min-height: 100dvh;
+  height: 100dvh;
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 14px 10px 12px;
+  overflow-y: auto;
+  border-right: 1px solid #2f2f2d;
+  background: #171717;
+  color: #f7f7f5;
+}
+.desktop-sidebar .rail-brand {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  flex: 0 0 42px;
+  border-radius: 12px;
+  background: #ffffff;
+}
+.desktop-sidebar .rail-brand img {
+  width: 28px;
+  height: 28px;
+  object-fit: contain;
+}
+.desktop-sidebar .workspace-switcher {
+  width: 42px;
+  height: 42px;
+  min-height: 42px;
+  justify-content: center;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: #242422;
+}
+.desktop-sidebar .workspace-switcher > span:not(.workspace-dot) {
+  display: none;
+}
+.desktop-sidebar .workspace-dot {
+  width: 10px;
+  height: 10px;
+}
+.desktop-sidebar .rail-nav,
+.desktop-sidebar .rail-footer {
+  display: grid;
+  justify-items: center;
+  gap: 7px;
+  width: 100%;
+  margin: 0;
+}
+.desktop-sidebar .rail-nav {
+  margin-top: 4px;
+}
+.desktop-sidebar .rail-footer {
+  margin-top: auto;
+}
+.desktop-sidebar .rail-item,
+.desktop-sidebar .rail-profile {
+  position: relative;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  padding: 0;
+  border: 0;
+  border-radius: 12px;
+  background: transparent;
+  color: #a8a8a3;
+  transition:
+    background var(--motion-fast) var(--ease-standard),
+    color var(--motion-fast) var(--ease-standard),
+    transform var(--motion-fast) var(--ease-standard);
+}
+.desktop-sidebar .rail-item:hover,
+.desktop-sidebar .rail-profile:hover {
+  background: #2a2a28;
+  color: #ffffff;
+  transform: translateY(-1px);
+}
+.desktop-sidebar .rail-item.active {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  box-shadow: 0 6px 16px rgb(241 90 35 / 24%);
+}
+.desktop-sidebar .rail-count {
+  position: absolute;
+  top: 3px;
+  right: 2px;
+  display: grid;
+  place-items: center;
+  min-width: 15px;
+  height: 15px;
+  padding: 0 3px;
+  border-radius: 999px;
+  background: var(--color-brand);
+  color: #ffffff;
+  font-size: 9px;
+  font-weight: 700;
+}
+.desktop-sidebar .rail-profile {
+  background: var(--color-brand);
+  color: var(--color-on-brand);
+  font-size: 11px;
+  font-weight: 700;
+}
+.sidebar-collapsed .desktop-sidebar {
+  flex-basis: 72px;
+}
+.sidebar-collapsed .desktop-sidebar > .sidebar {
+  width: 72px;
+}
+@media (max-width: 900px) {
+  .modal-content.drawer .sidebar {
+    width: 72px;
+    min-height: auto;
+    height: auto;
+    margin: 0 auto;
+  }
+}
 @media (max-width: 479px) {
   .contacts-desktop-table {
     display: none;
@@ -2893,4 +2969,136 @@ input[type='number'] {
   display: inline;
   font-size: inherit;
   color: inherit;
+}
+
+/* Dashboard visual refinement: put business signal before presentation. */
+.dashboard-command-header {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 2px 0 4px;
+}
+.dashboard-command-header h1 {
+  margin: 0 0 5px;
+  font-size: 26px;
+}
+.dashboard-command-header p {
+  margin: 0;
+  font-size: 12px;
+}
+.dashboard-command-actions {
+  display: flex;
+  align-items: flex-end;
+  gap: 10px;
+  flex-wrap: wrap;
+}
+.dashboard-command-actions .field {
+  min-width: 190px;
+}
+.unified-dashboard-layout {
+  gap: 14px;
+}
+.guided-actions {
+  padding: 14px;
+}
+.guided-actions-heading {
+  margin-bottom: 10px;
+}
+.guided-action-card {
+  min-height: 70px;
+  padding: 11px;
+}
+.guided-action-card small {
+  margin-top: 3px;
+}
+.unified-kpi {
+  gap: 5px;
+  padding: 13px 15px;
+}
+.unified-kpi strong {
+  font-size: 19px;
+}
+.unified-kpi strong.money {
+  font-size: 17px;
+}
+.unified-dashboard-grid {
+  gap: 14px;
+}
+.unified-dashboard-grid .panel-header {
+  min-height: 48px;
+  padding: 12px 16px;
+}
+.pipeline-layout-summary > div {
+  gap: 5px;
+  padding: 12px 14px;
+}
+.pipeline-layout-summary strong {
+  font-size: 17px;
+}
+.pipeline-mini-board {
+  gap: 8px;
+  padding: 12px;
+}
+.pipeline-mini-column {
+  padding: 8px;
+}
+.pipeline-mini-card {
+  padding: 8px;
+}
+.activity-feed {
+  padding: 0 16px 8px;
+}
+.activity-feed-item {
+  padding: 12px 0;
+}
+.activity-task {
+  padding: 11px 0;
+}
+.priority-deal-link {
+  display: grid;
+  gap: 3px;
+  padding: 0;
+  color: var(--color-ink);
+  font-size: 12px;
+  font-weight: 500;
+}
+.priority-deal-link:hover {
+  color: var(--color-brand);
+  text-decoration: none;
+}
+.priority-deal-link small {
+  color: var(--color-muted);
+  font-size: 10px;
+  font-weight: 400;
+}
+.panel .table-wrap th,
+.panel .table-wrap td {
+  padding: 10px 14px;
+}
+.panel .table-wrap td {
+  font-size: 11px;
+}
+
+@media (max-width: 600px) {
+  .dashboard-command-header {
+    align-items: stretch;
+    flex-direction: column;
+    gap: 12px;
+  }
+  .dashboard-command-header h1 {
+    font-size: 24px;
+  }
+  .dashboard-command-actions {
+    align-items: stretch;
+    width: 100%;
+  }
+  .dashboard-command-actions .field,
+  .dashboard-command-actions .button {
+    flex: 1 1 100%;
+    min-width: 0;
+  }
+  .guided-action-card {
+    min-height: 64px;
+  }
 }
