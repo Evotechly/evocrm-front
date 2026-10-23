@@ -1,0 +1,799 @@
+<canvas id="0:1" name="00 · Cover &amp; Map" x="0" y="0" width="0" height="0">
+  <frame id="1:12" name="Aurora / Redesign Overview" x="100" y="100" width="1440" height="920">
+    <text id="1:13" name="EVOTECHLY / PRODUCT DESIGN" x="68" y="58" width="245" height="18" />
+    <text id="1:14" name="EvoCRM" x="68" y="152" width="338" height="99" />
+    <text id="1:15" name="Aurora — Full Redesign" x="74" y="262" width="419" height="45" />
+    <text id="1:16" name="A complete, editable visual workspace for product foundations, components, authentication, CRM, conversations, automation, analytics and administration." x="76" y="344" width="698" height="46" />
+    <frame id="1:17" name="Section / Design foundations" x="74" y="500" width="391" height="120">
+      <text id="1:18" name="Design foundations" x="24" y="46" width="172" height="22" />
+    </frame>
+    <frame id="1:19" name="Section / Reusable components" x="504" y="500" width="391" height="120">
+      <text id="1:20" name="Reusable components" x="24" y="46" width="197" height="22" />
+    </frame>
+    <frame id="1:21" name="Section / Core CRM workspaces" x="934" y="500" width="391" height="120">
+      <text id="1:22" name="Core CRM workspaces" x="24" y="46" width="200" height="22" />
+    </frame>
+    <frame id="1:23" name="Section / Conversation interfaces" x="74" y="650" width="391" height="120">
+      <text id="1:24" name="Conversation interfaces" x="24" y="46" width="213" height="22" />
+    </frame>
+    <frame id="1:25" name="Section / AI and automation" x="504" y="650" width="391" height="120">
+      <text id="1:26" name="AI and automation" x="24" y="46" width="161" height="22" />
+    </frame>
+    <frame id="1:27" name="Section / Admin + responsive states" x="934" y="650" width="391" height="120">
+      <text id="1:28" name="Admin + responsive states" x="24" y="46" width="235" height="22" />
+    </frame>
+  </frame>
+  <frame id="25:2" name="Able CRM / EvoCRM — Core Figma screens" x="1580" y="100" width="1640" height="5033">
+    <frame id="25:3" name="Body" x="0" y="0" width="1640" height="5032.84375">
+      <frame id="25:4" name="Main Content" x="50" y="0" width="1540" height="5032.84375">
+        <frame id="25:5" name="Header" x="32" y="40" width="1476" height="85">
+          <frame id="25:6" name="Container" x="0" y="0" width="760" height="85">
+            <frame id="25:7" name="Heading 1" x="0" y="0" width="760" height="33">
+              <text id="25:8" name="Able CRM / EvoCRM — core Figma screens" x="0" y="0" width="602" height="33" />
+            </frame>
+            <frame id="25:10" name="Paragraph" x="0" y="33" width="760" height="52">
+              <text id="25:11" name="Static visual handoff for the audited core operati" x="0" y="10" width="760" height="42" />
+            </frame>
+          </frame>
+          <frame id="25:14" name="Container" x="1289" y="55" width="187" height="30">
+            <text id="25:15" name="Desktop reference · 1440 × 1000 Locale · fr · ligh" x="0" y="0" width="187" height="30" />
+          </frame>
+        </frame>
+        <frame id="25:17" name="Container" x="32" y="125" width="1476" height="42">
+          <frame id="25:18" name="Text" x="0" y="28" width="146.265625" height="14">
+            <frame id="25:19" name="Text" x="0" y="0" width="8" height="8" />
+            <text id="25:20" name="captured runtime screen" x="14" y="0" width="139" height="15" />
+          </frame>
+          <frame id="25:22" name="Text" x="164.265625" y="28" width="164.71875" height="14">
+            <frame id="25:23" name="Text" x="0" y="0" width="8" height="8" />
+            <text id="25:24" name="spec-only / capture required" x="14" y="0" width="162" height="15" />
+          </frame>
+          <frame id="25:25" name="Text" x="346.984375" y="28" width="152.125" height="14">
+            <frame id="25:26" name="Text" x="0" y="0" width="8" height="8" />
+            <text id="25:27" name="permission or state frame" x="14" y="0" width="145" height="15" />
+          </frame>
+        </frame>
+        <frame id="25:28" name="Section" x="32" y="167" width="1476" height="3617.453125">
+          <frame id="25:29" name="Heading 2" x="0" y="36" width="1476" height="22">
+            <text id="25:30" name="Core pages" x="0" y="0" width="101" height="22" />
+          </frame>
+          <frame id="25:385" name="Container:margin" x="0" y="58" width="1476" height="3559.453125">
+            <frame id="25:32" name="Container" x="0" y="14" width="1476" height="3545.453125">
+              <frame id="25:33" name="Article" x="0" y="0" width="478.65625" height="435.796875">
+                <frame id="25:34" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:35" name="Container" x="16" y="14" width="180.625" height="34">
+                    <frame id="25:36" name="Container" x="0" y="0" width="180.625" height="17">
+                      <text id="25:37" name="02 Shell / Expanded" x="0" y="0" width="136" height="17" />
+                    </frame>
+                    <frame id="25:39" name="Container" x="0" y="17" width="180.625" height="17">
+                      <text id="25:40" name="layout · AppSidebarLayout" x="0" y="3" width="181" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:43" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:44" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:46" name="Image (EvoCRM expanded application shell)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:47" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:48" name="Source: app shell as rendered around Home." x="16" y="11" width="253" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:50" name="Article" x="498.65606689453125" y="0.00006103515625" width="478.671875" height="435.796875">
+                <frame id="25:51" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:52" name="Container" x="16" y="14" width="99.078125" height="34">
+                    <frame id="25:53" name="Container" x="0" y="0" width="99.078125" height="17">
+                      <text id="25:54" name="01 Auth / Login" x="0" y="0" width="103" height="17" />
+                    </frame>
+                    <frame id="25:55" name="Container" x="0" y="17" width="99.078125" height="17">
+                      <text id="25:56" name="GET /login" x="0" y="3" width="73" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:58" name="Text" x="394.671875" y="14" width="66" height="21">
+                    <text id="25:59" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:60" name="Container" x="1" y="62" width="476.671875" height="250">
+                  <frame id="25:61" name="Container" x="22" y="22" width="268.25" height="12" />
+                  <frame id="25:65" name="Container:margin" x="22" y="34" width="432.671875" height="52">
+                    <frame id="25:62" name="Container" x="0" y="18" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:66" name="Container:margin" x="22" y="86" width="432.671875" height="42">
+                    <frame id="25:63" name="Container" x="0" y="8" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:67" name="Container:margin" x="22" y="128" width="311.515625" height="50">
+                    <frame id="25:64" name="Container" x="0" y="8" width="311.515625" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:68" name="Container" x="1" y="312" width="476.671875" height="42">
+                  <text id="25:69" name="Source: pages/auth/login.tsx · default + validatio" x="16" y="11" width="316" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:70" name="Article" x="997.327880859375" y="0.00006103515625" width="478.65625" height="435.796875">
+                <frame id="25:71" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:72" name="Container" x="16" y="14" width="209.578125" height="34">
+                    <frame id="25:73" name="Container" x="0" y="0" width="209.578125" height="17">
+                      <text id="25:74" name="05 Home / Operating Dashboard" x="0" y="0" width="220" height="17" />
+                    </frame>
+                    <frame id="25:75" name="Container" x="0" y="17" width="209.578125" height="17">
+                      <text id="25:76" name="GET /dashboard" x="0" y="3" width="101" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:78" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:79" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:80" name="Image (EvoCRM operating dashboard)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:81" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:82" name="Source: pages/home.tsx · KPI, pipeline, recent dea" x="16" y="11" width="361" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:83" name="Article" x="-0.0001220703125" y="455.7967529296875" width="478.65625" height="435.8125">
+                <frame id="25:84" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:85" name="Container" x="16" y="14" width="122.828125" height="34">
+                    <frame id="25:86" name="Container" x="0" y="0" width="122.828125" height="17">
+                      <text id="25:87" name="06 Contacts / List" x="0" y="0" width="122" height="17" />
+                    </frame>
+                    <frame id="25:88" name="Container" x="0" y="17" width="122.828125" height="17">
+                      <text id="25:89" name="GET /crm/contacts" x="0" y="3" width="123" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:91" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:92" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:93" name="Image (EvoCRM contacts list)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:94" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:95" name="Source: DataWorkspace · saved views, filters, tabl" x="16" y="11" width="391" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:96" name="Article" x="498.65606689453125" y="455.7967529296875" width="478.671875" height="435.8125">
+                <frame id="25:97" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:98" name="Container" x="16" y="14" width="158.953125" height="34">
+                    <frame id="25:99" name="Container" x="0" y="0" width="158.953125" height="17">
+                      <text id="25:100" name="07 Contacts / Detail" x="0" y="0" width="135" height="17" />
+                    </frame>
+                    <frame id="25:101" name="Container" x="0" y="17" width="158.953125" height="17">
+                      <text id="25:102" name="GET /crm/contacts/{id}" x="0" y="3" width="159" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:104" name="Text" x="397.671875" y="14" width="63" height="21">
+                    <text id="25:105" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:106" name="Image (EvoCRM contact record)" x="1" y="62" width="476.671875" height="331.015625" />
+                <frame id="25:107" name="Container" x="1" y="393.015625" width="476.671875" height="42">
+                  <text id="25:108" name="Source: RecordHub · properties, activity, associat" x="16" y="11" width="360" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:109" name="Article" x="997.327880859375" y="455.7967529296875" width="478.65625" height="435.8125">
+                <frame id="25:110" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:111" name="Container" x="16" y="14" width="130.046875" height="34">
+                    <frame id="25:112" name="Container" x="0" y="0" width="130.046875" height="17">
+                      <text id="25:113" name="08 Companies / List" x="0" y="0" width="136" height="17" />
+                    </frame>
+                    <frame id="25:114" name="Container" x="0" y="17" width="130.046875" height="17">
+                      <text id="25:115" name="GET /crm/companies" x="0" y="3" width="130" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:117" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:118" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:119" name="Image (EvoCRM companies list)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:120" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:121" name="Source: CrmListShell + DataWorkspace adapter." x="16" y="11" width="273" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:122" name="Article" x="-0.0001220703125" y="911.6087646484375" width="478.65625" height="435.8125">
+                <frame id="25:123" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:124" name="Container" x="16" y="14" width="166.171875" height="34">
+                    <frame id="25:125" name="Container" x="0" y="0" width="166.171875" height="17">
+                      <text id="25:126" name="09 Companies / Detail" x="0" y="0" width="151" height="17" />
+                    </frame>
+                    <frame id="25:127" name="Container" x="0" y="17" width="166.171875" height="17">
+                      <text id="25:128" name="GET /crm/companies/{id}" x="0" y="3" width="166" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:130" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:131" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:132" name="Image (EvoCRM company record)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:133" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:134" name="Source: RecordHub · contacts, deals, activity." x="16" y="11" width="259" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:135" name="Article" x="498.65606689453125" y="911.6087646484375" width="478.671875" height="435.8125">
+                <frame id="25:136" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:137" name="Container" x="16" y="14" width="101.15625" height="34">
+                    <frame id="25:138" name="Container" x="0" y="0" width="101.15625" height="17">
+                      <text id="25:139" name="10 Deals / List" x="0" y="0" width="95" height="17" />
+                    </frame>
+                    <frame id="25:140" name="Container" x="0" y="17" width="101.15625" height="17">
+                      <text id="25:141" name="GET /crm/deals" x="0" y="3" width="101" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:143" name="Text" x="397.671875" y="14" width="63" height="21">
+                    <text id="25:144" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:145" name="Image (EvoCRM deals list)" x="1" y="62" width="476.671875" height="331.015625" />
+                <frame id="25:146" name="Container" x="1" y="393.015625" width="476.671875" height="42">
+                  <text id="25:147" name="Source: DataWorkspace · saved views, stage, amount" x="16" y="11" width="338" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:148" name="Article" x="997.327880859375" y="911.6087646484375" width="478.65625" height="435.8125">
+                <frame id="25:149" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:150" name="Container" x="16" y="14" width="162.328125" height="34">
+                    <frame id="25:151" name="Container" x="0" y="0" width="162.328125" height="17">
+                      <text id="25:152" name="11 Deals / Pipeline Board" x="0" y="0" width="165" height="17" />
+                    </frame>
+                    <frame id="25:153" name="Container" x="0" y="17" width="162.328125" height="17">
+                      <text id="25:154" name="GET /crm/deals/board" x="0" y="3" width="145" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:156" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:157" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:158" name="Image (EvoCRM deal pipeline board)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:159" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:160" name="Source: PipelineKanban · stage totals, attention, " x="16" y="11" width="341" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:161" name="Article" x="-0.0001220703125" y="1367.4207763671875" width="478.65625" height="435.8125">
+                <frame id="25:162" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:163" name="Container" x="16" y="14" width="137.28125" height="34">
+                    <frame id="25:164" name="Container" x="0" y="0" width="137.28125" height="17">
+                      <text id="25:165" name="12 Deals / Detail" x="0" y="0" width="109" height="17" />
+                    </frame>
+                    <frame id="25:166" name="Container" x="0" y="17" width="137.28125" height="17">
+                      <text id="25:167" name="GET /crm/deals/{id}" x="0" y="3" width="137" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:169" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:170" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:171" name="Image (EvoCRM deal record)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:172" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:173" name="Source: RecordHub · pipeline, line items, quotes." x="16" y="11" width="276" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:174" name="Article" x="498.65606689453125" y="1367.4207763671875" width="478.671875" height="435.8125">
+                <frame id="25:175" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:176" name="Container" x="16" y="14" width="101.15625" height="34">
+                    <frame id="25:177" name="Container" x="0" y="0" width="101.15625" height="17">
+                      <text id="25:178" name="13 Leads / List" x="0" y="0" width="98" height="17" />
+                    </frame>
+                    <frame id="25:179" name="Container" x="0" y="17" width="101.15625" height="17">
+                      <text id="25:180" name="GET /crm/leads" x="0" y="3" width="101" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:182" name="Text" x="397.671875" y="14" width="63" height="21">
+                    <text id="25:183" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:184" name="Image (EvoCRM leads list)" x="1" y="62" width="476.671875" height="331.015625" />
+                <frame id="25:185" name="Container" x="1" y="393.015625" width="476.671875" height="42">
+                  <text id="25:186" name="Source: lead list; do not confuse with the /leads " x="16" y="11" width="322" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:187" name="Article" x="997.327880859375" y="1367.4207763671875" width="478.65625" height="435.8125">
+                <frame id="25:188" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:189" name="Container" x="16" y="14" width="137.28125" height="34">
+                    <frame id="25:190" name="Container" x="0" y="0" width="137.28125" height="17">
+                      <text id="25:191" name="14 Leads / Detail" x="0" y="0" width="113" height="17" />
+                    </frame>
+                    <frame id="25:192" name="Container" x="0" y="17" width="137.28125" height="17">
+                      <text id="25:193" name="GET /crm/leads/{id}" x="0" y="3" width="137" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:195" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:196" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:197" name="Image (EvoCRM lead record)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:198" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:199" name="Source: lead path, qualify/convert, owner, activit" x="16" y="11" width="285" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:200" name="Article" x="-0.0001220703125" y="1823.2327880859375" width="478.65625" height="435.8125">
+                <frame id="25:201" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:202" name="Container" x="16" y="14" width="166.171875" height="34">
+                    <frame id="25:203" name="Container" x="0" y="0" width="166.171875" height="17">
+                      <text id="25:204" name="15 Leads / Capture Inbox" x="0" y="0" width="169" height="17" />
+                    </frame>
+                    <frame id="25:205" name="Container" x="0" y="17" width="166.171875" height="17">
+                      <text id="25:206" name="GET /crm/leads/captures" x="0" y="3" width="166" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:208" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:209" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:210" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:211" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:215" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:212" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:216" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:213" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:217" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:214" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:218" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:219" name="Source: pages/crm/leads/captures.tsx · accept/merg" x="16" y="11" width="364" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:220" name="Article" x="498.65606689453125" y="1823.2327880859375" width="478.671875" height="435.8125">
+                <frame id="25:221" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:222" name="Container" x="16" y="14" width="108.375" height="34">
+                    <frame id="25:223" name="Container" x="0" y="0" width="108.375" height="17">
+                      <text id="25:224" name="16 Quotes / List" x="0" y="0" width="106" height="17" />
+                    </frame>
+                    <frame id="25:225" name="Container" x="0" y="17" width="108.375" height="17">
+                      <text id="25:226" name="GET /crm/quotes" x="0" y="3" width="109" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:228" name="Text" x="397.671875" y="14" width="63" height="21">
+                    <text id="25:229" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:230" name="Image (EvoCRM quotes list)" x="1" y="62" width="476.671875" height="331.015625" />
+                <frame id="25:231" name="Container" x="1" y="393.015625" width="476.671875" height="42">
+                  <text id="25:232" name="Source: DataWorkspace · status, amount, deal relat" x="16" y="11" width="311" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:233" name="Article" x="997.327880859375" y="1823.2327880859375" width="478.65625" height="435.8125">
+                <frame id="25:234" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:235" name="Container" x="16" y="14" width="172.359375" height="34">
+                    <frame id="25:236" name="Container" x="0" y="0" width="172.359375" height="17">
+                      <text id="25:237" name="17 Quotes / Detail + Editor" x="0" y="0" width="177" height="17" />
+                    </frame>
+                    <frame id="25:238" name="Container" x="0" y="17" width="172.359375" height="17">
+                      <text id="25:239" name="GET /crm/quotes/{id}" x="0" y="3" width="145" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:241" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:242" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:243" name="Image (EvoCRM quote detail)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:244" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:245" name="Source: quote editor · line items, totals, send/re" x="16" y="11" width="300" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:246" name="Article" x="-0.0001220703125" y="2279.044677734375" width="478.65625" height="435.8125">
+                <frame id="25:247" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:248" name="Container" x="16" y="14" width="173.109375" height="34">
+                    <frame id="25:249" name="Container" x="0" y="0" width="173.109375" height="17">
+                      <text id="25:250" name="18 Activities / Work Queue" x="0" y="0" width="180" height="17" />
+                    </frame>
+                    <frame id="25:251" name="Container" x="0" y="17" width="173.109375" height="17">
+                      <text id="25:252" name="GET /crm/activities" x="0" y="3" width="137" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:254" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:255" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:256" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:257" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:261" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:258" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:262" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:259" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:263" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:260" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:264" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:265" name="Source: activity cards · upcoming, overdue, comple" x="16" y="11" width="313" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:266" name="Article" x="498.65606689453125" y="2279.044677734375" width="478.671875" height="435.8125">
+                <frame id="25:267" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:268" name="Container" x="16" y="14" width="99.59375" height="34">
+                    <frame id="25:269" name="Container" x="0" y="0" width="99.59375" height="17">
+                      <text id="25:270" name="19 Inbox / Desk" x="0" y="0" width="104" height="17" />
+                    </frame>
+                    <frame id="25:271" name="Container" x="0" y="17" width="99.59375" height="17">
+                      <text id="25:272" name="GET /inbox" x="0" y="3" width="73" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:274" name="Text" x="397.671875" y="14" width="63" height="21">
+                    <text id="25:275" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:276" name="Image (EvoCRM inbox)" x="1" y="62" width="476.671875" height="331.015625" />
+                <frame id="25:277" name="Container" x="1" y="393.015625" width="476.671875" height="42">
+                  <text id="25:278" name="Source: InboxChrome · folders, threads, no-selecti" x="16" y="11" width="336" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:279" name="Article" x="997.327880859375" y="2279.044677734375" width="478.65625" height="435.8125">
+                <frame id="25:280" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:281" name="Container" x="16" y="14" width="202.34375" height="34">
+                    <frame id="25:282" name="Container" x="0" y="0" width="202.34375" height="17">
+                      <text id="25:283" name="20 Inbox / Conversation Thread" x="0" y="0" width="215" height="17" />
+                    </frame>
+                    <frame id="25:284" name="Container" x="0" y="17" width="202.34375" height="17">
+                      <text id="25:285" name="GET /conversations" x="0" y="3" width="130" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:287" name="Text" x="397.65625" y="14" width="63" height="21">
+                    <text id="25:288" name="captured" x="7" y="4" width="49" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:289" name="Image (EvoCRM inbox thread)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:290" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:291" name="Source: native conversation history and reply cont" x="16" y="11" width="307" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:292" name="Article" x="-0.0001220703125" y="2734.85693359375" width="478.65625" height="354.796875">
+                <frame id="25:293" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:294" name="Container" x="16" y="14" width="178.59375" height="34">
+                    <frame id="25:295" name="Container" x="0" y="0" width="178.59375" height="17">
+                      <text id="25:296" name="21 Automation / Workflows" x="0" y="0" width="184" height="17" />
+                    </frame>
+                    <frame id="25:297" name="Container" x="0" y="17" width="178.59375" height="17">
+                      <text id="25:298" name="GET /crm/workflows" x="0" y="3" width="130" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:300" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:301" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:302" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:303" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:307" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:304" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:308" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:305" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:309" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:306" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:310" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:311" name="Source: structured workflow rows, templates, enabl" x="16" y="11" width="348" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:312" name="Article" x="498.65606689453125" y="2734.85693359375" width="478.671875" height="354.796875">
+                <frame id="25:313" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:314" name="Container" x="16" y="14" width="189.53125" height="34">
+                    <frame id="25:315" name="Container" x="0" y="0" width="189.53125" height="17">
+                      <text id="25:316" name="22 Reports / Analytics Rooms" x="0" y="0" width="201" height="17" />
+                    </frame>
+                    <frame id="25:317" name="Container" x="0" y="17" width="189.53125" height="17">
+                      <text id="25:318" name="GET /reports" x="0" y="3" width="87" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:320" name="Text" x="394.671875" y="14" width="66" height="21">
+                    <text id="25:321" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:322" name="Container" x="1" y="62" width="476.671875" height="250">
+                  <frame id="25:323" name="Container" x="22" y="22" width="268.25" height="12" />
+                  <frame id="25:327" name="Container:margin" x="22" y="34" width="432.671875" height="52">
+                    <frame id="25:324" name="Container" x="0" y="18" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:328" name="Container:margin" x="22" y="86" width="432.671875" height="42">
+                    <frame id="25:325" name="Container" x="0" y="8" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:329" name="Container:margin" x="22" y="128" width="311.515625" height="50">
+                    <frame id="25:326" name="Container" x="0" y="8" width="311.515625" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:330" name="Container" x="1" y="312" width="476.671875" height="42">
+                  <text id="25:331" name="Source: category rooms, KPI and chart surfaces." x="16" y="11" width="276" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:332" name="Article" x="997.327880859375" y="2734.85693359375" width="478.65625" height="354.796875">
+                <frame id="25:333" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:334" name="Container" x="16" y="14" width="124.125" height="34">
+                    <frame id="25:335" name="Container" x="0" y="0" width="124.125" height="17">
+                      <text id="25:336" name="23 Outbound / Hub" x="0" y="0" width="130" height="17" />
+                    </frame>
+                    <frame id="25:337" name="Container" x="0" y="17" width="124.125" height="17">
+                      <text id="25:338" name="GET /outbound" x="0" y="3" width="94" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:340" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:341" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:342" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:343" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:347" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:344" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:348" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:345" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:349" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:346" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:350" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:351" name="Source: mailbox health, sequences, campaigns, acti" x="16" y="11" width="318" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:352" name="Article" x="-0.0001220703125" y="3109.65380859375" width="478.65625" height="435.796875">
+                <frame id="25:353" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:354" name="Container" x="16" y="14" width="166.171875" height="34">
+                    <frame id="25:355" name="Container" x="0" y="0" width="166.171875" height="17">
+                      <text id="25:356" name="24 Settings / Workspace" x="0" y="0" width="168" height="17" />
+                    </frame>
+                    <frame id="25:357" name="Container" x="0" y="17" width="166.171875" height="17">
+                      <text id="25:358" name="GET /settings/workspace" x="0" y="3" width="166" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:360" name="Text" x="343.65625" y="14" width="117" height="21">
+                    <text id="25:361" name="captured reference" x="7" y="4" width="103" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:362" name="Image (EvoCRM settings shell)" x="1" y="62" width="476.65625" height="331" />
+                <frame id="25:363" name="Container" x="1" y="393" width="476.65625" height="42">
+                  <text id="25:364" name="Source: settings layout reference; workspace form " x="16" y="11" width="446" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:365" name="Article" x="498.65606689453125" y="3109.65380859375" width="478.671875" height="435.796875">
+                <frame id="25:366" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:367" name="Container" x="16" y="14" width="151.71875" height="34">
+                    <frame id="25:368" name="Container" x="0" y="0" width="151.71875" height="17">
+                      <text id="25:369" name="25 Settings / Profile" x="0" y="0" width="135" height="17" />
+                    </frame>
+                    <frame id="25:370" name="Container" x="0" y="17" width="151.71875" height="17">
+                      <text id="25:371" name="GET /settings/profile" x="0" y="3" width="152" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:373" name="Text" x="394.671875" y="14" width="66" height="21">
+                    <text id="25:374" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:375" name="Container" x="1" y="62" width="476.671875" height="250">
+                  <frame id="25:376" name="Container" x="22" y="22" width="268.25" height="12" />
+                  <frame id="25:380" name="Container:margin" x="22" y="34" width="432.671875" height="52">
+                    <frame id="25:377" name="Container" x="0" y="18" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:381" name="Container:margin" x="22" y="86" width="432.671875" height="42">
+                    <frame id="25:378" name="Container" x="0" y="8" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:382" name="Container:margin" x="22" y="128" width="311.515625" height="50">
+                    <frame id="25:379" name="Container" x="0" y="8" width="311.515625" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:383" name="Container" x="1" y="312" width="476.671875" height="42">
+                  <text id="25:384" name="Source: personal fields and destructive account se" x="16" y="11" width="320" height="17" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+        <frame id="25:386" name="Section" x="32" y="3784.453125" width="1476" height="1176.390625">
+          <frame id="25:387" name="Heading 2" x="0" y="36" width="1476" height="22">
+            <text id="25:388" name="Shared overlays and states" x="0" y="0" width="239" height="22" />
+          </frame>
+          <frame id="25:528" name="Container:margin" x="0" y="58" width="1476" height="1118.390625">
+            <frame id="25:389" name="Container" x="0" y="14" width="1476" height="1104.390625">
+              <frame id="25:390" name="Article" x="0" y="0" width="478.65625" height="354.796875">
+                <frame id="25:391" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:392" name="Container" x="16" y="14" width="166.171875" height="34">
+                    <frame id="25:393" name="Container" x="0" y="0" width="166.171875" height="17">
+                      <text id="25:394" name="O01 Command OS" x="0" y="0" width="124" height="17" />
+                    </frame>
+                    <frame id="25:395" name="Container" x="0" y="17" width="166.171875" height="17">
+                      <text id="25:396" name="GET /crm/command/search" x="0" y="3" width="166" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:398" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:399" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:400" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:401" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:405" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:402" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:406" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:403" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:407" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:404" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:408" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:409" name="Shared: cmdk-compatible search, Navigate, Records," x="16" y="11" width="399" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:410" name="Article" x="498.65606689453125" y="0.00006103515625" width="478.671875" height="354.796875">
+                <frame id="25:411" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:412" name="Container" x="16" y="14" width="166.171875" height="34">
+                    <frame id="25:413" name="Container" x="0" y="0" width="166.171875" height="17">
+                      <text id="25:414" name="O02 Global Create" x="0" y="0" width="126" height="17" />
+                    </frame>
+                    <frame id="25:415" name="Container" x="0" y="17" width="166.171875" height="17">
+                      <text id="25:416" name="header menu · ?create=1" x="0" y="3" width="166" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:418" name="Text" x="394.671875" y="14" width="66" height="21">
+                    <text id="25:419" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:420" name="Container" x="1" y="62" width="476.671875" height="250">
+                  <frame id="25:421" name="Container" x="22" y="22" width="268.25" height="12" />
+                  <frame id="25:425" name="Container:margin" x="22" y="34" width="432.671875" height="52">
+                    <frame id="25:422" name="Container" x="0" y="18" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:426" name="Container:margin" x="22" y="86" width="432.671875" height="42">
+                    <frame id="25:423" name="Container" x="0" y="8" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:427" name="Container:margin" x="22" y="128" width="311.515625" height="50">
+                    <frame id="25:424" name="Container" x="0" y="8" width="311.515625" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:428" name="Container" x="1" y="312" width="476.671875" height="42">
+                  <text id="25:429" name="Shared: Contact, Company, Deal, Quote capability g" x="16" y="11" width="327" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:430" name="Article" x="997.327880859375" y="0.00006103515625" width="478.65625" height="354.796875">
+                <frame id="25:431" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:432" name="Container" x="16" y="14" width="187.734375" height="34">
+                    <frame id="25:433" name="Container" x="0" y="0" width="187.734375" height="17">
+                      <text id="25:434" name="O03 Contact / Create Drawer" x="0" y="0" width="199" height="17" />
+                    </frame>
+                    <frame id="25:435" name="Container" x="0" y="17" width="187.734375" height="17">
+                      <text id="25:436" name="/crm/contacts?create=1" x="0" y="3" width="159" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:438" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:439" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:440" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:441" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:445" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:442" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:446" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:443" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:447" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:444" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:448" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:449" name="Shared: 480px desktop drawer, full-width mobile va" x="16" y="11" width="324" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:450" name="Article" x="-0.0001220703125" y="374.79705810546875" width="478.65625" height="354.796875">
+                <frame id="25:451" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:452" name="Container" x="16" y="14" width="166.28125" height="34">
+                    <frame id="25:453" name="Container" x="0" y="0" width="166.28125" height="17">
+                      <text id="25:454" name="O04 Deal / Create Drawer" x="0" y="0" width="174" height="17" />
+                    </frame>
+                    <frame id="25:455" name="Container" x="0" y="17" width="166.28125" height="17">
+                      <text id="25:456" name="/crm/deals?create=1" x="0" y="3" width="137" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:458" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:459" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:460" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:461" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:465" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:462" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:466" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:463" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:467" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:464" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:468" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:469" name="Shared: relation, amount, pipeline, stage." x="16" y="11" width="233" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:470" name="Article" x="498.65606689453125" y="374.79705810546875" width="478.671875" height="354.796875">
+                <frame id="25:471" name="Container" x="1" y="1" width="476.671875" height="61">
+                  <frame id="25:472" name="Container" x="16" y="14" width="128.3125" height="34">
+                    <frame id="25:473" name="Container" x="0" y="0" width="128.3125" height="17">
+                      <text id="25:474" name="O05 Tasks / Overlay" x="0" y="0" width="138" height="17" />
+                    </frame>
+                    <frame id="25:475" name="Container" x="0" y="17" width="128.3125" height="17">
+                      <text id="25:476" name="client overlay" x="0" y="3" width="101" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:478" name="Text" x="394.671875" y="14" width="66" height="21">
+                    <text id="25:479" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:480" name="Container" x="1" y="62" width="476.671875" height="250">
+                  <frame id="25:481" name="Container" x="22" y="22" width="268.25" height="12" />
+                  <frame id="25:485" name="Container:margin" x="22" y="34" width="432.671875" height="52">
+                    <frame id="25:482" name="Container" x="0" y="18" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:486" name="Container:margin" x="22" y="86" width="432.671875" height="42">
+                    <frame id="25:483" name="Container" x="0" y="8" width="432.671875" height="34" />
+                  </frame>
+                  <frame id="25:487" name="Container:margin" x="22" y="128" width="311.515625" height="50">
+                    <frame id="25:484" name="Container" x="0" y="8" width="311.515625" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:488" name="Container" x="1" y="312" width="476.671875" height="42">
+                  <text id="25:489" name="Shared: open task count, overdue/upcoming, complet" x="16" y="11" width="315" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:490" name="Article" x="997.327880859375" y="374.79705810546875" width="478.65625" height="354.796875">
+                <frame id="25:491" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:492" name="Container" x="16" y="14" width="209.515625" height="34">
+                    <frame id="25:493" name="Container" x="0" y="0" width="209.515625" height="17">
+                      <text id="25:494" name="O06 Record / Quick Peek" x="0" y="0" width="170" height="17" />
+                    </frame>
+                    <frame id="25:495" name="Container" x="0" y="17" width="209.515625" height="17">
+                      <text id="25:496" name="/crm/records/{type}/{id}/peek" x="0" y="3" width="210" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:498" name="Text" x="394.65625" y="14" width="66" height="21">
+                    <text id="25:499" name="spec only" x="7" y="4" width="52" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:500" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:501" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:505" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:502" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:506" name="Container:margin" x="22" y="86" width="432.65625" height="42">
+                    <frame id="25:503" name="Container" x="0" y="8" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:507" name="Container:margin" x="22" y="128" width="311.5" height="50">
+                    <frame id="25:504" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:508" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:509" name="Shared: compact identity, key fields, open full re" x="16" y="11" width="303" height="17" />
+                </frame>
+              </frame>
+              <frame id="25:510" name="Article" x="-0.0001220703125" y="749.5940551757812" width="478.65625" height="354.796875">
+                <frame id="25:511" name="Container" x="1" y="1" width="476.65625" height="61">
+                  <frame id="25:512" name="Container" x="16" y="14" width="310.671875" height="34">
+                    <frame id="25:513" name="Container" x="0" y="0" width="310.671875" height="17">
+                      <text id="25:514" name="S01 Simple Mode / Blocked Module" x="0" y="0" width="238" height="17" />
+                    </frame>
+                    <frame id="25:515" name="Container" x="0" y="17" width="310.671875" height="17">
+                      <text id="25:516" name="403 tickets · ads · warmup · report builder" x="0" y="3" width="310" height="14" />
+                    </frame>
+                  </frame>
+                  <frame id="25:518" name="Text" x="384.65625" y="14" width="76" height="21">
+                    <text id="25:519" name="state frame" x="7" y="4" width="62" height="13" />
+                  </frame>
+                </frame>
+                <frame id="25:520" name="Container" x="1" y="62" width="476.65625" height="250">
+                  <frame id="25:521" name="Container" x="22" y="22" width="268.234375" height="12" />
+                  <frame id="25:524" name="Container:margin" x="22" y="34" width="432.65625" height="52">
+                    <frame id="25:522" name="Container" x="0" y="18" width="432.65625" height="34" />
+                  </frame>
+                  <frame id="25:525" name="Container:margin" x="22" y="86" width="311.5" height="50">
+                    <frame id="25:523" name="Container" x="0" y="8" width="311.5" height="34" />
+                  </frame>
+                </frame>
+                <frame id="25:526" name="Container" x="1" y="312" width="476.65625" height="42">
+                  <text id="25:527" name="Required: explain the unlock path; never leave a g" x="16" y="11" width="407" height="17" />
+                </frame>
+              </frame>
+            </frame>
+          </frame>
+        </frame>
+      </frame>
+    </frame>
+  </frame>
+</canvas>
+IMPORTANT: After you call this tool, you MUST call get_design_context if trying to implement the design, since this tool only returns metadata. If you do not call get_design_context, the agent will not be able to implement the design.

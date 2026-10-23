@@ -1,0 +1,88 @@
+[
+  {
+    "query": "HubSpot CRM sales dashboard with pipeline charts and tasks",
+    "screens": [
+      {
+        "id": "87dcd39f-a9aa-461e-9fb6-5aec87d0e017",
+        "image_url": "https://mobbin.com/api/mcp/short/TtT0IsFo",
+        "mobbin_url": "https://mobbin.com/screens/87dcd39f-a9aa-461e-9fb6-5aec87d0e017",
+        "app_name": "HubSpot",
+        "platform": "web"
+      },
+      {
+        "id": "b1e0be46-49a1-44ba-a06e-abe62d9bdebe",
+        "image_url": "https://mobbin.com/api/mcp/short/eMjCAnaF",
+        "mobbin_url": "https://mobbin.com/screens/b1e0be46-49a1-44ba-a06e-abe62d9bdebe",
+        "app_name": "HubSpot",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "query": "Salesforce sales cloud opportunity pipeline board",
+    "screens": [
+      {
+        "id": "730af6c3-b980-486a-b103-81490f048d9d",
+        "image_url": "https://mobbin.com/api/mcp/short/uJQvpnJJ",
+        "mobbin_url": "https://mobbin.com/screens/730af6c3-b980-486a-b103-81490f048d9d",
+        "app_name": "Salesforce",
+        "platform": "web"
+      },
+      {
+        "id": "5384fae6-9728-4b29-a40f-cb05445ac07c",
+        "image_url": "https://mobbin.com/api/mcp/short/ffrY1euB",
+        "mobbin_url": "https://mobbin.com/screens/5384fae6-9728-4b29-a40f-cb05445ac07c",
+        "app_name": "Salesforce",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "query": "HubSpot CRM contacts table with saved views and filters",
+    "screens": [
+      {
+        "id": "4e962404-fc20-453a-aafb-16edd886098b",
+        "image_url": "https://mobbin.com/api/mcp/short/5Y7VcVHn",
+        "mobbin_url": "https://mobbin.com/screens/4e962404-fc20-453a-aafb-16edd886098b",
+        "app_name": "HubSpot",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "query": "Salesforce sales home dashboard with quarterly performance charts",
+    "screens": [
+      {
+        "id": "4a6f498e-bf51-417a-8b86-bd2348eb6352",
+        "image_url": "https://mobbin.com/api/mcp/short/3gEAq5gp",
+        "mobbin_url": "https://mobbin.com/screens/4a6f498e-bf51-417a-8b86-bd2348eb6352",
+        "app_name": "Salesforce",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "query": "HubSpot customer inbox conversation details",
+    "screens": [
+      {
+        "id": "23cb5a89-93da-4e5e-85cd-86574d8fc913",
+        "image_url": "https://mobbin.com/api/mcp/short/9tCnCiA4",
+        "mobbin_url": "https://mobbin.com/screens/23cb5a89-93da-4e5e-85cd-86574d8fc913",
+        "app_name": "HubSpot",
+        "platform": "web"
+      }
+    ]
+  },
+  {
+    "query": "Salesforce quote line items detail",
+    "screens": [
+      {
+        "id": "a3c2901b-1286-4260-bf96-25c8e89569b4",
+        "image_url": "https://mobbin.com/api/mcp/short/fNtAlHvY",
+        "mobbin_url": "https://mobbin.com/screens/a3c2901b-1286-4260-bf96-25c8e89569b4",
+        "app_name": "Salesforce",
+        "platform": "web"
+      }
+    ]
+  }
+]

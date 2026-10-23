@@ -1,0 +1,25 @@
+{
+  "stats": {
+    "startTime": "2026-10-18T22:31:34.312Z",
+    "duration": 15543.538,
+    "expected": 3,
+    "skipped": 0,
+    "unexpected": 0,
+    "flaky": 0
+  },
+  "purpose": "Regression checks after non-crashing invalid-amount handling and overflow validation",
+  "tests": [
+    {
+      "name": "quote lines calculate and persist local preview",
+      "status": "expected"
+    },
+    {
+      "name": "component gallery is interactive",
+      "status": "expected"
+    },
+    {
+      "name": "quote preview produces a print document",
+      "status": "expected"
+    }
+  ]
+}

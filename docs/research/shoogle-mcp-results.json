@@ -1,0 +1,137 @@
+[
+  {
+    "query": "dashboard",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"dashboard\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 3,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@7ovr/dashboard\",\n      \"description\": \"Logged-in dashboard app template with a collapsible sidebar and command palette top bar wrapping stat cards, an interactive area chart, and a sortable, paginated data table.\",\n      \"homepage\": \"https://7ovr.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"dashboard\",\n      \"registry\": \"@7ovr\",\n      \"type\": \"registry:block\"\n    },\n    {\n      \"addCommandArgument\": \"@1st-pouf/dashboard\",\n      \"description\": \"An example dashboard — sidebar nav, KPI row, chart, and data table.\",\n      \"homepage\": \"https://1st-pouf.worksonmy.dev/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"dashboard\",\n      \"registry\": \"@1st-pouf\",\n      \"type\": \"registry:block\"\n    },\n    {\n      \"addCommandArgument\": \"@000h-cojeev/compact-dashboard\",\n      \"description\": \"Historical compatibility alias for WorkSidePanel; use the dedicated panel composition in new work.\",\n      \"homepage\": \"https://000h.cojeev.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"compact-dashboard\",\n      \"registry\": \"@000h-cojeev\",\n      \"type\": \"registry:ui\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:03:14.044Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "sidebar",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"sidebar\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 3,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@000h-cojeev/sidebar\",\n      \"description\": \"A paper folio, a readable compact index and a motion drawer. Three calm ways to keep the same workspace within reach.\",\n      \"homepage\": \"https://000h.cojeev.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"sidebar\",\n      \"registry\": \"@000h-cojeev\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@kobra/sidebar\",\n      \"description\": \"A composable application sidebar.\",\n      \"homepage\": \"https://kobra.systems/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"sidebar\",\n      \"registry\": \"@kobra\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@moduix-react/sidebar\",\n      \"description\": \"moduix React Sidebar component.\",\n      \"homepage\": \"https://moduix.dev/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"sidebar\",\n      \"registry\": \"@moduix-react\",\n      \"type\": \"registry:item\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:03:23.945Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "kanban",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"kanban\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 58\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@cult-ui/kanban-board\",\n      \"description\": \"Kanban board with drag-and-drop columns and cards\",\n      \"homepage\": \"https://www.cult-ui.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"kanban-board\",\n      \"registry\": \"@cult-ui\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@shadcncraft/kanban-1\",\n      \"description\": \"Pipeline board with a column per stage, each carrying its deal count, total value, and an add action. Cards show the account and motion, the owner, a win probability bar, location, close date, and value, with a status badge that tints the bar. Cards drag between stages or reorder within one, and the stages themselves can be reordered by their header handle.\",\n      \"homepage\": \"https://shadcncraft.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"kanban-1\",\n      \"registry\": \"@shadcncraft\",\n      \"type\": \"registry:block\"\n    }\n  ],\n  \"totalResults\": 58,\n  \"timestamp\": \"2026-10-18T22:04:16.359Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "command",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"command\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@000h-cojeev/command\",\n      \"description\": \"Builds a searchable command list that users can navigate and activate from the keyboard.\",\n      \"homepage\": \"https://000h.cojeev.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"command\",\n      \"registry\": \"@000h-cojeev\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@afterglow/command\",\n      \"description\": \"A search line and a list that narrows as you type. Groups, shortcuts, and a dialog wrapper.\",\n      \"homepage\": \"https://afterglow.thebuilder.dk/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"command\",\n      \"registry\": \"@afterglow\",\n      \"type\": \"registry:ui\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:19.441Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "drawer",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"drawer\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 3,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@cult-ui/family-drawer\",\n      \"description\": \"A multi-view drawer component with smooth animations, view navigation, and customizable content views\",\n      \"homepage\": \"https://www.cult-ui.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"family-drawer\",\n      \"registry\": \"@cult-ui\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@uiarc/drawer\",\n      \"description\": \"A temporary side surface for focused work.\",\n      \"homepage\": \"https://uiarc.dev/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"drawer\",\n      \"registry\": \"@uiarc\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@000h-cojeev/drawer\",\n      \"description\": \"Presents dialog content in a drawer surface while keeping the current page underneath.\",\n      \"homepage\": \"https://000h.cojeev.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"drawer\",\n      \"registry\": \"@000h-cojeev\",\n      \"type\": \"registry:ui\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:03:17.321Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "dialog",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"dialog\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@logoforge/dialogflow\",\n      \"description\": \"Dialogflow logo as a typed React component (DialogflowLogo): color, mono, auto dark mode.\",\n      \"homepage\": \"https://logoforge.terravidhal.me/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"dialogflow\",\n      \"registry\": \"@logoforge\",\n      \"type\": \"registry:component\"\n    },\n    {\n      \"addCommandArgument\": \"@uiarc/dialog\",\n      \"description\": \"A focused surface for decisions that need attention.\",\n      \"homepage\": \"https://uiarc.dev/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"dialog\",\n      \"registry\": \"@uiarc\",\n      \"type\": \"registry:ui\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:22.592Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "popover",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"popover\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@cult-ui/popover\",\n      \"description\": \"Animated popover component with form support and smooth transitions\",\n      \"homepage\": \"https://www.cult-ui.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"popover\",\n      \"registry\": \"@cult-ui\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@cult-ui/popover-demo\",\n      \"homepage\": \"https://www.cult-ui.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"popover-demo\",\n      \"registry\": \"@cult-ui\",\n      \"type\": \"registry:component\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:25.711Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "input",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"input\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@shadcnuikit/input9\",\n      \"description\": \"Input built with shadcn/ui.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"input9\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:component\"\n    },\n    {\n      \"addCommandArgument\": \"@shadcnuikit/input8\",\n      \"description\": \"Input built with shadcn/ui.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"input8\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:component\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:29.112Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "select",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"select\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@shadcnuikit/select15\",\n      \"description\": \"Select built with shadcn/ui.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"select15\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:component\"\n    },\n    {\n      \"addCommandArgument\": \"@shadcnuikit/select14\",\n      \"description\": \"Select built with shadcn/ui.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"select14\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:component\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:32.840Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "date",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"date\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@uiarc/date-picker\",\n      \"description\": \"Choose a date without losing context.\",\n      \"homepage\": \"https://uiarc.dev/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"date-picker\",\n      \"registry\": \"@uiarc\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@intentui/date\",\n      \"description\": \"date\",\n      \"homepage\": \"https://intentui.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"date\",\n      \"registry\": \"@intentui\",\n      \"type\": \"registry:lib\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:35.812Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "filter",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"filter\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 99\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@hugeicons-animated/filter\",\n      \"description\": \"Animated filter icon\",\n      \"homepage\": \"https://hugeicons-animated.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"filter\",\n      \"registry\": \"@hugeicons-animated\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@shadcn-ui-blocks/ecommerce-category-filters-filter-drawer\",\n      \"description\": \"A slide in drawer holding category, price, and rating filters for small screens. Keeps the product grid full width until shoppers tap to refine on mobile.\",\n      \"homepage\": \"https://www.shadcn-ui-blocks.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"ecommerce-category-filters-filter-drawer\",\n      \"registry\": \"@shadcn-ui-blocks\",\n      \"type\": \"registry:block\"\n    }\n  ],\n  \"totalResults\": 99,\n  \"timestamp\": \"2026-10-18T22:04:39.155Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "chart",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"chart\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 3,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@shadcnuikit/chart66\",\n      \"description\": \"Watch time by device card with a semicircle donut, a 30D or 90D toggle, total hours with change and device rows that select the share shown under the arc.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"chart66\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:block\"\n    },\n    {\n      \"addCommandArgument\": \"@shadcnuikit/chart65\",\n      \"description\": \"Support peak hours heatmap with a 7 by 12 grid of two hour cells, All, Live chat or Email toggle, focusable cells with counts and a less to more legend.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"chart65\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:block\"\n    },\n    {\n      \"addCommandArgument\": \"@shadcnuikit/chart64\",\n      \"description\": \"Month to date volume card with a metric select, cumulative lines for this month and last month, a dashed projection to month end, a today marker and projected total.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"chart64\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:block\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:03:20.472Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "timeline",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"timeline\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@uiarc/timeline\",\n      \"description\": \"Follow what happened, newest first, grouped by day.\",\n      \"homepage\": \"https://uiarc.dev/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"timeline\",\n      \"registry\": \"@uiarc\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@hirael/timeline\",\n      \"description\": \"Vertical event timeline with default or icon dots, tone variants and labelled time / title / description parts.\",\n      \"homepage\": \"https://hirael.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"timeline\",\n      \"registry\": \"@hirael\",\n      \"type\": \"registry:component\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:42.216Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "toast",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"toast\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@cult-ui/animated-toast\",\n      \"description\": \"Deprecated alias for halo-toast. Prefer npx shadcn add https://cult-ui.com/r/halo-toast.json\",\n      \"homepage\": \"https://www.cult-ui.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"animated-toast\",\n      \"registry\": \"@cult-ui\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@cult-ui/halo-toast\",\n      \"description\": \"Sonner-backed polished toasts with rim variants; mount PolishedToaster once in the root layout\",\n      \"homepage\": \"https://www.cult-ui.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"halo-toast\",\n      \"registry\": \"@cult-ui\",\n      \"type\": \"registry:ui\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:45.285Z\"\n}"
+      }
+    ]
+  },
+  {
+    "query": "data-table",
+    "result": [
+      {
+        "type": "text",
+        "text": "{\n  \"query\": \"data-table\",\n  \"pagination\": {\n    \"hasMore\": true,\n    \"limit\": 2,\n    \"offset\": 0,\n    \"total\": 100\n  },\n  \"items\": [\n    {\n      \"addCommandArgument\": \"@shadcncraft/data-table-pagination\",\n      \"description\": \"A pagination footer for TanStack Table data tables. Combines a summary line, a rows-per-page select, a page indicator, and first, previous, next and last navigation buttons. Renders a sensible default layout from a single table prop, and every part is exported so blocks can recompose the footer, swap the summary copy, or drop the edge buttons without duplicating the markup.\",\n      \"homepage\": \"https://shadcncraft.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"data-table-pagination\",\n      \"registry\": \"@shadcncraft\",\n      \"type\": \"registry:ui\"\n    },\n    {\n      \"addCommandArgument\": \"@shadcnuikit/data-table6\",\n      \"description\": \"Data table built with shadcn/ui.\",\n      \"homepage\": \"https://shadcnuikit.com/?utm_source=shoogle.dev&utm_medium=mcp&utm_campaign=registry_search\",\n      \"name\": \"data-table6\",\n      \"registry\": \"@shadcnuikit\",\n      \"type\": \"registry:component\"\n    }\n  ],\n  \"totalResults\": 100,\n  \"timestamp\": \"2026-10-18T22:04:48.515Z\"\n}"
+      }
+    ]
+  }
+]

@@ -1,0 +1,50 @@
+# F2 baseline audit — 2026-10-18
+
+Baseline branch `feature/aurora-next-foundation`, clean checkout at `c773f7dfac74de2ece2e75fa9a0e801ca8255639`. Remote main `1c06a3dd8f74149aac41facc2779166010516fbf`. PR #1 open/draft. Latest push/PR CI runs 39169643698 and 39169638544 succeeded. No AGENTS.md found. No production or Brandbook checkout modified.
+
+## Inventory and findings
+
+Every source component and page was read, including providers, contracts, fixtures, mock repositories, Inertia adapter, CSS and existing tests.
+
+| Priority | Scope                      | Finding                                                                                                                                        | F2 disposition                                                                             |
+| -------- | -------------------------- | ---------------------------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| P1       | dependency setup           | pnpm-workspace.yaml has literal placeholder for esbuild approval; fresh install fails                                                          | Explicit boolean approval for pinned esbuild                                               |
+| P1       | CommandPalette             | Claims arrow navigation without implementation; no focus trap, modal semantics, restoration or global shortcut                                 | Use proven cmdk + Radix dialog                                                             |
+| P1       | Header                     | Create menus navigate but pages ignore create=1; notifications/logout inert; popovers lack dismissal/focus                                     | Shared accessible popover; meaningful mock actions                                         |
+| P1       | Sidebar / layout           | Theme and advanced-mode controls hidden on mobile; Deals and Pipeline both active; no collapsed mode                                           | Responsive navigation with exclusive current indicator                                     |
+| P1       | ThemeProvider / CSS        | Unvalidated storage; dark ink on ink avatar, selected segment and sent bubble lose contrast; muted labels too faint                            | Validate theme, semantic foreground pairs and contrast audit                               |
+| P1       | Dashboard                  | 1,248 contacts, 4,820,000 pipeline and 18 tasks inconsistent with fixtures; chart unsupported synthetic revenue; tasks and date controls inert | Derive metrics from fixture-backed local state; label chart scope                          |
+| P1       | Contacts                   | Create/filter/columns/pagination/actions inert; false total 1,248; no empty state or edits                                                     | Real local CRUD, search/filter/sort/select/page and details                                |
+| P1       | Deals                      | Board static, no drag/move/create/details/filter, stage totals missing                                                                         | Native drag + keyboard select, stage economics and local forms                             |
+| P1       | Inbox                      | Composer, search, calls and EvoDesk button inert; no per-thread history; no queues/context                                                     | Local replies, assignment, context and filters; remove invented call controls              |
+| P1       | Quotes                     | No detail/create/edit/calculation/search; send icon suggests backend action                                                                    | Local line-item editor and print preview; no backend send                                  |
+| P1       | All screens                | Missing loading/error/permission/true empty states; permission types unused                                                                    | Development preview plus actual injected capability gates                                  |
+| P1       | Inputs / overlays          | Placeholder-only labels, no common validation/error or overlay primitive                                                                       | Typed labeled inputs and proven overlay behavior                                           |
+| P2       | Button                     | No default type, loading state or disabled styling                                                                                             | Extend existing primitive                                                                  |
+| P2       | Avatar / Badge             | Avatar accepts arbitrary tone; raw colors scattered; badges lack dark variants                                                                 | Semantic pairs and explicit documented tones                                               |
+| P2       | Panel / EmptyState         | Reusable and suitable; empty primitive not consumed                                                                                            | Preserve and compose                                                                       |
+| P2       | DataTable                  | Reusable shell only, no caption, scope or empty handling                                                                                       | Extend compatibility shell and add typed interactive table                                 |
+| P2       | StatCard / MetricSparkline | Suitable primitives, but KPI type too small and sparkline empty input unsafe                                                                   | Refine density and guard degenerate data                                                   |
+| P2       | Styling                    | Duplicate toolbars, person cells, cards; raw avatar colors, radii, durations; no reduced motion                                                | Semantic token groups and shared compositions                                              |
+| P2       | Integration                | UI reads fixture imports directly; route/provider seam good; richer mock state needs boundary                                                  | Inject initial session data at provider; preserve original repositories/contracts/adapters |
+| P2       | Tests                      | 2 fixture tests + 2 smoke tests do not verify business interactions or accessibility                                                           | Add meaningful interaction/math/responsive/axe coverage                                    |
+| P2       | Licensing                  | Existing dependency licenses not recorded; registry popularity is not license verification                                                     | Pin adopted packages; verify original licenses; reject unverified registries               |
+| P2       | Design evidence            | Figma 24:3 explicitly concept direction only, Inter vs Brandbook Geist; not five approved screens                                              | Brandbook wins typography, five comparisons PENDING                                        |
+
+No P0 defect identified in the isolated mock frontend. Production authorization and workspace isolation cannot be certified by this frontend-only phase.
+
+## Reference conflicts and scope
+
+Production Screen contracts are richer than foundation entities (six configurable stages vs four fixture stages, lead-status filter mismatch vs local contact status). Preserve the existing fixtures; do not silently represent these as complete production contracts. Local statuses and stages remain explicit mock data. Dashboard must not invent revenue history or losses. Missing datasets are shown as unavailable. Full server workflows (import, merge, saved views, property gates, actual permissions) remain integration work.
+
+## Dependency scan follow-up
+
+The full audit during certification discovered **P0 development-toolchain risk**: two critical tinypool advisories, plus two moderate Vitest/mocker advisories. Updated Vitest from resolved 3.2.7 to pinned 5.0.2, which removes the vulnerable worker dependency. The subsequent `pnpm audit --json` reports zero advisories across 396 dependencies. Jest DOM was pinned to 6.9.1 to avoid the incorrectly released/deprecated 6.10.0. ESLint 9.39.5 reports an upstream support deprecation; it remains functional and has no advisory in the executed audit. React 19, TypeScript 5.9, Vite 8 and Tailwind 4 remain intact.
+
+## 19 October 2026 — user-rejected visual direction
+
+P1: The first F2 visual treatment was rejected by the user because Aurora identity was not applied clearly enough. Prior functional/axe PASS results did not establish visual acceptance. Reopened visual certification and replaced the legacy visual layer with canonical teal/voltage/cool-surface roles. Real Mobbin MCP research covered HubSpot and Salesforce; installed and applied Impeccable 4.6.0. See [correction evidence and remaining acceptance](aurora-correction/report.md). User visual approval and approved five-screen Figma comparison remain PENDING.
+
+Post-correction independent review identified four P1 consistency defects: incomplete monetary Mono coverage, clipped selected filter scopes, noncanonical absolute date/whole-money display, and use of action color for the demonstration state. The fix batch addresses these at shared presentation boundaries and leaves fixtures/contracts unchanged. Verification and the final independent disposition are recorded in the correction report.
+
+P1 development isolation: Tailwind auto-discovery and Vite watching included newly installed tool bundles and generated QA/research artifacts. Restricted Tailwind to application source and ignored tool/evidence paths in the dev watcher. This keeps non-application content out of utility generation and separates evidence writes from live UI updates. Failure traces are retained for remaining diagnostics. The isolated browser rerun determines PASS/FAIL.

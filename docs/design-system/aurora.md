@@ -1,0 +1,13 @@
+# Aurora integration
+
+Authority: Evotechly/Brandbook Aurora `1.1.0-aurora`, read-only `DESIGN.md`, verified 19 October 2026. Main commit `f240ffe426b1e62a086f889576102af665e301b6`; file blob `d47fa4bbb3141e6c5aeb5194de75f6dfb703c4d5`. [Source verification](../research/aurora-brandbook-source.json) confirms that the reviewer's local source matches this blob.
+
+The user rejected the first orange/ink visual treatment. The revised Aurora Light Cabinet uses company teal `#0F4C5C` for identity and navigation, voltage indigo `#4F46E5` for primary actions/focus, deep ink `#0D1B24`, cool canvas `#F0F5FA`, white work surfaces and `#E3E8EE` hairlines. Dark surfaces use night `#05080C`, elevated `#0E1419` and surface `#12181E`. Orange remains a sparse semantic/legacy accent. It is not the suite identity or primary action color.
+
+`src/styles/tokens.css` is the shared semantic boundary. Accessible foreground/background pairs may derive from canonical colors: muted text is darkened where required; night identity foregrounds are lightened; demonstration text/surfaces derive from `state-demo #DB2777`, with the canonical pink used on its icon. These pairs are shared in both themes, rather than raw values in React components. The demo banner and simulation badge use the demonstration role, separate from action colors.
+
+Geist Sans is the default. Geist Mono and tabular figures apply to monetary values and financial summaries; `StatCard monetary` is the explicit KPI variant. `formatDzd` preserves two decimals (`1 234,56 DA`). `formatDateDisplay` renders complete ISO and approved legacy absolute dates as `DD/MM/YYYY`, without changing fixture data or inventing dates for relative labels. Native date editor values remain ISO and browser calendar chrome follows its locale. Quote centime arithmetic is independent of display formatting.
+
+Controls use gently rounded 8px corners; panels use 12px; hairlines precede shadows. Named spacing/type/motion/focus roles and 150/220ms transitions share one stylesheet. Reduced motion removes nonessential animation. Brandbook takes precedence over concept-board Inter typography.
+
+The root [DESIGN.md](../../DESIGN.md) and its Impeccable sidecar record the implemented system after independent review. [Component contracts](components.md) describe typed interfaces and state ownership. [Aurora correction evidence](../certification/aurora-correction/report.md) records current tests, screenshots and pending visual approval. If `@evotechly/brand` becomes available, pin its version and generate roles from the published token artifact while preserving verified contrast pairs.
